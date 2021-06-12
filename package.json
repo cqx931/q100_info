@@ -1,0 +1,22 @@
+{
+  "name": "q100_info",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "socket.io": "^4.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "node bridge.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cqx931/q100_info.git"
+  },
+  "author": "cqx931",
+  "bugs": {
+    "url": "https://github.com/cqx931/q100_info/issues"
+  },
+  "homepage": "https://github.com/cqx931/q100_info#readme"
+}
