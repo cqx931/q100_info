@@ -1,31 +1,35 @@
 //tmp data
 const clusterTotal = {
   Energieverbrauch: {
-  	"Wärme": 720369.1799999999, 
-  	"Strom": 103159
+  	
+  	"Strom": 103.159,
+    "Wärme": 720.3691
   },
   CO2: {
-  	"Wärme": 0.007730154348405901, 
-  	"Strom": 1.0420522041294598
+  	"Strom": 38.6846,
+    "Wärme": 225.1153
   }
 }
 const total = {
   Energieverbrauch: {
-  	"Wärme": 134720531.91000003, 
-  	"Strom": 1103629},
+  	"Strom": 1103.629,
+    "Wärme": 134720.5319},
   CO2: {
-  	"Wärme": 1.4456622166479176, 
-  	"Strom": 11.148218109822619}
+  	"Strom": 413.8608,
+     "Wärme": 42100.1662
+   }
 }
+
+const CHART_MARGIN = ({top: 30, right: 20, bottom: 0, left: 50});
 
 const updateInfoScreen = function(data) {
-  //TODO:
-  //Now there is only co2 data
-
+  const cluster = renderCluster(data, window.innerWidth*0.6, window.innerHeight/5, "horizontal");
+  const currentCluster = document.getElementById("cluster");
+  currentCluster.parentNode.replaceChild(cluster, currentCluster);
 }
 
+
 const renderInfoScreen_horizontal = function(w, h, data){
-  
   w -= 20;
   const cluster = renderCluster(clusterTotal, w*0.6, h/5, "horizontal")
   const totalDataviz = renderTotal(total,w,h/5, "horizontal")
@@ -39,8 +43,10 @@ const renderInfoScreen_horizontal = function(w, h, data){
 const renderCluster = function(input, w, h, type){
   let renderChart = horizontalBarChart;
   if (type == "vertical") renderChart = barChart;
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, {width:w, height:h, colors:["grey","orange"], title: "CO2" , unit: "tCO2"})
-  const bar2 = horizontalBarChart(formatData(input.Energieverbrauch),w, h,"orange", "Energieverbrauch", "kWh")
+  const CONFIG_Energie = {width:w, height:h, colors:["grey","orange"], title: "Energieverbrauch", unit: "MWh"};
+  const CONFIG_CO2 = {width:w, height:h, colors:["grey","orange"], title: "CO2" , unit: "tCO2"};
+  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2)
+  const bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie)
  
   const title = document.createElement("h4")
   title.textContent = "Gebäudecluster"
@@ -60,9 +66,10 @@ const renderTotal = function(input, w, h, type){
   
   let renderChart = horizontalBarChart;
   if (type == "vertical") renderChart = barChart;
-  
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, {width:w, height:h, colors:["grey","orange"], title: "CO2" , unit: "tCO2"})
-  const bar2 = renderChart(formatData(input.Energieverbrauch),w, h,"orange", "Energieverbrauch", "kWh")
+  const CONFIG_Energie = {width:w, height:h, colors:["grey","orange"], title: "Energieverbrauch", unit: "MWh"};
+  const CONFIG_CO2 = {width:w, height:h, colors:["grey","orange"], title: "CO2" , unit: "tCO2"};
+  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2)
+  const bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie)
   
   const title = document.createElement("h4")
   title.textContent = "Quartier gesamt"
@@ -77,10 +84,11 @@ return wrapper;
 
 const stackableHorizontalBarChartWithGoal = function(data, goal, config) {
      // config: w,h, color,title, unit
-    const w = config.width-20, h = config.height
+    const w = config.width-20, h = config.height,
+          margin = CHART_MARGIN;
+
     const svg = d3.create("svg")
       .attr("viewBox", [0, 0, w, h]);
-  const margin = ({top: 30, right: 20, bottom: 0, left: 50});
 
   if(config.title != null) {
     svg.append("text")
@@ -113,16 +121,20 @@ const stackableHorizontalBarChartWithGoal = function(data, goal, config) {
     .call(d3.axisTop(x).ticks(w / 80, data.format))
     .call(g => g.select(".domain").remove())
   
-  // let yAxis = g => g
-  //   .attr("transform", `translate(${margin.left},0)`)
-  //   .call(d3.axisLeft(y).tickFormat(i => data[i].name).tickSizeOuter(0))
-
-
+  let yAxis = g => g
+    .call(g => g.append("text")
+    .attr("x", 10)
+    .attr("y", margin.top + 10)
+    .attr("font-size", 11)
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "start")
+    .style("font-weight", "bold")
+    .attr("font-family", "sans-serif")
+    .text(config.unit))
 
   //col
   //todo: stack
   svg.append("g")
-      .attr("fill", config.color)
     .selectAll("rect")
     .data(_data)
     .join("rect")
@@ -188,19 +200,20 @@ const stackableHorizontalBarChartWithGoal = function(data, goal, config) {
     .style('fill',(d, i) => config.colors[i])
     .text(d => d.label)
 
-  // svg.append("g")
-  //     .call(yAxis);
+  svg.append("g")
+      .call(yAxis);
 
   return svg.node();
 
 }
 
-const horizontalBarChart = function(data,w, h, color, title, unit){
+const horizontalBarChart = function(data,config){
+  const w = config.width-20, h = config.height,
+        margin = CHART_MARGIN; 
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, w, h]);
-  const margin = ({top: 30, right: 20, bottom: 0, left: 50});
 
-  if(title != null) {
+  if (config.title != null) {
     svg.append("text")
     .attr("class","chart_title")
     .attr("text-anchor","left")
@@ -209,32 +222,43 @@ const horizontalBarChart = function(data,w, h, color, title, unit){
     .attr("y", 20)
     .attr("fill", "#aaa")
     .style("font-weight", "bold")
-    .text(title)
+    .text(config.title)
   }
   
   let x = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.value)])
     .range([margin.left, w - margin.right])
+
   let y = d3.scaleBand()
     .domain(d3.range(data.length))
     .rangeRound([margin.top + 20, h - margin.bottom])
     .padding(0.1)
+
   const format = x.tickFormat(20, data.format)
+
   let xAxis = g => g
     .attr("transform", `translate(0,${margin.top+20})`)
     .call(d3.axisTop(x).ticks(w / 80, data.format))
     .call(g => g.select(".domain").remove())
+
   let yAxis = g => g
     .attr("transform", `translate(${margin.left},0)`)
     .call(d3.axisLeft(y).tickFormat(i => data[i].name).tickSizeOuter(0))
+    .call(g => g.append("text")
+    .attr("x", -margin.left + 10)
+    .attr("y", margin.top + 10)
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "start")
+    .style("font-weight", "bold")
+    .text(config.unit))
   
   svg.append("g")
-      .attr("fill", color)
       .selectAll("rect")
       .data(data)
       .join("rect")
       .attr("x", x(0))
       .attr("y", (d, i) => y(i))
+      .attr("fill", (d, i) => config.colors[i])
       .attr("width", d => x(d.value) - x(0))
       .attr("height", y.bandwidth());
   
@@ -265,6 +289,38 @@ const horizontalBarChart = function(data,w, h, color, title, unit){
   return svg.node();
 }
 
+// Data Processing
+
+const processData = function(json){
+  let result = {
+      Energieverbrauch:{ //in mwh
+        "Strom":0,
+        "Wärme":0, 
+    }, 
+    CO2:{
+      "Strom":0,
+      "Wärme":0
+    }
+    };
+  for (var i = json.length - 1; i >= 0; i--) {
+    const c = json[i];
+    for (let key in c) {
+      if (key == "Wärmeverbrauch 2017 [kWh]" && c[key] != null) {
+            result.Energieverbrauch["Wärme"] += kwh2mwh(c[key]);
+            result.CO2["Wärme"] += getCo2(result.Energieverbrauch["Wärme"], "Wärme");
+
+        }
+        if(key == "Stromverbrauch 2017 [kWh]" && c[key] != null) {
+            result.Energieverbrauch["Strom"] += kwh2mwh(c[key]);
+             result.CO2["Strom"] += getCo2(result.Energieverbrauch["Strom"], "Strom");
+        }
+    }
+
+  }
+  console.log(result)
+  return result;
+}
+
 const groupData = function(data, total) {
 
   // use scale to get percent values
@@ -286,6 +342,17 @@ const groupData = function(data, total) {
     }
   }).filter(d => d.value > 0)
   return _data
+}
+
+const getCo2 = function(e, type) {
+  let r = 0;
+  if ( type === "Strom" ) r = e/8*3; // der strommix bei ca 3000 kg(3 ton) Co2-äq / 8 MWh
+  else if ( type === "Wärme" ) r = e/8*2.5;
+  return r;
+}
+
+const kwh2mwh = function(kwh){
+  return kwh/1000;
 }
 
 const formatData = function(obj) {
