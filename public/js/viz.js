@@ -32,7 +32,7 @@ const updateInfoScreen = function(data) {
 const renderInfoScreen_horizontal = function(w, h, data){
   w -= 20;
   const cluster = renderCluster(clusterTotal, w*0.6, h/5, "horizontal")
-  const totalDataviz = renderTotal(total,w,h/5, "horizontal")
+  const totalDataviz = renderTotal(total,w/3*2,h/5, "horizontal")
   const infoScreen = document.getElementById("infoScreen")
   infoScreen.append(cluster)
   infoScreen.append(totalDataviz)
@@ -48,7 +48,7 @@ const renderCluster = function(input, w, h, type){
   const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2)
   const bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie)
  
-  const title = document.createElement("h4")
+  const title = document.createElement("h2")
   title.textContent = "Gebäudecluster"
   
   const wrapper = document.createElement("div")
@@ -71,7 +71,7 @@ const renderTotal = function(input, w, h, type){
   const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2)
   const bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie)
   
-  const title = document.createElement("h4")
+  const title = document.createElement("h2")
   title.textContent = "Quartier gesamt"
   
   wrapper.id = "total";

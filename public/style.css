@@ -1,0 +1,53 @@
+h1 {
+    color: white;
+    font: 28px 'Franklin Gothic Medium', sans-serif;
+}
+
+h2 {
+    color: white;
+    font: 24px 'Franklin Gothic Medium', sans-serif;
+}
+
+h3 {
+    color: white;
+    font: 20px 'Franklin Gothic Medium', sans-serif;
+}
+
+h4 {
+    color: white;
+    font: 16px 'Franklin Gothic Medium', sans-serif;
+}
+
+h5 {
+    color: white;
+    font: 14px 'Franklin Gothic Medium', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#infoScreen {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid black;
+    background: black;
+    color: white;
+    font: 18px 'Franklin Gothic Medium', 'sans-serif';
+}
+
+#total {
+    /* margin-top: 2em; */
+}
+
+h4 {
+    margin: 0;
+    color: #eee;
+}
+
+svg rect {
+    /*transition:width 2s ease-in-out;*/
+}
