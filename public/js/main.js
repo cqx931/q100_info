@@ -10,8 +10,8 @@ socket.on('message', function(obj) {
 	  	const data = processData(json)
 	  	updateInfoScreen(data);
 	}
-  
+
 });
 
 renderInfoScreen_horizontal(window.innerWidth, window.innerHeight, {"data":"tmp"});
-
+updateInfoScreenWithAnimation(animationJson);
