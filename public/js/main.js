@@ -1,17 +1,17 @@
 const socket = io('localhost:8081');
-let message;
 
-socket.on('message', function(obj) {
-	const json = JSON.parse(obj);
-	// only log if it's different
-	if (JSON.stringify(message) != JSON.stringify(json)) {
-	  	console.log(json);
-	  	message = json;
-	  	const data = processData(json)
-	  	updateInfoScreen(data);
-	}
+let previousMessage;
 
+socket.on('message', function(message) {
+  // only log if it's different
+  if (previousMessage != message) {
+    const json = JSON.parse(message);
+    console.log(json);
+    const data = processData(json);
+    updateInfoScreen(data);
+  }
+  previousMessage = message;
 });
 
-renderInfoScreen_horizontal(window.innerWidth, window.innerHeight, {"data":"tmp"});
+renderInfoScreen_horizontal(window.innerWidth, window.innerHeight, {"data": "tmp"});
 updateInfoScreenWithAnimation(animationJson);
