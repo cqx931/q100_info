@@ -45,9 +45,13 @@ const CHART_MARGIN = ({top: 30, right: 20, bottom: 0, left: 50});
 const EASE_STYLE = d3.easeCubicOut, ANIMATION_TIME = 2000;
 
 const updateInfoScreen = function (data) {
-  const cluster = renderCluster(data, window.innerWidth * 0.6, window.innerHeight / 5, "horizontal"),
-    currentCluster = document.getElementById("cluster");
-  currentCluster.parentNode.replaceChild(cluster, currentCluster);
+  const clusterDiv = document.getElementById("cluster");
+
+  while (clusterDiv.getElementsByTagName('svg').length > 0) {
+    clusterDiv.removeChild(clusterDiv.lastChild);
+  }
+
+  renderCluster(data, "horizontal", clusterDiv);
 }
 
 const updateInfoScreenWithAnimation = function (data) {
@@ -58,25 +62,25 @@ const updateInfoScreenWithAnimation = function (data) {
   // <animate attributeName="width" from="0" to="target" dur="1s"/>
 }
 
-const renderInfoScreen_horizontal = function (w, h, data) {
-  w -= 20;
-  const cluster = renderCluster(clusterTotal, w * 0.6, h / 5, "horizontal"),
-    totalDataviz = renderTotal(total, w / 3 * 2, h / 5, "horizontal"),
-    infoScreen = document.getElementById("infoScreen");
-  infoScreen.append(cluster);
-  infoScreen.append(totalDataviz);
-  infoScreen.style.width = w + "px";
-  infoScreen.style.height = h + "px";
+const renderInfoScreen_horizontal = function () {
+  renderCluster(clusterTotal, "horizontal", document.getElementById("cluster"));
+  renderTotal(total, "horizontal", document.getElementById("total"));
 }
 
-const renderCluster = function (input, w, h, type) {
-  let renderChart = horizontalBarChart;
-  if (type == "vertical") {
-    renderChart = barChart;
+const renderCluster = function (input, type, parentNode) {
+  const renderChart = type === "vertical" ? barChart : horizontalBarChart;
+
+  // calculate available space from element dimensions
+  let w = parseFloat(getComputedStyle(parentNode).width),
+    h = parseFloat(getComputedStyle(parentNode).height);
+
+  for (const child of parentNode.children) {
+    h -= parseFloat(getComputedStyle(child).height);
   }
+
   const CONFIG_Energie = {
     width: w,
-    height: h,
+    height: h / 2,
     colors: ["grey", "orange"],
     type: "Cluster",
     title: "Energieverbrauch",
@@ -84,7 +88,7 @@ const renderCluster = function (input, w, h, type) {
   };
   const CONFIG_CO2 = {
     width: w,
-    height: h,
+    height: h / 2,
     colors: ["grey", "orange"],
     type: "Cluster",
     title: "CO2",
@@ -97,32 +101,26 @@ const renderCluster = function (input, w, h, type) {
   }
 
   const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2),
-    bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie);
+    bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie);
 
-  const title = document.createElement("h2");
-  title.textContent = "Gebäudecluster";
-
-  const wrapper = document.createElement("div");
-
-  wrapper.id = "cluster";
-  wrapper.style.width = w + "px";
-  wrapper.append(title);
-  wrapper.append(bar1);
-  wrapper.append(bar2);
-
-  return wrapper;
+  parentNode.append(bar1);
+  parentNode.append(bar2);
 }
 
-const renderTotal = function (input, w, h, type) {
-  const wrapper = document.createElement("div");
+const renderTotal = function (input, type, parentNode) {
+  const renderChart = type === "vertical" ? barChart : horizontalBarChart;
 
-  let renderChart = horizontalBarChart;
-  if (type == "vertical") {
-    renderChart = barChart;
+  // calculate available space from element dimensions
+  let w = parseFloat(getComputedStyle(parentNode).width),
+    h = parseFloat(getComputedStyle(parentNode).height);
+
+  for (const child of parentNode.children) {
+    h -= parseFloat(getComputedStyle(child).height);
   }
+
   const CONFIG_Energie = {
     width: w,
-    height: h,
+    height: h / 2,
     colors: ["grey", "orange"],
     type: "Total",
     title: "Energieverbrauch",
@@ -130,31 +128,23 @@ const renderTotal = function (input, w, h, type) {
   };
   const CONFIG_CO2 = {
     width: w,
-    height: h,
+    height: h / 2,
     colors: ["grey", "orange"],
     type: "Total",
     title: "CO2",
     unit: "tCO2"
   };
 
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2);
-  const bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie);
+  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2),
+    bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie);
 
-  const title = document.createElement("h2");
-  title.textContent = "Quartier gesamt";
-
-  wrapper.id = "total";
-  wrapper.style.width = w + "px";
-  wrapper.append(title);
-  wrapper.append(bar1);
-  wrapper.append(bar2);
-
-  return wrapper;
+  parentNode.append(bar1);
+  parentNode.append(bar2);
 }
 
 const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
   // config: w,h, color,title, unit
-  const w = config.width - 20,
+  const w = config.width,
     h = config.height,
     margin = CHART_MARGIN;
 
@@ -282,7 +272,7 @@ const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
 }
 
 const horizontalBarChart = function (data, config) {
-  const w = config.width - 20,
+  const w = config.width,
     h = config.height,
     margin = CHART_MARGIN,
     svg = d3.create("svg")

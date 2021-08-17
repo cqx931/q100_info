@@ -13,5 +13,5 @@ socket.on('message', function(message) {
   previousMessage = message;
 });
 
-renderInfoScreen_horizontal(window.innerWidth, window.innerHeight, {"data": "tmp"});
+renderInfoScreen_horizontal();
 updateInfoScreenWithAnimation(animationJson);
