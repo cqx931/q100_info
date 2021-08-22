@@ -62,7 +62,7 @@ const updateInfoScreenWithAnimation = function (data) {
   // <animate attributeName="width" from="0" to="target" dur="1s"/>
 }
 
-const renderInfoScreen_horizontal = function () {
+const renderGraphic_horizontal = function () {
   renderCluster(clusterTotal, "horizontal", document.getElementById("cluster"));
   renderTotal(total, "horizontal", document.getElementById("total"));
 }
@@ -73,7 +73,7 @@ const renderCluster = function (input, type, parentNode) {
   // calculate available space from element dimensions
   let w = parseFloat(getComputedStyle(parentNode).width),
     h = parseFloat(getComputedStyle(parentNode).height);
-
+  console.log(w, h);
   for (const child of parentNode.children) {
     h -= parseFloat(getComputedStyle(child).height);
   }
@@ -357,6 +357,31 @@ const horizontalBarChart = function (data, config) {
     .call(yAxis);
 
   return svg.node();
+}
+
+const renderHouseInfo = function() {
+  const left = document.getElementsByClassName("left")[0];
+  for (var i = 0; i < 8; i++) {
+    const div = document.createElement("div");
+    div.className = "meta";
+    let template = document.getElementById("meta_template").innerHTML;
+    template = template.replace("$Adresse", "Straßename 42");
+    template = template.replace("$x", "x");
+    template = template.replace("$y", "y");
+    div.innerHTML = template;
+    left.append(div);
+  }
+}
+
+const renderSimulationVariables = function(data) {
+  const bottom = document.getElementsByClassName("bottom")[0];
+  let template = document.getElementById("simulation_template").innerHTML;
+  template = template.replace("$year", data.year);
+  template = template.replace("$x", data.co2);
+  template = template.replace("$y", data.strom);
+  template = template.replace("$z", data.wärme);
+  template = template.replace("$n", data.förderung);
+  bottom.innerHTML = template;
 }
 
 // Data Processing

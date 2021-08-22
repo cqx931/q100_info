@@ -13,5 +13,21 @@ socket.on('message', function(message) {
   previousMessage = message;
 });
 
-renderInfoScreen_horizontal();
+renderInfoScreen();
+
+function renderInfoScreen() {
+
+const simulationData = {
+  year: '2021',
+  co2: 'x',
+  wärme: 'y',
+  strom: 'z',
+  förderung: 'n'
+}
+
+renderGraphic_horizontal();
 updateInfoScreenWithAnimation(animationJson);
+renderHouseInfo();
+renderSimulationVariables(simulationData);
+
+}

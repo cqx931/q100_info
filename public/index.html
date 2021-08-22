@@ -11,12 +11,45 @@
 
 <body>
 	<div id="infoscreen">
-		<div id="cluster">
-			<h2>Gebäudecluster</h2>
+		<div class="top">
+		<div class="left">
+			<div class="template meta" id="meta_template">
+				<div class="icon"><img src="img/home.png"></div>
+				<div class="text">
+					<ul>
+						<li class='address'>$Adresse</li>
+						<li class='Verbrauch'>Verbrauch $x kWh</li>
+						<li class='Verbrauch'>Emmission $y kg</li>
+					</ul>
+				</div>
 		</div>
-		<div id="total">
-			<h2>Quartier gesamt</h2>
+	</div>
+		<div class="middle">
+			<div id="graphic">
+				<div id="cluster">
+					<h2>Gebäudecluster</h2>
+				</div>
+				<div id="total">
+					<h2>Quartier gesamt</h2>
+				</div>
+			</div>
 		</div>
+		<div class="right">
+			<img src="img/map.png" alt="" id="map">
+		</div>
+		</div>
+		<div class="bottom">
+			<div id="simulation_template" class='template'>
+				<div class="simulation">
+			<div class="Jahr">$year</div>
+			<div class="Co2-preis">Co2-preis: <br>$x €/kg</div>
+			<div class="Wärmepreis">Wärmepreis: <br>$y €/kWh</div>
+			<div class="Strompreis">Strompreis: <br>$z €/kWh</div>
+			<div class="Förderung">Förderung: <br>$n €/a</div>
+			</div>
+			</div>
+		</div>
+
 	</div>
 
 	<script src="js/viz.js" type="text/javascript"></script>

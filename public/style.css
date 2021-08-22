@@ -4,26 +4,27 @@ body {
   height: 100%;
   font-family: 'Franklin Gothic Medium', sans-serif;
   color: white;
+  font-size: 12px;
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 2.5rem;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 1.8rem;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 1.5rem;
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 1.2rem;
 }
 
 body {
@@ -38,16 +39,101 @@ body {
   height: 100%;
   font-size: 18px;
 }
-
+#infoscreen .top {
+  width: 100%;
+  height:90%;
+}
+#infoscreen .left {
+  width: 20%;
+  height: 100%;
+  float:left;
+}
+#infoscreen .middle {
+  width: 55%;
+  height: 100%;
+  float:left;
+}
+#infoscreen .right {
+  width: 25%;
+  height: 100%;
+  float:left;
+}
 #cluster,
 #total {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 90%;
   height: 50%;
 }
 
 #cluster > *,
 #total > * {
   display: inline-block;
+}
+
+#map {
+  height:100%;
+}
+
+ul {
+  list-style: none;
+}
+.template {
+  display:none;
+}
+.meta {
+  width:100%;
+  padding: 5px;
+}
+.meta::after {
+  content: "";
+  clear: both;
+  display:table;
+}
+.meta .icon{
+  width:20%;
+  float:left;
+  vertical-align: middle;
+}
+.meta .icon img {
+  width:100%;
+}
+.meta .text {
+  width:70%;
+  float:left;
+  display:inline-block;
+  list-style-type: none;
+  font-size: 1rem;
+}
+.meta .text ul  {
+  padding-left: 20px;
+  margin: 5px 0;
+}
+.meta .text li {
+  padding: 0.1em;
+}
+.simulation .Jahr {
+  font-size: 5rem;
+  line-height: 5rem;
+  width:20%;
+  padding-left: 5px;
+}
+.simulation .Förderung{
+  float:right;
+  width:20%;
+}
+.simulation div {
+  float:left;
+  width:15%;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  height:100%;
+}
+.simulation::after {
+  content: "";
+  clear: both;
+  display:table;
+}
+#graphic {
+  height:90%;
 }
