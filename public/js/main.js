@@ -6,8 +6,8 @@ socket.on('message', function(message) {
   // only log if it's different
   if (previousMessage != message) {
     const json = JSON.parse(message);
-    console.log(json);
     const data = processData(json);
+    console.log(data)
     updateInfoScreen(data);
   }
   previousMessage = message;

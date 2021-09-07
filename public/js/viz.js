@@ -73,7 +73,6 @@ const renderCluster = function (input, type, parentNode) {
   // calculate available space from element dimensions
   let w = parseFloat(getComputedStyle(parentNode).width),
     h = parseFloat(getComputedStyle(parentNode).height);
-  console.log(w, h);
   for (const child of parentNode.children) {
     h -= parseFloat(getComputedStyle(child).height);
   }
@@ -399,9 +398,7 @@ const processData = function (json) {
     year: 0
   };
 
-
-  for (let i = json.length - 1; i >= 0; i--) {
-    const c = json[i];
+  const map = function(c) {
     for (let key in c) {
       if (key == "Wärmeverbrauch 2017 [kWh]" && c[key] != null) {
         result.Energieverbrauch["Wärme"] += kwh2mwh(c[key]);
@@ -415,10 +412,15 @@ const processData = function (json) {
       // TODO parse json with year correctly:
       if (key == "year" && c[key] != null) {
         result.year += c[key];
-        document.getElementById("simulation_template").innerHTML.replace("$year", result.year);
-        console.log(result.year)
+        document.querySelector(".Jahr").innerHTML = result.year ;
       }
     }
+  }
+
+  if (json.length) {
+    map(json[0]);
+  } else {
+    map(json)
   }
 
   return result;
