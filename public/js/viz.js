@@ -41,7 +41,7 @@ const animationJson = {
     },
   }
 };
-const CHART_MARGIN = ({top: 30, right: 20, bottom: 0, left: 50});
+const CHART_MARGIN = ({ top: 30, right: 20, bottom: 0, left: 50 });
 const EASE_STYLE = d3.easeCubicOut, ANIMATION_TIME = 2000;
 
 const updateInfoScreen = function (data) {
@@ -153,14 +153,14 @@ const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
 
   if (config.title != null) {
     svg.append("text")
-    .attr("class", "chart_title")
-    .attr("text-anchor", "left")
-    //.attr("transform", `translate(0,${h - margin.bottom})`)
-    .attr("x", 10)
-    .attr("y", 20)
-    .attr("fill", "#aaa")
-    .style("font-weight", "bold")
-    .text(config.title);
+      .attr("class", "chart_title")
+      .attr("text-anchor", "left")
+      //.attr("transform", `translate(0,${h - margin.bottom})`)
+      .attr("x", 10)
+      .attr("y", 20)
+      .attr("fill", "#aaa")
+      .style("font-weight", "bold")
+      .text(config.title);
   }
 
   const total = d3.sum(data, d => d.value),
@@ -184,14 +184,14 @@ const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
 
   let yAxis = g => g
     .call(g => g.append("text")
-    .attr("x", 10)
-    .attr("y", margin.top + 10)
-    .attr("font-size", 11)
-    .attr("fill", "currentColor")
-    .attr("text-anchor", "start")
-    .style("font-weight", "bold")
-    .attr("font-family", "sans-serif")
-    .text(config.unit));
+      .attr("x", 10)
+      .attr("y", margin.top + 10)
+      .attr("font-size", 11)
+      .attr("fill", "currentColor")
+      .attr("text-anchor", "start")
+      .style("font-weight", "bold")
+      .attr("font-family", "sans-serif")
+      .text(config.unit));
 
   //col
   //todo: stack
@@ -225,9 +225,9 @@ const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
     .attr("dx", -4)
     .text(d => format(d.value))
     .call(text => text.filter(d => x(d.value) - x(0) < 20) // short bars
-    .attr("dx", +4)
-    .attr("fill", "white")
-    .attr("text-anchor", "start"));
+      .attr("dx", +4)
+      .attr("fill", "white")
+      .attr("text-anchor", "start"));
 
   // goal:
   if (goal != null) {
@@ -262,7 +262,7 @@ const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
     .attr('y', y(0) + y.bandwidth() + 15)
     .attr("font-family", "sans-serif")
     .attr("font-size", 12)
-    .style('fill',(d, i) => config.colors[i])
+    .style('fill', (d, i) => config.colors[i])
     .text(d => d.label);
 
   svg.append("g")
@@ -310,12 +310,12 @@ const horizontalBarChart = function (data, config) {
     .attr("transform", `translate(${margin.left},0)`)
     .call(d3.axisLeft(y).tickFormat(i => data[i].name).tickSizeOuter(0))
     .call(g => g.append("text")
-    .attr("x", -margin.left + 10)
-    .attr("y", margin.top + 10)
-    .attr("fill", "currentColor")
-    .attr("text-anchor", "start")
-    .style("font-weight", "bold")
-    .text(config.unit));
+      .attr("x", -margin.left + 10)
+      .attr("y", margin.top + 10)
+      .attr("fill", "currentColor")
+      .attr("text-anchor", "start")
+      .style("font-weight", "bold")
+      .text(config.unit));
 
   svg.append("g")
     .selectAll("rect")
@@ -346,9 +346,9 @@ const horizontalBarChart = function (data, config) {
     .attr("dx", -4)
     .text(d => format(d.value))
     .call(text => text.filter(d => x(d.value) - x(0) < 20) // short bars
-    .attr("dx", +4)
-    .attr("fill", "white")
-    .attr("text-anchor", "start"));
+      .attr("dx", +4)
+      .attr("fill", "white")
+      .attr("text-anchor", "start"));
 
   svg.append("g")
     .call(xAxis);
@@ -359,7 +359,7 @@ const horizontalBarChart = function (data, config) {
   return svg.node();
 }
 
-const renderHouseInfo = function() {
+const renderHouseInfo = function () {
   const left = document.getElementsByClassName("left")[0];
   for (var i = 0; i < 8; i++) {
     const div = document.createElement("div");
@@ -373,7 +373,7 @@ const renderHouseInfo = function() {
   }
 }
 
-const renderSimulationVariables = function(data) {
+const renderSimulationVariables = function (data) {
   const bottom = document.getElementsByClassName("bottom")[0];
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
@@ -395,8 +395,10 @@ const processData = function (json) {
     CO2: {
       "Strom": 0,
       "Wärme": 0
-    }
+    },
+    year: 0
   };
+
 
   for (let i = json.length - 1; i >= 0; i--) {
     const c = json[i];
@@ -409,9 +411,16 @@ const processData = function (json) {
         result.Energieverbrauch["Strom"] += kwh2mwh(c[key]);
         result.CO2["Strom"] += getCo2(result.Energieverbrauch["Strom"], "Strom");
       }
+
+      // TODO parse json with year correctly:
+      if (key == "year" && c[key] != null) {
+        result.year += c[key];
+        document.getElementById("simulation_template").innerHTML.replace("$year", result.year);
+        console.log(result.year)
+      }
     }
   }
-  console.log(result);
+
   return result;
 }
 
@@ -450,13 +459,13 @@ const getCo2 = function (e, type) {
 }
 
 const kwh2mwh = function (kwh) {
-  return kwh/1000;
+  return kwh / 1000;
 }
 
 const formatData = function (obj) {
   let r = [];
   for (let key in obj) {
-    r.push({"name": key, "value": obj[key]});
+    r.push({ "name": key, "value": obj[key] });
   }
   return r;
 }

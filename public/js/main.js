@@ -17,9 +17,9 @@ renderInfoScreen();
 
 function renderInfoScreen() {
 
-const simulationData = {
-  year: '2021',
-  co2: 'x',
+let simulationData = {
+  year: 2022,
+  co2: '500',
   wärme: 'y',
   strom: 'z',
   förderung: 'n'
@@ -28,6 +28,6 @@ const simulationData = {
 renderGraphic_horizontal();
 updateInfoScreenWithAnimation(animationJson);
 renderHouseInfo();
-renderSimulationVariables(simulationData);
+renderSimulationVariables(simulationData); // replaces variables in simulation_template
 
 }
