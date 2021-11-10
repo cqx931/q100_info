@@ -1,5 +1,5 @@
-//tmp data
-const clusterTotal = {
+
+let clusterBefore = {
   Energieverbrauch: {
     "Strom": 103.159,
     "Wärme": 720.3691
@@ -9,7 +9,7 @@ const clusterTotal = {
     "Wärme": 225.1153
   }
 };
-const total = {
+let totalBefore = {
   Energieverbrauch: {
     "Strom": 1103.629,
     "Wärme": 134720.5319
@@ -20,56 +20,40 @@ const total = {
   }
 };
 
-const animationJson = {
-  Energieverbrauch: {
-    "Strom": 75,
-    "Wärme": 500
-  },
-  CO2: {
-    "Strom": 30,
-    "Wärme": 200
-  },
-  animation: true,
-  before: {
-    Energieverbrauch: {
-      "Strom": 103.159,
-      "Wärme": 720.3691
-    },
-    CO2: {
-      "Strom": 38.6846,
-      "Wärme": 225.1153
-    },
-  }
-};
 const CHART_MARGIN = ({ top: 30, right: 20, bottom: 0, left: 50 });
 const EASE_STYLE = d3.easeCubicOut, ANIMATION_TIME = 2000;
 
-const updateInfoScreen = function (data) {
+const updateClusterCharts = (clusterData) => {
+  if (!clusterData) {
+    return;
+  }
+
   const clusterDiv = document.getElementById("cluster");
 
   while (clusterDiv.getElementsByTagName('svg').length > 0) {
     clusterDiv.removeChild(clusterDiv.lastChild);
   }
 
-  renderCluster(data, "horizontal", clusterDiv);
+  renderBarCharts(clusterData, clusterBefore, "Cluster", clusterDiv);
+  clusterBefore = clusterData;
 }
 
-const updateInfoScreenWithAnimation = function (data) {
-  console.log("update Animation");
-  updateInfoScreen(data);
-  //appendAnimationTag('Cluster_Energieverbrauch_Strom', data.before.Energieverbrauch.Strom, data.Energieverbrauch.Strom, 2000, formatData(data.Energieverbrauch));
-  // Tmp: Add animation only cluster
-  // <animate attributeName="width" from="0" to="target" dur="1s"/>
+const updateTotalCharts = (totalData) => {
+  if (!totalData) {
+    return;
+  }
+
+  const totalDiv = document.getElementById("total");
+
+  while (totalDiv.getElementsByTagName('svg').length > 0) {
+    totalDiv.removeChild(totalDiv.lastChild);
+  }
+
+  renderBarCharts(totalData, totalBefore, "Total", totalDiv);
+  totalBefore = totalData;
 }
 
-const renderGraphic_horizontal = function () {
-  renderCluster(clusterTotal, "horizontal", document.getElementById("cluster"));
-  renderTotal(total, "horizontal", document.getElementById("total"));
-}
-
-const renderCluster = function (input, type, parentNode) {
-  const renderChart = type === "vertical" ? barChart : horizontalBarChart;
-
+const renderBarCharts = (input, beforeInput, type, parentNode) => {
   // calculate available space from element dimensions
   let w = parseFloat(getComputedStyle(parentNode).width),
     h = parseFloat(getComputedStyle(parentNode).height);
@@ -81,7 +65,7 @@ const renderCluster = function (input, type, parentNode) {
     width: w,
     height: h / 2,
     colors: ["grey", "orange"],
-    type: "Cluster",
+    type: type,
     title: "Energieverbrauch",
     unit: "MWh"
   };
@@ -89,53 +73,18 @@ const renderCluster = function (input, type, parentNode) {
     width: w,
     height: h / 2,
     colors: ["grey", "orange"],
-    type: "Cluster",
+    type: type,
     title: "CO2",
     unit: "tCO2"
   };
 
-  if (input.animation) {
-    CONFIG_CO2.before = input.before.CO2;
-    CONFIG_Energie.before = input.before.Energieverbrauch;
+  if (beforeInput) {
+    CONFIG_CO2.before = beforeInput.CO2;
+    CONFIG_Energie.before = beforeInput.Energieverbrauch;
   }
 
   const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2),
-    bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie);
-
-  parentNode.append(bar1);
-  parentNode.append(bar2);
-}
-
-const renderTotal = function (input, type, parentNode) {
-  const renderChart = type === "vertical" ? barChart : horizontalBarChart;
-
-  // calculate available space from element dimensions
-  let w = parseFloat(getComputedStyle(parentNode).width),
-    h = parseFloat(getComputedStyle(parentNode).height);
-
-  for (const child of parentNode.children) {
-    h -= parseFloat(getComputedStyle(child).height);
-  }
-
-  const CONFIG_Energie = {
-    width: w,
-    height: h / 2,
-    colors: ["grey", "orange"],
-    type: "Total",
-    title: "Energieverbrauch",
-    unit: "MWh"
-  };
-  const CONFIG_CO2 = {
-    width: w,
-    height: h / 2,
-    colors: ["grey", "orange"],
-    type: "Total",
-    title: "CO2",
-    unit: "tCO2"
-  };
-
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2),
-    bar2 = renderChart(formatData(input.Energieverbrauch), CONFIG_Energie);
+    bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie);
 
   parentNode.append(bar1);
   parentNode.append(bar2);

@@ -7,15 +7,11 @@ socket.on('message', function(message) {
   if (previousMessage != message) {
     const json = JSON.parse(message);
     const data = processData(json);
-    console.log(data)
-    updateInfoScreen(data);
+
+    updateClusterCharts(data);
   }
   previousMessage = message;
 });
-
-renderInfoScreen();
-
-function renderInfoScreen() {
 
 let simulationData = {
   year: 2022,
@@ -25,9 +21,7 @@ let simulationData = {
   förderung: 'n'
 }
 
-renderGraphic_horizontal();
-updateInfoScreenWithAnimation(animationJson);
+updateClusterCharts(clusterBefore);
+updateTotalCharts(totalBefore);
 renderHouseInfo();
 renderSimulationVariables(simulationData); // replaces variables in simulation_template
-
-}
