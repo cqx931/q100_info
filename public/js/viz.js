@@ -314,8 +314,6 @@ const renderHouseInfo = function () {
     div.className = "meta";
     let template = document.getElementById("meta_template").innerHTML;
     template = template.replace("$Adresse", "Straßename 42");
-    template = template.replace("$x", "x");
-    template = template.replace("$y", "y");
     div.innerHTML = template;
     left.append(div);
   }
@@ -326,9 +324,6 @@ const renderSimulationVariables = function (data) {
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
   template = template.replace("$x", data.co2);
-  template = template.replace("$y", data.strom);
-  template = template.replace("$z", data.wärme);
-  template = template.replace("$n", data.förderung);
   bottom.innerHTML = template;
 }
 
@@ -358,10 +353,12 @@ const processData = function (json) {
         result.CO2["Strom"] += getCo2(result.Energieverbrauch["Strom"], "Strom");
       }
 
-      // TODO parse json with year correctly:
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year ;
+      } else if (['foerderung', 'CO2-Preis', 'CO2-emissions', 'Technologie', 'investment', 'Anschluss'].includes(key) && c[key] != null) {
+        result[key] = c[key];
+        document.querySelector("."+ key + " span").innerHTML = c[key];
       }
     }
   }

@@ -118,13 +118,15 @@ ul {
   width:20%;
   padding-left: 5px;
 }
-.simulation .Förderung{
-  float:right;
-  width:20%;
+
+.simulation .slider{
+  margin-top: 10px;
+  font-size: 16px;
+  display: block;
 }
 .simulation div {
   float:left;
-  width:15%;
+  width:13%;
   font-size: 1.8rem;
   line-height: 2.4rem;
   height:100%;
