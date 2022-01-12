@@ -9,6 +9,7 @@ socket.on('message', function(message) {
     const data = processData(json);
 
     updateClusterCharts(data);
+    renderHouseInfo(data);
   }
   previousMessage = message;
 });

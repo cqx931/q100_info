@@ -20,7 +20,7 @@ let totalBefore = {
   }
 };
 
-const CHART_MARGIN = ({ top: 30, right: 20, bottom: 0, left: 50 });
+const CHART_MARGIN = ({ top: 30, right: 0, bottom: 0, left: 50 });
 const EASE_STYLE = d3.easeCubicOut, ANIMATION_TIME = 2000;
 
 const updateClusterCharts = (clusterData) => {
@@ -307,13 +307,23 @@ const horizontalBarChart = function (data, config) {
   return svg.node();
 }
 
-const renderHouseInfo = function () {
+const renderHouseInfo = function (data) {
   const left = document.getElementsByClassName("left")[0];
-  for (var i = 0; i < 8; i++) {
+  // on data received: replace for loop with data
+  for (var i = 0; i < 7; i++) {
     const div = document.createElement("div");
+
     div.className = "meta";
+    div.className += Math.random() > 0.5 ?  " anschluss" : "";
+    div.className += Math.random() > 0.33 ?  " green" : (Math.random() > 0.66  ? " greygreen" : " grey");
+
     let template = document.getElementById("meta_template").innerHTML;
     template = template.replace("$Adresse", "Straßename 42");
+
+    const v = Math.floor(Math.random()*500) + 500
+    template = template.replace("$x", v);
+    template = template.replace("$y", (v * 0.4).toFixed(2));
+    template = template.replace("$i", Math.floor(Math.random()*3));
     div.innerHTML = template;
     left.append(div);
   }
