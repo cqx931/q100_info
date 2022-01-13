@@ -4,20 +4,14 @@ let clusterBefore = {
     "Strom": 103.159,
     "Wärme": 720.3691
   },
-  CO2: {
-    "Strom": 38.6846,
-    "Wärme": 225.1153
-  }
+  CO2: 3.459
 };
 let totalBefore = {
   Energieverbrauch: {
     "Strom": 1103.629,
     "Wärme": 134720.5319
   },
-  CO2: {
-    "Strom": 413.8608,
-    "Wärme": 42100.1662
-  }
+  CO2: 30.459
 };
 
 const CHART_MARGIN = ({ top: 30, right: 0, bottom: 0, left: 50 });
@@ -63,7 +57,7 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
 
   const CONFIG_Energie = {
     width: w,
-    height: h / 2,
+    height: h * 2 / 3,
     colors: ["grey", "orange"],
     type: type,
     title: "Energieverbrauch",
@@ -71,7 +65,7 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
   };
   const CONFIG_CO2 = {
     width: w,
-    height: h / 2,
+    height: h / 3,
     colors: ["grey", "orange"],
     type: type,
     title: "CO2",
@@ -79,10 +73,10 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
   };
 
   if (beforeInput) {
-    CONFIG_CO2.before = beforeInput.CO2;
+    CONFIG_CO2.before = {total: beforeInput.CO2};
     CONFIG_Energie.before = beforeInput.Energieverbrauch;
   }
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2),
+  const bar1 = stackableHorizontalBarChartWithGoal(formatData({total: input.CO2}), 0.65, CONFIG_CO2),
     bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie);
 
   parentNode.append(bar1);
@@ -325,9 +319,9 @@ const renderHouseInfo = function (data) {
 
     const v = Math.floor(Math.random()*500) + 500
     //
-    template = template.replace("$e", h.CO2);
-    template = template.replace("$v_s", h["Stromverbrauch 2017 [kWh]"]);
-    template = template.replace("$v_w", h["Wärmeverbrauch 2017 [kWh]"]);
+    template = template.replace("$e", h.CO2.toFixed(6));
+    template = template.replace("$v_s", h["Stromverbrauch 2017 [kWh]"].toFixed(0));
+    template = template.replace("$v_w", h["Wärmeverbrauch 2017 [kWh]"].toFixed(0));
     template = template.replace("$i", h.investment);
     div.innerHTML = template;
     left.append(div);

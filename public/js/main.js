@@ -9,7 +9,6 @@ socket.on('message', function(message) {
     const json = JSON.parse(message);
 
     const data = processData(json);
-    //console.log(json, data);
     updateClusterCharts(data);
     if(json.clusters) renderHouseInfo(json.clusters);
   }
