@@ -82,7 +82,6 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
     CONFIG_CO2.before = beforeInput.CO2;
     CONFIG_Energie.before = beforeInput.Energieverbrauch;
   }
-
   const bar1 = stackableHorizontalBarChartWithGoal(formatData(input.CO2), 0.65, CONFIG_CO2),
     bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie);
 
@@ -311,21 +310,25 @@ const renderHouseInfo = function (data) {
 
   const left = document.getElementsByClassName("left")[0];
   left.innerHTML = ""; // clear div before append new
-  // on data received: replace for loop with data
-  for (var i = 0; i < 7; i++) {
+
+  if (data == null) return;
+  for (var i = 0; i < data.length; i++) {
+    const h = data[i];
     const div = document.createElement("div");
 
     div.className = "meta";
-    div.className += Math.random() > 0.5 ?  " anschluss" : "";
-    div.className += Math.random() > 0.33 ?  " green" : (Math.random() > 0.66  ? " greygreen" : " grey");
+    div.className += h.anschluss == 1 ?  " anschluss" : "";
+    div.className += h.versorgung == "gruen" ?  " green" : (h.versorgung == "medium" ? " greygreen" : " grey");
 
     let template = document.getElementById("meta_template").innerHTML;
-    template = template.replace("$Adresse", "Straßename 42");
+    template = template.replace("$Adresse", h.adresse);
 
     const v = Math.floor(Math.random()*500) + 500
-    template = template.replace("$x", v);
-    template = template.replace("$y", (v * 0.4).toFixed(2));
-    template = template.replace("$i", Math.floor(Math.random()*3));
+    //
+    template = template.replace("$e", h.CO2);
+    template = template.replace("$v_s", h["Stromverbrauch 2017 [kWh]"]);
+    template = template.replace("$v_w", h["Wärmeverbrauch 2017 [kWh]"]);
+    template = template.replace("$i", h.investment);
     div.innerHTML = template;
     left.append(div);
   }
@@ -368,7 +371,7 @@ const processData = function (json) {
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year ;
-      } else if (['foerderung', 'CO2-Preis', 'CO2-emissions', 'Technologie', 'investment', 'Anschluss'].includes(key) && c[key] != null) {
+      } else if (['foerderung', 'CO2-Preis', 'CO2', 'Technologie', 'investment', 'anschluss'].includes(key) && c[key] != null) {
         result[key] = c[key];
         document.querySelector("."+ key + " span").innerHTML = c[key];
       }
