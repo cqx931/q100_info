@@ -308,7 +308,9 @@ const horizontalBarChart = function (data, config) {
 }
 
 const renderHouseInfo = function (data) {
+
   const left = document.getElementsByClassName("left")[0];
+  left.innerHTML = ""; // clear div before append new
   // on data received: replace for loop with data
   for (var i = 0; i < 7; i++) {
     const div = document.createElement("div");
