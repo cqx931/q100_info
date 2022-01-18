@@ -4,13 +4,12 @@ let previousMessage;
 
 socket.on('message', function(message) {
   // only log if it's different
-
   if (previousMessage != message) {
     const json = JSON.parse(message);
 
     const data = processData(json);
     updateClusterCharts(data);
-    if(json.clusters) renderHouseInfo(json.clusters);
+    if (json.clusters) renderHouseInfo(json.clusters);
   }
   previousMessage = message;
 });

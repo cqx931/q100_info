@@ -1,4 +1,3 @@
-
 let clusterBefore = {
   Energieverbrauch: {
     "Strom": 103.159,
@@ -14,8 +13,14 @@ let totalBefore = {
   CO2: 30.459
 };
 
-const CHART_MARGIN = ({ top: 30, right: 0, bottom: 0, left: 50 });
-const EASE_STYLE = d3.easeCubicOut, ANIMATION_TIME = 2000;
+const CHART_MARGIN = ({
+  top: 30,
+  right: 0,
+  bottom: 0,
+  left: 50
+});
+const EASE_STYLE = d3.easeCubicOut,
+  ANIMATION_TIME = 2000;
 
 const updateClusterCharts = (clusterData) => {
   if (!clusterData) {
@@ -73,17 +78,21 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
   };
 
   if (beforeInput) {
-    CONFIG_CO2.before = {total: beforeInput.CO2};
+    CONFIG_CO2.before = {
+      total: beforeInput.CO2
+    };
     CONFIG_Energie.before = beforeInput.Energieverbrauch;
   }
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData({total: input.CO2}), 0.65, CONFIG_CO2),
+  const bar1 = stackableHorizontalBarChartWithGoal(formatData({
+      total: input.CO2
+    }), 0.65, CONFIG_CO2),
     bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie);
 
   parentNode.append(bar1);
   parentNode.append(bar2);
 }
 
-const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
+const stackableHorizontalBarChartWithGoal = function(data, goal, config) {
   // config: w,h, color,title, unit
   const w = config.width,
     h = config.height,
@@ -212,12 +221,12 @@ const stackableHorizontalBarChartWithGoal = function (data, goal, config) {
   return svg.node();
 }
 
-const horizontalBarChart = function (data, config) {
+const horizontalBarChart = function(data, config) {
   const w = config.width,
     h = config.height,
     margin = CHART_MARGIN,
     svg = d3.create("svg")
-      .attr("viewBox", [0, 0, w, h]);
+    .attr("viewBox", [0, 0, w, h]);
 
   if (config.title != null) {
     svg.append("text")
@@ -300,7 +309,7 @@ const horizontalBarChart = function (data, config) {
   return svg.node();
 }
 
-const renderHouseInfo = function (data) {
+const renderHouseInfo = function(data) {
 
   const left = document.getElementsByClassName("left")[0];
   left.innerHTML = ""; // clear div before append new
@@ -311,13 +320,13 @@ const renderHouseInfo = function (data) {
     const div = document.createElement("div");
 
     div.className = "meta";
-    div.className += h.anschluss == 1 ?  " anschluss" : "";
-    div.className += h.versorgung == "gruen" ?  " green" : (h.versorgung == "medium" ? " greygreen" : " grey");
+    div.className += h.anschluss == 1 ? " anschluss" : "";
+    div.className += h.versorgung == "gruen" ? " green" : (h.versorgung == "medium" ? " greygreen" : " grey");
 
     let template = document.getElementById("meta_template").innerHTML;
     template = template.replace("$Adresse", h.adresse);
 
-    const v = Math.floor(Math.random()*500) + 500
+    const v = Math.floor(Math.random() * 500) + 500
     //
     template = template.replace("$e", h.CO2.toFixed(6));
     template = template.replace("$v_s", h["Stromverbrauch 2017 [kWh]"].toFixed(0));
@@ -328,7 +337,7 @@ const renderHouseInfo = function (data) {
   }
 }
 
-const renderSimulationVariables = function (data) {
+const renderSimulationVariables = function(data) {
   const bottom = document.getElementsByClassName("bottom")[0];
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
@@ -338,7 +347,7 @@ const renderSimulationVariables = function (data) {
 
 // Data Processing
 
-const processData = function (json) {
+const processData = function(json) {
   let result = {
     Energieverbrauch: { //in mwh
       "Strom": 0,
@@ -364,10 +373,10 @@ const processData = function (json) {
 
       if (key == "year" && c[key] != null) {
         result.year += c[key];
-        document.querySelector(".Jahr").innerHTML = result.year ;
+        document.querySelector(".Jahr").innerHTML = result.year;
       } else if (['foerderung', 'CO2-Preis', 'CO2', 'Technologie', 'investment', 'anschluss'].includes(key) && c[key] != null) {
         result[key] = c[key];
-        document.querySelector("."+ key + " span").innerHTML = c[key];
+        document.querySelector("." + key + " span").innerHTML = c[key];
       }
     }
   }
@@ -381,7 +390,7 @@ const processData = function (json) {
   return result;
 }
 
-const groupData = function (data, total) {
+const groupData = function(data, total) {
   // use scale to get percent values
   const percent = d3.scaleLinear()
     .domain([0, total])
@@ -404,25 +413,27 @@ const groupData = function (data, total) {
   return _data;
 }
 
-const getCo2 = function (e, type) {
+const getCo2 = function(e, type) {
   let r = 0;
   if (type === "Strom") {
     r = e / 8 * 3; // der strommix bei ca 3000 kg(3 ton) Co2-äq / 8 MWh
-  }
-  else if (type === "Wärme") {
+  } else if (type === "Wärme") {
     r = e / 8 * 2.5;
   }
   return r;
 }
 
-const kwh2mwh = function (kwh) {
+const kwh2mwh = function(kwh) {
   return kwh / 1000;
 }
 
-const formatData = function (obj) {
+const formatData = function(obj) {
   let r = [];
   for (let key in obj) {
-    r.push({ "name": key, "value": obj[key] });
+    r.push({
+      "name": key,
+      "value": obj[key]
+    });
   }
   return r;
 }
