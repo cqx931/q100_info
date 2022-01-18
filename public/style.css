@@ -1,5 +1,15 @@
 @media screen and (min-width: 1900px) {
   /* 4K screen css */
+  .meta .text{
+    font-size: 1.4rem !important;
+  }
+  .simulation div {
+    font-size: 2.5rem!important;
+  }
+  .simulation .Jahr {
+    font-size: 6rem !important;
+  }
+
 }
 
 html,
@@ -56,15 +66,19 @@ body {
   float: left;
   overflow: hidden;
 }
-
+#infoscreen .main {
+  width:79%;
+  height: 100%;
+  float: left;
+}
 #infoscreen .middle {
-  width: 55%;
+  width: 75%;
   height: 100%;
   float: left;
 }
 
 #infoscreen .right {
-  width: 24%;
+  width: 25%;
   height: 100%;
   float: left;
 }
@@ -166,8 +180,10 @@ ul {
 .simulation .Jahr {
   font-size: 5rem;
   line-height: 5rem;
-  width: 20%;
-  padding-left: 25px;
+  margin-right: 40px;
+  float:right;
+  text-align: right;
+  width: 100% !important;
 }
 
 .simulation .slider {
@@ -178,7 +194,7 @@ ul {
 
 .simulation div {
   float: left;
-  width: 13%;
+  width: 20%;
   font-size: 1.8rem;
   line-height: 2.4rem;
   height: 100%;

@@ -345,6 +345,10 @@ const renderSimulationVariables = function(data) {
   bottom.innerHTML = template;
 }
 
+const renderSimulationScreen = function(data) {
+  // TODO: line plots of sum/selected houses, x axis - time
+}
+
 // Data Processing
 
 const processData = function(json) {
@@ -413,6 +417,17 @@ const groupData = function(data, total) {
   return _data;
 }
 
+const formatData = function(obj) {
+  let r = [];
+  for (let key in obj) {
+    r.push({
+      "name": key,
+      "value": obj[key]
+    });
+  }
+  return r;
+}
+
 const getCo2 = function(e, type) {
   let r = 0;
   if (type === "Strom") {
@@ -425,15 +440,4 @@ const getCo2 = function(e, type) {
 
 const kwh2mwh = function(kwh) {
   return kwh / 1000;
-}
-
-const formatData = function(obj) {
-  let r = [];
-  for (let key in obj) {
-    r.push({
-      "name": key,
-      "value": obj[key]
-    });
-  }
-  return r;
 }
