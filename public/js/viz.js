@@ -62,7 +62,7 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
 
   const CONFIG_Energie = {
     width: w,
-    height: h * 2 / 3,
+    height: h * 2 / 3 - 10,
     colors: ["grey", "orange"],
     type: type,
     title: "Energieverbrauch",
@@ -347,9 +347,21 @@ const renderSimulationVariables = function(data) {
 
 const renderSimulationScreen = function(data) {
   // TODO: line plots of sum/selected houses, x axis - time
+  renderClusterSimulations();
+  renderQuartierSimulations();
+  // Reference
+  // https://www.d3-graph-gallery.com/graph/line_smallmultiple.html
 }
 
-// Data Processing
+const renderClusterSimulations = function(data) {
+  // TODO
+}
+
+const renderQueatierSimulations = function(data) {
+  // TODO
+}
+
+/****** Data Processing ******/
 
 const processData = function(json) {
   let result = {
