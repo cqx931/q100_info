@@ -1,15 +1,17 @@
 @media screen and (min-width: 1900px) {
+
   /* 4K screen css */
-  .meta .text{
+  .meta .text {
     font-size: 1.4rem !important;
   }
+
   .simulation div {
-    font-size: 2.5rem!important;
+    font-size: 2.5rem !important;
   }
+
   .simulation .Jahr {
     font-size: 6rem !important;
   }
-
 }
 
 html,
@@ -48,18 +50,17 @@ body {
   background: black;
 }
 
-#infoscreen, .inputMode, .simulationMode{
+#infoscreen, .inputMode, .simulationMode {
   width: 100%;
   height: 100%;
   font-size: 18px;
 }
-.simulationMode {
-  display: none;
-}
+
 #infoscreen .top {
   width: 100%;
   height: 90%;
 }
+
 #infoscreen .bottom {
   width: 100%;
   height: 10%;
@@ -72,11 +73,13 @@ body {
   float: left;
   overflow: hidden;
 }
+
 #infoscreen .main {
-  width:79%;
+  width: 79%;
   height: 100%;
   float: left;
 }
+
 #infoscreen .middle {
   width: 75%;
   height: 100%;
@@ -187,7 +190,7 @@ ul {
   font-size: 5rem;
   line-height: 5rem;
   margin-right: 40px;
-  float:right;
+  float: right;
   text-align: right;
   width: 100% !important;
 }
@@ -215,6 +218,34 @@ ul {
 #graphic {
   height: 90%;
 }
+
 #graphic svg {
-  margin:0px 10px;
+  margin: 0px 10px;
+}
+#quartierSimulation{
+  margin-top: 1em;
+}
+#quartierSimulation::after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}
+#quartierSimulation svg{
+  float:left;
+  margin: 10px;
+}
+.line {
+  fill: none;
+  stroke-width: 1px;
+  }
+
+.area {
+  fill: #e8eef4;
+}
+
+g#xAxisG text, g#yAxisG text {
+	stroke: none;
+	fill: silver;
+	font-size: 9px;
 }

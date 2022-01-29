@@ -30,7 +30,7 @@ const sampleHouseInfo = [{
   "versorgung": "konventionell",
   "Wärmeverbrauch 2017 [kWh]": 71921,
   "Stromverbrauch 2017 [kWh]": 10260
-},{
+}, {
   "adresse": "Rüsdorfer Straße 15",
   "CO2": 0.2488510615,
   "anschluss": 1,
@@ -38,7 +38,7 @@ const sampleHouseInfo = [{
   "versorgung": "gruen",
   "Wärmeverbrauch 2017 [kWh]": 161150,
   "Stromverbrauch 2017 [kWh]": 46197
-},{
+}, {
   "adresse": "Rüsdorfer Straße 8",
   "CO2": 0.317290762,
   "anschluss": 0,
@@ -48,8 +48,54 @@ const sampleHouseInfo = [{
   "Stromverbrauch 2017 [kWh]": 71428
 }]
 
+const quatierData = [
+  {
+    "step":0,
+    "attributes": {
+      "Verbrauch": 1000000,
+      "CO2": 10.813611631,
+      "Investment": 0.3,
+      "EEH": 0.4458936055
+    }
+  },
+  {
+    "step":1,
+    "attributes":{
+      "Verbrauch": 900000,
+      "CO2": 9.813611631,
+      "Investment": 0.4,
+      "EEH": 0.5458936055
+    }
+  },
+  {
+    "step":2,
+    "attributes":{
+      "Verbrauch": 800000,
+      "CO2": 8.813611631,
+      "Investment": 0.5,
+      "EEH": 0.6458936055
+    }
+  },
+  {
+    "step":3,
+    "attributes":{
+      "Verbrauch": 700000,
+      "CO2": 7.813611631,
+      "Investment": 0.6,
+      "EEH": 0.7458936055
+    }
+  }
+]
 
+console.log(simulation_df);
 updateClusterCharts(clusterBefore);
 updateTotalCharts(totalBefore);
 renderHouseInfo(sampleHouseInfo);
 renderSimulationVariables(simulationData); // replaces variables in simulation_template
+renderSimulationScreen(simulation_df, quatierData);
+
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode == 32) { // space
+    toggleSimulationScreen();
+  }
+});
