@@ -1,5 +1,5 @@
 {
-  "name": "q100_info",
+  "name": "qScope_infoscreen",
   "version": "0.0.1",
   "description": "",
   "main": "index.html",
@@ -14,11 +14,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cqx931/q100_info.git"
+    "url": "git+https://github.com/quarree100/qScope_infoscreen.git"
   },
   "author": "cqx931",
   "bugs": {
-    "url": "https://github.com/cqx931/q100_info/issues"
+    "url": "https://github.com/quarree100/qScope_infoscreen/issues"
   },
-  "homepage": "https://github.com/cqx931/q100_info#readme"
+  "homepage": "https://github.com/quarree100/qScope_infoscreen#readme"
 }

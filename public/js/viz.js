@@ -351,18 +351,18 @@ const toggleSimulationScreen = function() {
   sim.style.display == "none" ? sim.style.display = "block" : sim.style.display = "none";
   input.style.display == "none" ? input.style.display = "block" : input.style.display = "none";
 }
-const renderSimulationScreen = function(clusterData, quatierData) {
+const renderSimulationScreen = function(clusterData, quartierData) {
   // TODO: line plots of sum/selected houses, x axis - time
   // Exampels: Wärme and EEH
   renderClusterSimulations(clusterData);
-  renderQuartierSimulations(quatierData);
+  renderQuartierSimulations(quartierData);
   // Reference
   // https://www.d3-graph-gallery.com/graph/line_smallmultiple.html
   // https://bl.ocks.org/tomshanley/b841837f5414b34b7c45055d97e7674d
 }
 
 const renderClusterSimulations = function(data) {
-  // TODO
+  // TODO:
   data = formatSimulationData(data);
   renderMultipleLineCharts(data, "clusterSimulation")
 }
@@ -378,7 +378,7 @@ const renderQuartierSimulations = function(data) {
       return d[groupBy];
     })
     .entries(data);
-  console.log("Quatier sumstat", sumstat)
+  console.log("Quartier sumstat", sumstat)
   const allKeys = sumstat.map(function(d){return d.key})
 
   // Styles

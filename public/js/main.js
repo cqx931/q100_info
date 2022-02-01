@@ -1,3 +1,7 @@
+//////////////////////////// MAIN SCRIPT //////////////////////////////
+
+//------------------------- COMMUNICATION -----------------------------
+// ----------------- processing of incoming data ----------------------
 const socket = io('localhost:8081');
 
 let previousMessage;
@@ -48,7 +52,7 @@ const sampleHouseInfo = [{
   "Stromverbrauch 2017 [kWh]": 71428
 }]
 
-const quatierData = [
+const quartierData = [
   {
     "step":0,
     "attributes": {
@@ -87,15 +91,16 @@ const quatierData = [
   }
 ]
 
-console.log(simulation_df);
+// console.log(simulation_df);
 updateClusterCharts(clusterBefore);
 updateTotalCharts(totalBefore);
 renderHouseInfo(sampleHouseInfo);
 renderSimulationVariables(simulationData); // replaces variables in simulation_template
-renderSimulationScreen(simulation_df, quatierData);
+// renderSimulationScreen(simulation_df, quartierData);
 
 document.addEventListener('keydown', function(event) {
-  if (event.keyCode == 32) { // space
+  if (event.key == " ") { // space
     toggleSimulationScreen();
+    console.log("space was hit!");
   }
 });
