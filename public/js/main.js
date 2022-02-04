@@ -6,7 +6,7 @@ const socket = io('localhost:8081');
 
 let previousMessage;
 
-socket.on('message', function(message) {
+socket.on('message', function (message) {
   // only log if it's different
   if (previousMessage != message) {
     const json = JSON.parse(message);
@@ -14,10 +14,13 @@ socket.on('message', function(message) {
     const data = processData(json);
     updateClusterCharts(data);
     if (json.clusters) renderHouseInfo(json.clusters);
+
+    updateImage();
+    previousMessage = message;
   }
-  previousMessage = message;
 });
 
+// ------------------------- DATA STRUCTS -----------------------------
 let simulationData = {
   year: 2022,
   co2: '500',
@@ -27,7 +30,7 @@ let simulationData = {
 }
 
 const sampleHouseInfo = [{
-  "adresse": "Rüsdorfer Straße 19",
+  "adresse": "Straßenname 19",
   "CO2": 0.2036314841,
   "anschluss": 0,
   "investment": 2,
@@ -35,7 +38,7 @@ const sampleHouseInfo = [{
   "Wärmeverbrauch 2017 [kWh]": 71921,
   "Stromverbrauch 2017 [kWh]": 10260
 }, {
-  "adresse": "Rüsdorfer Straße 15",
+  "adresse": "Straßenname 15",
   "CO2": 0.2488510615,
   "anschluss": 1,
   "investment": 3,
@@ -43,7 +46,7 @@ const sampleHouseInfo = [{
   "Wärmeverbrauch 2017 [kWh]": 161150,
   "Stromverbrauch 2017 [kWh]": 46197
 }, {
-  "adresse": "Rüsdorfer Straße 8",
+  "adresse": "Straßenname 8",
   "CO2": 0.317290762,
   "anschluss": 0,
   "investment": 1,
@@ -54,7 +57,7 @@ const sampleHouseInfo = [{
 
 const quartierData = [
   {
-    "step":0,
+    "step": 0,
     "attributes": {
       "Verbrauch": 1000000,
       "CO2": 10.813611631,
@@ -63,8 +66,8 @@ const quartierData = [
     }
   },
   {
-    "step":1,
-    "attributes":{
+    "step": 1,
+    "attributes": {
       "Verbrauch": 900000,
       "CO2": 9.813611631,
       "Investment": 0.4,
@@ -72,8 +75,8 @@ const quartierData = [
     }
   },
   {
-    "step":2,
-    "attributes":{
+    "step": 2,
+    "attributes": {
       "Verbrauch": 800000,
       "CO2": 8.813611631,
       "Investment": 0.5,
@@ -81,8 +84,8 @@ const quartierData = [
     }
   },
   {
-    "step":3,
-    "attributes":{
+    "step": 3,
+    "attributes": {
       "Verbrauch": 700000,
       "CO2": 7.813611631,
       "Investment": 0.6,
@@ -91,6 +94,7 @@ const quartierData = [
   }
 ]
 
+// ------------------------ UPDATE FUNCTIONS --------------------------
 // console.log(simulation_df);
 updateClusterCharts(clusterBefore);
 updateTotalCharts(totalBefore);
@@ -98,9 +102,9 @@ renderHouseInfo(sampleHouseInfo);
 renderSimulationVariables(simulationData); // replaces variables in simulation_template
 // renderSimulationScreen(simulation_df, quartierData);
 
-document.addEventListener('keydown', function(event) {
+// ---------------------------- KEY EVENTS ----------------------------
+document.addEventListener('keydown', function (event) {
   if (event.key == " ") { // space
     toggleSimulationScreen();
-    console.log("space was hit!");
   }
 });

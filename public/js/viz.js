@@ -1,3 +1,16 @@
+// reload image
+    function updateImage() {
+      setTimeout(
+        function () {
+          document.getElementById('map').src = "data/canvas.png?update=" + +new Date();
+        },
+        1000);
+    }
+
+//------------------------------ BAR CHARTS ---------------------------
+/* bar charts for energy consumption clustered (selected buildings) vs total*/
+
+// fetch data: clustered
 let clusterBefore = {
   Energieverbrauch: {
     "Strom": 103.159,
@@ -37,6 +50,7 @@ const updateClusterCharts = (clusterData) => {
   clusterBefore = clusterData;
 }
 
+// fetch data: total
 const updateTotalCharts = (totalData) => {
   if (!totalData) {
     return;
@@ -144,7 +158,7 @@ const stackableHorizontalBarChartWithGoal = function(data, goal, config) {
       .text(config.unit));
 
   //col
-  //todo: stack
+  //TODO: stack
   svg.append("g")
     .selectAll("rect")
     .data(_data)
@@ -309,6 +323,8 @@ const horizontalBarChart = function(data, config) {
   return svg.node();
 }
 
+// ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
+// parse "clusters" from incoming json and replace elements in html
 const renderHouseInfo = function(data) {
 
   const left = document.getElementsByClassName("left")[0];
@@ -337,6 +353,7 @@ const renderHouseInfo = function(data) {
   }
 }
 
+// ---------------------- global environment variables ----------------
 const renderSimulationVariables = function(data) {
   const bottom = document.getElementsByClassName("bottom")[0];
   let template = document.getElementById("simulation_template").innerHTML;
@@ -345,12 +362,15 @@ const renderSimulationVariables = function(data) {
   bottom.innerHTML = template;
 }
 
+// ----------------------------- running modes ------------------------
 const toggleSimulationScreen = function() {
   const sim = document.getElementsByClassName("simulationMode")[0];
   const input = document.getElementsByClassName("inputMode")[0];
   sim.style.display == "none" ? sim.style.display = "block" : sim.style.display = "none";
   input.style.display == "none" ? input.style.display = "block" : input.style.display = "none";
 }
+
+// ------------------------------ simulation --------------------------
 const renderSimulationScreen = function(clusterData, quartierData) {
   // TODO: line plots of sum/selected houses, x axis - time
   // Exampels: Wärme and EEH
@@ -368,7 +388,7 @@ const renderClusterSimulations = function(data) {
 }
 
 const renderQuartierSimulations = function(data) {
-  data = formatQuateirtSimulationData(data);
+  data = formatQuartierSimulationData(data);
   const id = "quartierSimulation";
   const groupBy = "attribute"
 
@@ -576,8 +596,8 @@ const renderMultipleLineCharts = function(data, id) {
   }
 }
 
-/****** Data Processing ******/
-const formatQuateirtSimulationData = function(data) {
+/**************************** Data Processing ************************/
+const formatQuartierSimulationData = function(data) {
   let newD = [];
   for (var i = 0; i < data.length; i++) {
     const g = data[i];
