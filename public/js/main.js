@@ -95,12 +95,12 @@ const quartierData = [
 ]
 
 // ------------------------ UPDATE FUNCTIONS --------------------------
-// console.log(simulation_df);
+console.log(simulation_df);
 updateClusterCharts(clusterBefore);
 updateTotalCharts(totalBefore);
 renderHouseInfo(sampleHouseInfo);
 renderSimulationVariables(simulationData); // replaces variables in simulation_template
-// renderSimulationScreen(simulation_df, quartierData);
+renderSimulationScreen(simulation_df, quartierData);
 
 // ---------------------------- KEY EVENTS ----------------------------
 document.addEventListener('keydown', function (event) {
