@@ -1,5 +1,5 @@
 //////////////////////////// MAIN SCRIPT //////////////////////////////
-
+import axios from 'https://cdn.skypack.dev/axios'; //communication between node express server (q100_info.js) and main.js via HTTP 
 //------------------------- COMMUNICATION -----------------------------
 // ----------------- processing of incoming data ----------------------
 const socket = io('localhost:8081');
@@ -94,13 +94,25 @@ const quartierData = [
   }
 ]
 
+// fetch simulation_df from node express server /api/data endpoint
+const dataSet = async function fetchData() {
+  return await axios.get('/api/data');
+}
+
+async function fetchSimulationDataFrame() {
+  const dataObject = await dataSet();
+  const retval = dataObject.data
+  return retval
+}
+const simulation_df = await fetchSimulationDataFrame()
+
 // ------------------------ UPDATE FUNCTIONS --------------------------
-// console.log(simulation_df);
+console.log(simulation_df);
 updateClusterCharts(clusterBefore);
 updateTotalCharts(totalBefore);
 renderHouseInfo(sampleHouseInfo);
 renderSimulationVariables(simulationData); // replaces variables in simulation_template
-// renderSimulationScreen(simulation_df, quartierData);
+renderSimulationScreen(simulation_df, quartierData);
 
 // ---------------------------- KEY EVENTS ----------------------------
 document.addEventListener('keydown', function (event) {
