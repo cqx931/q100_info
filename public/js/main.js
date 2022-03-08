@@ -1,10 +1,11 @@
 //////////////////////////// MAIN SCRIPT //////////////////////////////
-import axios from 'https://cdn.skypack.dev/axios'; //communication between node express server (q100_info.js) and main.js via HTTP 
+import axios from 'https://cdn.skypack.dev/axios'; //communication between node express server (q100_info.js) and main.js via HTTP
 //------------------------- COMMUNICATION -----------------------------
 // ----------------- processing of incoming data ----------------------
 const socket = io('localhost:8081');
 
 let previousMessage;
+let userMode = 'input';
 
 socket.on('message', function (message) {
   // only log if it's different
@@ -15,6 +16,11 @@ socket.on('message', function (message) {
     updateClusterCharts(data);
     if (json.clusters) renderHouseInfo(json.clusters);
 
+    if (json.mode){
+      console.log(userMode)
+      userMode = json.mode;
+      switchUserMode(userMode);
+    }
     updateImage();
     previousMessage = message;
   }
@@ -116,7 +122,9 @@ renderSimulationScreen(simulation_df, quartierData);
 
 // ---------------------------- KEY EVENTS ----------------------------
 document.addEventListener('keydown', function (event) {
+  console.log(userMode);
   if (event.key == " ") { // space
-    toggleSimulationScreen();
+    userMode == 'input' ? userMode = 'simulation' : userMode = 'input';
+    switchUserMode(userMode);
   }
 });
