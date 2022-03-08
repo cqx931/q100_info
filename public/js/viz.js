@@ -354,6 +354,7 @@ const renderHouseInfo = function(data) {
 }
 
 // ---------------------- global environment variables ----------------
+/* at the bottom of the page */
 const renderSimulationVariables = function(data) {
   const bottom = document.getElementsByClassName("bottom")[0];
   let template = document.getElementById("simulation_template").innerHTML;
@@ -363,19 +364,27 @@ const renderSimulationVariables = function(data) {
 }
 
 // ----------------------------- running modes ------------------------
-const toggleSimulationScreen = function() {
+const switchUserMode = function(mode){
   const sim = document.getElementsByClassName("simulationMode")[0];
   const input = document.getElementsByClassName("inputMode")[0];
-  sim.style.display == "none" ? sim.style.display = "block" : sim.style.display = "none";
-  input.style.display == "none" ? input.style.display = "block" : input.style.display = "none";
+  if (mode == 'simulation')
+  {
+    sim.style.display = "block";
+    input.style.display = "none";
+  }
+  else if (mode == 'input'){
+    sim.style.display = "none";
+    input.style.display = "block";
+
+  }
 }
 
-// ------------------------------ simulation --------------------------
-const renderSimulationScreen = function(clusterData, quartierData) {
+/******************************** SIMULATION *************************/
+const renderSimulationScreen = function(clusterData, districtData) {
   // TODO: line plots of sum/selected houses, x axis - time
   // Exampels: Wärme and EEH
   renderClusterSimulations(clusterData);
-  renderQuartierSimulations(quartierData);
+  renderQuartierSimulations(districtData);
   // Reference
   // https://www.d3-graph-gallery.com/graph/line_smallmultiple.html
   // https://bl.ocks.org/tomshanley/b841837f5414b34b7c45055d97e7674d
@@ -437,7 +446,6 @@ const renderQuartierSimulations = function(data) {
       .call(d3.axisBottom(x).ticks(3));
 
     //Add Y axis
-
     var y = d3.scaleLinear()
       .domain([0, d3.max(data, function(d) {
         // TODO: different Y axis for different charts
