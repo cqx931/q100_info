@@ -363,31 +363,6 @@ const renderSimulationVariables = function(data) {
   bottom.innerHTML = template;
 }
 
-// ----------------------------- running modes ------------------------
-const switchUserMode = function(mode){
-  const sim = document.getElementsByClassName("simulationMode")[0];
-  const input = document.getElementsByClassName("inputMode")[0];
-  const questionnaire = document.getElementsByClassName("questionnaire")[0];
-
-  if (mode == 'simulation')
-  {
-    sim.style.display = "block";
-    input.style.display = "none";
-    questionnaire.style.display = "none";
-  }
-  else if (mode == 'input'){
-    sim.style.display = "none";
-    input.style.display = "block";
-    questionnaire.style.display = "none";
-
-  }
-  else if (mode == 'questionnaire'){
-    sim.style.display = "none";
-    input.style.display = "none";
-    questionnaire.style.display = "block";
-
-  }
-}
 
 /******************************** SIMULATION *************************/
 const renderSimulationScreen = function(clusterData, districtData) {

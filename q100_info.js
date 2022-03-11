@@ -33,6 +33,7 @@ function initServer() {
   console.log('HTTP Server started at http://localhost:' + http_port);
   
   // set endpoint for simulation_df
+  // implemented for development purpose (in production mode, data should be handled only through socket)
   const simulation_df_json = loadAndParseJson("public/data/simulation_df.json");
   app.get('/api/data', (req, res) => {
     res.json(simulation_df_json);

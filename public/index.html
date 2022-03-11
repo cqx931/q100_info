@@ -7,13 +7,14 @@
 	<script src="lib/socket.io.min.js"></script>
 	<script src="lib/d3.v6.min.js"></script>
 	<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+	<script src="lib/jquery-3.6.0.js"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 	<div id="infoscreen">
 		<div class="questionnaire">
-			<h1>moin</h1>
+			<h1 id="question">sample question</h1>
 		</div>
 		<div class="inputMode">
 			<div class="left">
@@ -88,8 +89,12 @@
 		</div>
 
 	</div>
+	<script src="js/socket.js" type="text/javascript"></script>
+	<script src="js/appData.js" type="text/javascript"></script>
 	<script src="js/viz.js" type="text/javascript"></script>
 	<script src="js/sampleData.js" type="text/javascript"></script>
+	<script src="js/renderer.js" type="text/javascript"></script>
+	<script type="module" src="js/devTools.js" type="text/javascript"></script>
 	<script type="module" src="js/main.js" type="text/javascript"></script>
 </body>
 
