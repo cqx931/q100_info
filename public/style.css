@@ -249,3 +249,12 @@ g#xAxisG text, g#yAxisG text {
 	fill: silver;
 	font-size: 9px;
 }
+
+@font-face {
+    font-family: "LibertinusSerif-Italic";
+    src: url("lib/LibertinusSerif-Italic.otf") format("opentype");
+}
+
+#question {
+font-family: "LibertinusSerif-Italic", serif;
+}
