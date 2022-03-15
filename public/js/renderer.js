@@ -1,3 +1,10 @@
+//dev function to print element that jquery captured
+//usage: $(xxx).log()
+$.fn.log = function() {
+  console.log.apply(console, this);
+  return this;
+}
+
 // ----------------------------- running modes ------------------------
 const displayQuestionnaireMode = function(question){
     $(".questionnaire").show();
@@ -5,11 +12,24 @@ const displayQuestionnaireMode = function(question){
     $(".simulationMode").hide();
 
     if (question){
-      $("#question").text(question)
+      $("#questionText").text(question)
     } else {
-      $("#question").text(sampleQuestions[getRandomInt(5)])
+      $("#questionText").text(sampleQuestions[getRandomInt(5)])
     }
     
+}
+
+const highlightAnswerYes = function(){
+  $("#questionAnswerYes").addClass("questionAnswerYesActive")
+}
+const highlightAnswerNo = function(){
+  $("#questionAnswerNo").addClass("questionAnswerNoActive")
+}
+const grayoutAnswerYes = function(){
+  $("#questionAnswerYes").removeClass("questionAnswerYesActive")
+}
+const grayoutAnswerNo = function(){
+  $("#questionAnswerNo").removeClass("questionAnswerNoActive")
 }
 
 const displayInputMode = function(){
@@ -25,6 +45,9 @@ const displaySimulationMode = function(){
 }
 
 const switchUserMode = function(mode, question){
+  //Todo: wrap in resetAnswer function
+  grayoutAnswerYes()
+  grayoutAnswerNo()
   if (mode == 'simulation'){
     displaySimulationMode()
   }

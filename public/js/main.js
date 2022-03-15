@@ -22,6 +22,15 @@ socket.on('message', function (message) {
       }
       switchUserMode(nextUserMode, question);
 
+      if (json.answer){
+        const answer = json.answer
+        //Todo make a function to judge this condition
+        if (answer == "yes") {
+          highlightAnswerYes();
+        } else if (answer == "no") {
+          highlightAnswerNo();
+        }
+      }
     }
     updateImage();
     previousMessage = message;
