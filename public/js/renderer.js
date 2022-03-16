@@ -10,13 +10,7 @@ const displayQuestionnaireMode = function(question){
     $(".questionnaire").show();
     $(".inputMode").hide();
     $(".simulationMode").hide();
-
-    if (question){
-      $("#questionText").text(question)
-    } else {
-      $("#questionText").text(sampleQuestions[getRandomInt(5)])
-    }
-    
+    $("#questionText").text(question)
 }
 
 const highlightAnswerYes = function(){

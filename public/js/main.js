@@ -64,7 +64,7 @@ function initialRender(){
   renderHouseInfo(sampleHouseInfo);
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, quartierData);
-  switchUserMode(currentUserMode); //initial render
+  switchUserMode(currentUserMode, sampleQuestions[getRandomInt(5)]); //initial render
 }
 
 initialRender()

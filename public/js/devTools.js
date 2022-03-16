@@ -3,7 +3,7 @@ document.addEventListener('keydown', function (event) {
   console.log("current user mode", currentUserMode);
   if (event.key == " ") { // space
     const nextUserMode = calculateNextUserMode(currentUserMode)
-    switchUserMode(nextUserMode);
+    switchUserMode(nextUserMode, sampleQuestions[getRandomInt(5)]);
     currentUserMode = nextUserMode
   }
 });
