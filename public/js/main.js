@@ -16,7 +16,7 @@ socket.on('message', function (message) {
 
     if (json.mode){
       const nextUserMode = json.mode;
-      const question = "question was not provided"
+      let question = "question was not provided"
       if (json.question){
         question = json.question;
       }
