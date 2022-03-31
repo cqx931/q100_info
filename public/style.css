@@ -293,3 +293,36 @@ g#xAxisG text, g#yAxisG text {
   color: gray;
   border-color: gray;
 }
+
+.dataViewMode {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 3fr 2fr ;
+  /* grid-template-rows: repeat(2, [row] auto  ); */
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+
+}
+
+.box .box {
+  background-color: #ccc;
+  color: #444;
+}
+
+.houseHolds {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, [row] auto  ); */
+  background-color: purple;
+  color: #444;
+
+}
