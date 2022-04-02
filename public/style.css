@@ -326,3 +326,8 @@ g#xAxisG text, g#yAxisG text {
   color: #444;
 
 }
+
+.houseHold {
+  display: flex;
+  flex-direction: column;
+}

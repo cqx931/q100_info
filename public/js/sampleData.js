@@ -33,7 +33,7 @@ const sampleHouseInfo = [{
   "Stromverbrauch 2017 [kWh]": 71428
 }]
 
-const quartierData = [
+const districtData = [
   {
     "step": 0,
     "attributes": {
