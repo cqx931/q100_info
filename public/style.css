@@ -125,7 +125,7 @@ ul {
   padding: 5px 25px 10px;
 }
 
-.meta.anschluss .icon::before {
+.meta.connection_to_heat_grid .icon::before {
   position: absolute;
   left: -15px;
   top: 25px;

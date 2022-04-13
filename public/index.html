@@ -30,10 +30,11 @@
 						<div class="text">
 							<ul>
 								<li class='address'>$Adresse</li>
-								<li class='Verbrauch_Strom'>Stromverbrauch $v_s MWh</li>
-								<li class='Verbrauch_Wärme'>Wärmeverbrauch $v_w MWh</li>
-								<li class='Emission'>Emmission $e tCO2</li>
-								<li class='Investition'>Investition Stufe: $i</li>
+								<li class='electricity_consumption'>Stromverbrauch: $v_s kWh</li>
+								<li class='heat_consumption'>Wärmeverbrauch: $v_w kWh</li>
+								<li class='Emission'>Emmissionen: $e t CO<sub>2</sub></li></li>
+								<li class='refurbished'>Sanierungszustand: $s</li></li>
+								<!-- <li class='Investition'>Investition Stufe: $i</li> -->
 							</ul>
 						</div>
 					</div>
@@ -55,12 +56,12 @@
 					<div id="simulation_template" class='template'>
 						<div class="simulation">
 							<div class="middle">
-								<div class="CO2-Preis">CO2-Preis: <br><span>$x</span> €/kg</div>
-								<div class="CO2">CO2-Emission: <br><span>y</span></div>
+								<div class="CO2-prize">CO<sub>2</sub>-Preis: <br><span>$x</span> €/kg</div>
+								<!-- <div class="CO2">CO2-Emission: <br><span>y</span></div> -->
 								<!-- <div class="Technologie">Technologie: <br><span>z</span></div> -->
-								<div class="investment">Investment: <br><span>i</span> €</div>
-								<div class="anschluss">Anschluss: <br><span>a</span></div>
-								<div class="foerderung">Förderung: <br><span>$n</span> €</div>
+								<div class="connection_speed">Anschlussquote: <br><span>n</span>/Jahr</div>
+								<!-- <div class="number_of_connections">Wärmenetz-Anschluss: <br><span>a</span></div> -->
+								<div class="funding">Förderung: <br><span>$n</span> €</div>
 							</div>
 							<div class="right">
 								<div class="Jahr">$year</div>
