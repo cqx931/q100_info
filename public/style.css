@@ -125,7 +125,7 @@ ul {
   padding: 5px 25px 10px;
 }
 
-.meta.anschluss .icon::before {
+.meta.connection_to_heat_grid .icon::before {
   position: absolute;
   left: -15px;
   top: 25px;
@@ -248,4 +248,48 @@ g#xAxisG text, g#yAxisG text {
 	stroke: none;
 	fill: silver;
 	font-size: 9px;
+}
+
+/* questionnaire*/
+@font-face {
+    font-family: "LibertinusSerif-Italic";
+    src: url("lib/LibertinusSerif-Italic.otf") format("opentype");
+}
+
+#questionText {
+  font-family: "LibertinusSerif-Italic", serif;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 15% 0 0;
+  align-self: flex-end;
+}
+
+.questionAnswers {
+  display: flex;
+  justify-content: center;
+}
+
+.questionAnswers div {
+    border-style: solid;
+    border-width: 3px;
+    margin: 100px;
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.questionAnswerYesActive {
+    color: greenyellow;
+    border-width: 5px !important;
+}
+.questionAnswerNoActive {
+    color: red;
+    border-width: 5px !important;
+}
+.questionAnswers {
+  color: gray;
+  border-color: gray;
 }

@@ -5,7 +5,7 @@
 1. setup a folder `public/data` as a symlink pointing to `qScope/data` (see recommended folder structure below)
 
 ## running the program
-1. Run qScope_infoscreen: `node q100_info.js`
+1. Run qScope_infoscreen: `npm start`
 2. Run qScope_frontend
 
 
