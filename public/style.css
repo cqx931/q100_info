@@ -294,6 +294,8 @@ g#xAxisG text, g#yAxisG text {
   border-color: gray;
 }
 
+
+/* data view mode*/
 .dataViewMode {
   display: grid;
   grid-gap: 10px;
@@ -308,8 +310,6 @@ g#xAxisG text, g#yAxisG text {
   color: #fff;
   border-radius: 5px;
   padding: 20px;
-  font-size: 150%;
-
 }
 
 .box .box {
@@ -328,6 +328,36 @@ g#xAxisG text, g#yAxisG text {
 }
 
 .houseHold {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.houseHoldTitle {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.houseIcon {
+  width: 100%;
+}
+
+.houseHoldInfo {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.houseHoldEnergyData {
+
+}
+
+.houseHoldEnergyEfficiency {
+  display: inline-block;
+}
+
+.houseHoldEnergyEfficiency img {
+  width: 25px;
+}
+
+.houseHoldIsHeizung {
+  width: 25px;
 }
