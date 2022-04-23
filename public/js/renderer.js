@@ -63,7 +63,8 @@ const switchUserMode = function(mode, question){
     displayQuestionnaireMode(question)
   }
   else if (mode == 'dataView'){
-    displayDataViewMode(question)
+    displayDataViewMode()
+    createHouseholdCards()
   }
 }
 
