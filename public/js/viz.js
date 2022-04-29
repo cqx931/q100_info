@@ -656,7 +656,7 @@ const processData = function(json) {
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (['funding', 'CO2-prize', 'connection_speed'].includes(key) && c[key] != null) {
+      } else if (['renovation_cost', 'CO2-prize', 'connection_speed'].includes(key) && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }
