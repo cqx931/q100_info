@@ -347,8 +347,11 @@ const renderHouseInfo = function(data) {
     template = template.replace("$e", h.CO2.toFixed(6));
     template = template.replace("$v_s", h["electricity_consumption"].toFixed(0));
     template = template.replace("$v_w", h["heat_consumption"].toFixed(0));
+    template = template.replace("$e", h["environmental_engagement"].toFixed(0));
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
+    let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
+    template = template.replace("$c", connection_to_heat_grid);
     template = template.replace("$n", h["connection_speed"]);  // TODO: truncate this by a precision of 0.01
     div.innerHTML = template;
     left.append(div);

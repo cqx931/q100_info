@@ -14,7 +14,8 @@ const sampleHouseInfo = [{
   "electricity_supplier": "gray",
   "heat_consumption": 71921,
   "electricity_consumption": 10260,
-  "refurbished": false
+  "refurbished": false,
+  "environmental_engagement": 0.5
 }, {
   "address": "Straßenname 15",
   "CO2": 0.2488510615,
@@ -22,7 +23,8 @@ const sampleHouseInfo = [{
   "electricity_supplier": "green",
   "heat_consumption": 161150,
   "electricity_consumption": 46197,
-  "refurbished": false
+  "refurbished": false,
+  "environmental_engagement": 0.1
 }, {
   "address": "Straßenname 8",
   "CO2": 0.317290762,
@@ -30,7 +32,8 @@ const sampleHouseInfo = [{
   "electricity_supplier": "mix",
   "heat_consumption": 251721,
   "electricity_consumption": 71428,
-  "refurbished": true
+  "refurbished": true,
+  "environmental_engagement": 0.9
 }]
 
 const quartierData = [
