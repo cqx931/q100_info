@@ -344,10 +344,10 @@ const renderHouseInfo = function(data) {
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    template = template.replace("$e", h.CO2.toFixed(6));
+    template = template.replace("$e", h.CO2.toFixed(3));
     template = template.replace("$v_s", h["electricity_consumption"].toFixed(0));
     template = template.replace("$v_w", h["heat_consumption"].toFixed(0));
-    template = template.replace("$e", h["environmental_engagement"].toFixed(0));
+    template = template.replace("$e", h["environmental_engagement"].toFixed(2));
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
     let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
