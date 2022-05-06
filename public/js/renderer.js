@@ -45,7 +45,7 @@ const switchUserMode = function(mode, question){
   if (mode == 'simulation'){
     displaySimulationMode()
   }
-  else if (mode == 'input'){
+  else if (mode == 'input_environment' || mode == 'input_households'){
     displayInputMode()
   }
   else if (mode == 'questionnaire'){

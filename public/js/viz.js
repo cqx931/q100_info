@@ -344,11 +344,14 @@ const renderHouseInfo = function(data) {
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    template = template.replace("$e", h.CO2.toFixed(6));
+    template = template.replace("$e", h.CO2.toFixed(3));
     template = template.replace("$v_s", h["electricity_consumption"].toFixed(0));
     template = template.replace("$v_w", h["heat_consumption"].toFixed(0));
+    template = template.replace("$e", h["environmental_engagement"].toFixed(2));
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
+    let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
+    template = template.replace("$c", connection_to_heat_grid);
     template = template.replace("$n", h["connection_speed"]);  // TODO: truncate this by a precision of 0.01
     div.innerHTML = template;
     left.append(div);
@@ -656,7 +659,7 @@ const processData = function(json) {
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (['funding', 'CO2-prize', 'connection_speed'].includes(key) && c[key] != null) {
+      } else if (['renovation_cost', 'CO2-prize', 'connection_speed'].includes(key) && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }
