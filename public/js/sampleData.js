@@ -12,8 +12,8 @@ const sampleHouseInfo = [{
   "CO2": 0.2036314841,
   "connection_to_heat_grid": 0,
   "electricity_supplier": "gray",
-  "heat_consumption": 71921,
-  "electricity_consumption": 10260,
+  "spec_heat_consumption": 71921,
+  "spec_power_consumption": 10260,
   "refurbished": false,
   "environmental_engagement": 0.5
 }, {
@@ -21,8 +21,8 @@ const sampleHouseInfo = [{
   "CO2": 0.2488510615,
   "connection_to_heat_grid": 1,
   "electricity_supplier": "green",
-  "heat_consumption": 161150,
-  "electricity_consumption": 46197,
+  "spec_heat_consumption": 161150,
+  "spec_power_consumption": 46197,
   "refurbished": false,
   "environmental_engagement": 0.1
 }, {
@@ -30,8 +30,8 @@ const sampleHouseInfo = [{
   "CO2": 0.317290762,
   "connection_to_heat_grid": 0,
   "electricity_supplier": "mix",
-  "heat_consumption": 251721,
-  "electricity_consumption": 71428,
+  "spec_heat_consumption": 251721,
+  "spec_power_consumption": 71428,
   "refurbished": true,
   "environmental_engagement": 0.9
 }]

@@ -345,8 +345,8 @@ const renderHouseInfo = function(data) {
     const v = Math.floor(Math.random() * 500) + 500
     //
     template = template.replace("$e", h.CO2.toFixed(3));
-    template = template.replace("$v_s", h["electricity_consumption"].toFixed(0));
-    template = template.replace("$v_w", h["heat_consumption"].toFixed(0));
+    template = template.replace("$v_s", h["spec_power_consumption"].toFixed(0));
+    template = template.replace("$v_w", h["spec_heat_consumption"].toFixed(0));
     template = template.replace("$e", h["environmental_engagement"].toFixed(2));
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
@@ -647,11 +647,11 @@ const processData = function(json) {
 
   const map = function(c) {
     for (let key in c) {
-      if (key == "heat_consumption" && c[key] != null) {
+      if (key == "spec_heat_consumption" && c[key] != null) {
         result.Energieverbrauch["Wärme"] += kwh2mwh(c[key]);
         result.CO2["Wärme"] += getCo2(result.Energieverbrauch["Wärme"], "Wärme");
       }
-      if (key == "electricity_consumption" && c[key] != null) {
+      if (key == "spec_power_consumption" && c[key] != null) {
         result.Energieverbrauch["Strom"] += kwh2mwh(c[key]);
         result.CO2["Strom"] += getCo2(result.Energieverbrauch["Strom"], "Strom");
       }
@@ -659,7 +659,7 @@ const processData = function(json) {
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (['renovation_cost', 'CO2-prize', 'connection_speed'].includes(key) && c[key] != null) {
+      } else if (['renovation_cost', 'CO2-prize'].includes(key) && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }
