@@ -352,7 +352,7 @@ const renderHouseInfo = function(data) {
     template = template.replace("$s", refurbished);
     let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
     template = template.replace("$c", connection_to_heat_grid);
-    template = template.replace("$n", h["connection_speed"]);  // TODO: truncate this by a precision of 0.01
+    template = template.replace("$n", h["renovation_cost"]);
     div.innerHTML = template;
     left.append(div);
   }
