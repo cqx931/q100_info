@@ -50,7 +50,7 @@ body {
   background: black;
 }
 
-#infoscreen, .inputMode, .simulationMode {
+#infoscreen, .inputHouseholdsMode, .simulationMode {
   width: 100%;
   height: 100%;
   font-size: 18px;
@@ -294,6 +294,17 @@ g#xAxisG text, g#yAxisG text {
   border-color: gray;
 }
 
+/* Input Mode 1: Environment */
+.input_environment .scenario{
+  width: 25%;
+  border: solid;
+  display: table-cell;
+  text-align: center;
+}
+
+.input_environment .scenario .active{
+  border-color: goldenrod;
+}
 
 /* data view mode*/
 .dataViewMode {

@@ -32,6 +32,10 @@ socket.on('message', function (message) {
         }
       }
     }
+    if (json.active_scenario){
+      const scenario = json.scenario;
+      updateInputEnvironmentMode(scenario);
+    }
     updateImage();
     previousMessage = message;
   }
@@ -59,12 +63,12 @@ simulation_df = await fetchSimulationDataFrame()
 // ------------------------ UPDATE FUNCTIONS --------------------------
 function initialRender(){
   console.log("simulation_df", simulation_df);
-  renderInputMode()
+  renderInputHouseholdsMode()
   renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, sampleQuestions[getRandomInt(5)]); //initial render
 }
 
-function renderInputMode() {
+function renderInputHouseholdsMode() {
   updateClusterCharts(clusterBefore);
   updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo);

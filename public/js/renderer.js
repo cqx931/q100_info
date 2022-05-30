@@ -8,7 +8,8 @@ $.fn.log = function() {
 // ----------------------------- running modes ------------------------
 const displayQuestionnaireMode = function(question){
     $(".questionnaire").show();
-    $(".inputMode").hide();
+    $(".input_environment").hide();
+    $(".input_households").hide();
     $(".simulationMode").hide();
     $(".dataViewMode").hide();
     $("#questionText").text(question)
@@ -27,26 +28,40 @@ const grayoutAnswerNo = function(){
   $("#questionAnswerNo").removeClass("questionAnswerNoActive")
 }
 
-const displayInputMode = function(){
-    $(".questionnaire").hide();
-    $(".inputMode").show();
-    $(".simulationMode").hide();
-    $(".dataViewMode").hide();
+const displayInputHouseholdsMode = function(){
+  $(".questionnaire").hide();
+  $(".input_environment").hide();
+  $(".input_households").show();
+  $(".simulationMode").hide();
+  $(".dataViewMode").hide();
+}
+const displayInputEnvironmentMode = function(){
+  $(".questionnaire").hide();
+  $(".input_environment").show();
+  $(".input_households").hide();
+  $(".simulationMode").hide();
+  $(".dataViewMode").hide();
+}
+
+const updateInputEnvironmentMode = function(scenario){
+  // TODO: add "active" class to input scenario; drop from all others
+  console.log(scenario);
 }
 
 const displaySimulationMode = function(){
     $(".questionnaire").hide();
-    $(".inputMode").hide();
+    $(".input_environment").hide();
+    $(".input_households").hide();
     $(".simulationMode").show();
     $(".dataViewMode").hide();
 }
 
 const displayDataViewMode = function(){
     $(".questionnaire").hide();
-    $(".inputMode").hide();
+    $(".input_environment").hide();
+    $(".input_households").hide();
     $(".simulationMode").hide();
     $(".dataViewMode").show();
-
 }
 
 const switchUserMode = function(mode, question){
@@ -56,13 +71,16 @@ const switchUserMode = function(mode, question){
   if (mode == 'simulation'){
     displaySimulationMode()
   }
-  else if (mode == 'input_environment' || mode == 'input_households'){
-    displayInputMode()
+  else if (mode == 'input_environment'){
+    displayInputEnvironmentMode()
+  }
+  else if (mode == 'input_households'){
+    displayInputHouseholdsMode()
   }
   else if (mode == 'questionnaire'){
     displayQuestionnaireMode(question)
   }
-  else if (mode == 'dataView'){
+  else if (mode == 'data_view'){
     displayDataViewMode()
     createHouseholdCards()
   }
