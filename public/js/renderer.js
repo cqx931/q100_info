@@ -10,6 +10,7 @@ const displayQuestionnaireMode = function(question){
     $(".questionnaire").show();
     $(".inputMode").hide();
     $(".simulationMode").hide();
+    $(".dataViewMode").hide();
     $("#questionText").text(question)
 }
 
@@ -30,12 +31,22 @@ const displayInputMode = function(){
     $(".questionnaire").hide();
     $(".inputMode").show();
     $(".simulationMode").hide();
+    $(".dataViewMode").hide();
 }
 
 const displaySimulationMode = function(){
     $(".questionnaire").hide();
     $(".inputMode").hide();
     $(".simulationMode").show();
+    $(".dataViewMode").hide();
+}
+
+const displayDataViewMode = function(){
+    $(".questionnaire").hide();
+    $(".inputMode").hide();
+    $(".simulationMode").hide();
+    $(".dataViewMode").show();
+
 }
 
 const switchUserMode = function(mode, question){
@@ -50,6 +61,10 @@ const switchUserMode = function(mode, question){
   }
   else if (mode == 'questionnaire'){
     displayQuestionnaireMode(question)
+  }
+  else if (mode == 'dataView'){
+    displayDataViewMode()
+    createHouseholdCards()
   }
 }
 
