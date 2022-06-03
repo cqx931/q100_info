@@ -8,7 +8,7 @@ $.fn.log = function() {
 // ----------------------------- running modes ------------------------
 const displayQuestionnaireMode = function(question){
     $(".questionnaire").show();
-    $(".input_environment").hide();
+    $(".input_scenarios").hide();
     $(".input_households").hide();
     $(".simulationMode").hide();
     $(".dataViewMode").hide();
@@ -30,14 +30,14 @@ const grayoutAnswerNo = function(){
 
 const displayInputHouseholdsMode = function(){
   $(".questionnaire").hide();
-  $(".input_environment").hide();
+  $(".input_scenarios").hide();
   $(".input_households").show();
   $(".simulationMode").hide();
   $(".dataViewMode").hide();
 }
 const displayInputEnvironmentMode = function(){
   $(".questionnaire").hide();
-  $(".input_environment").show();
+  $(".input_scenarios").show();
   $(".input_households").hide();
   $(".simulationMode").hide();
   $(".dataViewMode").hide();
@@ -50,7 +50,7 @@ const updateInputEnvironmentMode = function(scenario){
 
 const displaySimulationMode = function(){
     $(".questionnaire").hide();
-    $(".input_environment").hide();
+    $(".input_scenarios").hide();
     $(".input_households").hide();
     $(".simulationMode").show();
     $(".dataViewMode").hide();
@@ -58,7 +58,7 @@ const displaySimulationMode = function(){
 
 const displayDataViewMode = function(){
     $(".questionnaire").hide();
-    $(".input_environment").hide();
+    $(".input_scenarios").hide();
     $(".input_households").hide();
     $(".simulationMode").hide();
     $(".dataViewMode").show();
@@ -71,7 +71,7 @@ const switchUserMode = function(mode, question){
   if (mode == 'simulation'){
     displaySimulationMode()
   }
-  else if (mode == 'input_environment'){
+  else if (mode == 'input_scenarios'){
     displayInputEnvironmentMode()
   }
   else if (mode == 'input_households'){

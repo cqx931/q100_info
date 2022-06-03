@@ -295,14 +295,14 @@ g#xAxisG text, g#yAxisG text {
 }
 
 /* Input Mode 1: Environment */
-.input_environment .scenario{
+.input_scenarios .scenario{
   width: 25%;
   border: solid;
   display: table-cell;
   text-align: center;
 }
 
-.input_environment .scenario .active{
+.input_scenarios .scenario .active{
   border-color: goldenrod;
 }
 
