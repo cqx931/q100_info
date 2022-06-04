@@ -8,29 +8,32 @@ let simulationData = {
 }
 
 const sampleHouseInfo = [{
-  "adresse": "Straßenname 19",
+  "address": "Straßenname 19",
   "CO2": 0.2036314841,
-  "anschluss": 0,
-  "investment": 2,
-  "versorgung": "konventionell",
-  "Wärmeverbrauch 2017 [kWh]": 71921,
-  "Stromverbrauch 2017 [kWh]": 10260
+  "connection_to_heat_grid": 0,
+  "electricity_supplier": "gray",
+  "spec_heat_consumption": 71921,
+  "spec_power_consumption": 10260,
+  "refurbished": false,
+  "environmental_engagement": 0.5
 }, {
-  "adresse": "Straßenname 15",
+  "address": "Straßenname 15",
   "CO2": 0.2488510615,
-  "anschluss": 1,
-  "investment": 3,
-  "versorgung": "gruen",
-  "Wärmeverbrauch 2017 [kWh]": 161150,
-  "Stromverbrauch 2017 [kWh]": 46197
+  "connection_to_heat_grid": 1,
+  "electricity_supplier": "green",
+  "spec_heat_consumption": 161150,
+  "spec_power_consumption": 46197,
+  "refurbished": false,
+  "environmental_engagement": 0.1
 }, {
-  "adresse": "Straßenname 8",
+  "address": "Straßenname 8",
   "CO2": 0.317290762,
-  "anschluss": 0,
-  "investment": 1,
-  "versorgung": "medium",
-  "Wärmeverbrauch 2017 [kWh]": 251721,
-  "Stromverbrauch 2017 [kWh]": 71428
+  "connection_to_heat_grid": 0,
+  "electricity_supplier": "mix",
+  "spec_heat_consumption": 251721,
+  "spec_power_consumption": 71428,
+  "refurbished": true,
+  "environmental_engagement": 0.9
 }]
 
 const districtData = [
@@ -40,7 +43,6 @@ const districtData = [
       "Verbrauch": 1000000,
       "CO2": 10.813611631,
       "Investment": 0.3,
-      "EEH": 0.4458936055
     }
   },
   {
@@ -49,7 +51,6 @@ const districtData = [
       "Verbrauch": 900000,
       "CO2": 9.813611631,
       "Investment": 0.4,
-      "EEH": 0.5458936055
     }
   },
   {
@@ -58,7 +59,6 @@ const districtData = [
       "Verbrauch": 800000,
       "CO2": 8.813611631,
       "Investment": 0.5,
-      "EEH": 0.6458936055
     }
   },
   {
@@ -67,7 +67,6 @@ const districtData = [
       "Verbrauch": 700000,
       "CO2": 7.813611631,
       "Investment": 0.6,
-      "EEH": 0.7458936055
     }
   }
 ]

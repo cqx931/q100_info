@@ -77,7 +77,7 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
   const CONFIG_Energie = {
     width: w,
     height: h * 2 / 3 - 10,
-    colors: ["grey", "orange"],
+    colors: ["gray", "orange"],
     type: type,
     title: "Energieverbrauch",
     unit: "MWh"
@@ -85,7 +85,7 @@ const renderBarCharts = (input, beforeInput, type, parentNode) => {
   const CONFIG_CO2 = {
     width: w,
     height: h / 3,
-    colors: ["grey", "orange"],
+    colors: ["gray", "orange"],
     type: type,
     title: "CO2",
     unit: "tCO2"
@@ -336,18 +336,23 @@ const renderHouseInfo = function(data) {
     const div = document.createElement("div");
 
     div.className = "meta";
-    div.className += h.anschluss == 1 ? " anschluss" : "";
-    div.className += h.versorgung == "gruen" ? " green" : (h.versorgung == "medium" ? " greygreen" : " grey");
+    div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
+    div.className += h.electricity_supplier == "green" ? " green" : (h.electricity_supplier == "mix" ? " mix" : " gray");
 
     let template = document.getElementById("meta_template").innerHTML;
-    template = template.replace("$Adresse", h.adresse);
+    template = template.replace("$Adresse", h.address);
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    template = template.replace("$e", h.CO2.toFixed(6));
-    template = template.replace("$v_s", h["Stromverbrauch 2017 [kWh]"].toFixed(0));
-    template = template.replace("$v_w", h["Wärmeverbrauch 2017 [kWh]"].toFixed(0));
-    template = template.replace("$i", h.investment);
+    template = template.replace("$e", h.CO2.toFixed(3));
+    template = template.replace("$v_s", h["spec_power_consumption"].toFixed(0));
+    template = template.replace("$v_w", h["spec_heat_consumption"].toFixed(0));
+    template = template.replace("$e", h["environmental_engagement"].toFixed(2));
+    let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
+    template = template.replace("$s", refurbished);
+    let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
+    template = template.replace("$c", connection_to_heat_grid);
+    template = template.replace("$n", h["renovation_cost"]);
     div.innerHTML = template;
     left.append(div);
   }
@@ -367,7 +372,7 @@ const renderSimulationVariables = function(data) {
 /******************************** SIMULATION *************************/
 const renderSimulationScreen = function(clusterData, districtData) {
   // TODO: line plots of sum/selected houses, x axis - time
-  // Exampels: Wärme and EEH
+  // Exampels: Wärme
   renderClusterSimulations(clusterData);
 
   const formattedDistrictData = formatQuartierSimulationData(districtData);
@@ -397,7 +402,7 @@ const renderQuartierSimulations = function(data) {
   const allKeys = sumstat.map(function(d){return d.key})
 
   // Styles
-  const text_color = "grey",
+  const text_color = "gray",
         chart_colors = ["red", "green","yellow","orange"];
   const font_size = 24;
 
@@ -468,8 +473,8 @@ const renderQuartierSimulations = function(data) {
 
 const renderMultipleLineCharts = function(data, id) {
   // Attributes to plot
-  const attrs = ["CO2", "EEH"];
-  const groupBy = "adresse"
+  const attrs = ["CO2"];
+  const groupBy = "address"
 
   // Nest data by subject.
   const sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
@@ -480,7 +485,7 @@ const renderMultipleLineCharts = function(data, id) {
   console.log("sumstat", sumstat)
 
   // Styles
-  const text_color = "grey",
+  const text_color = "gray",
         line_colors = ["#8B0000", "green"];
   const font_size = 12;
 
@@ -648,8 +653,7 @@ const formatSimulationData = function(data) {
       const b = data[i].buildings[j];
       const each = {
         step: g.step,
-        adresse: b.adresse,
-        EEH: b.EEH,
+        address: b.address,
         CO2: b.CO2
       }
       //console.log(each);
@@ -673,11 +677,11 @@ const processData = function(json) {
 
   const map = function(c) {
     for (let key in c) {
-      if (key == "Wärmeverbrauch 2017 [kWh]" && c[key] != null) {
+      if (key == "spec_heat_consumption" && c[key] != null) {
         result.Energieverbrauch["Wärme"] += kwh2mwh(c[key]);
         result.CO2["Wärme"] += getCo2(result.Energieverbrauch["Wärme"], "Wärme");
       }
-      if (key == "Stromverbrauch 2017 [kWh]" && c[key] != null) {
+      if (key == "spec_power_consumption" && c[key] != null) {
         result.Energieverbrauch["Strom"] += kwh2mwh(c[key]);
         result.CO2["Strom"] += getCo2(result.Energieverbrauch["Strom"], "Strom");
       }
@@ -685,7 +689,7 @@ const processData = function(json) {
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (['foerderung', 'CO2-Preis', 'CO2', 'Technologie', 'investment', 'anschluss'].includes(key) && c[key] != null) {
+      } else if (['renovation_cost', 'CO2-prize'].includes(key) && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }
