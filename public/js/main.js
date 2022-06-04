@@ -69,8 +69,7 @@ function initialRender(){
   updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo);
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
-  renderSimulationScreen(simulation_df, quartierData);
+  renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
 }
 
-initialRender()

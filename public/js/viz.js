@@ -374,7 +374,9 @@ const renderSimulationScreen = function(clusterData, districtData) {
   // TODO: line plots of sum/selected houses, x axis - time
   // Exampels: Wärme
   renderClusterSimulations(clusterData);
-  renderQuartierSimulations(districtData);
+
+  const formattedDistrictData = formatQuartierSimulationData(districtData);
+  renderQuartierSimulations(formattedDistrictData);
   // Reference
   // https://www.d3-graph-gallery.com/graph/line_smallmultiple.html
   // https://bl.ocks.org/tomshanley/b841837f5414b34b7c45055d97e7674d
@@ -387,7 +389,6 @@ const renderClusterSimulations = function(data) {
 }
 
 const renderQuartierSimulations = function(data) {
-  data = formatQuartierSimulationData(data);
   const id = "quartierSimulation";
   const groupBy = "attribute"
 
@@ -596,10 +597,39 @@ const renderMultipleLineCharts = function(data, id) {
 
 /**************************** Data Processing ************************/
 const formatQuartierSimulationData = function(data) {
-  let newD = [];
+  // input data type
+  // [
+  //   {
+  //     "step": 0,
+  //     "attributes": {
+  //       "Verbrauch": 1000000,
+  //       "CO2": 10.813611631,
+  //       "Investment": 0.3,
+  //       "EEH": 0.4458936055
+  //     }
+  //   },
+  //   ...
+  // ]
+  //
+  // output data type
+  // [
+  //   {
+  //       "step": 0,
+  //       "attribute": "Verbrauch",
+  //       "value": 1000000
+  //   },
+  //   {
+  //       "step": 0,
+  //       "attribute": "CO2",
+  //       "value": 10.813611631
+  //   },
+  //   ...
+  // ]
+  
+  let returnValue = [];
   for (var i = 0; i < data.length; i++) {
     const g = data[i];
-    g.step = data[i].step;
+    // g.step = data[i].step; redundant
     for (var attr in data[i].attributes) {
       const each = {
         step: g.step,
@@ -607,10 +637,10 @@ const formatQuartierSimulationData = function(data) {
         value: data[i].attributes[attr]
       }
       //console.log(each);
-      newD.push(each)
+      returnValue.push(each)
     }
     }
-  return newD;
+  return returnValue;
 }
 
 const formatSimulationData = function(data) {

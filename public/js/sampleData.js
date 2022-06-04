@@ -36,7 +36,7 @@ const sampleHouseInfo = [{
   "environmental_engagement": 0.9
 }]
 
-const quartierData = [
+const districtData = [
   {
     "step": 0,
     "attributes": {

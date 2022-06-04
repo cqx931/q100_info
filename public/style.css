@@ -293,3 +293,71 @@ g#xAxisG text, g#yAxisG text {
   color: gray;
   border-color: gray;
 }
+
+
+/* data view mode*/
+.dataViewMode {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 3fr 2fr ;
+  /* grid-template-rows: repeat(2, [row] auto  ); */
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.box .box {
+  background-color: #ccc;
+  color: #444;
+}
+
+.houseHolds {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, [row] auto  ); */
+  background-color: purple;
+  color: #444;
+
+}
+
+.houseHold {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.houseHoldTitle {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.houseIcon {
+  width: 100%;
+}
+
+.houseHoldInfo {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.houseHoldEnergyData {
+
+}
+
+.houseHoldEnergyEfficiency {
+  display: inline-block;
+}
+
+.houseHoldEnergyEfficiency img {
+  width: 25px;
+}
+
+.houseHoldIsHeizung {
+  width: 25px;
+}
