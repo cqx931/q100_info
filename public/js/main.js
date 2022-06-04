@@ -73,3 +73,4 @@ function initialRender(){
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
 }
 
+initialRender()
