@@ -64,6 +64,7 @@ const switchUserMode = function(mode, question){
   }
   else if (mode == 'dataView'){
     displayDataViewMode()
+    removeHouseholdCards()
     createHouseholdCards()
   }
 }
