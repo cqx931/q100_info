@@ -16,11 +16,9 @@ socket.on('message', function (message) {
 
     if (json.mode){
       const nextUserMode = json.mode;
-      let question = "question was not provided"
-      if (json.question){
-        question = json.question;
-      }
-      switchUserMode(nextUserMode, question);
+
+      //ToDo: get question number from UDP
+      switchUserMode(nextUserMode, getRandomInt(5));
 
       if (json.answer){
         const answer = json.answer
@@ -37,21 +35,28 @@ socket.on('message', function (message) {
   }
 });
 
+async function fetchDataFromApi(arg) {
+  const path = '/api/'+arg
+  return await axios.get(path)
+}
 
 // fetch simulation_df from node express server /api/data endpoint
 // implemented for development purpose (in production mode, data should be handled only through socket)
-const dataSet = async function fetchData() {
-  return await axios.get('/api/data');
-}
-
 async function fetchSimulationDataFrame() {
-  const dataObject = await dataSet();
+  const dataObject = await fetchDataFromApi('data');
   const retval = dataObject.data
   return retval
 }
 
-simulation_df = await fetchSimulationDataFrame()
+async function fetchQuestions() {
+  const questionsObject = await fetchDataFromApi('questions');
+  const retval = questionsObject.data
+  return retval
+}
 
+
+simulation_df = await fetchSimulationDataFrame()
+questions = await fetchQuestions()
 
 
 
@@ -59,12 +64,13 @@ simulation_df = await fetchSimulationDataFrame()
 // ------------------------ UPDATE FUNCTIONS --------------------------
 function initialRender(){
   console.log("simulation_df", simulation_df);
+  console.log("questions", questions);
   updateClusterCharts(clusterBefore);
   updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo);
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, quartierData);
-  switchUserMode(currentUserMode, sampleQuestions[getRandomInt(5)]); //initial render
+  switchUserMode(currentUserMode, getRandomInt(5)); //initial render
 }
 
 initialRender()
