@@ -59,12 +59,16 @@ simulation_df = await fetchSimulationDataFrame()
 // ------------------------ UPDATE FUNCTIONS --------------------------
 function initialRender(){
   console.log("simulation_df", simulation_df);
+  renderInputMode()
+  renderSimulationScreen(simulation_df, districtData);
+  switchUserMode(currentUserMode, sampleQuestions[getRandomInt(5)]); //initial render
+}
+
+function renderInputMode() {
   updateClusterCharts(clusterBefore);
   updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo);
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
-  renderSimulationScreen(simulation_df, quartierData);
-  switchUserMode(currentUserMode, sampleQuestions[getRandomInt(5)]); //initial render
 }
 
 initialRender()
