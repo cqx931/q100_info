@@ -49,7 +49,7 @@ const displayDataViewMode = function(){
 
 }
 
-const switchUserMode = function(mode, question){
+const switchUserMode = function(mode, questionID){
   //Todo: wrap in resetAnswer function
   grayoutAnswerYes()
   grayoutAnswerNo()
@@ -60,6 +60,7 @@ const switchUserMode = function(mode, question){
     displayInputMode()
   }
   else if (mode == 'questionnaire'){
+    const question = questions[questionID]
     displayQuestionnaireMode(question)
   }
   else if (mode == 'dataView'){
