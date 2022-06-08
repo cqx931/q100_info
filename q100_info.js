@@ -2,6 +2,7 @@ const path = require('path'),
       open = require('open'),
       express = require('express');
       fs = require('fs');
+      csv = require('csv-parse/sync');
 
 const http_port = 8000,
       websocket_port = 8081;
@@ -39,6 +40,14 @@ function initServer() {
     res.json(simulation_df_json);
   });
 
+  // set endpoint for question.csv
+  // see https://csv.js.org/parse/
+  const questionsFromCSV = loadAndParseCSV("public/data/questions.csv");
+  const questions = formatQuestions(questionsFromCSV)
+  app.get('/api/questions', (req, res) => {
+    res.json(questions);
+  });
+
   open('http://localhost:' + http_port);
 }
 
@@ -46,4 +55,21 @@ function loadAndParseJson(path) {
   const simulation_df = fs.readFileSync(path, 'utf8');
   var jsonData = JSON.parse(simulation_df);
   return jsonData
+}
+
+function loadAndParseCSV(path) {
+  const input = fs.readFileSync(path, 'utf8');
+  const records = csv.parse(input, {
+    delimiter: '/n',
+    skip_empty_lines: true,
+  });
+  return records 
+}
+
+function formatQuestions(rawQuestions) {
+  let questions = []
+  for(const element of rawQuestions) {
+    questions.push(element[0])
+  }
+  return questions
 }

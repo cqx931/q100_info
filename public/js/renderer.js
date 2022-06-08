@@ -64,7 +64,7 @@ const displayDataViewMode = function(){
     $(".dataViewMode").show();
 }
 
-const switchUserMode = function(mode, question){
+const switchUserMode = function(mode, questionID){
   //Todo: wrap in resetAnswer function
   grayoutAnswerYes()
   grayoutAnswerNo()
@@ -78,10 +78,12 @@ const switchUserMode = function(mode, question){
     displayInputHouseholdsMode()
   }
   else if (mode == 'questionnaire'){
+    const question = questions[questionID]
     displayQuestionnaireMode(question)
   }
   else if (mode == 'data_view'){
     displayDataViewMode()
+    removeHouseholdCards()
     createHouseholdCards()
   }
 }

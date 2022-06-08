@@ -20,3 +20,7 @@ const createIndividualHouseholdCard = function (){
 const createHouseholdCards = function (){
     createIndividualHouseholdCard()
 }
+
+const removeHouseholdCards = function(){
+    $('#householdDataChart').empty();
+}
