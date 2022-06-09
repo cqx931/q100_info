@@ -30,6 +30,10 @@ socket.on('message', function (message) {
         }
       }
     }
+    if (json.active_scenario){
+      const scenario = json.scenario;
+      updateInputEnvironmentMode(scenario);
+    }
     updateImage();
     previousMessage = message;
   }

@@ -45,7 +45,59 @@
 			</div>
 			<div class="box leftSideData">Left side data</div>
 		</div>
-		<div class="inputMode">
+		<div class="input_scenarios">
+			<div class="scenario" style="height: 300;">
+				<h2>A</h2>
+				<br>
+				<ul>
+					<li>alpha = dynamic_moderate</li>
+					<li>carbon = moderate</li>
+					<li>energy = prices_2022_1st-half</li>
+					<li>opex = 12ct_static</li>
+					<li>capex = 5 payments</li>
+					<li>emissions = declining_linear</li>
+				</ul>
+			</div>
+			<div class="scenario">
+				<h2>B</h2>
+				<br>
+				<ul>
+					<li>alpha = static_mean</li>
+					<li>carbon = moderate</li>
+					<li>energy = prices_2021</li>
+					<li>opex = 15-9 ct_dynamic</li>
+					<li>capex = 2 payments</li>
+					<li>emissions = declining_steps</li>
+				</ul>
+			</div>
+			<div class="scenario">
+				<h2>C</h2>
+				<br>
+				<ul>
+					<li>alpha = static_mean</li>
+					<li>carbon = conservative</li>
+					<li>energy = prices_project-start</li>
+					<li>opex = 15-9 ct_dynamic</li>
+					<li>capex = 1 payment</li>
+					<li>emissions = constant_50g</li>
+				</ul>
+			</div>
+			<div class="scenario">
+				<h2>D</h2>
+				<br>
+				<ul>
+					<li>alpha = dynamic_high</li>
+					<li>carbon = C3_progressive</li>
+					<li>energy = prices_2021 *(here should be a further value added, which additionally adds the
+						carbon price to
+						the energy prices)</li>
+					<li>opex = 12ct_static</li>
+					<li>capex = 5 payments</li>
+					<li>emissions = constant_zero</li>
+				</ul>
+			</div>
+		</div>
+		<div class="input_households">
 			<div class="left">
 			</div>
 			<div class="main">
@@ -57,8 +109,10 @@
 								<li class='address'>$Adresse</li>
 								<li class='spec_power_consumption'>spez. Stromverbrauch: $v_s kWh</li>
 								<li class='spec_heat_consumption'>spez. Wärmeverbrauch: $v_w kWh</li>
-								<li class='Emission'>Emissionen: $e t CO<sub>2</sub></li></li>
-								<li class='refurbished'>Sanierungszustand: $s</li></li>
+								<li class='Emission'>Emissionen: $e t CO<sub>2</sub></li>
+								</li>
+								<li class='refurbished'>Sanierungszustand: $s</li>
+								</li>
 								<li class='connection_to_heat_grid'>Wärmenetzanschluss: $c</li>
 								<li class='environmental_engagement'>Umweltengagement: $e</li>
 								<!-- <li class='Investition'>Investition Stufe: $i</li> -->
