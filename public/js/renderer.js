@@ -62,6 +62,7 @@ const displayDataViewMode = function(){
     $(".input_households").hide();
     $(".simulationMode").hide();
     $(".dataViewMode").show();
+    updateSimulationOutputs();
 }
 
 const switchUserMode = function(mode, questionID){
