@@ -42,10 +42,16 @@ function initServer() {
 
   // set endpoint for question.csv
   // see https://csv.js.org/parse/
-  const questionsFromCSV = loadAndParseCSV("public/data/questions.csv");
-  const questions = formatQuestions(questionsFromCSV)
+  const questions = loadQuestionsCSV()
   app.get('/api/questions', (req, res) => {
     res.json(questions);
+  });
+  
+  // set endpoint for .csv
+  // see https://csv.js.org/parse/
+  const GAMAData = loadGAMADataCSV()
+  app.get('/api/GAMAData', (req, res) => {
+    res.json(GAMAData);
   });
 
   open('http://localhost:' + http_port);
@@ -57,13 +63,14 @@ function loadAndParseJson(path) {
   return jsonData
 }
 
-function loadAndParseCSV(path) {
-  const input = fs.readFileSync(path, 'utf8');
-  const records = csv.parse(input, {
+function loadQuestionsCSV() {
+  const input = fs.readFileSync("public/data/questions.csv", 'utf8');
+  const questionsFromCSV = csv.parse(input, {
     delimiter: '/n',
     skip_empty_lines: true,
   });
-  return records 
+  const questions = formatQuestions(questionsFromCSV)
+  return questions
 }
 
 function formatQuestions(rawQuestions) {
@@ -72,4 +79,15 @@ function formatQuestions(rawQuestions) {
     questions.push(element[0])
   }
   return questions
+}
+
+function loadGAMADataCSV() {
+  const input = fs.readFileSync("public/data/includes/csv_export/csv_export_test.csv", 'utf8');
+  const GAMADataFromCSV = csv.parse(input, {
+    delimiter: ",",
+    skip_empty_lines: true,
+    columns: true,
+    to: 9499
+  });
+  return GAMADataFromCSV
 }
