@@ -50,7 +50,7 @@ body {
   background: black;
 }
 
-#infoscreen, .inputHouseholdsMode, .simulationMode {
+#infoscreen, .input_households, .simulationMode {
   width: 100%;
   height: 100%;
   font-size: 18px;
