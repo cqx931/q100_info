@@ -49,9 +49,10 @@ function initServer() {
   
   // set endpoint for .csv
   // see https://csv.js.org/parse/
-  const GAMAData = loadGAMADataCSV()
   app.get('/api/GAMAData', (req, res) => {
-    res.json(GAMAData);
+  res.sendFile(path.join(__dirname,  
+      "public/data/includes/csv_export/csv_export_test.csv"
+    ))
   });
 
   open('http://localhost:' + http_port);
@@ -81,13 +82,3 @@ function formatQuestions(rawQuestions) {
   return questions
 }
 
-function loadGAMADataCSV() {
-  const input = fs.readFileSync("public/data/includes/csv_export/csv_export_test.csv", 'utf8');
-  const GAMADataFromCSV = csv.parse(input, {
-    delimiter: ",",
-    skip_empty_lines: true,
-    columns: true,
-    to: 9499
-  });
-  return GAMADataFromCSV
-}
