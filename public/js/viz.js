@@ -625,7 +625,7 @@ const formatQuartierSimulationData = function(data) {
   //   },
   //   ...
   // ]
-  
+
   let returnValue = [];
   for (var i = 0; i < data.length; i++) {
     const g = data[i];
@@ -689,7 +689,7 @@ const processData = function(json) {
       if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (['renovation_cost', 'CO2-prize'].includes(key) && c[key] != null) {
+      } else if (key == 'active_scenario' && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }
