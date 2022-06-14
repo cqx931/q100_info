@@ -11,7 +11,7 @@ const margin = {
 
 let svg
 
-const createD3BasicLineChart = function (targetSelector, csvURL) {
+const createD3BasicLineChart = function (targetSelector) {
   // const margin = { top: 10, right: 30, bottom: 30, left: 60 },
   //   width = 460 - margin.left - margin.right,
   //   height = 400 - margin.top - margin.bottom;
@@ -25,15 +25,19 @@ const createD3BasicLineChart = function (targetSelector, csvURL) {
     .attr("transform", `translate(${margin.left},${margin.top})`);
   console.log("moin", svg)
   //Read the data
-  const sampleCsvURL = "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv"
-  d3.csv(sampleCsvURL,
-
+  const GAMADataApiURL = "http://localhost:8000/api/GAMAData"
+  let csvRowCount = 0
+  d3.csv(GAMADataApiURL,
+  // d3.csv(csvData, 
     // When reading the csv, I must format variables:
     function (d) {
-      return { date: d3.timeParse("%Y-%m-%d")(d.date), value: d.value }
+      if (csvRowCount > 9497) return
+      csvRowCount += 1
+      const formatDate= d.current_date.match(/'([^']+)'/)[1].slice(0,11)
+      return { date: d3.timeParse("%Y-%m-%d ")(formatDate), value: d.value }
     }).then(data => {
       drawBasicLineChartFromData(data)
-    })
+    }).catch(err => { console.log("error while processing CSV with D3", err) })
 }
 
 // Now I can use this dataset:
@@ -58,7 +62,7 @@ const drawBasicLineChartFromData = function (data) {
   svg.append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "steelblue")
+    .attr("stroke", "red")
     .attr("stroke-width", 1.5)
     .attr("d", d3.line()
       .x(function (d) { return x(d.date) })
