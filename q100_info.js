@@ -42,10 +42,17 @@ function initServer() {
 
   // set endpoint for question.csv
   // see https://csv.js.org/parse/
-  const questionsFromCSV = loadAndParseCSV("public/data/questions.csv");
-  const questions = formatQuestions(questionsFromCSV)
+  const questions = loadQuestionsCSV()
   app.get('/api/questions', (req, res) => {
     res.json(questions);
+  });
+  
+  // set endpoint for .csv
+  // see https://csv.js.org/parse/
+  app.get('/api/GAMAData', (req, res) => {
+  res.sendFile(path.join(__dirname,  
+      "public/data/includes/csv_export/csv_export_test.csv"
+    ))
   });
 
   open('http://localhost:' + http_port);
@@ -57,13 +64,14 @@ function loadAndParseJson(path) {
   return jsonData
 }
 
-function loadAndParseCSV(path) {
-  const input = fs.readFileSync(path, 'utf8');
-  const records = csv.parse(input, {
+function loadQuestionsCSV() {
+  const input = fs.readFileSync("public/data/questions.csv", 'utf8');
+  const questionsFromCSV = csv.parse(input, {
     delimiter: '/n',
     skip_empty_lines: true,
   });
-  return records 
+  const questions = formatQuestions(questionsFromCSV)
+  return questions
 }
 
 function formatQuestions(rawQuestions) {
@@ -73,3 +81,4 @@ function formatQuestions(rawQuestions) {
   }
   return questions
 }
+

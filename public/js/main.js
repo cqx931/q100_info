@@ -58,9 +58,16 @@ async function fetchQuestions() {
   return retval
 }
 
+async function fetchGAMAData() {
+  const questionsObject = await fetchDataFromApi('GAMAData');
+  const retval = questionsObject.data
+  return retval
+}
+
 
 simulation_df = await fetchSimulationDataFrame()
 questions = await fetchQuestions()
+GAMAData = await fetchGAMAData()
 
 
 

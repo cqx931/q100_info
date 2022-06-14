@@ -6,3 +6,4 @@ let currentUserMode = 'questionnaire';
 
 let simulation_df
 let questions
+let GAMAData

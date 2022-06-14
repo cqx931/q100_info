@@ -50,7 +50,7 @@ body {
   background: black;
 }
 
-#infoscreen, .inputHouseholdsMode, .simulationMode {
+#infoscreen, .input_households, .simulationMode {
   width: 100%;
   height: 100%;
   font-size: 18px;
@@ -312,20 +312,20 @@ g#xAxisG text, g#yAxisG text {
   grid-gap: 10px;
   grid-template-columns: 3fr 2fr ;
   /* grid-template-rows: repeat(2, [row] auto  ); */
-  background-color: #fff;
-  color: #444;
+  /* background-color: #fff; */
+  /* color: #444; */
 }
 
 .box {
-  background-color: #444;
-  color: #fff;
+  /* background-color: #444; */
+  /* color: #fff; */
   border-radius: 5px;
   padding: 20px;
 }
 
 .box .box {
-  background-color: #ccc;
-  color: #444;
+  /* background-color: #ccc; */
+  /* color: #444; */
 }
 
 .houseHolds {
@@ -333,9 +333,8 @@ g#xAxisG text, g#yAxisG text {
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   /* grid-template-rows: repeat(2, [row] auto  ); */
-  background-color: purple;
-  color: #444;
-
+  /* background-color: purple; */
+  /* color: #444; */
 }
 
 .houseHold {
@@ -367,6 +366,7 @@ g#xAxisG text, g#yAxisG text {
 
 .houseHoldEnergyEfficiency img {
   width: 25px;
+  filter:invert(1)
 }
 
 .houseHoldIsHeizung {
