@@ -2,6 +2,7 @@
 let simulationData = {
   year: 2022,
   co2: '500',
+  active_scenario: 'None',
   wärme: 'y',
   strom: 'z',
   förderung: 'n'
