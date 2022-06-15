@@ -1,7 +1,7 @@
 // ------------------------ Global Variables --------------------------
 
 // let initialUserMode = 'input';
-let currentUserMode = 'questionnaire';
+let currentUserMode = 'input_scenarios';
 // let currentUserMode = 'input';
 
 let simulation_df

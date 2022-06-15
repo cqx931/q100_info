@@ -44,13 +44,21 @@
 				<div class="box houseHold">House4</div>
 			</div> -->
 			<div class="graphs_wrapper" style="display:table-cell; background-color: black;">
-			<div style="display:table-cell"><img src="data/headless/output/snapshot/Chartsnull-199.png" id="chartsImage"></div>
-			<div style="display:table-cell"><img src="data/headless/output/snapshot/Emissions cumulativenull-199.png" id="emissionsCumulativeImage"></div>
-			<div style="display:table-cell"><img src="data/headless/output/snapshot/Emissions per yearnull-199.png" id="emissionsPerYearImage"></div>
-			<p></p>
-			<div style="display:table-cell"><img src="data/headless/output/snapshot/households_employment_pienull-199.png" id="householdsEmploymentPieImage"></div>
-			<div style="display:table-cell"><img src="data/headless/output/snapshot/Modernizationnull-199.png" id="modernizationImage"></div>
-			<div style="display:table-cell"><img src="data/headless/output/snapshot/neighborhoodnull-199.png" id="neighborhoodImage"></div>
+				<div style="display:table-cell"><img src="data/headless/output/snapshot/Chartsnull-199.png"
+						id="chartsImage"></div>
+				<div style="display:table-cell"><img
+						src="data/headless/output/snapshot/Emissions cumulativenull-199.png"
+						id="emissionsCumulativeImage"></div>
+				<div style="display:table-cell"><img src="data/headless/output/snapshot/Emissions per yearnull-199.png"
+						id="emissionsPerYearImage"></div>
+				<p></p>
+				<div style="display:table-cell"><img
+						src="data/headless/output/snapshot/households_employment_pienull-199.png"
+						id="householdsEmploymentPieImage"></div>
+				<div style="display:table-cell"><img src="data/headless/output/snapshot/Modernizationnull-199.png"
+						id="modernizationImage"></div>
+				<div style="display:table-cell"><img src="data/headless/output/snapshot/neighborhoodnull-199.png"
+						id="neighborhoodImage"></div>
 			</div>
 			<!-- <div class="box leftSideData">Left side data</div> -->
 		</div>
@@ -107,28 +115,30 @@
 			</div>
 		</div>
 		<div class="input_households">
-			<div class="left">
-			</div>
 			<div class="main">
 				<div class="top">
+					<div class="columns">
+					</div>
 					<div class="template meta" id="meta_template">
 						<div class="icon"><img src="img/home.png"></div>
 						<div class="text">
 							<ul>
 								<li class='address'>$Adresse</li>
-								<li class='spec_power_consumption'>spez. Stromverbrauch: $v_s kWh</li>
-								<li class='spec_heat_consumption'>spez. Wärmeverbrauch: $v_w kWh</li>
-								<li class='Emission'>Emissionen: $e t CO<sub>2</sub></li>
 								</li>
-								<li class='refurbished'>Sanierungszustand: $s</li>
+								<li class='refurbished' style="color:burlywood">Sanierungszustand: $s</li>
+								<li class='connection_to_heat_grid' style="color: aquamarine;">Wärmenetzanschluss: $c
 								</li>
-								<li class='connection_to_heat_grid'>Wärmenetzanschluss: $c</li>
-								<li class='environmental_engagement'>Umweltengagement: $e</li>
-								<!-- <li class='Investition'>Investition Stufe: $i</li> -->
+								<li class='environmental_engagement' style="color: cadetblue;">Umweltengagement: $e</li>
 							</ul>
 						</div>
 					</div>
-					<div class="middle">
+					<div class="right">
+						<img src="data/canvas.png" alt="district image here" id="map">
+						<br>
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="columns">
 						<div id="graphic">
 							<div id="cluster">
 								<h2>Gebäudecluster</h2>
@@ -139,46 +149,35 @@
 						</div>
 					</div>
 					<div class="right">
-						<img src="data/canvas.png" alt="district image here" id="map">
-					</div>
-				</div>
-				<div class="bottom">
-					<div id="simulation_template" class='template'>
-						<div class="simulation">
-							<div class="middle">
-								<p></p>
-								<!-- <div class="CO2">CO2-Emission: <br><span>y</span></div> -->
-								<!-- <div class="Technologie">Technologie: <br><span>z</span></div> -->
-								<!-- <div class="connection_speed">Anschlussquote: <br><span>n</span>/Jahr</div> -->
-								<!-- <div class="number_of_connections">Wärmenetz-Anschluss: <br><span>a</span></div> -->
-								<!-- <div class="renovation_cost">Sanierungskosten: <br><span>$n</span> €</div> -->
+						<div id="simulation_area">
+							<div id="simulation_template" class='template'>
+								<div class="simulation">
+										<p></p>
+										<div class="Jahr">$year</div>
+										<div class="active_scenario">
+											<center>Szenario: <span>$x</span></center>
+										</div>
+								</div>
+
 							</div>
-							<div class="right">
-								<div class="Jahr">$year</div>
-								<div class="active_scenario"><center>Szenario: <span>$x</span></center></div>
-							</div>
-							<!-- tmp -->
-							<!-- <div class="slider">
-		      Slider: <div class="Selection"></div>
-		      </div> -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="simulationMode" style="display:none;">
 			<div class="left">
-				<!-- <div id="clusterSimulation"> -->
-				<!-- </div> -->
 				<p></p>
-				<!-- line plots from clusters -->
 			</div>
 			<div class="main">
 				<div class="middle">
 					<!-- <div id="quartierSimulation">
 					</div> -->
 					<!-- four line plots -->
-					<center><h1>Simulation is running...</h1></center>
+					<center>
+						<h1>Simulation is running...</h1>
+					</center>
 				</div>
 				<div class="right">
 					<img src="data/canvas.png" alt="" id="map">

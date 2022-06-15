@@ -35,6 +35,7 @@ const CHART_MARGIN = ({
 const EASE_STYLE = d3.easeCubicOut,
   ANIMATION_TIME = 2000;
 
+// bar charts displaying aggregated heat and electricity data:
 const updateClusterCharts = (clusterData) => {
   if (!clusterData) {
     return;
@@ -327,8 +328,8 @@ const horizontalBarChart = function(data, config) {
 // parse "clusters" from incoming json and replace elements in html
 const renderHouseInfo = function(data) {
 
-  const left = document.getElementsByClassName("left")[0];
-  left.innerHTML = ""; // clear div before append new
+  const columns = document.getElementsByClassName("columns")[0];
+  columns.innerHTML = ""; // clear div before append new
 
   if (data == null) return;
   for (var i = 0; i < data.length; i++) {
@@ -337,31 +338,27 @@ const renderHouseInfo = function(data) {
 
     div.className = "meta";
     div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
-    div.className += h.electricity_supplier == "green" ? " green" : (h.electricity_supplier == "mix" ? " mix" : " gray");
+    div.className += h.environmental_engagement > 0.7 ? " green" : (h.environmental_engagement <= 0.7 && h.environmental_engagement > 0.3 ? " mix" : " gray");
 
     let template = document.getElementById("meta_template").innerHTML;
     template = template.replace("$Adresse", h.address);
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    template = template.replace("$e", h.CO2.toFixed(3));
-    template = template.replace("$v_s", h["spec_power_consumption"].toFixed(0));
-    template = template.replace("$v_w", h["spec_heat_consumption"].toFixed(0));
-    template = template.replace("$e", h["environmental_engagement"].toFixed(2));
+    template = template.replace("$e", h.environmental_engagement.toFixed(2));
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
     let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
     template = template.replace("$c", connection_to_heat_grid);
-    template = template.replace("$n", h["renovation_cost"]);
     div.innerHTML = template;
-    left.append(div);
+    columns.append(div);
   }
 }
 
 // ---------------------- global environment variables ----------------
 /* at the bottom of the page */
 const renderSimulationVariables = function(data) {
-  const bottom = document.getElementsByClassName("bottom")[0];
+  const bottom = document.getElementById("simulation_area");
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
   template = template.replace("$x", data.co2);
