@@ -62,6 +62,8 @@ const displayDataViewMode = function(){
     $(".input_households").hide();
     $(".simulationMode").hide();
     $(".dataViewMode").show();
+    initDataViewContent();
+    updateSimulationOutputs();
 }
 
 const switchUserMode = function(mode, questionID){
@@ -91,3 +93,20 @@ const switchUserMode = function(mode, questionID){
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
+
+//dev tool
+const initDataViewContent = function(){
+  $("#data_view_d3").hide();
+  $("#data_view_img").show();
+}
+
+const toggleDataViewContent = function(){
+  if($("#data_view_d3").is(":visible")){
+    $("#data_view_d3").hide();
+    $("#data_view_img").show();
+  } else {
+    $("#data_view_d3").show();
+    $("#data_view_img").hide();
+  }
+}
+

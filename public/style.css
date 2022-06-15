@@ -14,6 +14,14 @@
   }
 }
 
+/* Debugging: show divs */
+/* div{
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+} */
+
+/****************************** DOCUMENT ***************************/
 html,
 body {
   width: 100%;
@@ -50,44 +58,53 @@ body {
   background: black;
 }
 
-#infoscreen, .input_households, .simulationMode {
+/**************************** INFOSCREEN *****************************/
+#infoscreen,
+.input_households,
+.simulationMode {
   width: 100%;
   height: 100%;
   font-size: 18px;
 }
 
+#infoscreen .main {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
 #infoscreen .top {
   width: 100%;
-  height: 90%;
+  height: 70%;
 }
 
-#infoscreen .bottom {
-  width: 100%;
-  height: 10%;
-}
-
-#infoscreen .left {
+#infoscreen .columns {
   padding-top: 1%;
-  width: 21%;
+  width: 72%;
   height: 96%;
   float: left;
   overflow: hidden;
 }
 
-#infoscreen .main {
-  width: 79%;
-  height: 100%;
-  float: left;
+#infoscreen .bottom {
+  width: 100%;
+  height: 30%;
+  display: inline-block;
 }
 
-#infoscreen .middle {
-  width: 75%;
+#infoscreen .bottom .left {
+  width: 10%;
+  height: 30%;
+}
+
+#infoscreen .bottom .middle {
+  width: 40%;
   height: 100%;
   float: left;
 }
 
 #infoscreen .right {
-  width: 25%;
+  width: 20%;
   height: 100%;
   float: left;
 }
@@ -116,13 +133,14 @@ ul {
   list-style: none;
 }
 
-.template {
-  display: none;
+.meta {
+  display: inline-block;
+  padding: 5px 25px 10px;
 }
 
-.meta {
-  width: 100%;
-  padding: 5px 25px 10px;
+.template {
+  /* templates are invisible */
+  display: none;
 }
 
 .meta.connection_to_heat_grid .icon::before {
@@ -147,7 +165,7 @@ ul {
 }
 
 .meta .icon {
-  width: 20%;
+  width: 80px;
   float: left;
   vertical-align: middle;
 }
@@ -156,11 +174,11 @@ ul {
   filter: invert(54%) sepia(86%) saturate(500%) hue-rotate(94deg) brightness(103%) contrast(104%);
 }
 
-.meta.grey .icon {
+.meta.gray .icon {
   filter: invert(58%) sepia(5%) saturate(5%) hue-rotate(337deg) brightness(94%) contrast(86%);
 }
 
-.meta.greygreen .icon {
+.meta.graygreen .icon {
   filter: invert(35%) sepia(4%) saturate(3107%) hue-rotate(82deg) brightness(100%) contrast(95%);
 }
 
@@ -170,7 +188,7 @@ ul {
 }
 
 .meta .text {
-  width: 70%;
+  width: auto;
   float: left;
   display: inline-block;
   list-style-type: none;
@@ -183,7 +201,7 @@ ul {
 }
 
 .meta .text li {
-  padding: 0.1em;
+  INPUT ENVIRONMENT padding: 0.1em;
 }
 
 .simulation .Jahr {
@@ -222,38 +240,43 @@ ul {
 #graphic svg {
   margin: 0px 10px;
 }
-#quartierSimulation{
+
+#quartierSimulation {
   margin-top: 1em;
 }
+
 #quartierSimulation::after {
-   content: " ";
-   display: block;
-   height: 0;
-   clear: both;
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
 }
-#quartierSimulation svg{
-  float:left;
+
+#quartierSimulation svg {
+  float: left;
   margin: 10px;
 }
+
 .line {
   fill: none;
   stroke-width: 1px;
-  }
+}
 
 .area {
   fill: #e8eef4;
 }
 
-g#xAxisG text, g#yAxisG text {
-	stroke: none;
-	fill: silver;
-	font-size: 9px;
+g#xAxisG text,
+g#yAxisG text {
+  stroke: none;
+  fill: silver;
+  font-size: 9px;
 }
 
-/* questionnaire*/
+/*************************** QUESTIONNAIRE **************************/
 @font-face {
-    font-family: "LibertinusSerif-Italic";
-    src: url("lib/LibertinusSerif-Italic.otf") format("opentype");
+  font-family: "LibertinusSerif-Italic";
+  src: url("lib/LibertinusSerif-Italic.otf") format("opentype");
 }
 
 #questionText {
@@ -271,46 +294,50 @@ g#xAxisG text, g#yAxisG text {
 }
 
 .questionAnswers div {
-    border-style: solid;
-    border-width: 3px;
-    margin: 100px;
-    width: 100px;
-    height: 100px;
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border-style: solid;
+  border-width: 3px;
+  margin: 100px;
+  width: 100px;
+  height: 100px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .questionAnswerYesActive {
-    color: greenyellow;
-    border-width: 5px !important;
+  color: greenyellow;
+  border-width: 5px !important;
 }
+
 .questionAnswerNoActive {
-    color: red;
-    border-width: 5px !important;
+  color: red;
+  border-width: 5px !important;
 }
+
 .questionAnswers {
   color: gray;
   border-color: gray;
 }
 
-/* Input Mode 1: Environment */
-.input_scenarios .scenario{
+/**************************** INPUT ENVIRONMENT ***********************/
+.input_scenarios .scenario {
   width: 25%;
+  height: 100%;
   border: solid;
   display: table-cell;
   text-align: center;
 }
 
-.input_scenarios .scenario .active{
+.input_scenarios .scenario .active {
   border-color: goldenrod;
 }
 
-/* data view mode*/
+/********************************* DATA VIEW *************************/
 .dataViewMode {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 3fr 2fr ;
+  grid-template-columns: 3fr 2fr;
   /* grid-template-rows: repeat(2, [row] auto  ); */
   /* background-color: #fff; */
   /* color: #444; */
@@ -356,9 +383,7 @@ g#xAxisG text, g#yAxisG text {
   grid-template-rows: 1fr 1fr;
 }
 
-.houseHoldEnergyData {
-
-}
+.houseHoldEnergyData {}
 
 .houseHoldEnergyEfficiency {
   display: inline-block;
@@ -366,7 +391,7 @@ g#xAxisG text, g#yAxisG text {
 
 .houseHoldEnergyEfficiency img {
   width: 25px;
-  filter:invert(1)
+  filter: invert(1)
 }
 
 .houseHoldIsHeizung {
