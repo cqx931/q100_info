@@ -15,11 +15,11 @@
 }
 
 /* Debugging: show divs */
-/* div{
+div{
   border-width: 1px;
   border-color: white;
   border-style: solid;
-} */
+}
 
 /****************************** DOCUMENT ***************************/
 html,
@@ -335,12 +335,34 @@ g#yAxisG text {
 
 /********************************* DATA VIEW *************************/
 .dataViewMode {
-  display: grid;
+  /* display: grid; */
   grid-gap: 10px;
   grid-template-columns: 3fr 2fr;
   /* grid-template-rows: repeat(2, [row] auto  ); */
   /* background-color: #fff; */
   /* color: #444; */
+}
+
+.dataview_wrapper{
+  /* display: inline-block; */
+  width: 100%;
+}
+
+.dataViewMode .graphs_wrapper{
+  width: 45vw;
+  height: 45vh;
+  display: inline-block;
+  background-color: black;
+}
+
+.dataViewMode .graph{
+  width: 30%;
+  display: inline-block;
+}
+
+.dataViewMode .graph img{
+  width: 100%;
+  background-size: contain;
 }
 
 .box {
