@@ -5,6 +5,8 @@ document.addEventListener('keydown', function (event) {
     const nextUserMode = calculateNextUserMode(currentUserMode)
     switchUserMode(nextUserMode, getRandomInt(5));
     currentUserMode = nextUserMode
+  } else if (event.key == "d") { //d for dataview
+    toggleDataViewContent()
   }
 });
 
