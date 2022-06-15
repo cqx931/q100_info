@@ -361,7 +361,7 @@ const renderSimulationVariables = function(data) {
   const bottom = document.getElementById("simulation_area");
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
-  template = template.replace("$x", data.co2);
+  template = template.replace("$x", data.active_scenario);
   bottom.innerHTML = template;
 }
 
