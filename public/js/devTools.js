@@ -16,3 +16,9 @@ function calculateNextUserMode(currentUserMode){
   const nextUserModeIndex = (currentUserModeIndex + 1) % userModes.length
   return userModes[nextUserModeIndex]
 }
+
+//jquery log function
+$.fn.log = function() {
+  console.log.apply(console, this);
+  return this;
+};

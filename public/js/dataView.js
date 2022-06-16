@@ -33,3 +33,18 @@ function updateSimulationOutputs() {
     document.getElementById('modernizationImage').src = "data/headless/output/snapshot/Modernizationnull-199.png?" +new Date().getTime();
     document.getElementById('neighborhoodImage').src = "data/headless/output/snapshot/neighborhoodnull-199.png?" +new Date().getTime();
 }
+
+function renewDataViewGAMAImgSrcPath(json) {
+    const arg = "iteration_round_" + json.iteration_round
+    GAMASimulationImgSrcPaths[arg] = json
+}
+
+function renewDataViewGAMAImgsPerSection(section_number) {
+    const sectionClassName = ".graphs_wrapper_" + section_number + " > div"
+    let image_index_counter = 0
+    $(sectionClassName).children().each(function () {
+        $(this).attr("src", GAMASimulationImgSrcPaths["iteration_round_" + section_number]["images"][image_index_counter])
+        image_index_counter ++
+    });
+}
+

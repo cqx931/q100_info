@@ -35,6 +35,10 @@ socket.on('message', function (message) {
       updateInputEnvironmentMode(scenario);
     }
     updateImage();
+    if (json.iteration_round) {
+      renewDataViewGAMAImgSrcPath(json)
+      renewDataViewGAMAImgsPerSection(json.iteration_round)
+    }
     previousMessage = message;
   }
 });
