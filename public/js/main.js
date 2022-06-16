@@ -37,7 +37,7 @@ socket.on('message', function (message) {
       const scenario = json.scenario;
       updateInputEnvironmentMode(scenario);
     }
-    updateImage();
+    updateMapImage();
     previousMessage = message;
   }
 });

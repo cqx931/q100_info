@@ -1,11 +1,16 @@
 // reload image
-function updateImage() {
+function updateMapImageTimed() {
   setTimeout(
     function () {
       document.getElementById('map').src = "data/canvas.png?update=" + +new Date();
     },
     1000);
 }
+
+function updateMapImage(){
+  document.getElementById('map').src = "data/canvas.png?update=" +new Date().getTime();
+}
+
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
