@@ -25,6 +25,7 @@ const removeHouseholdCards = function(){
     $('#householdDataChart').empty();
 }
 
+//dev function
 function updateSimulationOutputs() {
     document.getElementById('chartsImage').src = "data/headless/output/snapshot/Chartsnull-199.png?" +new Date().getTime();
     document.getElementById('emissionsCumulativeImage').src = "data/headless/output/snapshot/Emissions cumulativenull-199.png?" +new Date().getTime();
@@ -34,8 +35,8 @@ function updateSimulationOutputs() {
     document.getElementById('neighborhoodImage').src = "data/headless/output/snapshot/neighborhoodnull-199.png?" +new Date().getTime();
 }
 
-function renewDataViewGAMAImgSrcPath(json) {
-    const arg = "iteration_round_" + json.iteration_round
+function renewDataViewGAMAImgSrcPath(iteration_number, json) {
+    const arg = "iteration_round_" + iteration_number
     GAMASimulationImgSrcPaths[arg] = json
 }
 

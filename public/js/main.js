@@ -36,7 +36,7 @@ socket.on('message', function (message) {
     }
     updateImage();
     if (json.iteration_round) {
-      renewDataViewGAMAImgSrcPath(json)
+      renewDataViewGAMAImgSrcPath(json.iteration_round, json)
       renewDataViewGAMAImgsPerSection(json.iteration_round)
     }
     previousMessage = message;
@@ -86,6 +86,10 @@ function initialRender(){
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
+  // dev use sampleData/sampleGAMAImgSrcPaths 0-3 for rendering dataview 
+  // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
+  // renewDataViewGAMAImgSrcPath(sampleGAMAImgSrcPaths2.iteration_round, sampleGAMAImgSrcPaths2)
+  // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
 }
 
 initialRender()
