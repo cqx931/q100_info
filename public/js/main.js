@@ -34,12 +34,19 @@ socket.on('message', function (message) {
       const scenario = json.scenario;
       updateInputEnvironmentMode(scenario);
     }
-    updateImage();
+
     if (json.iteration_round) {
+      console.log("catch");
       renewDataViewGAMAImgSrcPath(json)
       renewDataViewGAMAImgsPerSection(json.iteration_round)
+      updateSimulationOutputs(json);
     }
+
+    updateImage();
+
     previousMessage = message;
+
+    console.log("message", message)
   }
 });
 

@@ -63,7 +63,7 @@ const displayDataViewMode = function(){
     $(".simulationMode").hide();
     $(".dataViewMode").show();
     initDataViewContent();
-    updateSimulationOutputs();
+    // updateSimulationOutputs();
 }
 
 const switchUserMode = function(mode, questionID){
