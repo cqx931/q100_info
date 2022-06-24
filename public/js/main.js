@@ -39,14 +39,12 @@ socket.on('message', function (message) {
       console.log("catch");
       renewDataViewGAMAImgSrcPath(json)
       renewDataViewGAMAImgsPerSection(json.iteration_round)
-      updateSimulationOutputs(json);
     }
 
+    if (json.iteration_images) updateSimulationOutputs(json);
     updateImage();
 
     previousMessage = message;
-
-    console.log("message", message)
   }
 });
 

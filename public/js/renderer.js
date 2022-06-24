@@ -45,7 +45,7 @@ const displayInputEnvironmentMode = function(){
 
 const updateInputEnvironmentMode = function(scenario){
   // TODO: add "active" class to input scenario; drop from all others
-  console.log(scenario);
+  // console.log(scenario);
 }
 
 const displaySimulationMode = function(){
