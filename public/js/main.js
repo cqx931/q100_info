@@ -38,12 +38,11 @@ socket.on('message', function (message) {
       updateInputEnvironmentMode(scenario);
     }
 
-    if (json.iteration_round) {
+    if (json.hasOwnProperty('iteration_round')) {
       renewDataViewGAMAImgSrcPath(json.iteration_round, json)
       renewDataViewGAMAImgsPerSection(json.iteration_round)
     }
 
-    if (json.iteration_images) updateSimulationOutputs(json);
     updateMapImage();
 
     previousMessage = message;
