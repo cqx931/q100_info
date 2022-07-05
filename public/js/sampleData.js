@@ -71,3 +71,14 @@ const districtData = [
     }
   }
 ]
+
+const sampleGAMAImgSrcPaths0 = 
+{'iteration_round': 0, 'images': ['data/headless/output_20220615_15-17-12/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/neighborhoodnull-9.png']}
+const sampleGAMAImgSrcPaths1 = 
+{'iteration_round': 1, 'images': ['data/headless/output_20220615_15-15-36/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/neighborhoodnull-9.png']}
+const sampleGAMAImgSrcPaths2 = 
+{'iteration_round': 2, 'images': ['data/headless/output_20220615_15-16-09/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/neighborhoodnull-9.png']}
+const sampleGAMAImgSrcPaths3 = 
+{'iteration_round': 3, 'images': ['data/headless/output_20220615_15-16-44/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/neighborhoodnull-9.png']}
+
+
