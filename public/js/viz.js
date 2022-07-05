@@ -1,332 +1,20 @@
 // reload image
-    function updateImage() {
-      setTimeout(
-        function () {
-          document.getElementById('map').src = "data/canvas.png?update=" + +new Date();
-        },
-        1000);
-    }
-
-//------------------------------ BAR CHARTS ---------------------------
-/* bar charts for energy consumption clustered (selected buildings) vs total*/
-
-// fetch data: clustered
-let clusterBefore = {
-  Energieverbrauch: {
-    "Strom": 103.159,
-    "Wärme": 720.3691
-  },
-  CO2: 3.459
-};
-let totalBefore = {
-  Energieverbrauch: {
-    "Strom": 1103.629,
-    "Wärme": 134720.5319
-  },
-  CO2: 30.459
-};
-
-const CHART_MARGIN = ({
-  top: 30,
-  right: 0,
-  bottom: 0,
-  left: 50
-});
-const EASE_STYLE = d3.easeCubicOut,
-  ANIMATION_TIME = 2000;
-
-// bar charts displaying aggregated heat and electricity data:
-const updateClusterCharts = (clusterData) => {
-  if (!clusterData) {
-    return;
-  }
-
-  const clusterDiv = document.getElementById("cluster");
-
-  while (clusterDiv.getElementsByTagName('svg').length > 0) {
-    clusterDiv.removeChild(clusterDiv.lastChild);
-  }
-
-  renderBarCharts(clusterData, clusterBefore, "Cluster", clusterDiv);
-  clusterBefore = clusterData;
+function updateMapImageTimed() {
+  setTimeout(
+    function () {
+      document.getElementById('map').src = "data/canvas.png?update=" + +new Date();
+    },
+    1000);
 }
 
-// fetch data: total
-const updateTotalCharts = (totalData) => {
-  if (!totalData) {
-    return;
-  }
-
-  const totalDiv = document.getElementById("total");
-
-  while (totalDiv.getElementsByTagName('svg').length > 0) {
-    totalDiv.removeChild(totalDiv.lastChild);
-  }
-
-  renderBarCharts(totalData, totalBefore, "Total", totalDiv);
-  totalBefore = totalData;
+function updateMapImage(){
+  document.getElementById('map').src = "data/canvas.png?update=" +new Date().getTime();
 }
 
-const renderBarCharts = (input, beforeInput, type, parentNode) => {
-  // calculate available space from element dimensions
-  let w = parseFloat(getComputedStyle(parentNode).width),
-    h = parseFloat(getComputedStyle(parentNode).height);
-  for (const child of parentNode.children) {
-    h -= parseFloat(getComputedStyle(child).height);
-  }
-
-  const CONFIG_Energie = {
-    width: w,
-    height: h * 2 / 3 - 10,
-    colors: ["gray", "orange"],
-    type: type,
-    title: "Energieverbrauch",
-    unit: "MWh"
-  };
-  const CONFIG_CO2 = {
-    width: w,
-    height: h / 3,
-    colors: ["gray", "orange"],
-    type: type,
-    title: "CO2",
-    unit: "tCO2"
-  };
-
-  if (beforeInput) {
-    CONFIG_CO2.before = {
-      total: beforeInput.CO2
-    };
-    CONFIG_Energie.before = beforeInput.Energieverbrauch;
-  }
-  const bar1 = stackableHorizontalBarChartWithGoal(formatData({
-      total: input.CO2
-    }), 0.65, CONFIG_CO2),
-    bar2 = horizontalBarChart(formatData(input.Energieverbrauch), CONFIG_Energie);
-
-  parentNode.append(bar1);
-  parentNode.append(bar2);
-}
-
-const stackableHorizontalBarChartWithGoal = function(data, goal, config) {
-  // config: w,h, color,title, unit
-  const w = config.width,
-    h = config.height,
-    margin = CHART_MARGIN;
-
-  const svg = d3.create("svg")
-    .attr("viewBox", [0, 0, w, h]);
-
-  if (config.title != null) {
-    svg.append("text")
-      .attr("class", "chart_title")
-      .attr("text-anchor", "left")
-      //.attr("transform", `translate(0,${h - margin.bottom})`)
-      .attr("x", 10)
-      .attr("y", 20)
-      .attr("fill", "#aaa")
-      .style("font-weight", "bold")
-      .text(config.title);
-  }
-
-  const total = d3.sum(data, d => d.value),
-    _data = groupData(data, total);
-
-  let x = d3.scaleLinear()
-    .domain([0, total])
-    .range([margin.left, w - margin.right]);
-
-  let y = d3.scaleBand()
-    .domain(d3.range(data.length))
-    .rangeRound([margin.top + 20, h - margin.bottom])
-    .padding(0.1);
-
-  const format = x.tickFormat(20, data.format);
-
-  let xAxis = g => g
-    .attr("transform", `translate(0,${margin.top + 20})`)
-    .call(d3.axisTop(x).ticks(w / 80, data.format))
-    .call(g => g.select(".domain").remove());
-
-  let yAxis = g => g
-    .call(g => g.append("text")
-      .attr("x", 10)
-      .attr("y", margin.top + 10)
-      .attr("font-size", 11)
-      .attr("fill", "currentColor")
-      .attr("text-anchor", "start")
-      .style("font-weight", "bold")
-      .attr("font-family", "sans-serif")
-      .text(config.unit));
-
-  //col
-  //TODO: stack
-  svg.append("g")
-    .selectAll("rect")
-    .data(_data)
-    .join("rect")
-    .attr("id", d => config.type + '_' + config.title + '_' + d.label)
-    .attr("x", d => x(d.cumulative))
-    .attr("y", y(0))
-    .attr("width", d => config.before == null ? x(d.value) - x(0) : x(config.before[d.label]) - x(0))
-    .attr("height", y.bandwidth())
-    .style('fill', (d, i) => config.colors[i])
-    .transition()
-    .ease(EASE_STYLE)
-    .duration(ANIMATION_TIME)
-    .attr("width", d => x(d.value) - x(0));
-
-  //text
-  svg.append("g")
-    .attr("fill", "white")
-    .attr("text-anchor", "end")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", 12)
-    .selectAll("text")
-    .data(data)
-    .join("text")
-    .attr("x", d => x(d.value))
-    .attr("y", y(0) + y.bandwidth() / 2)
-    .attr("dy", "0.35em")
-    .attr("dx", -4)
-    .text(d => format(d.value))
-    .call(text => text.filter(d => x(d.value) - x(0) < 20) // short bars
-      .attr("dx", +4)
-      .attr("fill", "white")
-      .attr("text-anchor", "start"));
-
-  // goal:
-  if (goal != null) {
-    svg.append("rect")
-      .attr("fill", "transparent")
-      .attr("stroke", "red")
-      .attr("x", 50)
-      .attr("y", y(0))
-      .attr("width", (w - margin.right - margin.left) * goal)
-      .attr("height", y.bandwidth());
-
-    svg.append("text")
-      .attr("fill", "red")
-      .attr("text-anchor", "middle")
-      .attr("font-family", "sans-serif")
-      .attr("font-size", 14)
-      .attr("font-weight", 600)
-      .text(goal * 100 + "%")
-      .attr("x", (w - margin.right - margin.left) * goal)
-      .attr("y", y(0) + y.bandwidth() / 2 + 7);
-  }
-  svg.append("g")
-    .call(xAxis);
-
-  //text label
-  svg.append("g").selectAll('.text-label')
-    .data(_data)
-    .join('text')
-    .attr('class', 'text-label')
-    .attr('text-anchor', 'middle')
-    .attr('x', d => x(d.cumulative) + x(d.value) / 2)
-    .attr('y', y(0) + y.bandwidth() + 15)
-    .attr("font-family", "sans-serif")
-    .attr("font-size", 12)
-    .style('fill', (d, i) => config.colors[i])
-    .text(d => d.label);
-
-  svg.append("g")
-    .call(yAxis);
-
-  return svg.node();
-}
-
-const horizontalBarChart = function(data, config) {
-  const w = config.width,
-    h = config.height,
-    margin = CHART_MARGIN,
-    svg = d3.create("svg")
-    .attr("viewBox", [0, 0, w, h]);
-
-  if (config.title != null) {
-    svg.append("text")
-      .attr("class", "chart_title")
-      .attr("text-anchor", "left")
-      //.attr("transform", `translate(0,${h - margin.bottom})`)
-      .attr("x", 10)
-      .attr("y", 20)
-      .attr("fill", "#aaa")
-      .style("font-weight", "bold")
-      .text(config.title);
-  }
-
-  let x = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.value)])
-    .range([margin.left, w - margin.right]);
-
-  let y = d3.scaleBand()
-    .domain(d3.range(data.length))
-    .rangeRound([margin.top + 20, h - margin.bottom])
-    .padding(0.1);
-
-  const format = x.tickFormat(20, data.format);
-
-  let xAxis = g => g
-    .attr("transform", `translate(0,${margin.top + 20})`)
-    .call(d3.axisTop(x).ticks(w / 80, data.format))
-    .call(g => g.select(".domain").remove());
-
-  let yAxis = g => g
-    .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y).tickFormat(i => data[i].name).tickSizeOuter(0))
-    .call(g => g.append("text")
-      .attr("x", -margin.left + 10)
-      .attr("y", margin.top + 10)
-      .attr("fill", "currentColor")
-      .attr("text-anchor", "start")
-      .style("font-weight", "bold")
-      .text(config.unit));
-
-  svg.append("g")
-    .selectAll("rect")
-    .data(data)
-    .join("rect")
-    .attr("id", d => config.type + '_' + config.title + '_' + d.name)
-    .attr("x", x(0))
-    .attr("y", (d, i) => y(i))
-    .attr("fill", (d, i) => config.colors[i])
-    .attr("width", d => config.before == null ? x(d.value) - x(0) : x(config.before[d.name]) - x(0))
-    .attr("height", y.bandwidth())
-    .transition()
-    .ease(EASE_STYLE)
-    .duration(ANIMATION_TIME)
-    .attr("width", d => x(d.value) - x(0));
-
-  svg.append("g")
-    .attr("fill", "white")
-    .attr("text-anchor", "end")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", 12)
-    .selectAll("text")
-    .data(data)
-    .join("text")
-    .attr("x", d => x(d.value))
-    .attr("y", (d, i) => y(i) + y.bandwidth() / 2)
-    .attr("dy", "0.35em")
-    .attr("dx", -4)
-    .text(d => format(d.value))
-    .call(text => text.filter(d => x(d.value) - x(0) < 20) // short bars
-      .attr("dx", +4)
-      .attr("fill", "white")
-      .attr("text-anchor", "start"));
-
-  svg.append("g")
-    .call(xAxis);
-
-  svg.append("g")
-    .call(yAxis);
-
-  return svg.node();
-}
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
-const renderHouseInfo = function(data) {
+const renderHouseInfo = function (data) {
 
   const columns = document.getElementsByClassName("columns")[0];
   columns.innerHTML = ""; // clear div before append new
@@ -357,7 +45,7 @@ const renderHouseInfo = function(data) {
 
 // ---------------------- global environment variables ----------------
 /* at the bottom of the page */
-const renderSimulationVariables = function(data) {
+const renderSimulationVariables = function (data) {
   const bottom = document.getElementById("simulation_area");
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
@@ -367,7 +55,7 @@ const renderSimulationVariables = function(data) {
 
 
 /******************************** SIMULATION *************************/
-const renderSimulationScreen = function(clusterData, districtData) {
+const renderSimulationScreen = function (clusterData, districtData) {
   // TODO: line plots of sum/selected houses, x axis - time
   // Exampels: Wärme
   renderClusterSimulations(clusterData);
@@ -379,103 +67,103 @@ const renderSimulationScreen = function(clusterData, districtData) {
   // https://bl.ocks.org/tomshanley/b841837f5414b34b7c45055d97e7674d
 }
 
-const renderClusterSimulations = function(data) {
+const renderClusterSimulations = function (data) {
   // TODO:
   data = formatSimulationData(data);
   renderMultipleLineCharts(data, "clusterSimulation")
 }
 
-const renderQuartierSimulations = function(data) {
+const renderQuartierSimulations = function (data) {
   const id = "quartierSimulation";
   const groupBy = "attribute"
 
   // Nest data by subject.
   const sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-    .key(function(d) {
+    .key(function (d) {
       return d[groupBy];
     })
     .entries(data);
   console.log("Quartier sumstat", sumstat)
-  const allKeys = sumstat.map(function(d){return d.key})
+  const allKeys = sumstat.map(function (d) { return d.key })
 
   // Styles
   const text_color = "gray",
-        chart_colors = ["red", "green","yellow","orange"];
+    chart_colors = ["red", "green", "yellow", "orange"];
   const font_size = 24;
 
   // set the dimensions and margins of the graph
   const margin = {
-      top: 20,
-      right: 15,
-      bottom: 20,
-      left: 40
-    },
+    top: 20,
+    right: 15,
+    bottom: 20,
+    left: 40
+  },
     width = 350 - margin.left - margin.right,
     height = 220 - margin.top - margin.bottom;
 
-    var svg = d3.select("#" + id)
+  var svg = d3.select("#" + id)
     .selectAll("uniqueChart")
     .data(sumstat)
     .enter()
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
     .append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform",
+      "translate(" + margin.left + "," + margin.top + ")");
 
-    // Add X axis --> it is a date format
-    var x = d3.scaleLinear()
-      .domain(d3.extent(data, function(d) { return d.step; }))
-      .range([ 0, width ]);
-    svg
-      .append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(3));
+  // Add X axis --> it is a date format
+  var x = d3.scaleLinear()
+    .domain(d3.extent(data, function (d) { return d.step; }))
+    .range([0, width]);
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(3));
 
-    //Add Y axis
-    var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) {
-        // TODO: different Y axis for different charts
-         return +d.value;
-       })])
-      .range([ height, 0 ]);
-    svg.append("g")
-      .call(d3.axisLeft(y).ticks(5));
+  //Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(data, function (d) {
+      // TODO: different Y axis for different charts
+      return +d.value;
+    })])
+    .range([height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y).ticks(5));
 
   var color = d3.scaleOrdinal()
     .domain(allKeys)
     .range(chart_colors);
 
   // Add path
-    svg.append("path")
-        .attr("fill", "none")
-        .attr("stroke", function(d){ return color(d.key) })
-        .attr("stroke-width", 1.9)
-        .attr("d", function(d){
-          return d3.line()
-            .x(function(d) { return x(d.step); })
-            .y(function(d) { return y(+d.value); })
-            (d.values)
-        })
+  svg.append("path")
+    .attr("fill", "none")
+    .attr("stroke", function (d) { return color(d.key) })
+    .attr("stroke-width", 1.9)
+    .attr("d", function (d) {
+      return d3.line()
+        .x(function (d) { return x(d.step); })
+        .y(function (d) { return y(+d.value); })
+        (d.values)
+    })
 
-    // Add titles
-    svg.append("text")
-      .attr("text-anchor", "start")
-      .attr("y", -5)
-      .attr("x", 0)
-      .text(function(d){ return(d.key)})
-      .style("fill", function(d){ return color(d.key)});
+  // Add titles
+  svg.append("text")
+    .attr("text-anchor", "start")
+    .attr("y", -5)
+    .attr("x", 0)
+    .text(function (d) { return (d.key) })
+    .style("fill", function (d) { return color(d.key) });
 }
 
-const renderMultipleLineCharts = function(data, id) {
+const renderMultipleLineCharts = function (data, id) {
   // Attributes to plot
   const attrs = ["CO2"];
   const groupBy = "address"
 
   // Nest data by subject.
   const sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
-    .key(function(d) {
+    .key(function (d) {
       return d[groupBy];
     })
     .entries(data);
@@ -483,28 +171,28 @@ const renderMultipleLineCharts = function(data, id) {
 
   // Styles
   const text_color = "gray",
-        line_colors = ["#8B0000", "green"];
+    line_colors = ["#8B0000", "green"];
   const font_size = 12;
 
   // set the dimensions and margins of the graph
   const margin = {
-      top: 8,
-      right: 15,
-      bottom: 20,
-      left: 40
-    },
+    top: 8,
+    right: 15,
+    bottom: 20,
+    left: 40
+  },
     width = 180 - margin.left - margin.right,
     height = 120 - margin.top - margin.bottom;
 
   const xScale = d3.scaleLinear()
     .range([0, width])
-    .domain(d3.extent(data, function(d) {
+    .domain(d3.extent(data, function (d) {
       return d.step;
     }));
 
   const yScale = d3.scaleLinear()
     .range([height, 0])
-    .domain([0, d3.max(data, function(d) {
+    .domain([0, d3.max(data, function (d) {
       return d[attrs[0]];
     })]);
 
@@ -525,16 +213,16 @@ const renderMultipleLineCharts = function(data, id) {
   // Add the line paths to each element
   for (var i = 0; i < attrs.length; i++) {
     const line = d3.line()
-      .x(function(d) {
+      .x(function (d) {
         return xScale(d.step);
       })
-      .y(function(d) {
+      .y(function (d) {
         return yScale(d[attrs[i]]);
       });
 
     svg.append("path")
       .attr("class", "line")
-      .attr("d", function(d) {
+      .attr("d", function (d) {
         return line(d.values);
       })
       .attr("stroke", line_colors[i]);
@@ -545,9 +233,9 @@ const renderMultipleLineCharts = function(data, id) {
     .attr("x", (width + 10) / 2)
     .attr("y", height - 85)
     .style("text-anchor", "middle")
-    .style("font-size", font_size+"px")
+    .style("font-size", font_size + "px")
     .attr("fill", text_color)
-    .text(function(d) {
+    .text(function (d) {
       return d.key;
     });
 
@@ -556,7 +244,7 @@ const renderMultipleLineCharts = function(data, id) {
     .attr("x", 0)
     .attr("y", height + 15)
     .style("text-anchor", "start")
-    .style("font-size", font_size+"px")
+    .style("font-size", font_size + "px")
     .attr("fill", text_color);
 
   svg.append("text")
@@ -564,7 +252,7 @@ const renderMultipleLineCharts = function(data, id) {
     .attr("x", width)
     .attr("y", height + 15)
     .style("text-anchor", "end")
-    .style("font-size", font_size+"px")
+    .style("font-size", font_size + "px")
     .attr("fill", text_color);
 
   //add y axes
@@ -575,7 +263,7 @@ const renderMultipleLineCharts = function(data, id) {
   // labels for all
   const labels = d3.select("#" + id).append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", attrs.length*font_size*1.5)
+    .attr("height", attrs.length * font_size * 1.5)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -585,15 +273,15 @@ const renderMultipleLineCharts = function(data, id) {
     labels.append("text")
       .text("— " + text)
       .attr("x", width)
-      .attr("y", i*font_size*1.5 + margin.top)
+      .attr("y", i * font_size * 1.5 + margin.top)
       .style("text-anchor", "end")
-      .style("font-size", font_size+"px")
+      .style("font-size", font_size + "px")
       .attr("fill", color);
   }
 }
 
 /**************************** Data Processing ************************/
-const formatQuartierSimulationData = function(data) {
+const formatQuartierSimulationData = function (data) {
   // input data type
   // [
   //   {
@@ -636,11 +324,11 @@ const formatQuartierSimulationData = function(data) {
       //console.log(each);
       returnValue.push(each)
     }
-    }
+  }
   return returnValue;
 }
 
-const formatSimulationData = function(data) {
+const formatSimulationData = function (data) {
   // Process simulation data to the format that d3 requires
   let newD = [];
   for (var i = 0; i < data.length; i++) {
@@ -659,28 +347,16 @@ const formatSimulationData = function(data) {
   }
   return newD;
 }
-const processData = function(json) {
+const processData = function (json) {
   let result = {
-    Energieverbrauch: { //in mwh
-      "Strom": 0,
-      "Wärme": 0,
-    },
-    CO2: {
-      "Strom": 0,
-      "Wärme": 0
-    },
+    connection_to_heat_grid: 0,
     year: 0
   };
 
-  const map = function(c) {
+  const map = function (c) {
     for (let key in c) {
-      if (key == "spec_heat_consumption" && c[key] != null) {
-        result.Energieverbrauch["Wärme"] += kwh2mwh(c[key]);
-        result.CO2["Wärme"] += getCo2(result.Energieverbrauch["Wärme"], "Wärme");
-      }
-      if (key == "spec_power_consumption" && c[key] != null) {
-        result.Energieverbrauch["Strom"] += kwh2mwh(c[key]);
-        result.CO2["Strom"] += getCo2(result.Energieverbrauch["Strom"], "Strom");
+      if (key == "connection_to_heat_grid" && c[key] != null) {
+        result.connection_to_heat_grid += c[key];
       }
 
       if (key == "year" && c[key] != null) {
@@ -702,7 +378,7 @@ const processData = function(json) {
   return result;
 }
 
-const groupData = function(data, total) {
+const groupData = function (data, total) {
   // use scale to get percent values
   const percent = d3.scaleLinear()
     .domain([0, total])
@@ -725,7 +401,7 @@ const groupData = function(data, total) {
   return _data;
 }
 
-const formatData = function(obj) {
+const formatData = function (obj) {
   let r = [];
   for (let key in obj) {
     r.push({
@@ -736,7 +412,7 @@ const formatData = function(obj) {
   return r;
 }
 
-const getCo2 = function(e, type) {
+const getCo2 = function (e, type) {
   let r = 0;
   if (type === "Strom") {
     r = e / 8 * 3; // der strommix bei ca 3000 kg(3 ton) Co2-äq / 8 MWh
@@ -746,6 +422,6 @@ const getCo2 = function(e, type) {
   return r;
 }
 
-const kwh2mwh = function(kwh) {
+const kwh2mwh = function (kwh) {
   return kwh / 1000;
 }

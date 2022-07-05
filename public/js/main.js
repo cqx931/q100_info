@@ -10,8 +10,11 @@ socket.on('message', function (message) {
   if (previousMessage != message) {
     const json = JSON.parse(message);
     console.log(json);
+
     const data = processData(json);
     updateClusterCharts(data);
+    // updateTotalCharts(data);
+
     if (json.clusters) renderHouseInfo(json.clusters);
 
     if (json.mode){
@@ -42,7 +45,7 @@ socket.on('message', function (message) {
     }
 
     if (json.iteration_images) updateSimulationOutputs(json);
-    updateImage();
+    updateMapImage();
 
     previousMessage = message;
   }
@@ -86,7 +89,7 @@ function initialRender(){
   console.log("simulation_df", simulation_df);
   console.log("questions", questions);
   updateClusterCharts(clusterBefore);
-  updateTotalCharts(totalBefore);
+  // updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo);
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, districtData);

@@ -13,6 +13,8 @@
 
 <body>
 	<div id="infoscreen">
+
+		<!--------------------- QUESTIONNAIRE MODE -------------------->
 		<div class="questionnaire">
 			<h1 id="questionText">sample question</h1>
 			<div class="questionAnswers">
@@ -21,7 +23,7 @@
 			</div>
 		</div>
 
-
+		<!----------------------- DATA VIEW MODE --------------------->
 		<div class="dataViewMode">
 			<div class="box houseHolds" id="data_view_d3">
 				<div class="box houseHold">
@@ -84,7 +86,7 @@
 			<!-- <div class="box leftSideData">Left side data</div> -->
 		</div>
 
-
+		<!-------------------- INPUT SCENARIOS MODE ------------------>
 		<div class="input_scenarios">
 			<div class="scenario" style="height: 300;">
 				<h2>A</h2>
@@ -137,6 +139,8 @@
 				</ul>
 			</div>
 		</div>
+
+		<!-------------------- INPUT HOUSEHOLDS MODE ----------------->
 		<div class="input_households">
 			<div class="main">
 				<div class="top">
@@ -166,11 +170,11 @@
 					<div class="columns">
 						<div id="graphic">
 							<div id="cluster">
-								<h2>Gebäudecluster</h2>
+								<h2>Gebäudeauswahl</h2>
 							</div>
-							<div id="total">
+							<!-- <div id="total">
 								<h2>Quartier gesamt</h2>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="right">
@@ -191,6 +195,7 @@
 			</div>
 		</div>
 
+		<!----------------------- SIMULATION MODE -------------------->
 		<div class="simulationMode" style="display:none;">
 			<div class="left">
 				<p></p>
@@ -204,9 +209,6 @@
 						<h1>Simulation is running...</h1>
 					</center>
 				</div>
-				<div class="right">
-					<img src="data/canvas.png" alt="" id="map">
-				</div>
 			</div>
 		</div>
 
@@ -219,6 +221,7 @@
 	<script src="js/sampleData.js" type="text/javascript"></script>
 	<script src="js/dataView.js" type="text/javascript"></script>
 	<script src="js/renderer.js" type="text/javascript"></script>
+	<script src="js/inputHouseholds.js" type="text/javascript"></script>
 	<script type="module" src="js/devTools.js" type="text/javascript"></script>
 	<script type="module" src="js/main.js" type="text/javascript"></script>
 </body>
