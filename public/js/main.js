@@ -11,12 +11,14 @@ socket.on('message', function (message) {
     const json = JSON.parse(message);
     console.log(json);
 
+    // households and cluster data:
     const data = processData(json);
     updateClusterCharts(data);
     // updateTotalCharts(data);
 
     if (json.clusters) renderHouseInfo(json.clusters);
 
+    // interaction mode:
     if (json.mode){
       const nextUserMode = json.mode;
 
@@ -33,16 +35,20 @@ socket.on('message', function (message) {
         }
       }
     }
+
+    // scenarios:
     if (json.active_scenario){
       const scenario = json.scenario;
       updateInputEnvironmentMode(scenario);
     }
 
+    // data view and iteration round:
     if (json.hasOwnProperty('iteration_round')) {
       renewDataViewGAMAImgSrcPath(json.iteration_round, json)
       renewDataViewGAMAImgsPerSection(json.iteration_round)
     }
 
+    // update canvas image
     updateMapImage();
 
     previousMessage = message;
