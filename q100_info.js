@@ -50,7 +50,7 @@ function initServer() {
   // set endpoint for .csv
   // see https://csv.js.org/parse/
   app.get('/api/GAMAData', (req, res) => {
-  res.sendFile(path.join(__dirname,  
+  res.sendFile(path.join(__dirname,
       "public/data/includes/csv_export/csv_export_test.csv"
     ))
   });
