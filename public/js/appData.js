@@ -7,6 +7,7 @@ let currentUserMode = 'input_scenarios';
 let simulation_df
 let questions
 let GAMAData
+let plotlyTestData
 let GAMASimulationImgSrcPaths = {
     "iteration_round_0": {'iteration_round': 0, 'iteration_images': []},
     "iteration_round_1": {'iteration_round': 1, 'iteration_images': []},

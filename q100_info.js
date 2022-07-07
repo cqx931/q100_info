@@ -32,7 +32,7 @@ function initServer() {
   app.listen(http_port);
 
   console.log('HTTP Server started at http://localhost:' + http_port);
-  
+
   // set endpoint for simulation_df
   // implemented for development purpose (in production mode, data should be handled only through socket)
   const simulation_df_json = loadAndParseJson("public/data/simulation_df.json");
@@ -46,14 +46,21 @@ function initServer() {
   app.get('/api/questions', (req, res) => {
     res.json(questions);
   });
-  
+
   // set endpoint for .csv
   // see https://csv.js.org/parse/
   app.get('/api/GAMAData', (req, res) => {
   res.sendFile(path.join(__dirname,
-      "public/data/includes/csv_export/csv_export_test.csv"
+      "public/data/includes/csv_export/test/csv_export_test.csv"
     ))
   });
+
+  app.get('/api/testData', (req, res) => {
+    res.sendFile(path.join(__dirname,
+        "public/data/testData.csv"
+      ))
+    });
+
 
   open('http://localhost:' + http_port);
 }

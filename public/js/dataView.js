@@ -5,6 +5,7 @@
 const createIndividualHouseholdCardChart = function(){
     const targetHTMLElement = "#householdDataChart"
     createD3BasicLineChart(targetHTMLElement)
+    createXYplotlyChart("#plotlyChart")
 }
 
 const createIndividualHousehouldCardTitleSection = function() {
