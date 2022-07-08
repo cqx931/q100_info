@@ -7,8 +7,8 @@ function updateMapImageTimed() {
     1000);
 }
 
-function updateMapImage(){
-  document.getElementById('map').src = "data/canvas.png?update=" +new Date().getTime();
+function updateMapImage() {
+  document.getElementById('map').src = "data/canvas.png?update=" + new Date().getTime();
 }
 
 
@@ -347,9 +347,12 @@ const formatSimulationData = function (data) {
   }
   return newD;
 }
+
+// -------------------- process incoming data ---------------
 const processData = function (json) {
   let result = {
     connection_to_heat_grid: 0,
+    clusters: [0, 1, 2],
     year: 0
   };
 
@@ -358,11 +361,15 @@ const processData = function (json) {
       if (key == "connection_to_heat_grid" && c[key] != null) {
         result.connection_to_heat_grid += c[key];
       }
+      else if (key == 'clusters' && c[key] != null) {
+        result.clusters = c[key];
+      }
 
-      if (key == "year" && c[key] != null) {
+      else if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (key == 'active_scenario' && c[key] != null) {
+      }
+      else if (key == 'active_scenario' && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }

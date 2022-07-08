@@ -3,7 +3,8 @@
 
 // fetch data: mockup data
 let clusterBefore = {
-    connection_to_heat_grid: 3.459
+    connection_to_heat_grid: 3.459,
+    clusters: [1, 2, 3]
   };
   let totalBefore = {
     connection_to_heat_grid: 30.459
@@ -18,8 +19,9 @@ let clusterBefore = {
   const EASE_STYLE = d3.easeCubicOut,
     ANIMATION_TIME = 2000;
 
-  // display bar charts
+  // --------------- households bar charts -------------------
   const updateClusterCharts = (clusterData) => {
+
     if (!clusterData) {
       return;
     }
@@ -34,7 +36,7 @@ let clusterBefore = {
     clusterBefore = clusterData;
   }
 
-  // fetch data: total
+  // -------------------- district bar charts ----------------
   const updateTotalCharts = (totalData) => {
     if (!totalData) {
       return;
@@ -52,6 +54,7 @@ let clusterBefore = {
 
   /*********************** RENDER BAR CHARTS *************************/
   const renderBarCharts = (input, beforeInput, type, parentNode) => {
+
     // calculate available space from element dimensions
     let w = parseFloat(getComputedStyle(parentNode).width),
       h = parseFloat(getComputedStyle(parentNode).height);
@@ -64,17 +67,19 @@ let clusterBefore = {
       height: h - 10,
       colors: ["gray", "orange"],
       type: type,
-      title: "Anschlussquote",
+      title: "Wärmenetzanschluss",
       unit: "%"
     };
 
     if (beforeInput) {
       CONFIG_connections.before = {
-        total: beforeInput.connection_to_heat_grid
+        total: input.clusters.length,
+        "Gebäudeauswahl": beforeInput.connection_to_heat_grid
       };
     }
     const bar1 = horizontalBarChart(formatData({
-      total: input.connection_to_heat_grid
+      // total: input.clusters.length,
+      "Gebäudeauswahl": input.connection_to_heat_grid
     }), CONFIG_connections);
 
     // const bar2 = stackableHorizontalBarChartWithGoal(formatData({
@@ -219,13 +224,16 @@ let clusterBefore = {
 
   /****************** SIMPLE HORIZONTAL BAR CHARTS *******************/
   const horizontalBarChart = function(data, config) {
+
+    console.log("input data for horizontal bar chart:", data)
+
     const w = config.width,
       h = config.height,
       margin = CHART_MARGIN,
       svg = d3.create("svg")
       .attr("viewBox", [0, 0, w, h]);
 
-    const fillColor = data.connection_to_heat_grid > 30 ? "#16af44" : "#aaaaaa";
+    let fillColor = data[0].value > 10 ? "#16af44" : "#aaaaaa";
 
     if (config.title != null) {
       svg.append("text")
@@ -234,13 +242,16 @@ let clusterBefore = {
         //.attr("transform", `translate(0,${h - margin.bottom})`)
         .attr("x", 10)
         .attr("y", 20)
-        .attr("fill", fillColor)
+        .attr("fill", "#ffffff")
         .style("font-weight", "bold")
-        .text(config.title);
+        .text(config.title); // heading: "Wärmenetzanschluss"
     }
 
+    const total = d3.sum(data, d => d.value),
+      _data = groupData(data, total);
+
     let x = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.value)])
+      .domain([0, 30]) // TODO: adjust width of y-axis according to num of selected buildings
       .range([margin.left, w - margin.right]);
 
     let y = d3.scaleBand()
@@ -255,6 +266,7 @@ let clusterBefore = {
       .call(d3.axisTop(x).ticks(w / 80, data.format))
       .call(g => g.select(".domain").remove());
 
+    // y-axis
     let yAxis = g => g
       .attr("transform", `translate(${margin.left},0)`)
       .call(d3.axisLeft(y).tickFormat(i => data[i].name).tickSizeOuter(0))
@@ -264,8 +276,9 @@ let clusterBefore = {
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
         .style("font-weight", "bold")
-        .text(config.unit));
+        .text(config.unit)); // "%"
 
+    // design the actual bar(s):
     svg.append("g")
       .selectAll("rect")
       .data(data)
@@ -273,7 +286,7 @@ let clusterBefore = {
       .attr("id", d => config.type + '_' + config.title + '_' + d.name)
       .attr("x", x(0))
       .attr("y", (d, i) => y(i))
-      .attr("fill", (d, i) => config.colors[i])
+      .attr("fill", fillColor)
       .attr("width", d => config.before == null ? x(d.value) - x(0) : x(config.before[d.name]) - x(0))
       .attr("height", y.bandwidth())
       .transition()
@@ -281,6 +294,7 @@ let clusterBefore = {
       .duration(ANIMATION_TIME)
       .attr("width", d => x(d.value) - x(0));
 
+    // show value in bar:
     svg.append("g")
       .attr("fill", "white")
       .attr("text-anchor", "end")
@@ -293,7 +307,7 @@ let clusterBefore = {
       .attr("y", (d, i) => y(i) + y.bandwidth() / 2)
       .attr("dy", "0.35em")
       .attr("dx", -4)
-      .text(d => format(d.value))
+      .text(d => format(d.value)) // bar value
       .call(text => text.filter(d => x(d.value) - x(0) < 20) // short bars
         .attr("dx", +4)
         .attr("fill", "white")

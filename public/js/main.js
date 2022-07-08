@@ -9,7 +9,8 @@ socket.on('message', function (message) {
   // only log if it's different
   if (previousMessage != message) {
     const json = JSON.parse(message);
-    console.log(json);
+
+    console.log("incoming message:", json);
 
     // households and cluster data:
     const data = processData(json);
