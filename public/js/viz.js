@@ -282,34 +282,6 @@ const renderMultipleLineCharts = function (data, id) {
 
 /**************************** Data Processing ************************/
 const formatQuartierSimulationData = function (data) {
-  // input data type
-  // [
-  //   {
-  //     "step": 0,
-  //     "attributes": {
-  //       "Verbrauch": 1000000,
-  //       "CO2": 10.813611631,
-  //       "Investment": 0.3,
-  //       "EEH": 0.4458936055
-  //     }
-  //   },
-  //   ...
-  // ]
-  //
-  // output data type
-  // [
-  //   {
-  //       "step": 0,
-  //       "attribute": "Verbrauch",
-  //       "value": 1000000
-  //   },
-  //   {
-  //       "step": 0,
-  //       "attribute": "CO2",
-  //       "value": 10.813611631
-  //   },
-  //   ...
-  // ]
 
   let returnValue = [];
   for (var i = 0; i < data.length; i++) {
@@ -347,6 +319,7 @@ const formatSimulationData = function (data) {
   }
   return newD;
 }
+
 const processData = function (json) {
   let result = {
     connection_to_heat_grid: 0,
