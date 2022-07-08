@@ -12,11 +12,9 @@ socket.on('message', function (message) {
     console.log(json);
 
     // households and cluster data:
-    // const data = processData(json);
-    updateClusterCharts(json);
+    const data = processData(json);
+    updateClusterCharts(data);
     // updateTotalCharts(data);
-
-    plotlyHorizontalBarChart(json)
 
     if (json.clusters) renderHouseInfo(json.clusters);
 
@@ -94,7 +92,6 @@ GAMAData = await fetchGAMAData()
 function initialRender(){
   console.log("simulation_df", simulation_df);
   console.log("questions", questions);
-  plotlyHorizontalBarChart(clusterBefore)
   updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo);
