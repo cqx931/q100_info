@@ -77,6 +77,12 @@ body {
   height: 96%;
   float: left;
   overflow: hidden;
+  display: inline-block;
+}
+
+#infoscreen .buildings_group {
+  display: inline-block;
+  width: 22%;
 }
 
 #infoscreen .bottom {

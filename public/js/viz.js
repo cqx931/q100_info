@@ -14,10 +14,11 @@ function updateMapImage() {
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
-const renderHouseInfo = function (data) {
+const renderHouseInfo = function (data, identifier) {
 
-  const columns = document.getElementsByClassName("columns")[0];
-  columns.innerHTML = ""; // clear div before append new
+  const column = document.getElementById(identifier);
+  column.innerHTML = ""; // clear div before append new
+  console.log(column)
 
   if (data == null) return;
   for (var i = 0; i < data.length; i++) {
@@ -39,7 +40,7 @@ const renderHouseInfo = function (data) {
     let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
     template = template.replace("$c", connection_to_heat_grid);
     div.innerHTML = template;
-    columns.append(div);
+    column.append(div);
   }
 }
 
