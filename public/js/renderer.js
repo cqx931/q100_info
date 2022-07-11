@@ -110,3 +110,12 @@ const toggleDataViewContent = function(){
   }
 }
 
+let verBoseMode = false
+const toggleVerboseMode = function(){
+  verBoseMode = !verBoseMode
+  if (verBoseMode)
+    $("div").css("border", "1px white solid")
+  else
+    $("div").css("border", "")
+}
+
