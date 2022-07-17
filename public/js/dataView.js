@@ -4,8 +4,7 @@
 
 const createIndividualHouseholdCardChart = function(){
     const targetHTMLElement = "#householdDataChart"
-    // createD3BasicLineChart(targetHTMLElement)
-    createD3MultipleLineChart(targetHTMLElement)
+    createD3BasicLineChart(targetHTMLElement)
 }
 
 const createIndividualHousehouldCardTitleSection = function() {
@@ -22,8 +21,17 @@ const createHouseholdCards = function (){
     createIndividualHouseholdCard()
 }
 
+const createEmissionComparisonChart = function (data_path_list){
+    const targetHTMLElement = "#emissionComparisonChart"
+    createD3MultipleLineChart(targetHTMLElement, data_path_list)
+}
+
 const removeHouseholdCards = function(){
     $('#householdDataChart').empty();
+}
+
+const removeEmissionComparisonChart = function(){
+    $('#emissionComparisonChart').empty();
 }
 
 function renewDataViewGAMAImgSrcPath(iteration_number, json) {
@@ -41,3 +49,13 @@ function renewDataViewGAMAImgsPerSection(section_number) {
     });
 }
 
+const injectDataToDataView = function(datas){
+    console.log(datas)
+    datas.forEach((data_per_iteration) => {
+        renewDataViewGAMAImgSrcPath(data_per_iteration.iteration_round, data_per_iteration)
+        console.log(GAMASimulationImgSrcPaths)
+        renewDataViewGAMAImgsPerSection(data_per_iteration.iteration_round)
+    });
+    removeEmissionComparisonChart()
+    createEmissionComparisonChart(datas[0].emissions_data_paths)
+}

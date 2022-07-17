@@ -72,13 +72,41 @@ const districtData = [
   }
 ]
 
-const sampleGAMAImgSrcPaths0 = 
-{'iteration_round': 0, 'images': ['data/headless/output_20220615_15-17-12/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/neighborhoodnull-9.png']}
-const sampleGAMAImgSrcPaths1 = 
-{'iteration_round': 1, 'images': ['data/headless/output_20220615_15-15-36/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/neighborhoodnull-9.png']}
-const sampleGAMAImgSrcPaths2 = 
-{'iteration_round': 2, 'images': ['data/headless/output_20220615_15-16-09/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/neighborhoodnull-9.png']}
-const sampleGAMAImgSrcPaths3 = 
-{'iteration_round': 3, 'images': ['data/headless/output_20220615_15-16-44/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/neighborhoodnull-9.png']}
+const sampleGAMAImgSrcPaths0 =
+  { 'iteration_round': 0, 'images': ['data/headless/output_20220615_15-17-12/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/neighborhoodnull-9.png'] }
+const sampleGAMAImgSrcPaths1 =
+  { 'iteration_round': 1, 'images': ['data/headless/output_20220615_15-15-36/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/neighborhoodnull-9.png'] }
+const sampleGAMAImgSrcPaths2 =
+  { 'iteration_round': 2, 'images': ['data/headless/output_20220615_15-16-09/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/neighborhoodnull-9.png'] }
+const sampleGAMAImgSrcPaths3 =
+  { 'iteration_round': 3, 'images': ['data/headless/output_20220615_15-16-44/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/neighborhoodnull-9.png'] }
 
 
+
+const sampleDataViewData = {
+  "data_view_data": [{
+    "iteration_round": 0,
+    "iteration_images": [
+      "data/headless/output_20220714_19-21-56/snapshot/Chartsnull-19.png",
+      "data/headless/output_20220714_19-21-56/snapshot/Emissions cumulativenull-19.png",
+      "data/headless/output_20220714_19-21-56/snapshot/Emissions per yearnull-19.png",
+      "data/headless/output_20220714_19-21-56/snapshot/households_employment_pienull-19.png",
+      "data/headless/output_20220714_19-21-56/snapshot/Modernizationnull-19.png",
+      "data/headless/output_20220714_19-21-56/snapshot/neighborhoodnull-19.png"
+    ],
+    "emissions_data_paths": [
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.51.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.09.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.14.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.19.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_3.04.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.58.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.54.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.03.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.57.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_1.03.csv",
+      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.13.csv"
+    ]
+  }
+  ]
+}

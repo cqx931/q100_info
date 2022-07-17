@@ -1,6 +1,6 @@
 // https://d3-graph-gallery.com/graph/line_several_group.html
 
-const createD3MultipleLineChart = function (targetSelector) {
+const createD3MultipleLineChart = function (targetSelector, data_path_list) {
     // const margin = { top: 10, right: 30, bottom: 30, left: 60 },
     //   width = 460 - margin.left - margin.right,
     //   height = 400 - margin.top - margin.bottom;
@@ -22,30 +22,28 @@ const createD3MultipleLineChart = function (targetSelector) {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    const file01 = "http://localhost:8000/data/includes/csv_export/emissions/csv_export_co2_graph_test_1.03.csv"
-    const file02 = "http://localhost:8000/data/includes/csv_export/emissions/csv_export_co2_graph_test_2.09.csv"
-    const file03 = "http://localhost:8000/data/includes/csv_export/emissions/csv_export_co2_graph_test_2.09.csv"
-    const file04 = "http://localhost:8000/data/includes/csv_export/emissions/csv_export_co2_graph_test_2.13.csv"
-    const file05 = "http://localhost:8000/data/includes/csv_export/emissions/csv_export_co2_graph_test_2.19.csv"
-
-
-    const files = [file01, file02, file03, file04, file05]
+    // const file01 = "data/includes/csv_export/emissions/emissions_20220714_19-21-56/csv_export_co2_graph_test_1.03.csv"
+    // const file02 = "data/includes/csv_export/emissions/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.09.csv"
+    // const file03 = "data/includes/csv_export/emissions/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.09.csv"
+    // const file04 = "data/includes/csv_export/emissions/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.13.csv"
+    // const file05 = "data/includes/csv_export/emissions/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.19.csv"
+    // const files = [file01, file02, file03, file04, file05]
+    const files = data_path_list
     const promises = [];
 
     let file_num = 0
-    files.forEach((f)=> {
+    files.forEach((file_path)=> {
         const file_num_temp = file_num // if you give file_num to each promise, when they are called, they're all incremented
         file_num++
+        file_path = addPathTolocalhost(file_path) //maybe not necessary
         promises.push(
-            d3.csv(f, function (d) {
+            d3.csv(file_path, function (d) {
                 const formatDate = d.current_date.match(/'([^']+)'/)[1].slice(0, 11)
                 return { date: d3.timeParse("%Y-%m-%d ")(formatDate), value: d.building_emissions, file_num: file_num_temp }
             }))
         }
     )
     Promise.all(promises).then(function (files) {
-        console.log(files)
-
         //make data flat
         let data = files.reduce((acc, curVal) => {
             return acc.concat(curVal)

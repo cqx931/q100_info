@@ -42,10 +42,11 @@ socket.on('message', function (message) {
       updateInputEnvironmentMode(scenario);
     }
 
+    // for updating imgs on data view after rendering at if(json.mode) section
+    // for updating multiLineGraph on data view after rendering at if(json.mode) section
     // data view and iteration round:
-    if (json.hasOwnProperty('iteration_round')) {
-      renewDataViewGAMAImgSrcPath(json.iteration_round, json)
-      renewDataViewGAMAImgsPerSection(json.iteration_round)
+    if (json.hasOwnProperty("data_view_data")) {
+      injectDataToDataView(json.data_view_data)
     }
 
     // update canvas image
@@ -102,6 +103,8 @@ function initialRender(){
   // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
   // renewDataViewGAMAImgSrcPath(sampleGAMAImgSrcPaths2.iteration_round, sampleGAMAImgSrcPaths2)
   // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
+  
+  injectDataToDataView(sampleDataViewData.data_view_data)
 }
 
 initialRender()
