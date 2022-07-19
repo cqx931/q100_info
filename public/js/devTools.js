@@ -8,6 +8,9 @@ document.addEventListener('keydown', function (event) {
   } else if (event.key == "d") { //d for dataview
     toggleDataViewContent()
   }
+  else if (event.key == "v") { //d for dataview
+    toggleVerboseMode()
+  }
 });
 
 function calculateNextUserMode(currentUserMode){

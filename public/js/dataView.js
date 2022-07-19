@@ -4,7 +4,8 @@
 
 const createIndividualHouseholdCardChart = function(){
     const targetHTMLElement = "#householdDataChart"
-    createD3BasicLineChart(targetHTMLElement)
+    // createD3BasicLineChart(targetHTMLElement)
+    createD3MultipleLineChart(targetHTMLElement)
 }
 
 const createIndividualHousehouldCardTitleSection = function() {

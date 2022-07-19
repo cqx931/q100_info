@@ -7,17 +7,18 @@ function updateMapImageTimed() {
     1000);
 }
 
-function updateMapImage(){
-  document.getElementById('map').src = "data/canvas.png?update=" +new Date().getTime();
+function updateMapImage() {
+  document.getElementById('map').src = "data/canvas.png?update=" + new Date().getTime();
 }
 
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
-const renderHouseInfo = function (data) {
+const renderHouseInfo = function (data, identifier) {
 
-  const columns = document.getElementsByClassName("columns")[0];
-  columns.innerHTML = ""; // clear div before append new
+  const column = document.getElementById(identifier);
+  column.innerHTML = ""; // clear div before append new
+  console.log(column)
 
   if (data == null) return;
   for (var i = 0; i < data.length; i++) {
@@ -39,7 +40,7 @@ const renderHouseInfo = function (data) {
     let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";
     template = template.replace("$c", connection_to_heat_grid);
     div.innerHTML = template;
-    columns.append(div);
+    column.append(div);
   }
 }
 
@@ -347,9 +348,12 @@ const formatSimulationData = function (data) {
   }
   return newD;
 }
+
+// -------------------- process incoming data ---------------
 const processData = function (json) {
   let result = {
     connection_to_heat_grid: 0,
+    clusters: [0, 1, 2],
     year: 0
   };
 
@@ -358,11 +362,15 @@ const processData = function (json) {
       if (key == "connection_to_heat_grid" && c[key] != null) {
         result.connection_to_heat_grid += c[key];
       }
+      else if (key == 'clusters' && c[key] != null) {
+        result.clusters = c[key];
+      }
 
-      if (key == "year" && c[key] != null) {
+      else if (key == "year" && c[key] != null) {
         result.year += c[key];
         document.querySelector(".Jahr").innerHTML = result.year;
-      } else if (key == 'active_scenario' && c[key] != null) {
+      }
+      else if (key == 'active_scenario' && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
       }

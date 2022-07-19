@@ -14,13 +14,6 @@
   }
 }
 
-/* Debugging: show divs */
-/* div{
-  border-width: 1px;
-  border-color: white;
-  border-style: solid;
-} */
-
 /****************************** DOCUMENT ***************************/
 html,
 body {
@@ -84,6 +77,12 @@ body {
   height: 96%;
   float: left;
   overflow: hidden;
+  display: inline-block;
+}
+
+#infoscreen .buildings_group {
+  display: inline-block;
+  width: 22%;
 }
 
 #infoscreen .bottom {
@@ -201,7 +200,7 @@ ul {
 }
 
 .meta .text li {
-  INPUT ENVIRONMENT padding: 0.1em;
+   padding: 0.1em;
 }
 
 .simulation .Jahr {
@@ -324,7 +323,6 @@ g#yAxisG text {
 .input_scenarios .scenario {
   width: 25%;
   height: 100%;
-  border: solid;
   display: table-cell;
   text-align: center;
 }
