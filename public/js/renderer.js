@@ -67,7 +67,7 @@ const displayDataViewMode = function(){
 }
 
 const switchUserMode = function(mode, questionID){
-  //Todo: wrap in resetAnswer function
+  // TODO: wrap in resetAnswer function
   grayoutAnswerYes()
   grayoutAnswerNo()
   if (mode == 'simulation'){
@@ -94,7 +94,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-//dev tool
+////////////////////////// dev tools //////////////////////////
 const initDataViewContent = function(){
   $("#data_view_d3").hide();
   $("#data_view_img").show();
