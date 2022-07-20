@@ -17,16 +17,20 @@ socket.on('message', function (message) {
     updateClusterCharts(data);
     // updateTotalCharts(data);
 
-    if (json.clusters) renderHouseInfo(json.clusters);
+    // if (json.hasOwnProperty('clusters')) renderHouseInfo(json.clusters);
+    if (json.hasOwnProperty('group_0')) renderHouseInfo(json.group_0, "buildings_group_0");
+    if (json.hasOwnProperty('group_1')) renderHouseInfo(json.group_1, "buildings_group_1");
+    if (json.hasOwnProperty('group_2')) renderHouseInfo(json.group_2, "buildings_group_2");
+    if (json.hasOwnProperty('group_3')) renderHouseInfo(json.group_3, "buildings_group_3");
 
     // interaction mode:
-    if (json.mode){
+    if (json.hasOwnProperty('mode')){
       const nextUserMode = json.mode;
 
       //ToDo: get question number from UDP
       switchUserMode(nextUserMode, getRandomInt(5));
 
-      if (json.answer){
+      if (json.hasOwnProperty('answer')){
         const answer = json.answer
         //Todo make a function to judge this condition
         if (answer == "yes") {
@@ -38,7 +42,7 @@ socket.on('message', function (message) {
     }
 
     // scenarios:
-    if (json.active_scenario){
+    if (json.hasOwnProperty('active_scenario')){
       const scenario = json.scenario;
       updateInputEnvironmentMode(scenario);
     }
@@ -96,7 +100,10 @@ function initialRender(){
   console.log("questions", questions);
   updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
-  renderHouseInfo(sampleHouseInfo);
+  renderHouseInfo(sampleHouseInfo, "buildings_group_0");
+  renderHouseInfo(sampleHouseInfo, "buildings_group_1");
+  renderHouseInfo(sampleHouseInfo, "buildings_group_2");
+  renderHouseInfo(sampleHouseInfo, "buildings_group_3");
   renderSimulationVariables(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
