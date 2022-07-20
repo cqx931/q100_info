@@ -17,11 +17,12 @@ socket.on('message', function (message) {
     updateClusterCharts(data);
     // updateTotalCharts(data);
 
-    // if (json.hasOwnProperty('clusters')) renderHouseInfo(json.clusters);
-    if (json.hasOwnProperty('group_0')) renderHouseInfo(json.group_0, "buildings_group_0");
-    if (json.hasOwnProperty('group_1')) renderHouseInfo(json.group_1, "buildings_group_1");
-    if (json.hasOwnProperty('group_2')) renderHouseInfo(json.group_2, "buildings_group_2");
-    if (json.hasOwnProperty('group_3')) renderHouseInfo(json.group_3, "buildings_group_3");
+    if (json.hasOwnProperty('buildings_groups')){
+      if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "buildings_group_0");
+       if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "buildings_group_1");
+       if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "buildings_group_2");
+       if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "buildings_group_3");
+    }
 
     // interaction mode:
     if (json.hasOwnProperty('mode')){
@@ -110,6 +111,8 @@ function initialRender(){
   // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
   // renewDataViewGAMAImgSrcPath(sampleGAMAImgSrcPaths2.iteration_round, sampleGAMAImgSrcPaths2)
   // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
+
+  injectDataToDataView(sampleDataViewData.data_view_data)
 }
 
 initialRender()

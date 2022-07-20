@@ -242,8 +242,6 @@ let clusterBefore = {
   /****************** SIMPLE HORIZONTAL BAR CHARTS *******************/
   const horizontalBarChart = function(data, config) {
 
-    console.log("input data for horizontal bar chart:", data)
-
     const w = config.width,
       h = config.height,
       margin = CHART_MARGIN,

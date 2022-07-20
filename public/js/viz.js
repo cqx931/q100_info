@@ -396,7 +396,6 @@ const processData = function (json) {
     map(json)
   }
 
-  console.log("result", result)
   return result;
 }
 
