@@ -395,6 +395,7 @@ const processData = function (json) {
   } else {
     map(json)
   }
+  if (json.hasOwnProperty("buildings_groups")) map(json.buildings_groups)
 
   return result;
 }
