@@ -4,7 +4,10 @@
 // fetch data: mockup data
 let clusterBefore = {
     connection_to_heat_grid: 3.459,
-    clusters: [1, 2, 3]
+    group_0: [1, 2, 3],
+    group_1: [1, 2, 3],
+    group_2: [1, 2, 3],
+    group_3: [1, 2, 3]
   };
   let totalBefore = {
     connection_to_heat_grid: 30.459
@@ -73,13 +76,27 @@ let clusterBefore = {
 
     if (beforeInput) {
       CONFIG_connections.before = {
-        total: input.clusters.length,
-        "Gebäudeauswahl": beforeInput.connection_to_heat_grid
+       total_0: input.group_0.length,
+       total_1: input.group_1.length,
+       total_2: input.group_2.length,
+       total_3: input.group_3.length,
+       "1": beforeInput.connection_to_heat_grid,
+       "2": beforeInput.connection_to_heat_grid,
+       "3": beforeInput.connection_to_heat_grid,
+       "4": beforeInput.connection_to_heat_grid
       };
     }
     const bar1 = horizontalBarChart(formatData({
       // total: input.clusters.length,
-      "Gebäudeauswahl": input.connection_to_heat_grid
+      "Gebäudeauswahl": input.connection_to_heat_grid,
+      // "Gebäudeauswahl": input.connection_to_heat_grid
+
+      // must be something like
+      // "1": input.group_0.connection_to_heat_grid
+      "1": input.group_0.connections,
+      "2": input.group_1.connections,
+      "3": input.group_2.connections,
+      "4": input.group_3.connections
     }), CONFIG_connections);
 
     // const bar2 = stackableHorizontalBarChartWithGoal(formatData({

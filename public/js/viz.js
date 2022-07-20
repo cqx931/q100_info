@@ -14,15 +14,16 @@ function updateMapImage() {
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
-const renderHouseInfo = function (data, identifier) {
+const renderHouseInfo = function (groupData, identifier) {
 
   const column = document.getElementById(identifier);
   column.innerHTML = ""; // clear div before append new
-  console.log(column)
 
-  if (data == null) return;
-  for (var i = 0; i < data.length; i++) {
-    const h = data[i];
+  groupData = groupData.buildings;
+
+  if (groupData == null) return;
+  for (var i = 0; i < groupData.length; i++) {
+    const h = groupData[i];
     const div = document.createElement("div");
 
     div.className = "meta";
@@ -353,7 +354,10 @@ const formatSimulationData = function (data) {
 const processData = function (json) {
   let result = {
     connection_to_heat_grid: 0,
-    clusters: [0, 1, 2],
+    group_0: [0, 1, 2],
+    group_1: [0, 1, 2],
+    group_2: [0, 1, 2],
+    group_3: [0, 1, 2],
     year: 0
   };
 
@@ -362,8 +366,17 @@ const processData = function (json) {
       if (key == "connection_to_heat_grid" && c[key] != null) {
         result.connection_to_heat_grid += c[key];
       }
-      else if (key == 'clusters' && c[key] != null) {
-        result.clusters = c[key];
+      else if (key == 'group_0' && c[key] != null) {
+        result.group_0 = c[key];
+      }
+      else if (key == 'group_1' && c[key] != null) {
+        result.group_1 = c[key];
+      }
+      else if (key == 'group_2' && c[key] != null) {
+        result.group_2 = c[key];
+      }
+      else if (key == 'group_3' && c[key] != null) {
+        result.group_3 = c[key];
       }
 
       else if (key == "year" && c[key] != null) {
@@ -383,6 +396,7 @@ const processData = function (json) {
     map(json)
   }
 
+  console.log("result", result)
   return result;
 }
 
