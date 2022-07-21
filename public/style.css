@@ -73,7 +73,7 @@ body {
 
 #infoscreen .columns {
   padding-top: 1%;
-  width: 72%;
+  width: 79%;
   height: 96%;
   float: left;
   overflow: hidden;
@@ -82,7 +82,8 @@ body {
 
 #infoscreen .buildings_group {
   display: inline-block;
-  width: 22%;
+  vertical-align: top;
+  width: 24%;
 }
 
 #infoscreen .bottom {
@@ -134,7 +135,7 @@ ul {
 
 .meta {
   display: inline-block;
-  padding: 5px 25px 10px;
+  padding: 5px 10px 10px;
 }
 
 .template {
