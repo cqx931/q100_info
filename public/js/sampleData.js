@@ -87,25 +87,25 @@ const sampleDataViewData = {
   "data_view_data": [{
     "iteration_round": 0,
     "iteration_images": [
-      "data/headless/output_20220714_19-21-56/snapshot/Chartsnull-19.png",
-      "data/headless/output_20220714_19-21-56/snapshot/Emissions cumulativenull-19.png",
-      "data/headless/output_20220714_19-21-56/snapshot/Emissions per yearnull-19.png",
-      "data/headless/output_20220714_19-21-56/snapshot/households_employment_pienull-19.png",
-      "data/headless/output_20220714_19-21-56/snapshot/Modernizationnull-19.png",
-      "data/headless/output_20220714_19-21-56/snapshot/neighborhoodnull-19.png"
+      "data/headless/output/snapshot/Chartsnull-9495.png",
+      "data/headless/output/snapshot/Emissions cumulativenull-9495.png",
+      "data/headless/output/snapshot/Emissions per yearnull-9495.png",
+      "data/headless/output/snapshot/households_employment_pienull-9495.png",
+      "data/headless/output/snapshot/Modernizationnull-9495.png",
+      "data/headless/output/snapshot/neighborhoodnull-9495.png"
     ],
     "emissions_data_paths": [
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.51.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.09.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.14.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.19.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_3.04.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.58.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.54.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.03.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_7.57.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_1.03.csv",
-      "data/includes/csv_export/emissions_20220714_19-21-56/csv_export_co2_graph_test_2.13.csv"
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.51.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_2.09.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.14.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_2.19.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_3.04.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.58.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.54.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.03.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.57.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_1.03.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_2.13.csv"
     ]
   }
   ]

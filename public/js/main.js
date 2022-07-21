@@ -111,8 +111,8 @@ function initialRender(){
   // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
   // renewDataViewGAMAImgSrcPath(sampleGAMAImgSrcPaths2.iteration_round, sampleGAMAImgSrcPaths2)
   // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
-  
-  injectDataToDataView(sampleDataViewData.data_view_data)
+
+  // injectDataToDataView(sampleDataViewData.data_view_data)
 }
 
 initialRender()
