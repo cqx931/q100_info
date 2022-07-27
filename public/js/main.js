@@ -47,7 +47,8 @@ socket.on('message', function (message) {
     // scenarios:
     if (json.hasOwnProperty('active_scenario')){
       const scenario = json.scenario;
-      updateInputEnvironmentMode(scenario);
+      // updateInputEnvironmentMode(scenario);
+      renderSimulationVariables(processData(json));
     }
 
     // for updating imgs on data view after rendering at if(json.mode) section

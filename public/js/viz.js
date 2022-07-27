@@ -379,10 +379,10 @@ const processData = function (json) {
         result.group_3 = c[key];
       }
 
-      else if (key == "year" && c[key] != null) {
-        result.year += c[key];
-        document.querySelector(".Jahr").innerHTML = result.year;
-      }
+      // else if (key == "year" && c[key] != null) {
+      //   result.year += c[key];
+      //   document.querySelector(".Jahr").innerHTML = result.year;
+      // }
       else if (key == 'active_scenario' && c[key] != null) {
         result[key] = c[key];
         document.querySelector("." + key + " span").innerHTML = c[key];
