@@ -73,13 +73,13 @@ const districtData = [
 ]
 
 const sampleGAMAImgSrcPaths0 =
-  { 'iteration_round': 0, 'images': ['data/headless/output_20220615_15-17-12/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-17-12/snapshot/neighborhoodnull-9.png'] }
+  { 'iteration_round': 0, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
 const sampleGAMAImgSrcPaths1 =
-  { 'iteration_round': 1, 'images': ['data/headless/output_20220615_15-15-36/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-15-36/snapshot/neighborhoodnull-9.png'] }
+  { 'iteration_round': 1, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
 const sampleGAMAImgSrcPaths2 =
-  { 'iteration_round': 2, 'images': ['data/headless/output_20220615_15-16-09/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-09/snapshot/neighborhoodnull-9.png'] }
+  { 'iteration_round': 2, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
 const sampleGAMAImgSrcPaths3 =
-  { 'iteration_round': 3, 'images': ['data/headless/output_20220615_15-16-44/snapshot/Chartsnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions cumulativenull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Emissions per yearnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/households_employment_pienull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/Modernizationnull-9.png', 'data/headless/output_20220615_15-16-44/snapshot/neighborhoodnull-9.png'] }
+  { 'iteration_round': 3, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
 
 
 
@@ -87,12 +87,12 @@ const sampleDataViewData = {
   "data_view_data": [{
     "iteration_round": 0,
     "iteration_images": [
-      "data/headless/output/snapshot/Chartsnull-9495.png",
-      "data/headless/output/snapshot/Emissions cumulativenull-9495.png",
-      "data/headless/output/snapshot/Emissions per yearnull-9495.png",
-      "data/headless/output/snapshot/households_employment_pienull-9495.png",
-      "data/headless/output/snapshot/Modernizationnull-9495.png",
-      "data/headless/output/snapshot/neighborhoodnull-9495.png"
+      "data/outputs/output/snapshot/Chartsnull-9495.png",
+      "data/outputs/output/snapshot/Emissions cumulativenull-9495.png",
+      "data/outputs/output/snapshot/Emissions per yearnull-9495.png",
+      "data/outputs/output/snapshot/households_employment_pienull-9495.png",
+      "data/outputs/output/snapshot/Modernizationnull-9495.png",
+      "data/outputs/output/snapshot/neighborhoodnull-9495.png"
     ],
     "emissions_data_paths": [
       "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.51.csv",
