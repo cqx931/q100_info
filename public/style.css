@@ -332,8 +332,19 @@ g#yAxisG text {
   border-color: goldenrod;
 }
 
+/****************************** TOTAL DATA VIEW *************************/
+.dataViewTotalMode.graphs_wrapper{
+  display: inline-block;
+  width: 48vw;
+  height: 48vh;
+}
+.dataViewTotalMode.graphs_wrapper.graph{
+  width: 100%;
+  display: inline-block;
+}
+
 /********************************* DATA VIEW *************************/
-.dataViewMode {
+.dataViewIndividualMode {
   /* display: grid; */
   grid-gap: 10px;
   grid-template-columns: 3fr 2fr;
@@ -347,19 +358,19 @@ g#yAxisG text {
   width: 100%;
 }
 
-.dataViewMode .graphs_wrapper{
+.graphs_wrapper{
   width: 45vw;
   height: 45vh;
   display: inline-block;
   background-color: black;
 }
 
-.dataViewMode .graph{
+.dataViewIndividualMode.graph{
   width: 30%;
   display: inline-block;
 }
 
-.dataViewMode .graph img{
+.graph img{
   width: 100%;
   background-size: contain;
 }
