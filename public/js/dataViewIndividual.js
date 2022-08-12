@@ -49,13 +49,13 @@ function renewDataViewGAMAImgsPerSection(section_number) {
     });
 }
 
-const injectDataToDataView = function(datas){
-    console.log(datas)
-    datas.forEach((data_per_iteration) => {
+const injectDataToDataView = function(data){
+    console.log(data)
+    data.forEach((data_per_iteration) => {
         renewDataViewGAMAImgSrcPath(data_per_iteration.iteration_round, data_per_iteration)
         console.log(GAMASimulationImgSrcPaths)
         renewDataViewGAMAImgsPerSection(data_per_iteration.iteration_round)
     });
     removeEmissionComparisonChart()
-    createEmissionComparisonChart(datas[0].emissions_data_paths)
+    createEmissionComparisonChart(data[0].emissions_data_paths)
 }

@@ -332,18 +332,36 @@ g#yAxisG text {
   border-color: goldenrod;
 }
 
-/****************************** TOTAL DATA VIEW *************************/
-.dataViewTotalMode.graphs_wrapper{
-  display: inline-block;
-  width: 48vw;
-  height: 48vh;
-}
-.dataViewTotalMode.graphs_wrapper.graph{
+/********************************* DATA VIEW ****************************/
+.dataview_wrapper{
+  /* display: inline-block; */
   width: 100%;
-  display: inline-block;
 }
 
-/********************************* DATA VIEW *************************/
+.graphs_wrapper{
+  width: 49.5%;
+  height: 45vh;
+  display: inline-block;
+  background-color: black;
+}
+
+.graph img{
+  width: 100%;
+  background-size: contain;
+}
+
+/****************************** TOTAL DATA VIEW *************************/
+.dataViewTotalMode .quarterSection{
+  display: inline-block;
+  width: 49.5%;
+  height: 48vh;
+}
+
+/* .dataViewTotalMode .graph img{
+  padding-top: 4%;
+} */
+
+/**************************** INDIVIDUAL DATA VIEW *************************/
 .dataViewIndividualMode {
   /* display: grid; */
   grid-gap: 10px;
@@ -353,26 +371,14 @@ g#yAxisG text {
   /* color: #444; */
 }
 
-.dataview_wrapper{
-  /* display: inline-block; */
-  width: 100%;
-}
-
-.graphs_wrapper{
-  width: 45vw;
-  height: 45vh;
-  display: inline-block;
-  background-color: black;
-}
-
-.dataViewIndividualMode.graph{
+.dataViewIndividualMode .graph{
   width: 30%;
   display: inline-block;
 }
 
-.graph img{
+.dataViewIndividualMode .graph img{
   width: 100%;
-  background-size: contain;
+  max-height: 24vh;
 }
 
 .box {
@@ -382,10 +388,10 @@ g#yAxisG text {
   padding: 20px;
 }
 
-.box .box {
+/* .box .box { */
   /* background-color: #ccc; */
   /* color: #444; */
-}
+/* } */
 
 .houseHolds {
   display: grid;
@@ -415,7 +421,7 @@ g#yAxisG text {
   grid-template-rows: 1fr 1fr;
 }
 
-.houseHoldEnergyData {}
+/* .houseHoldEnergyData {} */
 
 .houseHoldEnergyEfficiency {
   display: inline-block;
