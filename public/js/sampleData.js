@@ -86,7 +86,7 @@ const sampleGAMAImgSrcPaths3 =
 const sampleDataViewData = {
   "data_view_data": [{
     "iteration_round": 0,
-    "iteration_images": [
+    "gama_iteration_images": [
       "data/outputs/output/snapshot/Chartsnull-9495.png",
       "data/outputs/output/snapshot/Emissions cumulativenull-9495.png",
       "data/outputs/output/snapshot/Emissions per yearnull-9495.png",

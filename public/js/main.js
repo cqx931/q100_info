@@ -55,8 +55,11 @@ socket.on('message', function (message) {
     // for updating imgs on data view after rendering at if(json.mode) section
     // for updating multiLineGraph on data view after rendering at if(json.mode) section
     // data view and iteration round:
-    if (json.hasOwnProperty("data_view_data")) {
-      injectDataToDataView(json.data_view_data)
+    if (json.hasOwnProperty("data_view_individual_data")) {
+      injectDataToDataView(json.data_view_individual_data)
+    }
+    if (json.hasOwnProperty("matplotlib_images")) {
+      renewResultsImages(json.matplotlib_images)
     }
 
     // update canvas image
