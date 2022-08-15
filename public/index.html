@@ -27,6 +27,9 @@
 
 		<div class="dataViewTotalMode">
 			<div class="quarterSection">
+				<div class="headerImage">
+					<img src="img/header.png">
+				</div>
 				<center>
 					<h3 id="scenario_title">Szenario $s</h3>
 				</center>
@@ -244,16 +247,19 @@
 					</div>
 					<div class="right">
 						<div id="simulation_area">
-							<div id="simulation_template" class='template'>
-								<div class="simulation">
-									<p></p>
-									<!-- <div class="Jahr">$year</div> -->
-									<div class="active_scenario">
-										<center>Szenario: <span>$x</span></center>
-									</div>
+							<!-- <div id="simulation_template" class='template'> -->
+							<div class="simulation">
+								<p></p>
+								<!-- <div class="Jahr">$year</div> -->
+								<div class="active_scenario_handle">
+									<center>Szenario: <span>$x</span></center>
 								</div>
-
+								<div id="active_scenario_handle_template" class="template">
+									<center>Szenario: <span>$x</span></center>
+								</div>
 							</div>
+
+							<!-- </div> -->
 						</div>
 					</div>
 				</div>

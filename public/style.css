@@ -22,6 +22,7 @@ body {
   font-family: 'Franklin Gothic Medium', sans-serif;
   /* color: white; */
   font-size: 12px;
+  margin: 0px;
 }
 
 h1 {
@@ -42,13 +43,6 @@ h4 {
 
 h5 {
   font-size: 1.2rem;
-}
-
-body {
-  margin: 10px;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
-  /* background: black; */
 }
 
 /**************************** INFOSCREEN *****************************/
@@ -201,7 +195,7 @@ ul {
 }
 
 .meta .text li {
-   padding: 0.1em;
+  padding: 0.1em;
 }
 
 .simulation .Jahr {
@@ -333,48 +327,53 @@ g#yAxisG text {
 }
 
 /********************************* DATA VIEW ****************************/
-.dataview_wrapper{
+.headerImage img {
+  width: 100%;
+}
+
+.dataview_wrapper {
   /* display: inline-block; */
   width: 100%;
 }
 
-.graphs_wrapper{
+.graphs_wrapper {
   width: 49.5%;
   height: 45vh;
   display: inline-block;
   /* background-color: black; */
 }
 
-.graph img{
-  width: 100%;
+.graph img {
+  width: 50vw;
   background-size: contain;
 }
 
 /****************************** TOTAL DATA VIEW *************************/
-.dataViewTotalMode .quarterSection{
-  display: inline-block;
-  width: 49.5%;
-  height: 48vh;
+.dataViewTotalMode {
+  display: grid;
+  grid-template: 'tl tr'
+    'bl br';
 }
 
-.dataViewTotalMode table{
+.dataViewTotalMode table {
   width: 100%;
 }
 
-.dataViewTotalMode td
-{
+.dataViewTotalMode td {
   text-align: left;
   padding: 15px;
   border-bottom: 1px solid #ddd;
   /* width: 100%; */
 }
 
-.dataViewTotalMode th{
+.dataViewTotalMode th {
   width: 50%;
   text-align: left;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 /* .dataViewTotalMode .graph img{
   padding-top: 4%;
@@ -390,12 +389,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
   /* color: #444; */
 }
 
-.dataViewIndividualMode .graph{
+.dataViewIndividualMode .graph {
   width: 30%;
   display: inline-block;
 }
 
-.dataViewIndividualMode .graph img{
+.dataViewIndividualMode .graph img {
   width: 100%;
   max-height: 24vh;
 }
@@ -408,8 +407,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 }
 
 /* .box .box { */
-  /* background-color: #ccc; */
-  /* color: #444; */
+/* background-color: #ccc; */
+/* color: #444; */
 /* } */
 
 .houseHolds {
