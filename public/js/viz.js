@@ -47,12 +47,50 @@ const renderHouseInfo = function (groupData, identifier) {
 
 // ---------------------- global environment variables ----------------
 /* at the bottom of the page */
-const renderSimulationVariables = function (data) {
+const processScenarioData = function (data) {
+
+  // elements in input buildings mode:
   const bottom = document.getElementById("simulation_area");
   let template = document.getElementById("simulation_template").innerHTML;
   template = template.replace("$year", data.year);
   template = template.replace("$x", data.active_scenario);
   bottom.innerHTML = template;
+
+  // title in data view:
+  const scenario_title = document.getElementById("scenario_title");
+  template = document.getElementById("scenario_title_template").innerHTML;
+  console.log(template.replace("$s", data.active_scenario));
+  scenario_title.innerHTML = template.replace("$s", data.active_scenario);
+  console.log(template);
+}
+
+const processScenarioList = function (data) {
+
+  let template = document.getElementById("scenario_table_row_template").innerHTML; // copies innerHTML elements
+
+  template = template.replace("$param", data.carbon_price_scenario[0]);
+  template = template.replace("$value", data.carbon_price_scenario[1]);
+  document.getElementById("carbon_price_scenario").innerHTML = template;
+
+  template = document.getElementById("scenario_table_row_template").innerHTML;
+  template = template.replace("$param", data.energy_prices_scenario[0]);
+  template = template.replace("$value", data.energy_prices_scenario[1]);
+  document.getElementById("energy_prices_scenario").innerHTML = template;
+
+  template = document.getElementById("scenario_table_row_template").innerHTML;
+  template = template.replace("$param", data.q100_price_opex_scenario[0]);
+  template = template.replace("$value", data.q100_price_opex_scenario[1]);
+  document.getElementById("q100_price_opex_scenario").innerHTML = template;
+
+  template = document.getElementById("scenario_table_row_template").innerHTML;
+  template = template.replace("$param", data.q100_price_capex_scenario[0]);
+  template = template.replace("$value", data.q100_price_capex_scenario[1]);
+  document.getElementById("q100_price_capex_scenario").innerHTML = template;
+
+  template = document.getElementById("scenario_table_row_template").innerHTML;
+  template = template.replace("$param", data.q100_emissions_scenario[0]);
+  template = template.replace("$value", data.q100_emissions_scenario[1]);
+  document.getElementById("q100_emissions_scenario").innerHTML = template;
 }
 
 

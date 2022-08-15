@@ -26,13 +26,46 @@
 		<!---------------------- COMBINED DATA VIEW --------------------->
 
 		<div class="dataViewTotalMode">
-			<div class="quarterSection graphs_wrapper_0"></div>
-			<div class="quarterSection graphs_wrapper_1">
+			<div class="quarterSection">
+				<center><h3 id="scenario_title">Szenario $s</h3></center>
+				<center><h3 id="scenario_title_template" class="template">Szenario $s</h3></center>
+				<table id="scenario_table">
+					<tr>
+						<th>Parameter</th>
+						<th>Annahme</th>
+					</tr>
+					<tr id="scenario_table_row_template" class="template">
+						<td>$param</td>
+						<td>$value</td>
+					</tr>
+					<tr id="carbon_price_scenario">
+						<td>$param</td>
+						<td>$value</td>
+					</tr>
+					<tr id="energy_prices_scenario">
+						<td>$param</td>
+						<td>$value</td>
+					</tr>
+					<tr id="q100_price_opex_scenario">
+						<td>$param</td>
+						<td>$value</td>
+					</tr>
+					<tr id="q100_price_capex_scenario">
+						<td>$param</td>
+						<td>$value</td>
+					</tr>
+					<tr id="q100_emissions_scenario">
+						<td>$param</td>
+						<td>$value</td>
+					</tr>
+				</table>
+			</div>
+			<div class="quarterSection">
 				<div class="graph"><img src="data/outputs/output/Energiekosten.png" id="energy_prices">
 				</div>
 			</div>
-			<div class="quarterSection graphs_wrapper_2"></div>
-			<div class="quarterSection graphs_wrapper_3">
+			<div class="quarterSection"></div>
+			<div class="quarterSection">
 				<div class="graph"><img src="data/outputs/output/akkumulierte Gesamtemissionen des Quartiers.png"
 						id="emissions_neighborhood_accu"></div>
 			</div>
