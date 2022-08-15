@@ -66,7 +66,17 @@ const processScenarioData = function (data) {
 
 const processScenarioList = function (data) {
 
-  let template = document.getElementById("scenario_table_row_template").innerHTML; // copies innerHTML elements
+  // elements in input buildings mode:
+  // const active_scenario_handle = document.getElementById("active_scenario_handle");
+  // let template = document.getElementById("active_scenario_handle_template").innerHTML;
+  // active_scenario_handle.innerHTML = template.replace("$x", data.active_scenario_handle);
+
+  // title in data view:
+  const scenario_title = document.getElementById("scenario_title");
+  let template = document.getElementById("scenario_title_template").innerHTML;
+  scenario_title.innerHTML = template.replace("$s", data.active_scenario_handle);
+
+  template = document.getElementById("scenario_table_row_template").innerHTML; // copies innerHTML elements
 
   template = template.replace("$param", data.carbon_price_scenario[0]);
   template = template.replace("$value", data.carbon_price_scenario[1]);
