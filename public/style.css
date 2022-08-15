@@ -327,8 +327,13 @@ g#yAxisG text {
 }
 
 /********************************* DATA VIEW ****************************/
-.headerImage img {
-  width: 100%;
+.quarterSection {
+  width: 50vw;
+}
+.headerImage {
+  background-image: url("img/header.png");
+  background-repeat: no-repeat;
+  background-size: 50vw, calc(50vw / 1920 * 406);
 }
 
 .dataview_wrapper {
@@ -343,8 +348,8 @@ g#yAxisG text {
   /* background-color: black; */
 }
 
-.graph img {
-  width: 50vw;
+.dataViewTotalMode .graph img {
+  width: 100%;
   background-size: contain;
 }
 
@@ -375,10 +380,6 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* .dataViewTotalMode .graph img{
-  padding-top: 4%;
-} */
-
 /**************************** INDIVIDUAL DATA VIEW *************************/
 .dataViewIndividualMode {
   /* display: grid; */
@@ -395,7 +396,6 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode .graph img {
-  width: 100%;
   max-height: 24vh;
 }
 
