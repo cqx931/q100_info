@@ -2,6 +2,7 @@
 let simulationData = {
   year: 2022,
   co2: '500',
+  active_scenario_handle: 'Ref',
   wärme: 'y',
   strom: 'z',
   förderung: 'n'
@@ -70,3 +71,42 @@ const districtData = [
     }
   }
 ]
+
+const sampleGAMAImgSrcPaths0 =
+  { 'iteration_round': 0, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
+const sampleGAMAImgSrcPaths1 =
+  { 'iteration_round': 1, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
+const sampleGAMAImgSrcPaths2 =
+  { 'iteration_round': 2, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
+const sampleGAMAImgSrcPaths3 =
+  { 'iteration_round': 3, 'images': ['data/outputs/output/snapshot/Chartsnull-9.png', 'data/outputs/output/snapshot/Emissions cumulativenull-9.png', 'data/outputs/output/snapshot/Emissions per yearnull-9.png', 'data/outputs/output/snapshot/households_employment_pienull-9.png', 'data/outputs/output/snapshot/Modernizationnull-9.png', 'data/outputs/output/snapshot/neighborhoodnull-9.png'] }
+
+
+
+const sampleDataViewData = {
+  "data_view_data": [{
+    "iteration_round": 0,
+    "gama_iteration_images": [
+      "data/outputs/output/snapshot/Chartsnull-9495.png",
+      "data/outputs/output/snapshot/Emissions cumulativenull-9495.png",
+      "data/outputs/output/snapshot/Emissions per yearnull-9495.png",
+      "data/outputs/output/snapshot/households_employment_pienull-9495.png",
+      "data/outputs/output/snapshot/Modernizationnull-9495.png",
+      "data/outputs/output/snapshot/neighborhoodnull-9495.png"
+    ],
+    "emissions_data_paths": [
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.51.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_2.09.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.14.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_2.19.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_3.04.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.58.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.54.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.03.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_7.57.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_1.03.csv",
+      "data/includes/csv_export/emissions/csv_export_co2_graph_test_2.13.csv"
+    ]
+  }
+  ]
+}

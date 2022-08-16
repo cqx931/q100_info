@@ -1,5 +1,6 @@
 // TODO: move to devTools
 import axios from 'https://cdn.skypack.dev/axios'; //communication between node express server (q100_info.js) and main.js via HTTP
+
 //------------------------- COMMUNICATION -----------------------------
 // ----------------- processing of incoming data ----------------------
 const socket = io('localhost:8081');
@@ -9,18 +10,31 @@ socket.on('message', function (message) {
   // only log if it's different
   if (previousMessage != message) {
     const json = JSON.parse(message);
-    console.log(json);
-    const data = processData(json);
-    updateClusterCharts(data);
-    if (json.clusters) renderHouseInfo(json.clusters);
 
-    if (json.mode){
+    console.log("incoming message:", json);
+
+    if (json.hasOwnProperty('buildings_groups')){
+      if ('group_0' in json.buildings_groups){
+        renderHouseInfo(json.buildings_groups.group_0, "buildings_group_0");
+      }
+      if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "buildings_group_1");
+      if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "buildings_group_2");
+      if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "buildings_group_3");
+
+      // households and cluster data:
+      const data = processData(json);
+      updateClusterCharts(data);
+      // updateTotalCharts(data);
+    }
+
+    // interaction mode:
+    if (json.hasOwnProperty('mode')){
       const nextUserMode = json.mode;
 
       //ToDo: get question number from UDP
       switchUserMode(nextUserMode, getRandomInt(5));
 
-      if (json.answer){
+      if (json.hasOwnProperty('answer')){
         const answer = json.answer
         //Todo make a function to judge this condition
         if (answer == "yes") {
@@ -30,11 +44,31 @@ socket.on('message', function (message) {
         }
       }
     }
-    if (json.active_scenario){
-      const scenario = json.scenario;
-      updateInputEnvironmentMode(scenario);
+
+    // scenarios:
+    if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
+      // const scenario = json.scenario;
+      // updateInputEnvironmentMode(scenario);
+      // processScenarioData(processData(json));
     }
-    updateImage();
+    if (json.hasOwnProperty('scenario_data')){
+      // updateInputEnvironmentMode(scenario);
+      processScenarioList(json.scenario_data);
+    }
+
+    // for updating imgs on data view after rendering at if(json.mode) section
+    // for updating multiLineGraph on data view after rendering at if(json.mode) section
+    // data view and iteration round:
+    if (json.hasOwnProperty("data_view_individual_data")) {
+      injectDataToDataView(json.data_view_individual_data)
+    }
+    if (json.hasOwnProperty("matplotlib_images")) {
+      renewResultsImages(json.matplotlib_images)
+    }
+
+    // update canvas image
+    updateMapImage();
+
     previousMessage = message;
   }
 });
@@ -77,11 +111,20 @@ function initialRender(){
   console.log("simulation_df", simulation_df);
   console.log("questions", questions);
   updateClusterCharts(clusterBefore);
-  updateTotalCharts(totalBefore);
-  renderHouseInfo(sampleHouseInfo);
-  renderSimulationVariables(simulationData); // replaces variables in simulation_template
+  // updateTotalCharts(totalBefore);
+  renderHouseInfo(sampleHouseInfo, "buildings_group_0");
+  renderHouseInfo(sampleHouseInfo, "buildings_group_1");
+  renderHouseInfo(sampleHouseInfo, "buildings_group_2");
+  renderHouseInfo(sampleHouseInfo, "buildings_group_3");
+  processScenarioData(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
+  // dev use sampleData/sampleGAMAImgSrcPaths 0-3 for rendering dataview
+  // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
+  // renewDataViewGAMAImgSrcPath(sampleGAMAImgSrcPaths2.iteration_round, sampleGAMAImgSrcPaths2)
+  // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
+
+  // injectDataToDataView(sampleDataViewData.data_view_data)
 }
 
 initialRender()
