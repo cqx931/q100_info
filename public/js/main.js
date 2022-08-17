@@ -116,7 +116,7 @@ function initialRender(){
   renderHouseInfo(sampleHouseInfo, "buildings_group_1");
   renderHouseInfo(sampleHouseInfo, "buildings_group_2");
   renderHouseInfo(sampleHouseInfo, "buildings_group_3");
-  processScenarioData(simulationData); // replaces variables in simulation_template
+  // processScenarioData(simulationData); // replaces variables in simulation_template
   renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
   // dev use sampleData/sampleGAMAImgSrcPaths 0-3 for rendering dataview
