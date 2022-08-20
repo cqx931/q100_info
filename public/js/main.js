@@ -69,6 +69,10 @@ socket.on('message', function (message) {
     // update canvas image
     updateMapImage();
 
+    if (json.hasOwnProperty("step")) {
+      updateSimulationProgress(json.step)
+    }
+
     previousMessage = message;
   }
 });
