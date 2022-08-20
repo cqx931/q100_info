@@ -137,7 +137,8 @@ const toggleVerboseMode = function () {
 }
 
 const updateSimulationProgress = function(step){
-  const percentage = Math.ceil(step * 100 / 9450)
+  const totalSimulationStep = 9496
+  const percentage = Math.ceil(step * 100 / totalSimulationStep)
   $("#simulationProgress").text(percentage)
 
 }
