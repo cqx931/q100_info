@@ -353,6 +353,11 @@ g#yAxisG text {
   background-size: contain;
 }
 
+.dataViewIndividualMode .graph img {
+  width: 100%;
+  background-size: contain;
+}
+
 /****************************** TOTAL DATA VIEW *************************/
 .dataViewTotalMode {
   display: grid;
@@ -381,15 +386,60 @@ tr:nth-child(even) {
 }
 
 /**************************** INDIVIDUAL DATA VIEW *************************/
+.dataViewIndividualModeWrapper{
+  margin: 10px;
+}
 .dataViewIndividualMode {
-  /* display: grid; */
-  grid-gap: 10px;
-  grid-template-columns: 3fr 2fr;
-  /* grid-template-rows: repeat(2, [row] auto  ); */
-  /* background-color: #fff; */
-  /* color: #444; */
+  display: grid;
+  grid-gap: 25px;
+  grid-template: 'tl tr'
+    'bl br';
 }
 
+.dataViewIndividualMode table {
+  width: 100%;
+  font-size: small;
+}
+
+.dataViewIndividualMode td {
+  text-align: left;
+  padding: 0px 0px;
+  border-bottom: 1px solid #ddd;
+  /* width: 100%; */
+}
+
+.dataViewIndividualMode th {
+  width: 50%;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f6d6;
+}
+
+.dataViewIndividualMode .quarterSection {
+  outline: thick solid #bbd431;
+}
+
+.dataViewIndividualMode .quarterSection .nameAndTable {
+  grid-area: dataTable;
+}
+.dataViewIndividualMode .quarterSection .graphR{
+  grid-area: graphR;
+}
+.dataViewIndividualMode .quarterSection .graphL{
+  grid-area: graphL;
+}
+
+.dataViewIndividualMode .quarterSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'dataTable dataTable'
+  'graphR graphL';
+}
+
+/****************************
 .dataViewIndividualMode .graph {
   width: 30%;
   display: inline-block;
@@ -400,24 +450,24 @@ tr:nth-child(even) {
 }
 
 .box {
-  /* background-color: #444; */
-  /* color: #fff; */
+  //background-color: #444;
+  // color: #fff;
   border-radius: 5px;
   padding: 20px;
 }
 
-/* .box .box { */
-/* background-color: #ccc; */
-/* color: #444; */
-/* } */
+// .box .box {
+// background-color: #ccc;
+// color: #444; 
+// } 
 
 .houseHolds {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
-  /* grid-template-rows: repeat(2, [row] auto  ); */
-  /* background-color: purple; */
-  /* color: #444; */
+  // grid-template-rows: repeat(2, [row] auto  );
+  // background-color: purple;
+  // color: #444;
 }
 
 .houseHold {
@@ -439,7 +489,7 @@ tr:nth-child(even) {
   grid-template-rows: 1fr 1fr;
 }
 
-/* .houseHoldEnergyData {} */
+// .houseHoldEnergyData {}
 
 .houseHoldEnergyEfficiency {
   display: inline-block;
@@ -452,4 +502,5 @@ tr:nth-child(even) {
 
 .houseHoldIsHeizung {
   width: 25px;
-}
+} 
+*************************/
