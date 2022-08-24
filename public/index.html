@@ -8,6 +8,7 @@
 	<script src="lib/d3.v6.min.js"></script>
 	<script src="https://d3js.org/d3-collection.v1.min.js"></script>
 	<script src="lib/jquery-3.6.0.js"></script>
+	<script src="lib/axios.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
 
@@ -72,7 +73,62 @@
 			</div>
 		</div>
 
-		<!-------------------- INDIVIDUAL DATA VIEW --------------------->
+		<!---------------------- INDIVIDUAL DATA VIEW --------------------->
+		<div class="dataViewIndividualModeWrapper">
+			<div class="dataViewIndividualMode">
+				<div class="quarterSection">
+					<div class="nameAndTable">
+						<h3>Datenblatt: Nutzer:in 123</h3>
+						
+						<table>
+							<tr>
+								<th>[categories]</th>
+								<th>Bestandssituation</th>
+								<th>Zukunftsentscheidung</th>
+								<th>[check box]</th>
+							</tr>
+							<tr>
+								<td>Baujahr</td>
+								<td>1968</td>
+								<td>Energetische Sanierung</td>
+								<td>check</td>
+							</tr>
+							<tr>
+								<td>Baujahr</td>
+								<td>1968</td>
+								<td>Energetische Sanierung</td>
+								<td>check</td>
+							</tr>
+							<tr>
+								<td>Baujahr</td>
+								<td>1968</td>
+								<td>Energetische Sanierung</td>
+								<td>check</td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="graph graphR">
+						<img src="individualDataViewCO2graph.png">
+					</div>
+					<div class="graph graphL">
+						<img src="individualDataViewStormgraph.png" alt="">
+					</div>
+				</div>
+				<div class="sample">
+					<div class="graph"><img src="individualDataViewSample.png" id="energy_prices">
+					</div>
+				</div>
+				<div class="quarterSection">
+					datenblatt3
+				</div>
+				<div class="quarterSection">
+					datenblatt4
+				</div>
+			</div>
+		</div>
+
+		<!-------------------- (deprecated) D3 INDIVIDUAL DATA VIEW
 		<div class="dataViewIndividualMode">
 			<div class="box houseHolds" id="data_view_d3">
 				<div class="box houseHold">
@@ -92,16 +148,16 @@
 					</div>
 					<div id="householdDataChart">houseChart</div>
 				</div>
-				<!-- <div class="box houseHold">House2</div>
-				<div class="box houseHold">House3</div>
-				<div class="box houseHold">House4</div> -->
+				//<div class="box houseHold">House2</div>
+				//<div class="box houseHold">House3</div>
+				//<div class="box houseHold">House4</div>
 				<div class="box emissionComparison">
 					<div id="emissionComparisonChart">EmissionComaprisonChart</div>
 				</div>
 
 			</div>
 			<div class="dataview_wrapper" id="data_view_img">
-				<!-- TODO: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections -->
+				// TODO: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
 				<div class="graphs_wrapper graphs_wrapper_0">
 					<div class="graph"><img src="img/home.png" id="chartsImage"></div>
 					<div class="graph"><img src="img/home.png" id="emissionsCumulativeImage"></div>
@@ -136,8 +192,8 @@
 				</div>
 			</div>
 
-			<!-- <div class="box leftSideData">Left side data</div> -->
-		</div>
+			// <div class="box leftSideData">Left side data</div>
+		</div> --------------------->
 
 		<!-------------------- INPUT SCENARIOS MODE ------------------>
 		<div class="input_scenarios">
@@ -271,7 +327,7 @@
 					</div> -->
 					<!-- four line plots -->
 					<center>
-						<h1>Simulation is running...</h1>
+						<h1>Simulation is running...<span id="simulationProgress">0</span>%</h1> 
 					</center>
 				</div>
 			</div>
