@@ -75,15 +75,6 @@ socket.on('message', function (message) {
   }
 });
 
-const socket_GAMA = io('localhost:8082');
-socket_GAMA.on('message', function (message) {
-    const json = JSON.parse(message);
-    if (json.hasOwnProperty("step")) {
-      updateSimulationProgress(json.step)
-    }
-
-});
-
 async function fetchDataFromApi(arg) {
   const path = '/api/'+arg
   return await axios.get(path)

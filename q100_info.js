@@ -5,8 +5,7 @@ const path = require('path'),
       csv = require('csv-parse/sync');
 
 const http_port = 8000,
-      websocket_port = 8081,
-      websocket_port_2 = 8082;
+      websocket_port = 8081;
 
 // set up socket.io
 const io = require("socket.io")(websocket_port, {
@@ -18,22 +17,6 @@ const io = require("socket.io")(websocket_port, {
 
 io.sockets.on('connection', socket => {
   console.log("A client has connected.");
-
-  socket.on("message", obj => {
-    socket.broadcast.emit("message", obj);
-  });
-});
-
-// second udp server for communication with GAMA
-const io2 = require("socket.io")(websocket_port2, {
-  cors: {
-    origin: "http://localhost:8000",
-    methods: ["GET", "POST"]
-  }
-});
-
-io2.sockets.on('connection', socket => {
-  console.log("GAMA UDP server: A client has connected.");
 
   socket.on("message", obj => {
     socket.broadcast.emit("message", obj);
