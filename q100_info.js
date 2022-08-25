@@ -25,7 +25,7 @@ io.sockets.on('connection', socket => {
 });
 
 // second udp server for communication with GAMA
-const io2 = require("socket.io")(websocket_port_2, {
+const io2 = require("socket.io")(websocket_port2, {
   cors: {
     origin: "http://localhost:8000",
     methods: ["GET", "POST"]
