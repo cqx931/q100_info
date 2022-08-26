@@ -35,10 +35,10 @@ function initServer() {
 
   // set endpoint for simulation_df
   // implemented for development purpose (in production mode, data should be handled only through socket)
-  const simulation_df_json = loadAndParseJson("public/data/simulation_df.json");
-  app.get('/api/data', (req, res) => {
-    res.json(simulation_df_json);
-  });
+  // const simulation_df_json = loadAndParseJson("public/data/simulation_df.json");
+  // app.get('/api/data', (req, res) => {
+  //   res.json(simulation_df_json);
+  // });
 
   // set endpoint for question.csv
   // see https://csv.js.org/parse/
@@ -58,11 +58,11 @@ function initServer() {
   open('http://localhost:' + http_port);
 }
 
-function loadAndParseJson(path) {
-  const simulation_df = fs.readFileSync(path, 'utf8');
-  var jsonData = JSON.parse(simulation_df);
-  return jsonData
-}
+// function loadAndParseJson(path) {
+//   const simulation_df = fs.readFileSync(path, 'utf8');
+//   var jsonData = JSON.parse(simulation_df);
+//   return jsonData
+// }
 
 function loadQuestionsCSV() {
   const input = fs.readFileSync("public/data/questions.csv", 'utf8');

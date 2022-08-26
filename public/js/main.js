@@ -101,7 +101,7 @@ async function fetchGAMAData() {
 }
 
 
-simulation_df = await fetchSimulationDataFrame()
+// simulation_df = await fetchSimulationDataFrame()
 questions = await fetchQuestions()
 GAMAData = await fetchGAMAData()
 
@@ -110,7 +110,7 @@ GAMAData = await fetchGAMAData()
 //////////////////////////// MAIN SCRIPT //////////////////////////////
 // ------------------------ UPDATE FUNCTIONS --------------------------
 function initialRender(){
-  console.log("simulation_df", simulation_df);
+  // console.log("simulation_df", simulation_df);
   console.log("questions", questions);
   updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
@@ -119,7 +119,7 @@ function initialRender(){
   renderHouseInfo(sampleHouseInfo, "buildings_group_2");
   renderHouseInfo(sampleHouseInfo, "buildings_group_3");
   // processScenarioData(simulationData); // replaces variables in simulation_template
-  renderSimulationScreen(simulation_df, districtData);
+  // renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
   // dev use sampleData/sampleGAMAImgSrcPaths 0-3 for rendering dataview
   // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections
