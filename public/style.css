@@ -67,7 +67,7 @@ h5 {
 
 #infoscreen .columns {
   padding-top: 1%;
-  width: 67%;
+  width: 72%;
   height: 96%;
   float: left;
   overflow: hidden;
@@ -99,9 +99,17 @@ h5 {
 }
 
 #infoscreen .right {
-  width: 32%;
+  width: 27%;
   height: 100%;
   float: left;
+}
+
+#infoscreen .right .scenario{
+  display: inline-block;
+}
+
+#infoscreen .right .scenario img{
+  width: 100%;
 }
 
 #cluster,
@@ -130,7 +138,7 @@ ul {
 
 .meta {
   display: inline-block;
-  padding: 5px 10px 10px;
+  /* padding: 5px 10px 10px; */
 }
 
 .template {
