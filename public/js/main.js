@@ -45,9 +45,7 @@ socket.on('message', function (message) {
 
     // scenarios:
     if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
-      // const scenario = json.scenario;
-      // updateInputEnvironmentMode(scenario);
-      // processScenarioData(processData(json));
+      updateInputEnvironmentMode(json.active_scenario_handle);
     }
     if (json.hasOwnProperty('scenario_data')){
       // updateInputEnvironmentMode(scenario);

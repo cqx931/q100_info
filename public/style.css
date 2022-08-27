@@ -322,8 +322,9 @@ g#yAxisG text {
   text-align: center;
 }
 
-.input_scenarios .scenario .active {
-  border-color: goldenrod;
+.input_scenarios .scenario img{
+  width: 95%;
+  border: none;
 }
 
 /********************************* DATA VIEW ****************************/
@@ -457,8 +458,8 @@ tr:nth-child(even) {
 
 // .box .box {
 // background-color: #ccc;
-// color: #444; 
-// } 
+// color: #444;
+// }
 
 .houseHolds {
   display: grid;
@@ -501,5 +502,5 @@ tr:nth-child(even) {
 
 .houseHoldIsHeizung {
   width: 25px;
-} 
+}
 *************************/

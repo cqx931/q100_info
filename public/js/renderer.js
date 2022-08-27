@@ -45,9 +45,10 @@ const displayInputEnvironmentMode = function () {
   $(".dataViewTotalMode").hide();
 }
 
-const updateInputEnvironmentMode = function (scenario) {
-  // TODO: add "active" class to input scenario; drop from all others
-  // console.log(scenario);
+const updateInputEnvironmentMode = function (scenario_handle) {
+  $(".scenario img").css("border", "") // reset border
+  let identifier = "#scenario_img_" + scenario_handle;
+  $(identifier).css("border", "5px goldenrod solid"); // create thick golden border
 }
 
 const displaySimulationMode = function () {
