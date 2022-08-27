@@ -67,17 +67,18 @@ h5 {
 
 #infoscreen .columns {
   padding-top: 1%;
-  width: 79%;
+  width: 67%;
   height: 96%;
   float: left;
   overflow: hidden;
-  display: inline-block;
+  display: grid;
+  grid-template: 'tl tr' 'bl br';
 }
 
 #infoscreen .buildings_group {
   display: inline-block;
   vertical-align: top;
-  width: 24%;
+  /* width: 24%; */
 }
 
 #infoscreen .bottom {
@@ -98,7 +99,7 @@ h5 {
 }
 
 #infoscreen .right {
-  width: 20%;
+  width: 32%;
   height: 100%;
   float: left;
 }
