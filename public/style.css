@@ -386,10 +386,9 @@ tr:nth-child(even) {
 }
 
 /**************************** INDIVIDUAL DATA VIEW *************************/
-.dataViewIndividualModeWrapper{
-  margin: 10px;
-}
+
 .dataViewIndividualMode {
+  margin: 10px;
   display: grid;
   grid-gap: 25px;
   grid-template: 'tl tr'
