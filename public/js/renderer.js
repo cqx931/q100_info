@@ -112,6 +112,17 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+//////////////////////////// slider ///////////////////////////
+function processSliderHandle(slider_data){
+  console.log(slider_data)
+  if (slider_data.slider0 == "scenario_energy_prices"){
+    $("#current_energy_prices_scenario").css("border", "5px goldenrod solid"); // create thick golden border
+  }
+  else {
+    $("#current_energy_prices_scenario").css("border", ""); // remove border
+  }
+}
+
 ////////////////////////// dev tools //////////////////////////
 const initDataViewIndividualContent = function () {
   $("#data_view_d3").hide();

@@ -1,9 +1,7 @@
 
 function updateCurrentScenarioGraph(scenario_handle){
   let file_name = "";
-  if (scenario_handle == 'A') file_name = "data/includes/csv-data_technical/graphs/Energiepreisprognose_2018.png";
-  else if (scenario_handle == 'B') file_name = "data/includes/csv-data_technical/graphs/Energiepreisprognose_2020.png";
-  else if (scenario_handle == 'C') file_name = "data/includes/csv-data_technical/graphs/Energiepreisprognose_2022.png";
+  file_name = "data/includes/csv-data_technical/graphs/Energiepreisprognose_"+ scenario_handle + ".png";
   document.getElementById("current_energy_prices_scenario").src = file_name + "?update=" + new Date().getTime();
 }
 

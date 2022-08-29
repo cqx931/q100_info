@@ -46,11 +46,19 @@ socket.on('message', function (message) {
     // scenarios:
     if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
       updateInputEnvironmentMode(json.active_scenario_handle);
-      updateCurrentScenarioGraph(json.active_scenario_handle);
     }
+    // energy prices:
+    if (json.hasOwnProperty('scenario_energy_prices')){
+      updateCurrentScenarioGraph(json.scenario_energy_prices);
+    }
+
     if (json.hasOwnProperty('scenario_data')){
-      // updateInputEnvironmentMode(scenario);
       processScenarioList(json.scenario_data);
+    }
+
+    // slider:
+    if (json.hasOwnProperty('sliders')){
+      processSliderHandle(json.sliders);
     }
 
     // for updating imgs on data view after rendering at if(json.mode) section
@@ -64,7 +72,7 @@ socket.on('message', function (message) {
     }
 
     // update canvas image
-    updateMapImage();
+    // updateMapImage();
 
     if (json.hasOwnProperty("step")) {
       updateSimulationProgress(json.step)
