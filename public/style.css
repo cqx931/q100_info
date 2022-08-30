@@ -83,19 +83,14 @@ h5 {
 
 #infoscreen .bottom {
   width: 100%;
-  height: 30%;
+  height: 40%;
   display: inline-block;
 }
 
 #infoscreen .bottom .left {
-  width: 10%;
-  height: 30%;
-}
-
-#infoscreen .bottom .middle {
-  width: 40%;
-  height: 100%;
-  float: left;
+  width: 72%;
+  height:100%; /* necessary to compute height of barChart */
+  float:left;
 }
 
 #infoscreen .right {
@@ -117,7 +112,7 @@ h5 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 50%;
+  height: 100%;
   padding-left: 20px;
 }
 
@@ -237,7 +232,7 @@ ul {
 }
 
 #graphic {
-  height: 90%;
+  height: 100%;
 }
 
 #graphic svg {
