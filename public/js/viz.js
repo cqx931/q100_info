@@ -35,7 +35,7 @@ const renderHouseInfo = function (groupData, identifier) {
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    template = template.replace("$e", h.environmental_engagement.toFixed(2));
+    template = template.replace("$e", h.environmental_engagement);
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
     let connection_to_heat_grid = h["connection_to_heat_grid"] ? "ja" : "nein";

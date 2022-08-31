@@ -1,3 +1,10 @@
+
+function updateCurrentScenarioGraph(scenario_handle){
+  let file_name = "";
+  file_name = "data/includes/csv-data_technical/graphs/Energiepreisprognose_"+ scenario_handle + ".png";
+  document.getElementById("current_energy_prices_scenario").src = file_name + "?update=" + new Date().getTime();
+}
+
 //------------------------------ BAR CHARTS ---------------------------
 /* bar charts for energy consumption clustered (selected buildings) vs total*/
 
@@ -14,10 +21,10 @@ let clusterBefore = {
   };
 
   const CHART_MARGIN = ({
-    top: 30,
-    right: 0,
+    top: 0,
+    right: 50,
     bottom: 0,
-    left: 50
+    left: 100
   });
   const EASE_STYLE = d3.easeCubicOut,
     ANIMATION_TIME = 2000;

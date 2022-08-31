@@ -45,27 +45,34 @@ socket.on('message', function (message) {
 
     // scenarios:
     if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
-      // const scenario = json.scenario;
-      // updateInputEnvironmentMode(scenario);
-      // processScenarioData(processData(json));
+      updateInputEnvironmentMode(json.active_scenario_handle);
     }
+    // energy prices:
+    if (json.hasOwnProperty('scenario_energy_prices')){
+      updateCurrentScenarioGraph(json.scenario_energy_prices);
+    }
+
     if (json.hasOwnProperty('scenario_data')){
-      // updateInputEnvironmentMode(scenario);
       processScenarioList(json.scenario_data);
+    }
+
+    // slider:
+    if (json.hasOwnProperty('sliders')){
+      processSliderHandle(json.sliders);
     }
 
     // for updating imgs on data view after rendering at if(json.mode) section
     // for updating multiLineGraph on data view after rendering at if(json.mode) section
     // data view and iteration round:
-    if (json.hasOwnProperty("data_view_individual_data")) {
-      injectDataToDataView(json.data_view_individual_data)
+    if (json.hasOwnProperty("data_view_neighborhood_data")) {
+      injectDataToDataView(json.data_view_neighborhood_data)
     }
     if (json.hasOwnProperty("matplotlib_images")) {
       renewResultsImages(json.matplotlib_images)
     }
 
     // update canvas image
-    updateMapImage();
+    // updateMapImage();
 
     if (json.hasOwnProperty("step")) {
       updateSimulationProgress(json.step)
@@ -101,7 +108,7 @@ async function fetchGAMAData() {
 }
 
 
-simulation_df = await fetchSimulationDataFrame()
+// simulation_df = await fetchSimulationDataFrame()
 questions = await fetchQuestions()
 GAMAData = await fetchGAMAData()
 
@@ -110,8 +117,8 @@ GAMAData = await fetchGAMAData()
 //////////////////////////// MAIN SCRIPT //////////////////////////////
 // ------------------------ UPDATE FUNCTIONS --------------------------
 function initialRender(){
-  console.log("simulation_df", simulation_df);
-  console.log("questions", questions);
+  // console.log("simulation_df", simulation_df);
+  // console.log("questions", questions);
   updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo, "buildings_group_0");
@@ -119,7 +126,7 @@ function initialRender(){
   renderHouseInfo(sampleHouseInfo, "buildings_group_2");
   renderHouseInfo(sampleHouseInfo, "buildings_group_3");
   // processScenarioData(simulationData); // replaces variables in simulation_template
-  renderSimulationScreen(simulation_df, districtData);
+  // renderSimulationScreen(simulation_df, districtData);
   switchUserMode(currentUserMode, getRandomInt(5)); //initial render
   // dev use sampleData/sampleGAMAImgSrcPaths 0-3 for rendering dataview
   // ToDo: after testing UDP messaging for dataview, graphs_wrapper_0 should be replaced with empty div like other sections

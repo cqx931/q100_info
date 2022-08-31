@@ -29,8 +29,8 @@
 		<div class="dataViewTotalMode">
 			<div class="quarterSection headerImage">
 				<div style="height:calc(50vw / 1920 * 150)"></div>
-					<h3 id="scenario_title">Szenario $s</h3>
-					<h3 id="scenario_title_template" class="template">Szenario $s</h3>
+				<h3 id="scenario_title">Szenario $s</h3>
+				<h3 id="scenario_title_template" class="template">Szenario $s</h3>
 				<table id="scenario_table">
 					<tr>
 						<th>Parameter</th>
@@ -74,59 +74,59 @@
 		</div>
 
 		<!---------------------- INDIVIDUAL DATA VIEW --------------------->
-		<div class="dataViewIndividualModeWrapper">
-			<div class="dataViewIndividualMode">
-				<div class="quarterSection">
-					<div class="nameAndTable">
-						<h3>Datenblatt: Nutzer:in 123</h3>
-						
-						<table>
-							<tr>
-								<th>[categories]</th>
-								<th>Bestandssituation</th>
-								<th>Zukunftsentscheidung</th>
-								<th>[check box]</th>
-							</tr>
-							<tr>
-								<td>Baujahr</td>
-								<td>1968</td>
-								<td>Energetische Sanierung</td>
-								<td>check</td>
-							</tr>
-							<tr>
-								<td>Baujahr</td>
-								<td>1968</td>
-								<td>Energetische Sanierung</td>
-								<td>check</td>
-							</tr>
-							<tr>
-								<td>Baujahr</td>
-								<td>1968</td>
-								<td>Energetische Sanierung</td>
-								<td>check</td>
-							</tr>
-						</table>
 
-					</div>
-					<div class="graph graphR">
-						<img src="individualDataViewCO2graph.png">
-					</div>
-					<div class="graph graphL">
-						<img src="individualDataViewStormgraph.png" alt="">
-					</div>
+		<div class="dataViewIndividualMode">
+			<div class="quarterSection">
+				<div class="nameAndTable">
+					<h3>Datenblatt: Nutzer:in 123</h3>
+
+					<table>
+						<tr>
+							<th>[categories]</th>
+							<th>Bestandssituation</th>
+							<th>Zukunftsentscheidung</th>
+							<th>[check box]</th>
+						</tr>
+						<tr>
+							<td>Baujahr</td>
+							<td>1968</td>
+							<td>Energetische Sanierung</td>
+							<td>check</td>
+						</tr>
+						<tr>
+							<td>Baujahr</td>
+							<td>1968</td>
+							<td>Energetische Sanierung</td>
+							<td>check</td>
+						</tr>
+						<tr>
+							<td>Baujahr</td>
+							<td>1968</td>
+							<td>Energetische Sanierung</td>
+							<td>check</td>
+						</tr>
+					</table>
+
 				</div>
-				<div class="sample">
-					<div class="graph"><img src="individualDataViewSample.png" id="energy_prices">
-					</div>
+				<div class="graph graphR">
+					<img src="individualDataViewCO2graph.png">
 				</div>
-				<div class="quarterSection">
-					datenblatt3
-				</div>
-				<div class="quarterSection">
-					datenblatt4
+				<div class="graph graphL">
+					<img src="individualDataViewStormgraph.png" alt="">
 				</div>
 			</div>
+			<div class="sample">
+				<div class="graph"><img src="individualDataViewSample.png" id="energy_prices">
+				</div>
+			</div>
+			<div class="quarterSection">
+				datenblatt3
+			</div>
+			<div class="quarterSection">
+				datenblatt4
+			</div>
 		</div>
+
 
 		<!-------------------- (deprecated) D3 INDIVIDUAL DATA VIEW
 		<div class="dataViewIndividualMode">
@@ -200,57 +200,22 @@
 			<div class="scenario" style="height: 300;">
 				<h2>A</h2>
 				<br>
-				<ul>
-					<li>alpha = dynamic_moderate</li>
-					<li>carbon = moderate</li>
-					<li>energy = prices_2022_1st-half</li>
-					<li>opex = 12ct_static</li>
-					<li>capex = 5 payments</li>
-					<li>emissions = declining_linear</li>
-				</ul>
+				<img src="img/Energiepreisprognose_2018.png" id="scenario_img_A">
 			</div>
 			<div class="scenario">
 				<h2>B</h2>
 				<br>
-				<ul>
-					<li>alpha = static_mean</li>
-					<li>carbon = moderate</li>
-					<li>energy = prices_2021</li>
-					<li>opex = 15-9 ct_dynamic</li>
-					<li>capex = 2 payments</li>
-					<li>emissions = declining_steps</li>
-				</ul>
+				<img src="img/Energiepreisprognose_2021.png" id="scenario_img_B">
 			</div>
 			<div class="scenario">
 				<h2>C</h2>
 				<br>
-				<ul>
-					<li>alpha = static_mean</li>
-					<li>carbon = conservative</li>
-					<li>energy = prices_project-start</li>
-					<li>opex = 15-9 ct_dynamic</li>
-					<li>capex = 1 payment</li>
-					<li>emissions = constant_50g</li>
-				</ul>
-			</div>
-			<div class="scenario">
-				<h2>D</h2>
-				<br>
-				<ul>
-					<li>alpha = dynamic_high</li>
-					<li>carbon = C3_progressive</li>
-					<li>energy = prices_2021 *(here should be a further value added, which additionally adds the
-						carbon price to
-						the energy prices)</li>
-					<li>opex = 12ct_static</li>
-					<li>capex = 5 payments</li>
-					<li>emissions = constant_zero</li>
-				</ul>
+				<img src="img/Energiepreisprognose_2022.png" id="scenario_img_C">
 			</div>
 		</div>
 
 		<!-------------------- INPUT HOUSEHOLDS MODE ----------------->
-		<div class="input_households">
+		<div class="buildings_interaction">
 			<div class="main">
 				<div class="top">
 					<div class="columns">
@@ -281,35 +246,19 @@
 						</div>
 					</div>
 					<div class="right">
-						<img src="data/canvas.png" alt="district image here" id="map">
-						<br>
-					</div>
-				</div>
-				<div class="bottom">
-					<div class="columns">
-						<div id="graphic">
-							<div id="cluster">
-							</div>
-							<!-- <div id="total">
-								<h2>Quartier gesamt</h2>
-							</div> -->
+						<div class="scenario_energy_prices">
+							<img src="img/Energiepreisprognose_2018.png" class="energy_prices_graph"
+								id="current_energy_prices_scenario">
 						</div>
 					</div>
-					<div class="right">
-						<div id="simulation_area">
-							<!-- <div id="simulation_template" class='template'> -->
-							<div class="simulation">
-								<p></p>
-								<!-- <div class="Jahr">$year</div> -->
-								<div class="active_scenario_handle">
-									<center>Szenario: <span>$x</span></center>
-								</div>
-								<div id="active_scenario_handle_template" class="template">
-									<center>Szenario: <span>$x</span></center>
+					<div class="bottom">
+						<div class="left">
+							<div id="graphic">
+								<div id="cluster">
 								</div>
 							</div>
-
-							<!-- </div> -->
+						</div>
+						<div class="right">
 						</div>
 					</div>
 				</div>
@@ -317,7 +266,7 @@
 		</div>
 
 		<!----------------------- SIMULATION MODE -------------------->
-		<div class="simulationMode" style="display:none;">
+		<div class="simulationMode">
 			<div class="left">
 				<p></p>
 			</div>
@@ -327,7 +276,7 @@
 					</div> -->
 					<!-- four line plots -->
 					<center>
-						<h1>Simulation is running...<span id="simulationProgress">0</span>%</h1> 
+						<h1>Simulation is running...<span id="simulationProgress">0</span>%</h1>
 					</center>
 				</div>
 			</div>
@@ -345,7 +294,7 @@
 	<script src="js/dataViewIndividual.js" type="text/javascript"></script>
 	<script src="js/dataViewTotal.js" type="text/javascript"></script>
 	<script src="js/renderer.js" type="text/javascript"></script>
-	<script src="js/inputHouseholds.js" type="text/javascript"></script>
+	<script src="js/buildingsInteraction.js" type="text/javascript"></script>
 	<script type="module" src="js/devTools.js" type="text/javascript"></script>
 	<script type="module" src="js/main.js" type="text/javascript"></script>
 </body>
