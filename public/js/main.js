@@ -118,7 +118,7 @@ GAMAData = await fetchGAMAData()
 // ------------------------ UPDATE FUNCTIONS --------------------------
 function initialRender(){
   // console.log("simulation_df", simulation_df);
-  console.log("questions", questions);
+  // console.log("questions", questions);
   updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo, "buildings_group_0");

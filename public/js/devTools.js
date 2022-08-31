@@ -14,7 +14,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 function calculateNextUserMode(currentUserMode){
-  const userModes = ["input_scenarios", "input_households", "simulation", "questionnaire", "data_view_individual", "data_view_total"]
+  const userModes = ["input_scenarios", "buildings_interaction", "simulation", "questionnaire", "data_view_individual", "data_view_total"]
   const currentUserModeIndex = userModes.indexOf(currentUserMode)
   const nextUserModeIndex = (currentUserModeIndex + 1) % userModes.length
   return userModes[nextUserModeIndex]

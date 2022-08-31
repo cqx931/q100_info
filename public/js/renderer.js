@@ -9,7 +9,7 @@ $.fn.log = function () {
 const displayQuestionnaireMode = function (question) {
   $(".questionnaire").show();
   $(".input_scenarios").hide();
-  $(".input_households").hide();
+  $(".buildings_interaction").hide();
   $(".simulationMode").hide();
   $(".dataViewIndividualMode").hide();
   $("#questionText").text(question)
@@ -28,10 +28,10 @@ const grayoutAnswerNo = function () {
   $("#questionAnswerNo").removeClass("questionAnswerNoActive")
 }
 
-const displayInputHouseholdsMode = function () {
+const displayBuildingsInteractionMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
-  $(".input_households").show();
+  $(".buildings_interaction").show();
   $(".simulationMode").hide();
   $(".dataViewIndividualMode").hide();
   $(".dataViewTotalMode").hide();
@@ -39,7 +39,7 @@ const displayInputHouseholdsMode = function () {
 const displayInputEnvironmentMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").show();
-  $(".input_households").hide();
+  $(".buildings_interaction").hide();
   $(".simulationMode").hide();
   $(".dataViewIndividualMode").hide();
   $(".dataViewTotalMode").hide();
@@ -54,7 +54,7 @@ const updateInputEnvironmentMode = function (scenario_handle) {
 const displaySimulationMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
-  $(".input_households").hide();
+  $(".buildings_interaction").hide();
   $(".simulationMode").show();
   $(".dataViewIndividualMode").hide();
   $(".dataViewTotalMode").hide();
@@ -63,7 +63,7 @@ const displaySimulationMode = function () {
 const displayDataViewIndividualMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
-  $(".input_households").hide();
+  $(".buildings_interaction").hide();
   $(".simulationMode").hide();
   $(".dataViewIndividualMode").show();
   $(".dataViewTotalMode").hide();
@@ -74,7 +74,7 @@ const displayDataViewIndividualMode = function () {
 const displayDataViewTotalMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
-  $(".input_households").hide();
+  $(".buildings_interaction").hide();
   $(".simulationMode").hide();
   $(".dataViewIndividualMode").hide();
   $(".dataViewTotalMode").show();
@@ -91,8 +91,8 @@ const switchUserMode = function (mode, questionID) {
   else if (mode == 'input_scenarios') {
     displayInputEnvironmentMode()
   }
-  else if (mode == 'input_households') {
-    displayInputHouseholdsMode()
+  else if (mode == 'buildings_interaction') {
+    displayBuildingsInteractionMode()
   }
   else if (mode == 'questionnaire') {
     const question = questions[questionID]
