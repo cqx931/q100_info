@@ -70,6 +70,8 @@ const injectDataToIndividualDataView = function(data) {
         } catch (error) {
             return
         }
+        $("#dataViewIndividualQuarter"+i).find("h3 > span").text(targetBuilding["address"])
+
         $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridNow").prop("checked", targetBuilding["connection_to_heat_grid"])
         $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid_prior"])
         $("#dataViewIndividualQuarter"+i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished"])
