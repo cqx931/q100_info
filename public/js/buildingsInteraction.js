@@ -1,8 +1,14 @@
 
+// ------------------------------ SCENARIOS ---------------------------
 function updateCurrentScenarioGraph(scenario_handle){
   let file_name = "";
   file_name = "data/includes/csv-data_technical/graphs/Energiepreisprognose_"+ scenario_handle + ".png";
   document.getElementById("current_energy_prices_scenario").src = file_name + "?update=" + new Date().getTime();
+}
+
+function updateConnectionsScenario(scenario_data){
+  // document.getElementById("scenario_num_connections").innerHTML =
+$("#scenario_num_connections h2").text(`${scenario_data} Anschlüsse`);
 }
 
 //------------------------------ BAR CHARTS ---------------------------

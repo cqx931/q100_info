@@ -51,6 +51,9 @@ socket.on('message', function (message) {
     if (json.hasOwnProperty('scenario_energy_prices')){
       updateCurrentScenarioGraph(json.scenario_energy_prices);
     }
+    if (json.hasOwnProperty('scenario_num_connections')){
+      updateConnectionsScenario(json.scenario_num_connections);
+    }
 
     if (json.hasOwnProperty('scenario_data')){
       processScenarioList(json.scenario_data);

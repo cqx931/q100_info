@@ -88,13 +88,13 @@ h5 {
 }
 
 #infoscreen .bottom .left {
-  width: 72%;
+  width: 79%;
   height:100%; /* necessary to compute height of barChart */
   float:left;
 }
 
 #infoscreen .right {
-  width: 27%;
+  width: 20%;
   height: 100%;
   float: left;
 }
