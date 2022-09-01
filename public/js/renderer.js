@@ -120,7 +120,13 @@ function processSliderHandle(slider_data) {
       $("#current_energy_prices_scenario").css("border", "5px goldenrod solid"); // create thick golden border
     }
     else {
-      $("#current_energy_prices_scenario").css("border", ""); // remove border
+      $("#current_energy_prices_scenario").css("border", "1px goldenrod dotted"); // remove border
+    }
+    if (slider_data.slider0 == "num_connections") {
+      $("#scenario_num_connections").css("border", "5px chartreuse solid"); // create thick blue border
+    }
+    else{
+      $("#scenario_num_connections").css("border", "1px chartreuse dotted"); // create thick blue border
     }
   }
 }
