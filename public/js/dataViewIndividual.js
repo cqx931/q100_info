@@ -72,12 +72,12 @@ const injectDataToIndividualDataView = function(data) {
         }
         $("#dataViewIndividualQuarter"+i).find("h3 > span").text(targetBuilding["address"])
 
-        $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridNow").prop("checked", targetBuilding["connection_to_heat_grid"])
-        $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid_prior"])
-        $("#dataViewIndividualQuarter"+i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished"])
-        $("#dataViewIndividualQuarter"+i).find(".refurbishedFuture").prop("checked", targetBuilding["refurbished_prior"])
-        $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentNow").prop("checked", targetBuilding["environmental_engagement"])
-        $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentFuture").prop("checked", targetBuilding["environmental_engagement_prior"])
+        $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridNow").prop("checked", targetBuilding["connection_to_heat_grid_prior"])
+        $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid"])
+        $("#dataViewIndividualQuarter"+i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished_prior"])
+        $("#dataViewIndividualQuarter"+i).find(".refurbishedFuture").prop("checked", targetBuilding["refurbished"])
+        $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentNow").prop("checked", targetBuilding["environmental_engagement_prior"])
+        $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentFuture").prop("checked", targetBuilding["environmental_engagement"])
 
         $("#dataViewIndividualQuarter"+i).find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
         $("#dataViewIndividualQuarter"+i).find(".energy_cost_graphs img").attr("src", targetBuilding["energy_cost_graphs"]);
