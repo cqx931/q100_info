@@ -70,7 +70,7 @@ socket.on('message', function (message) {
     if (json.hasOwnProperty("matplotlib_images")) {
       renewResultsImages(json.matplotlib_images)
     }
-    
+
     if (json.hasOwnProperty('data_view_individual_data')){
       injectDataToIndividualDataView(json.data_view_individual_data);
     }
@@ -105,16 +105,16 @@ async function fetchQuestions() {
   return retval
 }
 
-async function fetchGAMAData() {
-  const questionsObject = await fetchDataFromApi('GAMAData');
-  const retval = questionsObject.data
-  return retval
-}
+// async function fetchGAMAData() {
+//   const questionsObject = await fetchDataFromApi('GAMAData');
+//   const retval = questionsObject.data
+//   return retval
+// }
 
 
 // simulation_df = await fetchSimulationDataFrame()
-questions = await fetchQuestions()
-GAMAData = await fetchGAMAData()
+// questions = await fetchQuestions()
+// GAMAData = await fetchGAMAData()
 
 
 
@@ -138,7 +138,7 @@ function initialRender(){
   // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
 
   // injectDataToDataView(sampleDataViewData.data_view_data)
-  injectDataToIndividualDataView(dataViewIndividualData.data_view_individual_data)
+  // injectDataToIndividualDataView(dataViewIndividualData.data_view_individual_data)
 }
 
 initialRender()

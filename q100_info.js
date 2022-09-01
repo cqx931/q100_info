@@ -49,11 +49,11 @@ function initServer() {
 
   // set endpoint for .csv
   // see https://csv.js.org/parse/
-  app.get('/api/GAMAData', (req, res) => {
-  res.sendFile(path.join(__dirname,
-      "public/data/outputs/output/connections/connections_export.csv"
-    ))
-  });
+  // app.get('/api/GAMAData', (req, res) => {
+  // res.sendFile(path.join(__dirname,
+  //     "public/data/outputs/output/connections/connections_export.csv"
+  //   ))
+  // });
 
   open('http://localhost:' + http_port);
 }

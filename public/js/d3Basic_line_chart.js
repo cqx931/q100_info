@@ -24,19 +24,19 @@ const createD3BasicLineChart = function (targetSelector) {
   console.log("moin", svg)
 
   //Read the data
-  const GAMADataApiURL = "http://localhost:8000/api/GAMAData"
-  let csvRowCount = 0
-  d3.csv(GAMADataApiURL,
-  // d3.csv(csvData,
-    // When reading the csv, I must format variables:
-    function (d) {
-      if (csvRowCount > 9497) return
-      csvRowCount += 1
-      const formatDate= d.current_date.match(/'([^']+)'/)[1].slice(0,11)
-      return { date: d3.timeParse("%Y-%m-%d ")(formatDate), value: d.value }
-    }).then(data => {
-      drawBasicLineChartFromData(data, width, height, svg)
-    }).catch(err => { console.log("error while processing CSV with D3", err) })
+  // const GAMADataApiURL = "http://localhost:8000/api/GAMAData"
+  // let csvRowCount = 0
+  // d3.csv(GAMADataApiURL,
+  // // d3.csv(csvData,
+  //   // When reading the csv, I must format variables:
+  //   function (d) {
+  //     if (csvRowCount > 9497) return
+  //     csvRowCount += 1
+  //     const formatDate= d.current_date.match(/'([^']+)'/)[1].slice(0,11)
+  //     return { date: d3.timeParse("%Y-%m-%d ")(formatDate), value: d.value }
+  //   }).then(data => {
+  //     drawBasicLineChartFromData(data, width, height, svg)
+  //   }).catch(err => { console.log("error while processing CSV with D3", err) })
 }
 
 // Now I can use this dataset:
