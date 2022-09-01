@@ -98,12 +98,12 @@ const switchUserMode = function (mode, questionID) {
     const question = questions[questionID]
     displayQuestionnaireMode(question)
   }
-  else if (mode == 'data_view_individual') {
+  else if (mode == 'individual_data_view') {
     displayDataViewIndividualMode()
     removeHouseholdCards()
     createHouseholdCards()
   }
-  else if (mode == 'data_view_total') {
+  else if (mode == 'total_data_view') {
     displayDataViewTotalMode()
   }
 }

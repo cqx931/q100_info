@@ -67,8 +67,8 @@ socket.on('message', function (message) {
     if (json.hasOwnProperty("data_view_neighborhood_data")) {
       injectDataToDataView(json.data_view_neighborhood_data)
     }
-    if (json.hasOwnProperty("matplotlib_images")) {
-      renewResultsImages(json.matplotlib_images)
+    if (json.hasOwnProperty("neighborhood_images")) {
+      renewResultsImages(json.neighborhood_images)
     }
 
     if (json.hasOwnProperty('data_view_individual_data')){
