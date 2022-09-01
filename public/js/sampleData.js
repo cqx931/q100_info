@@ -110,3 +110,99 @@ const sampleDataViewData = {
   }
   ]
 }
+
+
+const dataViewIndividualData = {
+    "data_view_individual_data": {
+        "buildings_groups": {
+            "group_0": {
+                "buildings": [
+                    {
+                        "address": "Rüsdorfer Straße 18",
+                        "avg_spec_heat_consumption": 168.2295352941,
+                        "avg_spec_power_consumption": 0.0,
+                        "cluster_size": 34.0,
+                        "emissions_graphs": "/home/dunland/github/qScope/data/outputs/output_20220830_12-42-29emissions/CO2_emissions_7.44.png",
+                        "energy_cost_graphs": "",
+                        "CO2": 0.022635805,
+                        "connection_to_heat_grid": true,
+                        "connection_to_heat_grid_prior": true,
+                        "refurbished": true,
+                        "refurbished_prior": true,
+                        "environmental_engagement": true,
+                        "environmental_engagement_prior": true,
+                        "energy_source": "Gas",
+                        "cell": ""
+                    }
+                ],
+                "connections": 0
+            },
+            "group_1": {
+                "buildings": [
+                    {
+                        "address": "Rüsdorfer Straße 18",
+                        "avg_spec_heat_consumption": 168.2295352941,
+                        "avg_spec_power_consumption": 0.0,
+                        "cluster_size": 34.0,
+                        "emissions_graphs": "/home/dunland/github/qScope/data/outputs/output_20220830_12-42-29emissions/CO2_emissions_7.44.png",
+                        "energy_cost_graphs": "",
+                        "CO2": 0.022635805,
+                        "connection_to_heat_grid": true,
+                        "connection_to_heat_grid_prior": true,
+                        "refurbished": true,
+                        "refurbished_prior": true,
+                        "environmental_engagement": true,
+                        "environmental_engagement_prior": true,
+                        "energy_source": "Gas",
+                        "cell": ""
+                    }
+                ],
+                "connections": 0
+            },
+            "group_2": {
+                "buildings": [
+                    {
+                        "address": "Rüsdorfer Straße 18",
+                        "avg_spec_heat_consumption": 168.2295352941,
+                        "avg_spec_power_consumption": 0.0,
+                        "cluster_size": 34.0,
+                        "emissions_graphs": "/home/dunland/github/qScope/data/outputs/output_20220830_12-42-29emissions/CO2_emissions_7.44.png",
+                        "energy_cost_graphs": "",
+                        "CO2": 0.022635805,
+                        "connection_to_heat_grid": true,
+                        "connection_to_heat_grid_prior": true,
+                        "refurbished": true,
+                        "refurbished_prior": true,
+                        "environmental_engagement": true,
+                        "environmental_engagement_prior": true,
+                        "energy_source": "Gas",
+                        "cell": ""
+                    }
+                ],
+                "connections": 0
+            },
+            "group_3": {
+                "buildings": [
+                    {
+                        "address": "Rüsdorfer Straße 18",
+                        "avg_spec_heat_consumption": 168.2295352941,
+                        "avg_spec_power_consumption": 0.0,
+                        "cluster_size": 34.0,
+                        "emissions_graphs": "/home/dunland/github/qScope/data/outputs/output_20220830_12-42-29emissions/CO2_emissions_7.44.png",
+                        "energy_cost_graphs": "",
+                        "CO2": 0.022635805,
+                        "connection_to_heat_grid": true,
+                        "connection_to_heat_grid_prior": true,
+                        "refurbished": true,
+                        "refurbished_prior": true,
+                        "environmental_engagement": true,
+                        "environmental_engagement_prior": true,
+                        "energy_source": "Gas",
+                        "cell": ""
+                    }
+                ],
+                "connections": 0
+            },
+        }
+    }
+}

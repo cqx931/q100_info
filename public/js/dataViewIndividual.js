@@ -59,3 +59,25 @@ const injectDataToDataView = function(data){
     removeEmissionComparisonChart()
     createEmissionComparisonChart(data[0].emissions_data_paths)
 }
+
+const injectDataToIndividualDataView = function(data) {
+    console.log('individualdataviewdata', data.buildings_groups)
+    for(let i = 0; i<4; i++){
+        const group_name = "group_" + i
+        let targetBuilding
+        try {
+            targetBuilding = data.buildings_groups[group_name].buildings[0]
+        } catch (error) {
+            return
+        }
+        $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridNow").prop("checked", targetBuilding["connection_to_heat_grid"])
+        $("#dataViewIndividualQuarter"+i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid_prior"])
+        $("#dataViewIndividualQuarter"+i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished"])
+        $("#dataViewIndividualQuarter"+i).find(".refurbishedFuture").prop("checked", targetBuilding["refurbished_prior"])
+        $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentNow").prop("checked", targetBuilding["environmental_engagement"])
+        $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentFuture").prop("checked", targetBuilding["environmental_engagement_prior"])
+    }
+
+}
+
+
