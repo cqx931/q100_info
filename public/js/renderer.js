@@ -113,13 +113,15 @@ function getRandomInt(max) {
 }
 
 //////////////////////////// slider ///////////////////////////
-function processSliderHandle(slider_data){
+function processSliderHandle(slider_data) {
   console.log(slider_data)
-  if (slider_data.slider0 == "scenario_energy_prices"){
-    $("#current_energy_prices_scenario").css("border", "5px goldenrod solid"); // create thick golden border
-  }
-  else {
-    $("#current_energy_prices_scenario").css("border", ""); // remove border
+  if (slider_data.hasOwnProperty("slider0")) {
+    if (slider_data.slider0 == "scenario_energy_prices") {
+      $("#current_energy_prices_scenario").css("border", "5px goldenrod solid"); // create thick golden border
+    }
+    else {
+      $("#current_energy_prices_scenario").css("border", ""); // remove border
+    }
   }
 }
 
@@ -148,7 +150,7 @@ const toggleVerboseMode = function () {
     $("div").css("border", "")
 }
 
-const updateSimulationProgress = function(step){
+const updateSimulationProgress = function (step) {
   const totalSimulationStep = 9496
   const percentage = Math.ceil(step * 100 / totalSimulationStep)
   $("#simulationProgress").text(percentage)
