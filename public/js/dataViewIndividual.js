@@ -80,7 +80,7 @@ const injectDataToIndividualDataView = function(data) {
         $("#dataViewIndividualQuarter"+i).find(".environmentCommitmentFuture").prop("checked", targetBuilding["environmental_engagement"])
 
         $("#dataViewIndividualQuarter"+i).find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
-        $("#dataViewIndividualQuarter"+i).find(".energy_cost_graphs img").attr("src", targetBuilding["energy_cost_graphs"]);
+        $("#dataViewIndividualQuarter"+i).find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
     }
 
 }
