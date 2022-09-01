@@ -403,14 +403,29 @@ tr:nth-child(even) {
 .dataViewIndividualMode table {
   width: 100%;
   font-size: small;
+  border-spacing: 0;
 }
+
+
+.dataViewIndividualMode table th {
+    border-top: 1px solid black;
+    border-bottom: 1px solid #333333;
+}
+
 
 .dataViewIndividualMode td {
   text-align: left;
   padding: 0px 0px;
-  border-bottom: 1px solid #ddd;
   /* width: 100%; */
 }
+
+.dataViewIndividualMode tr:nth-last-child(1) td {
+    border-bottom: 1px solid black;
+}
+
+.dataViewIndividualMode td:nth-child(n+2) {
+  text-align: center;
+}t
 
 .dataViewIndividualMode th {
   width: 50%;
@@ -422,7 +437,12 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode .quarterSection {
-  outline: thick solid #bbd431;
+  outline: 8px solid #bbd431;
+  padding: 10px;
+}
+
+.dataViewIndividualMode h3 {
+margin: 0 20px;
 }
 
 .dataViewIndividualMode .quarterSection .nameAndTable {
