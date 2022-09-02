@@ -21,7 +21,7 @@ socket.on('message', function (message) {
 
       // households and cluster data:
       const data = processData(json);
-      updateClusterCharts(data);
+      // updateClusterCharts(data);
       // updateTotalCharts(data);
     }
 
@@ -126,7 +126,7 @@ async function fetchQuestions() {
 function initialRender(){
   // console.log("simulation_df", simulation_df);
   // console.log("questions", questions);
-  updateClusterCharts(clusterBefore);
+  // updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
   renderHouseInfo(sampleHouseInfo, "buildings_group_0");
   renderHouseInfo(sampleHouseInfo, "buildings_group_1");

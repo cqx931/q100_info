@@ -8,7 +8,7 @@ function updateCurrentScenarioGraph(scenario_handle){
 
 function updateConnectionsScenario(scenario_data){
   // document.getElementById("scenario_num_connections").innerHTML =
-$("#scenario_num_connections h2").text(`${scenario_data} Anschlüsse`);
+$("#scenario_num_connections h2 center").text(`${scenario_data} Anschlüsse`);
 }
 
 //------------------------------ BAR CHARTS ---------------------------

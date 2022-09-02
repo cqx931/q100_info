@@ -20,6 +20,11 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', 'Franklin Gothic Medium', sans-serif;
+  /* @font-face {
+    font-family: "Roboto-Regular";
+    src: url("/home/dunland/.fonts/truetype/Roboto-Regular.ttf");
+  }
+  font-family: 'Roboto-Regular'; */
   /* color: white; */
   /* font-size: 12px; */
   margin: 0px;
@@ -67,7 +72,7 @@ h5 {
 
 #infoscreen .columns {
   /* padding-top: 1%; */
-  width: 72%;
+  width: 79%;
   height: 100%;
   float: left;
   overflow: hidden;
@@ -97,6 +102,8 @@ h5 {
   width: 20%;
   height: 100%;
   float: left;
+  border-left: 1px solid gray;
+  padding-left: 10px;
 }
 
 #infoscreen .right .scenario{
@@ -105,6 +112,17 @@ h5 {
 
 #infoscreen .right .scenario_energy_prices img{
   width: 100%;
+  border: 1px goldenrod dotted;
+  margin-top: 10px;
+}
+
+#infoscreen .right .scenario_q100_capex img{
+  width: 100%;
+  border: 1px turquoise dotted;
+}
+
+#infoscreen .right #scenario_num_connections{
+  border: 1px chartreuse dotted;
 }
 
 #cluster,
