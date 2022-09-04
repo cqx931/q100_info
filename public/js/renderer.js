@@ -115,14 +115,14 @@ function getRandomInt(max) {
 //////////////////////////// slider ///////////////////////////
 function processSliderHandle(slider_data) {
   console.log(slider_data)
-  if (slider_data.hasOwnProperty("slider0")) {
-    if (slider_data.slider0 == "scenario_energy_prices") {
+  if (slider_data.id == "slider0") {
+    if (slider_data.handle == "scenario_energy_prices") {
       $("#current_energy_prices_scenario").css("border", "5px goldenrod solid"); // create thick golden border
     }
     else {
       $("#current_energy_prices_scenario").css("border", "1px goldenrod dotted"); // remove border
     }
-    if (slider_data.slider0 == "num_connections") {
+    if (slider_data.handle == "num_connections") {
       $("#scenario_num_connections").css("border", "5px chartreuse solid"); // create thick blue border
     }
     else{

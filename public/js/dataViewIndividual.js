@@ -77,7 +77,7 @@ const injectDataToIndividualDataView = function (data) {
             $("#dataViewIndividualQuarter" + i).find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
             $("#dataViewIndividualQuarter" + i).find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
         } catch (error) {
-            console.log("failed loading data for group: ", group_name, error)
+            console.log("failed loading data for group: ", group_name, " group is probably empty.")
         }
     }
 

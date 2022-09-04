@@ -44,9 +44,10 @@ socket.on('message', function (message) {
     }
 
     // scenarios:
-    if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
-      updateInputEnvironmentMode(json.active_scenario_handle);
-    }
+    // if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
+    //   updateInputEnvironmentMode(json.active_scenario_handle);
+    // }
+    // -------------------- BUILDINGS INTERACTION ---------------------
     // energy prices:
     if (json.hasOwnProperty('scenario_energy_prices')){
       updateCurrentScenarioGraph(json.scenario_energy_prices);
