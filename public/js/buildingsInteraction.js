@@ -11,6 +11,59 @@ function updateConnectionsScenario(scenario_data){
 $("#scenario_num_connections h2 center").text(`${scenario_data} Anschlüsse`);
 }
 
+// reload image
+function updateMapImageTimed() {
+  setTimeout(
+    function () {
+      document.getElementById('map').src = "data/canvas.png?update=" + +new Date();
+    },
+    1000);
+}
+
+function updateMapImage() {
+  document.getElementById('map').src = "data/canvas.png?update=" + new Date().getTime();
+}
+
+
+// ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
+// parse "clusters" from incoming json and replace elements in html
+const renderHouseInfo = function (groupData, identifier) {
+
+  const column = document.getElementById(identifier);
+  column.innerHTML = ""; // clear div before append new
+
+  groupData = groupData.buildings;
+
+  if (groupData == null) return;
+  for (var i = 0; i < groupData.length; i++) {
+    const h = groupData[i];
+    const div = document.createElement("div");
+
+    div.className = "meta";
+    div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
+    div.className += h.environmental_engagement > 0.7 ? " green" : (h.environmental_engagement <= 0.7 && h.environmental_engagement > 0.3 ? " mix" : " gray");
+
+    let template = document.getElementById("meta_template").innerHTML;
+    template = template.replace("$Adresse", h.address);
+
+    const v = Math.floor(Math.random() * 500) + 500
+    //
+    template = template.replace("$e", h.environmental_engagement);
+    let refurbished = h["refurbished"] ? "✓" : "X";
+    template = template.replace("$s", refurbished);
+    let connection_to_heat_grid = h["connection_to_heat_grid"] ? "✓" : "X";
+    template = template.replace("$c", connection_to_heat_grid);
+    let avg_spec_heat_consumption = h["avg_spec_heat_consumption"].toFixed(0);
+    template = template.replace("$h", avg_spec_heat_consumption);
+    let avg_spec_power_consumption = h["avg_spec_power_consumption"].toFixed(0);
+    template = template.replace("$p", avg_spec_power_consumption);
+    let cluster_size = h["cluster_size"];
+    template = template.replace("$x", cluster_size);
+    div.innerHTML = template;
+    column.append(div);
+  }
+}
+
 //------------------------------ BAR CHARTS ---------------------------
 /* bar charts for energy consumption clustered (selected buildings) vs total*/
 
