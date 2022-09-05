@@ -1,7 +1,7 @@
 // ------------------------ Global Variables --------------------------
 
 // let initialUserMode = 'input';
-let currentUserMode = 'buildings_interaction';
+let currentUserMode = 'data_view_individual';
 // let currentUserMode = 'input';
 
 // let simulation_df

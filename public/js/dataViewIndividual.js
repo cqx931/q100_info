@@ -67,6 +67,7 @@ const injectDataToIndividualDataView = function (data) {
         try {
             targetBuilding = data.buildings_groups[group_name].buildings[0]
             $("#dataViewIndividualQuarter" + i).find("h3 > span").text(targetBuilding["address"])
+            $("#dataViewIndividualQuarter" + i).find("h4 > span").text(targetBuilding["cluster_size"])
             $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridNow").prop("checked", targetBuilding["connection_to_heat_grid_prior"])
             $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid"])
             $("#dataViewIndividualQuarter" + i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished_prior"])
