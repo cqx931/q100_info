@@ -9,7 +9,6 @@ function updateCurrentScenarioGraph(scenario_handle){
 function updateConnectionsScenario(scenario_data){
   const element = document.getElementById("scenario_num_connections");
   let template = document.getElementById("scenario_num_connections_template").innerHTML;
-  console.log(template);
   // $("#scenario_num_connections h3").text(`${scenario_data} Anschlüsse`);
   element.innerHTML = template.replace("$a", scenario_data);
   console.log(element);

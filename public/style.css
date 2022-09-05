@@ -350,9 +350,9 @@ g#yAxisG text {
 }
 
 /********************************* DATA VIEW ****************************/
-.quarterSection {
+/* .quarterSection {
   width: 50vw;
-}
+} */
 .headerImage {
   background-image: url("img/header.png");
   background-repeat: no-repeat;
@@ -420,7 +420,7 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode table {
   width: 100%;
-  font-size: large;
+  font-size: 32px;
   border-spacing: 0;
 }
 
@@ -456,7 +456,8 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode .quarterSection {
   outline: 8px solid #bbd431;
-  padding: 10px;
+  padding: 30px;
+  margin: 15px;
 }
 
 .dataViewIndividualMode h3 {
