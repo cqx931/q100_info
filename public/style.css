@@ -350,9 +350,6 @@ g#yAxisG text {
 }
 
 /********************************* DATA VIEW ****************************/
-/* .quarterSection {
-  width: 50vw;
-} */
 .headerImage {
   background-image: url("img/header.png");
   background-repeat: no-repeat;
@@ -386,6 +383,10 @@ g#yAxisG text {
   display: grid;
   grid-template: 'tl tr'
     'bl br';
+}
+
+.dataViewTotalMode .quarterSection {
+  width: 50vw;
 }
 
 .dataViewTotalMode table {

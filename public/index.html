@@ -24,12 +24,12 @@
 			</div>
 		</div>
 
-		<!---------------------- COMBINED DATA VIEW --------------------->
+		<!---------------------- TOTAL DATA VIEW --------------------->
 
 		<div class="dataViewTotalMode">
 			<div class="quarterSection headerImage">
 				<div style="height:calc(50vw / 1920 * 150)"></div>
-				<h3 id="scenario_title">Szenario $s</h3>
+				<!--<h3 id="scenario_title">Szenario $s</h3>
 				<h3 id="scenario_title_template" class="template">Szenario $s</h3>
 				<table id="scenario_table">
 					<tr>
@@ -60,13 +60,16 @@
 						<td>$param</td>
 						<td>$value</td>
 					</tr>
-				</table>
+				</table> -->
 			</div>
 			<div class="quarterSection">
 				<div class="graph"><img src="data/outputs/output/Energiekosten.png" id="energy_prices">
 				</div>
 			</div>
-			<div class="quarterSection"></div>
+			<div class="quarterSection">
+				<div class="graph"><img src="data/outputs/output_test/emissions/CO2_emissions_groups.png" id="emissions_groups">
+				</div>
+			</div>
 			<div class="quarterSection">
 				<div class="graph"><img src="data/outputs/output/akkumulierte Gesamtemissionen des Quartiers.png"
 						id="emissions_neighborhood_accu"></div>
@@ -347,25 +350,31 @@
 						</div>
 					</div>
 					<div class="right">
-						<center><h2 style="text-decoration: underline;">Szenarien</h2></center>
+						<center>
+							<h2 style="text-decoration: underline;">Szenarien</h2>
+						</center>
 						<div class="scenario_energy_prices">
 							<img src="img/Energiepreisprognose_2018.png" class="energy_prices_graph"
 								id="current_energy_prices_scenario">
 						</div>
 						<div id="scenario_num_connections">
-							<h3><center>Anschlüsse:</h3>
-								<ul>
-									<li style="font-size:medium">$s ausgewählte</li>
-									<li style="font-size: larger;">+ $a zusätzliche</li>
-								</ul>
+							<h3>
+								<center>Anschlüsse:
+							</h3>
+							<ul>
+								<li style="font-size:medium">$s ausgewählte</li>
+								<li style="font-size: larger;">+ $a zusätzliche</li>
+							</ul>
 							</center>
 						</div>
 						<div id="scenario_num_connections_template" class="template">
-							<h3><center>Anschlüsse:</h3>
-								<ul>
-									<li style="font-size:medium">$s ausgewählte</li>
-									<li style="font-size: larger;">+ $a zusätzliche</li>
-								</ul>
+							<h3>
+								<center>Anschlüsse:
+							</h3>
+							<ul>
+								<li style="font-size:medium">$s ausgewählte</li>
+								<li style="font-size: larger;">+ $a zusätzliche</li>
+							</ul>
 							</center>
 						</div>
 						<!-- <div class="scenario_q100_capex">
