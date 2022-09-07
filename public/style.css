@@ -368,21 +368,16 @@ g#yAxisG text {
   /* background-color: black; */
 }
 
-.dataViewTotalMode .graph img {
-  width: 100%;
-  background-size: contain;
-}
-
-.dataViewIndividualMode .graph img {
-  width: 100%;
-  background-size: contain;
-}
-
 /****************************** TOTAL DATA VIEW *************************/
 .dataViewTotalMode {
   display: grid;
   grid-template: 'tl tr'
     'bl br';
+}
+
+.dataViewTotalMode .graph img {
+  width: 90%; /* 100% will make the images too high */
+  background-size: contain;
 }
 
 .dataViewTotalMode .quarterSection {
@@ -417,6 +412,11 @@ tr:nth-child(even) {
   grid-gap: 25px;
   grid-template: 'tl tr'
     'bl br';
+}
+
+.dataViewIndividualMode .graph img {
+  width: 100%;
+  background-size: contain;
 }
 
 .dataViewIndividualMode table {
