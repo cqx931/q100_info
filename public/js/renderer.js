@@ -129,6 +129,18 @@ function processSliderHandle(slider_data) {
       $("#scenario_num_connections").css("border", "1px chartreuse dotted"); // create thick blue border
     }
   }
+
+    /* if slider_data.handle == 'bla'{
+
+      1. get element of id buildings_group_ + slider.group
+      2. get html
+      3. add <u> around object:
+      if (handle == "refurbished" ) { select and underline item <li class="refurbished">}
+      if (handle == "connection_to_heat_grid" ) { select and underline item <li class="connectoin_to_heat_grid">}
+      if (handle == "environmental_engagement" ) { select and underline item <li class="environmental_engagement">}
+     }
+
+     */
 }
 
 ////////////////////////// dev tools //////////////////////////
