@@ -58,7 +58,7 @@ const renderHouseInfo = function (groupData, identifier) {
 
     div.className = "meta";
     div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
-    div.className += h.environmental_engagement > 0.7 ? " green" : (h.environmental_engagement <= 0.7 && h.environmental_engagement > 0.3 ? " mix" : " gray");
+    div.className += h.connection_to_heat_grid > 0.7 ? " green" : (h.connection_to_heat_grid <= 0.7 && h.connection_to_heat_grid > 0.3 ? " mix" : " gray");
 
     let template = document.getElementById("meta_template").innerHTML;
     template = template.replace("$Adresse", h.address);
