@@ -303,3 +303,4 @@ const buildingInteractionModeData =
 
     }
 }
+const buildingsInteractionModeHighlight = {"sliders": {"id": "slider0", "handle": "environmental_engagement", "group": 0}}

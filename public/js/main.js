@@ -155,6 +155,13 @@ function initialRender() {
 
   // injectDataToDataView(sampleDataViewData.data_view_data)
   // injectDataToIndividualDataView(dataViewIndividualData.data_view_individual_data)
+  let buildingsInteractionViewData = dataViewIndividualData.data_view_individual_data.buildings_groups
+  if ('group_0' in buildingsInteractionViewData){renderHouseInfo(buildingsInteractionViewData.group_0, "buildings_group_0");}
+  if ('group_1' in buildingsInteractionViewData) renderHouseInfo(buildingsInteractionViewData.group_1, "buildings_group_1");
+  if ('group_2' in buildingsInteractionViewData) renderHouseInfo(buildingsInteractionViewData.group_2, "buildings_group_2");
+  if ('group_3' in buildingsInteractionViewData) renderHouseInfo(buildingsInteractionViewData.group_3, "buildings_group_3");
+
+  highlightSelectedDecisionFeature(buildingsInteractionModeHighlight);
 }
 
 initialRender()
