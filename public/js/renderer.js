@@ -81,7 +81,7 @@ const displayDataViewTotalMode = function () {
   // updateSimulationOutputs();
 }
 
-const switchUserMode = function (mode, questionID) {
+const switchUserMode = function (mode) {
   // TODO: wrap in resetAnswer function
   grayoutAnswerYes()
   grayoutAnswerNo()
@@ -95,7 +95,8 @@ const switchUserMode = function (mode, questionID) {
     displayBuildingsInteractionMode()
   }
   else if (mode == 'questionnaire') {
-    const question = questions[questionID]
+    const question = questions[getRandomInt(5)] //TODO: get question number from UDP
+
     displayQuestionnaireMode(question)
   }
   else if (mode == 'individual_data_view') {
@@ -169,8 +170,7 @@ const toggleVerboseMode = function () {
 }
 
 const updateSimulationProgress = function (step) {
-  const totalSimulationStep = 9496
-  const percentage = Math.ceil(step * 100 / totalSimulationStep)
+  const percentage = Math.ceil(step * 100 / simulationFinalStep)
   $("#simulationProgress").text(percentage)
 
 }

@@ -1,6 +1,7 @@
 // ------------------------ Global Variables --------------------------
 
 let currentUserMode = 'buildings_interaction';
+let simulationFinalStep = 9496;
 
 // let simulation_df
 let questions

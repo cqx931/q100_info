@@ -11,8 +11,25 @@ socket.on('message', function (message) {
 
     console.log("incoming message:", json);
 
-    if (json.hasOwnProperty('buildings_groups')){
-      if ('group_0' in json.buildings_groups){
+    if (json.hasOwnProperty('mode')) {
+      const nextUserMode = json.mode;
+      switchUserMode(nextUserMode);
+    }
+
+    // ------------------------ QUESTIONNAIRE -------------------------
+    if (json.hasOwnProperty('answer')) {
+      const answer = json.answer
+      //Todo make a function to judge this condition
+      if (answer == "yes") {
+        highlightAnswerYes();
+      } else if (answer == "no") {
+        highlightAnswerNo();
+      }
+    }
+
+    // -------------------- BUILDINGS INTERACTION ---------------------
+    if (json.hasOwnProperty('buildings_groups')) {
+      if ('group_0' in json.buildings_groups) {
         renderHouseInfo(json.buildings_groups.group_0, "buildings_group_0");
       }
       if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "buildings_group_1");
@@ -25,49 +42,30 @@ socket.on('message', function (message) {
       // updateTotalCharts(data);
     }
 
-    // interaction mode:
-    if (json.hasOwnProperty('mode')){
-      const nextUserMode = json.mode;
-
-      //ToDo: get question number from UDP
-      switchUserMode(nextUserMode, getRandomInt(5));
-
-      if (json.hasOwnProperty('answer')){
-        const answer = json.answer
-        //Todo make a function to judge this condition
-        if (answer == "yes") {
-          highlightAnswerYes();
-        } else if (answer == "no") {
-          highlightAnswerNo();
-        }
-      }
-    }
-
     // scenarios:
     // if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
     //   updateInputEnvironmentMode(json.active_scenario_handle);
     // }
-    // -------------------- BUILDINGS INTERACTION ---------------------
     // energy prices:
-    if (json.hasOwnProperty('scenario_energy_prices')){
+    if (json.hasOwnProperty('scenario_energy_prices')) {
       updateCurrentScenarioGraph(json.scenario_energy_prices);
     }
-    if (json.hasOwnProperty('scenario_num_connections')){
+    if (json.hasOwnProperty('scenario_num_connections')) {
       updateConnectionsScenario(json.scenario_num_connections);
     }
 
-    if (json.hasOwnProperty('scenario_data')){
+    if (json.hasOwnProperty('scenario_data')) {
       processScenarioList(json.scenario_data);
     }
 
     // slider:
-    if (json.hasOwnProperty('sliders')){
+    if (json.hasOwnProperty('sliders')) {
       processSliderHandle(json.sliders);
     }
 
+    // --------------------------- DATA VIEW --------------------------
     // for updating imgs on data view after rendering at if(json.mode) section
     // for updating multiLineGraph on data view after rendering at if(json.mode) section
-    // data view and iteration round:
     if (json.hasOwnProperty("data_view_neighborhood_data")) {
       injectDataToDataView(json.data_view_neighborhood_data)
     }
@@ -75,13 +73,17 @@ socket.on('message', function (message) {
       renewResultsImages(json.neighborhood_images)
     }
 
-    if (json.hasOwnProperty('data_view_individual_data')){
+    if (json.hasOwnProperty('data_view_individual_data')) {
       injectDataToIndividualDataView(json.data_view_individual_data);
     }
 
     // update canvas image
     // updateMapImage();
 
+    // --------------------------- SIMULATION -------------------------
+    if (json.hasOwnProperty("final_step")) {
+      simulationFinalStep = json.final_step;
+    }
     if (json.hasOwnProperty("step")) {
       updateSimulationProgress(json.step)
     }
@@ -91,7 +93,7 @@ socket.on('message', function (message) {
 });
 
 async function fetchDataFromApi(arg) {
-  const path = '/api/'+arg
+  const path = '/api/' + arg
   return await axios.get(path)
 }
 
@@ -124,7 +126,7 @@ async function fetchQuestions() {
 
 //////////////////////////// MAIN SCRIPT //////////////////////////////
 // ------------------------ UPDATE FUNCTIONS --------------------------
-function initialRender(){
+function initialRender() {
   // console.log("simulation_df", simulation_df);
   // console.log("questions", questions);
   // updateClusterCharts(clusterBefore);
