@@ -29,7 +29,8 @@
 		<div class="dataViewTotalMode">
 			<div class="quarterSection headerImage">
 				<div style="height:calc(50vw / 1920 * 150)"></div>
-				<div class="graph"><img src="data/outputs/output_test/energy_prices/energy_prices_groups.png" id="energy_prices_groups">
+				<div class="graph"><img src="data/outputs/output_test/energy_prices/energy_prices_groups.png"
+						id="energy_prices_groups">
 				</div>
 				<!--<h3 id="scenario_title">Szenario $s</h3>
 				<h3 id="scenario_title_template" class="template">Szenario $s</h3>
@@ -70,7 +71,8 @@
 				</div>
 			</div>
 			<div class="quarterSection">
-				<div class="graph"><img src="data/outputs/output_test/emissions/CO2_emissions_groups.png" id="emissions_groups">
+				<div class="graph"><img src="data/outputs/output_test/emissions/CO2_emissions_groups.png"
+						id="emissions_groups">
 				</div>
 			</div>
 			<div class="quarterSection">
@@ -81,141 +83,149 @@
 
 		<!---------------------- INDIVIDUAL DATA VIEW --------------------->
 		<div class="dataViewIndividualMode">
-			<div class="quarterSection" id="dataViewIndividualQuarter0">
-				<div class="nameAndTable">
-					<h3><span>xxx</span></h3>
-					<h4>errechnet aus <span>xxx</span> Gebäuden ähnlichen Verbrauchs</h4>
-					<table>
-						<tr>
-							<th></th>
-							<th>Bestandssituation</th>
-							<th>Zukunftsentscheidung</th>
-						</tr>
-						<tr>
-							<td>Sanierungszustand</td>
-							<td><input type="checkbox" class="refurbishedNow"></td>
-							<td><input type="checkbox" class="refurbishedFuture"></td>
-						</tr>
-						<tr>
-							<td>Anschluss Wärmenetz</td>
-							<td><input type="checkbox" class="connectionToHeatGridNow"></td>
-							<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
-						</tr>
-						<tr>
-							<td>Umweltengagement</td>
-							<td><input type="checkbox" class="environmentCommitmentNow"></td>
-							<td><input type="checkbox" class="environmentCommitmentFuture"></td>
-						</tr>
-					</table>
+			<div class="outerQuarterSection">
+				<div class="innerQuarterSection" id="dataViewIndividualQuarter0">
+					<div class="nameAndTable">
+						<h3><span>xxx</span></h3>
+						<h4>errechnet aus <span>xxx</span> Gebäuden ähnlichen Verbrauchs</h4>
+						<table>
+							<tr>
+								<th></th>
+								<th>Bestandssituation</th>
+								<th>Zukunftsentscheidung</th>
+							</tr>
+							<tr>
+								<td>Sanierungszustand</td>
+								<td><input type="checkbox" class="refurbishedNow"></td>
+								<td><input type="checkbox" class="refurbishedFuture"></td>
+							</tr>
+							<tr>
+								<td>Anschluss Wärmenetz</td>
+								<td><input type="checkbox" class="connectionToHeatGridNow"></td>
+								<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
+							</tr>
+							<tr>
+								<td>Umweltengagement</td>
+								<td><input type="checkbox" class="environmentCommitmentNow"></td>
+								<td><input type="checkbox" class="environmentCommitmentFuture"></td>
+							</tr>
+						</table>
 
-				</div>
-				<div class="graph graphR emissions_graphs">
-					<img src="img/blank_16x9inches.png">
-				</div>
-				<div class="graph graphL energy_prices_graphs">
-					<img src="img/blank_16x9inches.png" alt="">
+					</div>
+					<div class="graph graphR emissions_graphs">
+						<img src="img/blank_16x9inches.png">
+					</div>
+					<div class="graph graphL energy_prices_graphs">
+						<img src="img/blank_16x9inches.png" alt="">
+					</div>
 				</div>
 			</div>
-			<div class="quarterSection" id="dataViewIndividualQuarter1">
-				<div class="nameAndTable">
-					<h3><span>xxx</span></h3>
-					<table>
-						<tr>
-							<th></th>
-							<th>Bestandssituation</th>
-							<th>Zukunftsentscheidung</th>
-						</tr>
-						<tr>
-							<td>Sanierungszustand</td>
-							<td><input type="checkbox" class="refurbishedNow"></td>
-							<td><input type="checkbox" class="refurbishedFuture"></td>
-						</tr>
-						<tr>
-							<td>Anschluss Wärmenetz</td>
-							<td><input type="checkbox" class="connectionToHeatGridNow"></td>
-							<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
-						</tr>
-						<tr>
-							<td>Umweltengagement</td>
-							<td><input type="checkbox" class="environmentCommitmentNow"></td>
-							<td><input type="checkbox" class="environmentCommitmentFuture"></td>
-						</tr>
-					</table>
+			<div class="outerQuarterSection">
+				<div class="innerQuarterSection" id="dataViewIndividualQuarter1">
+					<div class="nameAndTable">
+						<h3><span>xxx</span></h3>
+						<table>
+							<tr>
+								<th></th>
+								<th>Bestandssituation</th>
+								<th>Zukunftsentscheidung</th>
+							</tr>
+							<tr>
+								<td>Sanierungszustand</td>
+								<td><input type="checkbox" class="refurbishedNow"></td>
+								<td><input type="checkbox" class="refurbishedFuture"></td>
+							</tr>
+							<tr>
+								<td>Anschluss Wärmenetz</td>
+								<td><input type="checkbox" class="connectionToHeatGridNow"></td>
+								<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
+							</tr>
+							<tr>
+								<td>Umweltengagement</td>
+								<td><input type="checkbox" class="environmentCommitmentNow"></td>
+								<td><input type="checkbox" class="environmentCommitmentFuture"></td>
+							</tr>
+						</table>
 
-				</div>
-				<div class="graph graphR emissions_graphs">
-					<img src="img/blank_16x9inches.png">
-				</div>
-				<div class="graph graphL energy_prices_graphs">
-					<img src="img/blank_16x9inches.png" alt="">
+					</div>
+					<div class="graph graphR emissions_graphs">
+						<img src="img/blank_16x9inches.png">
+					</div>
+					<div class="graph graphL energy_prices_graphs">
+						<img src="img/blank_16x9inches.png" alt="">
+					</div>
 				</div>
 			</div>
-			<div class="quarterSection" id="dataViewIndividualQuarter2">
-				<div class="nameAndTable">
-					<h3><span>xxx</span></h3>
-					<table>
-						<tr>
-							<th></th>
-							<th>Bestandssituation</th>
-							<th>Zukunftsentscheidung</th>
-						</tr>
-						<tr>
-							<td>Sanierungszustand</td>
-							<td><input type="checkbox" class="refurbishedNow"></td>
-							<td><input type="checkbox" class="refurbishedFuture"></td>
-						</tr>
-						<tr>
-							<td>Anschluss Wärmenetz</td>
-							<td><input type="checkbox" class="connectionToHeatGridNow"></td>
-							<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
-						</tr>
-						<tr>
-							<td>Umweltengagement</td>
-							<td><input type="checkbox" class="environmentCommitmentNow"></td>
-							<td><input type="checkbox" class="environmentCommitmentFuture"></td>
-						</tr>
-					</table>
+			<div class="outerQuarterSection">
+				<div class="innerQuarterSection" id="dataViewIndividualQuarter2">
+					<div class="nameAndTable">
+						<h3><span>xxx</span></h3>
+						<table>
+							<tr>
+								<th></th>
+								<th>Bestandssituation</th>
+								<th>Zukunftsentscheidung</th>
+							</tr>
+							<tr>
+								<td>Sanierungszustand</td>
+								<td><input type="checkbox" class="refurbishedNow"></td>
+								<td><input type="checkbox" class="refurbishedFuture"></td>
+							</tr>
+							<tr>
+								<td>Anschluss Wärmenetz</td>
+								<td><input type="checkbox" class="connectionToHeatGridNow"></td>
+								<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
+							</tr>
+							<tr>
+								<td>Umweltengagement</td>
+								<td><input type="checkbox" class="environmentCommitmentNow"></td>
+								<td><input type="checkbox" class="environmentCommitmentFuture"></td>
+							</tr>
+						</table>
 
-				</div>
-				<div class="graph graphR emissions_graphs">
-					<img src="img/blank_16x9inches.png">
-				</div>
-				<div class="graph graphL energy_prices_graphs">
-					<img src="img/blank_16x9inches.png" alt="">
+					</div>
+					<div class="graph graphR emissions_graphs">
+						<img src="img/blank_16x9inches.png">
+					</div>
+					<div class="graph graphL energy_prices_graphs">
+						<img src="img/blank_16x9inches.png" alt="">
+					</div>
 				</div>
 			</div>
-			<div class="quarterSection" id="dataViewIndividualQuarter3">
-				<div class="nameAndTable">
-					<h3><span>xxx</span></h3>
-					<table>
-						<tr>
-							<th></th>
-							<th>Bestandssituation</th>
-							<th>Zukunftsentscheidung</th>
-						</tr>
-						<tr>
-							<td>Sanierungszustand</td>
-							<td><input type="checkbox" class="refurbishedNow"></td>
-							<td><input type="checkbox" class="refurbishedFuture"></td>
-						</tr>
-						<tr>
-							<td>Anschluss Wärmenetz</td>
-							<td><input type="checkbox" class="connectionToHeatGridNow"></td>
-							<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
-						</tr>
-						<tr>
-							<td>Umweltengagement</td>
-							<td><input type="checkbox" class="environmentCommitmentNow"></td>
-							<td><input type="checkbox" class="environmentCommitmentFuture"></td>
-						</tr>
-					</table>
+			<div class="outerQuarterSection">
+				<div class="innerQuarterSection" id="dataViewIndividualQuarter3">
+					<div class="nameAndTable">
+						<h3><span>xxx</span></h3>
+						<table>
+							<tr>
+								<th></th>
+								<th>Bestandssituation</th>
+								<th>Zukunftsentscheidung</th>
+							</tr>
+							<tr>
+								<td>Sanierungszustand</td>
+								<td><input type="checkbox" class="refurbishedNow"></td>
+								<td><input type="checkbox" class="refurbishedFuture"></td>
+							</tr>
+							<tr>
+								<td>Anschluss Wärmenetz</td>
+								<td><input type="checkbox" class="connectionToHeatGridNow"></td>
+								<td><input type="checkbox" class="connectionToHeatGridFuture"></td>
+							</tr>
+							<tr>
+								<td>Umweltengagement</td>
+								<td><input type="checkbox" class="environmentCommitmentNow"></td>
+								<td><input type="checkbox" class="environmentCommitmentFuture"></td>
+							</tr>
+						</table>
 
-				</div>
-				<div class="graph graphR emissions_graphs">
-					<img src="img/blank_16x9inches.png">
-				</div>
-				<div class="graph graphL energy_prices_graphs">
-					<img src="img/blank_16x9inches.png" alt="">
+					</div>
+					<div class="graph graphR emissions_graphs">
+						<img src="img/blank_16x9inches.png">
+					</div>
+					<div class="graph graphL energy_prices_graphs">
+						<img src="img/blank_16x9inches.png" alt="">
+					</div>
 				</div>
 			</div>
 			<!-- <div class="sample">

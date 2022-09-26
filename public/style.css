@@ -350,12 +350,6 @@ g#yAxisG text {
 }
 
 /********************************* DATA VIEW ****************************/
-.headerImage {
-  background-image: url("img/header.png");
-  background-repeat: no-repeat;
-  background-size: 50vw, calc(50vw / 1920 * 406);
-}
-
 .dataview_wrapper {
   /* display: inline-block; */
   width: 100%;
@@ -369,6 +363,12 @@ g#yAxisG text {
 }
 
 /****************************** TOTAL DATA VIEW *************************/
+.headerImage {
+  background-image: url("img/header.png");
+  background-repeat: no-repeat;
+  background-size: 50vw, calc(50vw / 1920 * 406);
+}
+
 .dataViewTotalMode {
   display: grid;
   grid-template: 'tl tr'
@@ -407,9 +407,9 @@ tr:nth-child(even) {
 /**************************** INDIVIDUAL DATA VIEW *************************/
 
 .dataViewIndividualMode {
-  margin: 10px;
+  /* margin: 10px; */
   display: grid;
-  grid-gap: 25px;
+  /* grid-gap: 25px; */
   grid-template: 'tl tr'
     'bl br';
 }
@@ -455,7 +455,11 @@ tr:nth-child(even) {
   background-color: #f1f6d6;
 }
 
-.dataViewIndividualMode .quarterSection {
+.dataViewIndividualMode .outerQuarterSection{
+height: 50vh;
+}
+
+.dataViewIndividualMode .innerQuarterSection {
   outline: 8px solid #bbd431;
   padding: 30px;
   margin: 15px;
@@ -471,17 +475,17 @@ font-size: smaller;
 font-weight: normal;
 }
 
-.dataViewIndividualMode .quarterSection .nameAndTable {
+.dataViewIndividualMode .innerQuarterSection .nameAndTable {
   grid-area: dataTable;
 }
-.dataViewIndividualMode .quarterSection .graphR{
+.dataViewIndividualMode .innerQuarterSection .graphR{
   grid-area: graphR;
 }
-.dataViewIndividualMode .quarterSection .graphL{
+.dataViewIndividualMode .innerQuarterSection .graphL{
   grid-area: graphL;
 }
 
-.dataViewIndividualMode .quarterSection {
+.dataViewIndividualMode .innerQuarterSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
