@@ -407,11 +407,11 @@ tr:nth-child(even) {
 /**************************** INDIVIDUAL DATA VIEW *************************/
 
 .dataViewIndividualMode {
-  margin: 10px;
   display: grid;
   grid-gap: 25px;
   grid-template: 'tl tr'
     'bl br';
+    height: 100%;
 }
 
 .dataViewIndividualMode .graph img {
