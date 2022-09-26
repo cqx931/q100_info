@@ -421,7 +421,7 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode table {
   width: 100%;
-  font-size: 32px;
+  font-size: x-large;
   border-spacing: 0;
 }
 
