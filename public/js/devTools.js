@@ -8,8 +8,19 @@ document.addEventListener('keydown', function (event) {
   } else if (event.key == "d") { //d for dataview
     toggleDataViewContent()
   }
-  else if (event.key == "v") { //d for dataview
+  else if (event.key == "v") {
     toggleVerboseMode()
+  }
+  else if (event.key == "t"){
+    // tableAddColumn(currentIterationRound);
+    $("#dataViewIndividualQuarter" + 0).find(".connectionToHeatGridRow").find(".round" + currentIterationRound).replaceWith("connected");
+
+    const data =
+    {"buildings_groups": {"group_0": {"buildings": [{"address": "Rüsdorfer Straße 18", "avg_spec_heat_consumption": 419.435035, "avg_spec_power_consumption": 38.00364, "cluster_size": 2.0, "emissions_graphs": "data/outputs/output_20220928_11-15-26/emissions/CO2_emissions_7.44.png", "energy_prices_graphs": "data/outputs/output_20220928_11-15-26/energy_prices/energy_prices_7.44.png", "CO2": 0.022635805, "connection_to_heat_grid": 2026, "connection_to_heat_grid_prior": false, "refurbished": false, "refurbished_prior": false, "environmental_engagement": false, "environmental_engagement_prior": false, "energy_source": "Gas", "cell": ""}], "connections": 1}, "group_1": [""], "group_2": [""], "group_3": [""]}};
+
+    injectDataToIndividualDataView(data);
+    // currentIterationRound++;
+    console.log(currentIterationRound);
   }
 });
 

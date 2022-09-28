@@ -70,7 +70,11 @@ const injectDataToIndividualDataView = function (data) {
             $("#dataViewIndividualQuarter" + i).find("h4 > span").text(targetBuilding["cluster_size"])
             // $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridNow").replaceWith(targetBuilding["connection_to_heat_grid_prior"])
             // $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid"])
-            $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridFuture").replaceWith(targetBuilding["connection_to_heat_grid"])
+            $("#dataViewIndividualQuarter" + i)
+            .find(".connectionToHeatGridRow")
+            .children(".round" + currentIterationRound)
+            .replaceWith(targetBuilding["connection_to_heat_grid"]);
+
             $("#dataViewIndividualQuarter" + i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished_prior"])
             $("#dataViewIndividualQuarter" + i).find(".refurbishedFuture").prop("checked", targetBuilding["refurbished"])
             $("#dataViewIndividualQuarter" + i).find(".environmentCommitmentNow").prop("checked", targetBuilding["environmental_engagement_prior"])
@@ -79,11 +83,30 @@ const injectDataToIndividualDataView = function (data) {
             $("#dataViewIndividualQuarter" + i).find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
             $("#dataViewIndividualQuarter" + i).find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             console.log("failed loading data for ", group_name, " - group is probably empty.")
         }
     }
 
 }
 
+function tableAddColumn(round) {
+    for (let i = 0; i < 4; i++) {
+        // add header column:
+        let element = $('#dataViewIndividualQuarter' + i).find('.headerRow');
+        element.append(`<th class="round${round}">Runde ${round}</th>`);
 
+        // add data columns:
+        $('#dataViewIndividualQuarter' + i)
+        .find('.refurbishedRow')
+        .append(`<td class="round${round}"></td>`);
+
+        $('#dataViewIndividualQuarter' + i)
+        .find('.connectionHeatGridRow')
+        .append(`<td class="round${round}"></td>`);
+
+        $('#dataViewIndividualQuarter' + i)
+        .find('.environmental_engagementRow')
+        .append(`<td class="round${round}"></td>`);
+    }
+}
