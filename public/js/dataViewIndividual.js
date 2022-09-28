@@ -77,13 +77,13 @@ const injectDataToIndividualDataView = function (data) {
             .children(".Bestand")
             .replaceWith(`<td>${value}</td>`);
 
-            value = targetBuilding["connection_to_heat_grid_prior"];
+            value = targetBuilding["connection_to_heat_grid_prior"] > 0 ? targetBuilding["connection_to_heat_grid_prior"] : "nein";
             $("#dataViewIndividualQuarter" + i)
             .find(".connectionToHeatGridRow")
             .children(".Bestand")
             .replaceWith(`<td>${value}</td>`);
 
-            value = targetBuilding["environmental_engagement_prior"];
+            value = targetBuilding["environmental_engagement_prior"] ? "ja" : "nein";
             $("#dataViewIndividualQuarter" + i)
             .find(".environmental_engagementRow")
             .children(".Bestand")
@@ -96,13 +96,13 @@ const injectDataToIndividualDataView = function (data) {
             .children(".round" + currentIterationRound)
             .replaceWith(`<td>${value}</td>`);
 
-            value = targetBuilding["connection_to_heat_grid"];
+            value = targetBuilding["connection_to_heat_grid"] > 0 ? targetBuilding["connection_to_heat_grid"] : "nein";
             $("#dataViewIndividualQuarter" + i)
             .find(".connectionToHeatGridRow")
             .children(".round" + currentIterationRound)
             .replaceWith(`<td>${value}</td>`);
 
-            value = targetBuilding["environmental_engagement"];
+            value = targetBuilding["environmental_engagement"] ? "ja" : "nein";
             $("#dataViewIndividualQuarter" + i)
             .find(".environmental_engagementRow")
             .children(".round" + currentIterationRound)

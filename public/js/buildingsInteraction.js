@@ -51,10 +51,11 @@ const renderHouseInfo = function (groupData, identifier) {
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    template = template.replace("$e", h.environmental_engagement);
-    let refurbished = h["refurbished"] ? "✓" : "X";
+    let environmental_engagement = h.environmental_engagement ? "ja" : "nein";
+    template = template.replace("$e", environmental_engagement);
+    let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
-    let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "X" : parseInt(h["connection_to_heat_grid"]);
+    let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "nein" : parseInt(h["connection_to_heat_grid"]);
     template = template.replace("$c", connection_to_heat_grid);
     let avg_spec_heat_consumption = h["avg_spec_heat_consumption"].toFixed(0);
     template = template.replace("$h", avg_spec_heat_consumption);
