@@ -11,9 +11,17 @@ socket.on('message', function (message) {
 
     console.log("incoming message:", json);
 
+    // ------------------------- ENVIRONMENT --------------------------
     if (json.hasOwnProperty('mode')) {
       const nextUserMode = json.mode;
       switchUserMode(nextUserMode);
+    }
+    if (json.hasOwnProperty("current_iteration_round")){
+      if (currentIterationRound != json.current_iteration_round){
+        currentIterationRound = json.current_iteration_round;
+        console.log("current_iteration_round = " + currentIterationRound);
+        tableAddColumn(json.current_iteration_round);
+      }
     }
 
     // ------------------------ QUESTIONNAIRE -------------------------
