@@ -18,7 +18,7 @@ function updateConnectionsScenario(scenario_data){
 function updateMapImageTimed() {
   setTimeout(
     function () {
-      document.getElementById('map').src = "data/canvas.png?update=" + +new Date();
+      document.getElementById('map').src = "data/canvas.png?update=" + new Date().getTime();
     },
     1000);
 }
