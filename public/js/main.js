@@ -22,7 +22,6 @@ socket.on('message', function (message) {
         console.log("current_iteration_round = " + currentIterationRound);
         tableAddColumn(json.current_iteration_round);
       }
-      console.log(currentIterationRound)
     }
 
     // ------------------------ QUESTIONNAIRE -------------------------

@@ -62,23 +62,51 @@ const injectDataToDataView = function (data) {
 
 const injectDataToIndividualDataView = function (data) {
     for (let i = 0; i < 4; i++) {
-        const group_name = "group_" + i
-        let targetBuilding
+        const group_name = "group_" + i;
+        let targetBuilding;
+        let value;
         try {
             targetBuilding = data.buildings_groups[group_name].buildings[0]
             $("#dataViewIndividualQuarter" + i).find("h3 > span").text(targetBuilding["address"])
             $("#dataViewIndividualQuarter" + i).find("h4 > span").text(targetBuilding["cluster_size"])
-            // $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridNow").replaceWith(targetBuilding["connection_to_heat_grid_prior"])
-            // $("#dataViewIndividualQuarter" + i).find(".connectionToHeatGridFuture").prop("checked", targetBuilding["connection_to_heat_grid"])
+
+            // Bestandsdaten:
+            value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
+            $("#dataViewIndividualQuarter" + i)
+            .find(".refurbishedRow")
+            .children(".Bestand")
+            .replaceWith(`<td>${value}</td>`);
+
+            value = targetBuilding["connection_to_heat_grid_prior"];
+            $("#dataViewIndividualQuarter" + i)
+            .find(".connectionToHeatGridRow")
+            .children(".Bestand")
+            .replaceWith(`<td>${value}</td>`);
+
+            value = targetBuilding["environmental_engagement_prior"];
+            $("#dataViewIndividualQuarter" + i)
+            .find(".environmental_engagementRow")
+            .children(".Bestand")
+            .replaceWith(`<td>${value}</td>`);
+
+
+            value = targetBuilding["refurbished"] ? "saniert" : "unsaniert";
+            $("#dataViewIndividualQuarter" + i)
+            .find(".refurbishedRow")
+            .children(".round" + currentIterationRound)
+            .replaceWith(`<td>${value}</td>`);
+
+            value = targetBuilding["connection_to_heat_grid"];
             $("#dataViewIndividualQuarter" + i)
             .find(".connectionToHeatGridRow")
             .children(".round" + currentIterationRound)
-            .replaceWith(targetBuilding["connection_to_heat_grid"]);
+            .replaceWith(`<td>${value}</td>`);
 
-            $("#dataViewIndividualQuarter" + i).find(".refurbishedNow").prop("checked", targetBuilding["refurbished_prior"])
-            $("#dataViewIndividualQuarter" + i).find(".refurbishedFuture").prop("checked", targetBuilding["refurbished"])
-            $("#dataViewIndividualQuarter" + i).find(".environmentCommitmentNow").prop("checked", targetBuilding["environmental_engagement_prior"])
-            $("#dataViewIndividualQuarter" + i).find(".environmentCommitmentFuture").prop("checked", targetBuilding["environmental_engagement"])
+            value = targetBuilding["environmental_engagement"];
+            $("#dataViewIndividualQuarter" + i)
+            .find(".environmental_engagementRow")
+            .children(".round" + currentIterationRound)
+            .replaceWith(`<td>${value}</td>`);
 
             $("#dataViewIndividualQuarter" + i).find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
             $("#dataViewIndividualQuarter" + i).find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
@@ -102,7 +130,7 @@ function tableAddColumn(round) {
         .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
-        .find('.connectionHeatGridRow')
+        .find('.connectionToHeatGridRow')
         .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
