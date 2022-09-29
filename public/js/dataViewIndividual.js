@@ -68,6 +68,10 @@ const injectDataToIndividualDataView = function (data) {
         try {
             targetBuilding = data.buildings_groups[group_name].buildings[0]
             let dataViewIndividualQuarter = $("#dataViewIndividualQuarter" + i)
+            // show hidden elements:
+            if (dataViewIndividualQuarter.css("visibility") == "hidden") {
+                dataViewIndividualQuarter.css("visibility", "visible");
+            }
 
             // address:
             dataViewIndividualQuarter

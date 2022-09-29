@@ -459,6 +459,7 @@ tr:nth-child(even) {
   outline: 8px solid #bbd431;
   padding: 30px;
   margin: 15px;
+  visibility: hidden;
 }
 
 .dataViewIndividualMode h3 {
