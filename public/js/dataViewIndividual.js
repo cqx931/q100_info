@@ -67,49 +67,68 @@ const injectDataToIndividualDataView = function (data) {
         let value;
         try {
             targetBuilding = data.buildings_groups[group_name].buildings[0]
-            $("#dataViewIndividualQuarter" + i).find("h3 > span").text(targetBuilding["address"])
-            $("#dataViewIndividualQuarter" + i).find("h4 > span").text(targetBuilding["cluster_size"])
+            let dataViewIndividualQuarter = $("#dataViewIndividualQuarter" + i)
+
+            // address:
+            dataViewIndividualQuarter
+                .find("h3 > span")
+                .text(targetBuilding["address"])
+
+            // consumption:
+            consumption = dataViewIndividualQuarter.find(".consumptionData")
+            // heat:
+            consumption.children(".heatConsumption").children("span").text(targetBuilding["avg_spec_heat_consumption"].toFixed(3));
+            // power:
+            consumption.children(".powerConsumption").children("span").text(targetBuilding["avg_spec_power_consumption"].toFixed(3));
+
+            // cluster_size:
+            dataViewIndividualQuarter
+                .find(".consumptionData")
+                .children(".clusterSize")
+                .children("span")
+                .text(targetBuilding["cluster_size"]);
+
 
             // Bestandsdaten:
             value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
-            $("#dataViewIndividualQuarter" + i)
-            .find(".refurbishedRow")
-            .children(".Bestand")
-            .replaceWith(`<td>${value}</td>`);
+            dataViewIndividualQuarter
+                .find(".refurbishedRow")
+                .children(".Bestand")
+                .replaceWith(`<td>${value}</td>`);
 
             value = targetBuilding["connection_to_heat_grid_prior"] > 0 ? targetBuilding["connection_to_heat_grid_prior"] : "nein";
-            $("#dataViewIndividualQuarter" + i)
-            .find(".connectionToHeatGridRow")
-            .children(".Bestand")
-            .replaceWith(`<td>${value}</td>`);
+            dataViewIndividualQuarter
+                .find(".connectionToHeatGridRow")
+                .children(".Bestand")
+                .replaceWith(`<td>${value}</td>`);
 
             value = targetBuilding["environmental_engagement_prior"] ? "ja" : "nein";
-            $("#dataViewIndividualQuarter" + i)
-            .find(".environmental_engagementRow")
-            .children(".Bestand")
-            .replaceWith(`<td>${value}</td>`);
+            dataViewIndividualQuarter
+                .find(".environmental_engagementRow")
+                .children(".Bestand")
+                .replaceWith(`<td>${value}</td>`);
 
 
             value = targetBuilding["refurbished"] ? "saniert" : "unsaniert";
-            $("#dataViewIndividualQuarter" + i)
-            .find(".refurbishedRow")
-            .children(".round" + currentIterationRound)
-            .replaceWith(`<td>${value}</td>`);
+            dataViewIndividualQuarter
+                .find(".refurbishedRow")
+                .children(".round" + currentIterationRound)
+                .replaceWith(`<td>${value}</td>`);
 
             value = targetBuilding["connection_to_heat_grid"] > 0 ? targetBuilding["connection_to_heat_grid"] : "nein";
-            $("#dataViewIndividualQuarter" + i)
-            .find(".connectionToHeatGridRow")
-            .children(".round" + currentIterationRound)
-            .replaceWith(`<td>${value}</td>`);
+            dataViewIndividualQuarter
+                .find(".connectionToHeatGridRow")
+                .children(".round" + currentIterationRound)
+                .replaceWith(`<td>${value}</td>`);
 
             value = targetBuilding["environmental_engagement"] ? "ja" : "nein";
-            $("#dataViewIndividualQuarter" + i)
-            .find(".environmental_engagementRow")
-            .children(".round" + currentIterationRound)
-            .replaceWith(`<td>${value}</td>`);
+            dataViewIndividualQuarter
+                .find(".environmental_engagementRow")
+                .children(".round" + currentIterationRound)
+                .replaceWith(`<td>${value}</td>`);
 
-            $("#dataViewIndividualQuarter" + i).find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
-            $("#dataViewIndividualQuarter" + i).find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
+            dataViewIndividualQuarter.find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
+            dataViewIndividualQuarter.find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
         } catch (error) {
             // console.log(error)
             console.log("failed loading data for ", group_name, " - group is probably empty.")
@@ -126,15 +145,15 @@ function tableAddColumn(round) {
 
         // add data columns:
         $('#dataViewIndividualQuarter' + i)
-        .find('.refurbishedRow')
-        .append(`<td class="round${round}"></td>`);
+            .find('.refurbishedRow')
+            .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
-        .find('.connectionToHeatGridRow')
-        .append(`<td class="round${round}"></td>`);
+            .find('.connectionToHeatGridRow')
+            .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
-        .find('.environmental_engagementRow')
-        .append(`<td class="round${round}"></td>`);
+            .find('.environmental_engagementRow')
+            .append(`<td class="round${round}"></td>`);
     }
 }

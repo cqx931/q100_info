@@ -464,11 +464,12 @@ tr:nth-child(even) {
 .dataViewIndividualMode h3 {
 margin: 0 20px;
 }
-.dataViewIndividualMode h4 {
-margin: 0 20px 10px 20px;
+.dataViewIndividualMode .consumptionData {
+/* margin: 0 20px 10px 20px; */
 color: gray;
 font-size: smaller;
 font-weight: normal;
+vertical-align: top;
 }
 
 .dataViewIndividualMode .quarterSection .nameAndTable {
