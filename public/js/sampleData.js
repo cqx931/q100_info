@@ -206,3 +206,100 @@ const dataViewIndividualData = {
         }
     }
 }
+
+const buildingInteractionModeData = 
+
+{
+    "buildings_groups": {
+        "group_0": {
+            "buildings": [
+                {
+                    "address": "R\u00fcsdorfer Stra\u00dfe 28",
+                    "avg_spec_heat_consumption": 224.0,
+                    "avg_spec_power_consumption": 19.678693,
+                    "cluster_size": 10.0,
+                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.50.png",
+                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.50.png",
+                    "CO2": 0.0125813315,
+                    "connection_to_heat_grid": false,
+                    "connection_to_heat_grid_prior": false,
+                    "refurbished": false,
+                    "refurbished_prior": false,
+                    "environmental_engagement": false,
+                    "environmental_engagement_prior": false,
+                    "energy_source": "\u00d6l",
+                    "cell": ""
+                }
+            ],
+            "connections": 0
+        },
+        "group_1": {
+            "buildings": [
+                {
+                    "address": "R\u00fcsdorfer Stra\u00dfe 40",
+                    "avg_spec_heat_consumption": 196.4097951852,
+                    "avg_spec_power_consumption": 36.5880559259,
+                    "cluster_size": 27.0,
+                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.55.png",
+                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.55.png",
+                    "CO2": 0.0120015825,
+                    "connection_to_heat_grid": false,
+                    "connection_to_heat_grid_prior": false,
+                    "refurbished": false,
+                    "refurbished_prior": false,
+                    "environmental_engagement": true,
+                    "environmental_engagement_prior": true,
+                    "energy_source": "Gas",
+                    "cell": ""
+                }
+            ],
+            "connections": 1
+        },
+        "group_2": {
+            "buildings": [
+                {
+                    "address": "R\u00fcsdorfer Stra\u00dfe 40",
+                    "avg_spec_heat_consumption": 196.4097951852,
+                    "avg_spec_power_consumption": 36.5880559259,
+                    "cluster_size": 27.0,
+                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.55.png",
+                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.55.png",
+                    "CO2": 0.0120015825,
+                    "connection_to_heat_grid": false,
+                    "connection_to_heat_grid_prior": false,
+                    "refurbished": false,
+                    "refurbished_prior": false,
+                    "environmental_engagement": true,
+                    "environmental_engagement_prior": true,
+                    "energy_source": "Gas",
+                    "cell": ""
+                }
+            ],
+            "connections": 2
+        },
+
+        "group_3": {
+            "buildings": [
+                {
+                    "address": "R\u00fcsdorfer Stra\u00dfe 40",
+                    "avg_spec_heat_consumption": 196.4097951852,
+                    "avg_spec_power_consumption": 36.5880559259,
+                    "cluster_size": 27.0,
+                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.55.png",
+                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.55.png",
+                    "CO2": 0.0120015825,
+                    "connection_to_heat_grid": false,
+                    "connection_to_heat_grid_prior": false,
+                    "refurbished": false,
+                    "refurbished_prior": false,
+                    "environmental_engagement": true,
+                    "environmental_engagement_prior": true,
+                    "energy_source": "Gas",
+                    "cell": ""
+                }
+            ],
+            "connections": 3
+        },
+
+    }
+}

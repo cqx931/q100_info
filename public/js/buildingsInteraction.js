@@ -13,6 +13,19 @@ function updateConnectionsScenario(scenario_data){
   element.innerHTML = template.replace("$a", scenario_data);
   console.log(element);
 }
+function updateSelectedConnectionsNumber(json){ // could be merged with the function above (updateConnectionsSenario)
+  if (json.hasOwnProperty('data_view_individual_data')) {
+    return // this data structure is sent right after the simulation therefore irrelevant
+  }
+  let sum = 0
+  for (let key in json.buildings_groups) {
+      sum += json.buildings_groups[key].connections
+      console.log(sum)
+  }
+  const element = document.getElementById("scenario_num_connections");
+  let template = document.getElementById("scenario_num_connections_template").innerHTML;
+  element.innerHTML = template.replace("$s", sum);
+}
 
 // reload image
 function updateMapImageTimed() {
