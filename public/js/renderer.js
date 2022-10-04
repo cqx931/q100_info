@@ -138,7 +138,7 @@ function processSliderHandle(slider_data) {
       3. add <u> around object:
       if (handle == "refurbished" ) { select and underline item <li class="refurbished">}
       if (handle == "connection_to_heat_grid" ) { select and underline item <li class="connectoin_to_heat_grid">}
-      if (handle == "environmental_engagement" ) { select and underline item <li class="environmental_engagement">}
+      if (handle == "save_energy" ) { select and underline item <li class="save_energy">}
      }
 
      */

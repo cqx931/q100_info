@@ -58,15 +58,15 @@ const renderHouseInfo = function (groupData, identifier) {
 
     div.className = "meta";
     div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
-    div.className += h.environmental_engagement > 0.7 ? " green" : (h.environmental_engagement <= 0.7 && h.environmental_engagement > 0.3 ? " mix" : " gray");
+    div.className += h.save_energy > 0.7 ? " green" : (h.save_energy <= 0.7 && h.save_energy > 0.3 ? " mix" : " gray");
 
     let template = document.getElementById("meta_template").innerHTML;
     template = template.replace("$Adresse", h.address);
 
     const v = Math.floor(Math.random() * 500) + 500
     //
-    let environmental_engagement = h.environmental_engagement ? "ja" : "nein";
-    template = template.replace("$e", environmental_engagement);
+    let save_energy = h.save_energy ? "ja" : "nein";
+    template = template.replace("$e", save_energy);
     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
     let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "nein" : parseInt(h["connection_to_heat_grid"]);

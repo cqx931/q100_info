@@ -16,7 +16,7 @@ const sampleHouseInfo = [{
   "spec_heat_consumption": 71921,
   "spec_power_consumption": 10260,
   "refurbished": false,
-  "environmental_engagement": 0.5
+  "save_energy": 0.5
 }, {
   "address": "Straßenname 15",
   "CO2": 0.2488510615,
@@ -25,7 +25,7 @@ const sampleHouseInfo = [{
   "spec_heat_consumption": 161150,
   "spec_power_consumption": 46197,
   "refurbished": false,
-  "environmental_engagement": 0.1
+  "save_energy": 0.1
 }, {
   "address": "Straßenname 8",
   "CO2": 0.317290762,
@@ -34,7 +34,7 @@ const sampleHouseInfo = [{
   "spec_heat_consumption": 251721,
   "spec_power_consumption": 71428,
   "refurbished": true,
-  "environmental_engagement": 0.9
+  "save_energy": 0.9
 }]
 
 const districtData = [
@@ -129,8 +129,8 @@ const dataViewIndividualData = {
                         "connection_to_heat_grid_prior": true,
                         "refurbished": true,
                         "refurbished_prior": true,
-                        "environmental_engagement": true,
-                        "environmental_engagement_prior": true,
+                        "save_energy": true,
+                        "save_energy_prior": true,
                         "energy_source": "Gas",
                         "cell": ""
                     }
@@ -151,8 +151,8 @@ const dataViewIndividualData = {
                         "connection_to_heat_grid_prior": true,
                         "refurbished": true,
                         "refurbished_prior": true,
-                        "environmental_engagement": true,
-                        "environmental_engagement_prior": true,
+                        "save_energy": true,
+                        "save_energy_prior": true,
                         "energy_source": "Gas",
                         "cell": ""
                     }
@@ -173,8 +173,8 @@ const dataViewIndividualData = {
                         "connection_to_heat_grid_prior": true,
                         "refurbished": true,
                         "refurbished_prior": true,
-                        "environmental_engagement": true,
-                        "environmental_engagement_prior": true,
+                        "save_energy": true,
+                        "save_energy_prior": true,
                         "energy_source": "Gas",
                         "cell": ""
                     }
@@ -195,8 +195,8 @@ const dataViewIndividualData = {
                         "connection_to_heat_grid_prior": true,
                         "refurbished": true,
                         "refurbished_prior": true,
-                        "environmental_engagement": true,
-                        "environmental_engagement_prior": true,
+                        "save_energy": true,
+                        "save_energy_prior": true,
                         "energy_source": "Gas",
                         "cell": ""
                     }
@@ -207,7 +207,7 @@ const dataViewIndividualData = {
     }
 }
 
-const buildingInteractionModeData = 
+const buildingInteractionModeData =
 
 {
     "buildings_groups": {
@@ -225,8 +225,8 @@ const buildingInteractionModeData =
                     "connection_to_heat_grid_prior": false,
                     "refurbished": false,
                     "refurbished_prior": false,
-                    "environmental_engagement": false,
-                    "environmental_engagement_prior": false,
+                    "save_energy": false,
+                    "save_energy_prior": false,
                     "energy_source": "\u00d6l",
                     "cell": ""
                 }
@@ -247,8 +247,8 @@ const buildingInteractionModeData =
                     "connection_to_heat_grid_prior": false,
                     "refurbished": false,
                     "refurbished_prior": false,
-                    "environmental_engagement": true,
-                    "environmental_engagement_prior": true,
+                    "save_energy": true,
+                    "save_energy_prior": true,
                     "energy_source": "Gas",
                     "cell": ""
                 }
@@ -269,8 +269,8 @@ const buildingInteractionModeData =
                     "connection_to_heat_grid_prior": false,
                     "refurbished": false,
                     "refurbished_prior": false,
-                    "environmental_engagement": true,
-                    "environmental_engagement_prior": true,
+                    "save_energy": true,
+                    "save_energy_prior": true,
                     "energy_source": "Gas",
                     "cell": ""
                 }
@@ -292,8 +292,8 @@ const buildingInteractionModeData =
                     "connection_to_heat_grid_prior": false,
                     "refurbished": false,
                     "refurbished_prior": false,
-                    "environmental_engagement": true,
-                    "environmental_engagement_prior": true,
+                    "save_energy": true,
+                    "save_energy_prior": true,
                     "energy_source": "Gas",
                     "cell": ""
                 }
