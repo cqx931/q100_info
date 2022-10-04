@@ -7,12 +7,11 @@ function updateCurrentScenarioGraph(scenario_handle) {
 }
 
 function updateConnectionsScenario(scenario_data) {
-  const element = document.getElementById("scenario_num_connections");
-  let template = document.getElementById("scenario_num_connections_template").innerHTML;
-  // $("#scenario_num_connections h3").text(`${scenario_data} Anschlüsse`);
-  element.innerHTML = template.replace("$a", scenario_data);
-  console.log(element);
+  // const element = document.getElementById("scenario_num_connections");
+  let element = $("#scenario_num_connections").find(".global");
+  element.replaceWith(`<span class="global">+ ${scenario_data} zusätzliche</span>`);
 }
+
 function updateSelectedConnectionsNumber(json) { // could be merged with the function above (updateConnectionsSenario)
   if (json.hasOwnProperty('data_view_individual_data')) {
     return // this data structure is sent right after the simulation therefore irrelevant
@@ -24,9 +23,9 @@ function updateSelectedConnectionsNumber(json) { // could be merged with the fun
       console.log(sum)
     }
   }
-  const element = document.getElementById("scenario_num_connections");
-  let template = document.getElementById("scenario_num_connections_template").innerHTML;
-  element.innerHTML = template.replace("$s", sum);
+
+  let element = $("#scenario_num_connections").find(".selected");
+  element.replaceWith(`<span class="selected">${sum} ausgewählte</span>`);
 }
 
 // reload image
