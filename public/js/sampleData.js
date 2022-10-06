@@ -207,7 +207,7 @@ const dataViewIndividualData = {
     }
 }
 
-const buildingInteractionModeData = 
+const buildingInteractionModeData =
 
 {
     "buildings_groups": {
@@ -303,4 +303,4 @@ const buildingInteractionModeData =
 
     }
 }
-const buildingsInteractionModeHighlight = {"sliders": {"id": "slider0", "handle": "environmental_engagement", "group": 0}}
+let buildingsInteractionModeHighlight = {"sliders": {"id": "slider0", "handle": "environmental_engagement", "group": 0}}

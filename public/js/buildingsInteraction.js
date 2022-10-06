@@ -44,42 +44,80 @@ function updateMapImage() {
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
-const renderHouseInfo = function (groupData, identifier) {
+const renderHouseInfo = function (groupData, group_identifier) {
 
-  const column = document.getElementById(identifier);
+  const column = document.getElementById(group_identifier);
   column.innerHTML = ""; // clear div before append new
 
-  groupData = groupData.buildings;
+  if (groupData.buildings == null) return;
+  for (var i = 0; i < groupData.buildings.length; i++) {
 
-  if (groupData == null) return;
-  for (var i = 0; i < groupData.length; i++) {
-    const h = groupData[i];
+    const buildings = groupData.buildings[i];
+
+    // new div element:
     const div = document.createElement("div");
-
     div.className = "meta";
-    div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
-    div.className += h.connection_to_heat_grid > 0.7 ? " green" : (h.connection_to_heat_grid <= 0.7 && h.connection_to_heat_grid > 0.3 ? " mix" : " gray");
+    div.className += buildings.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
+
+    // TODO: what is this?
+    div.className += buildings.connection_to_heat_grid > 0.7 ? " green" : (buildings.connection_to_heat_grid <= 0.7 && buildings.connection_to_heat_grid > 0.3 ? " mix" : " gray");
 
     let template = document.getElementById("meta_template").innerHTML;
-    template = template.replace("$Adresse", h.address);
 
-    const v = Math.floor(Math.random() * 500) + 500
+    template = template.replace("$Adresse", buildings.address);
     //
-    let environmental_engagement = h.environmental_engagement ? "ja" : "nein";
+    let environmental_engagement = buildings.environmental_engagement ? "ja" : "nein";
     template = template.replace("$e", environmental_engagement);
-    let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
+
+    let refurbished = buildings["refurbished"] ? "saniert" : "unsaniert";
     template = template.replace("$s", refurbished);
-    let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "nein" : parseInt(h["connection_to_heat_grid"]);
+
+    let connection_to_heat_grid = buildings["connection_to_heat_grid"] == false ? "nein" : parseInt(buildings["connection_to_heat_grid"]);
     template = template.replace("$c", connection_to_heat_grid);
-    let avg_spec_heat_consumption = h["avg_spec_heat_consumption"].toFixed(0);
+
+    let avg_spec_heat_consumption = buildings["avg_spec_heat_consumption"].toFixed(0);
     template = template.replace("$h", avg_spec_heat_consumption);
-    let avg_spec_power_consumption = h["avg_spec_power_consumption"].toFixed(0);
+
+    let avg_spec_power_consumption = buildings["avg_spec_power_consumption"].toFixed(0);
     template = template.replace("$p", avg_spec_power_consumption);
-    let cluster_size = h["cluster_size"];
+
+    let cluster_size = buildings["cluster_size"];
     template = template.replace("$x", cluster_size);
+
+    console.log(groupData["slider_handles"]);
+    if (groupData["slider_handles"].length > 0) {
+      console.log(groupData["slider_handles"]);
+      // get all handles and underline the elements:
+      for (let i = 0; i < groupData["slider_handles"].length; i++) {
+        let targetHandle = groupData["slider_handles"][i];
+
+        if (String(targetHandle) == ("connection_to_heat_grid"))
+          document.getElementById("meta_template").querySelector(".connection_to_heat_grid").style.textDecoration = "underline";
+
+          else if (String(targetHandle) == ("refurbished"))
+          document.getElementById("meta_template").querySelector(".refurbished").style.textDecoration = "underline";
+
+          else if (String(targetHandle) == ("save_energy"))
+          document.getElementById("meta_template").querySelector(".save_energy").style.textDecoration = "underline";
+
+        console.log(targetHandle);
+      }
+    }
+    else {
+      document.getElementById("meta_template").querySelector(".connection_to_heat_grid").style.textDecoration = "";
+      document.getElementById("meta_template").querySelector(".refurbished").style.textDecoration = "";
+      document.getElementById("meta_template").querySelector(".save_energy").style.textDecoration = "";
+    }
     div.innerHTML = template;
     column.append(div);
   }
+}
+
+function highlightSelectedDecisionFeature(json) {
+  // const targetGroupNum = json.sliders.group
+  // const targetHandle = json.sliders.handle
+  // const targetHTMLElementArg = '#buildings_group_'+targetGroupNum + ' > .meta .'+targetHandle;
+  // $(targetHTMLElementArg).css('text-decoration', 'underline');
 }
 
 //------------------------------ BAR CHARTS ---------------------------

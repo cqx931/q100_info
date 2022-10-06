@@ -133,12 +133,6 @@ function processSliderHandle(slider_data) {
 
 
 }
-function highlightSelectedDecisionFeature(json){
-  const targetGroupNum = json.sliders.group
-  const targetHandle = json.sliders.handle
-  const targetHTMLElementArg = '#buildings_group_'+targetGroupNum + ' > .meta .'+targetHandle
-  $(targetHTMLElementArg).css('text-decoration', 'underline');
-}
 
 ////////////////////////// dev tools //////////////////////////
 const initDataViewIndividualContent = function () {

@@ -48,7 +48,8 @@ socket.on('message', function (message) {
       const data = processData(json);
       // updateClusterCharts(data);
       // updateTotalCharts(data);
-      updateSelectedConnectionsNumber(json)
+      updateSelectedConnectionsNumber(json);
+      highlightSelectedDecisionFeature(json);
     }
 
     // scenarios:
@@ -70,6 +71,7 @@ socket.on('message', function (message) {
     // slider:
     if (json.hasOwnProperty('sliders')) {
       processSliderHandle(json.sliders);
+      highlightSelectedDecisionFeature(json);
     }
 
     // --------------------------- DATA VIEW --------------------------
