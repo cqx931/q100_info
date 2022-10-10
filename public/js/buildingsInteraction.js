@@ -49,9 +49,9 @@ const renderHouseInfo = function (groupData, quarterID) {
   const individualQuarter = document.getElementById(quarterID);
   const dataViewIndividualQuarter = $("#" + quarterID);
 
-  groupData = groupData.buildings;
+  buildings = groupData.buildings;
 
-  if (groupData == null) {
+  if (buildings == null) {
     dataViewIndividualQuarter.css("visibility", "hidden");
   }
   else {
@@ -61,7 +61,7 @@ const renderHouseInfo = function (groupData, quarterID) {
     }
 
     // get only first element of building list:
-    const h = groupData[groupData.length - 1];
+    const h = buildings[buildings.length - 1];
 
     // update address:
     let element = individualQuarter.querySelector('.address');
@@ -79,6 +79,12 @@ const renderHouseInfo = function (groupData, quarterID) {
     // update consumption cluster size:
     target = "#" + quarterID + " > .nameAndTable > .consumptionData > .clusterSize > span";
     $(target).text(h.cluster_size);
+
+    if (groupData.slider_handles.length > 0) {
+      groupData.slider_handles.forEach(element => {
+        dataViewIndividualQuarter.find("." + element + " > td:nth-of-type(1)").css('font-weight', 'bold')
+      });
+    }
   }
 }
 

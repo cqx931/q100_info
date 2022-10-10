@@ -8,35 +8,6 @@ let simulationData = {
   förderung: 'n'
 }
 
-const sampleHouseInfo = [{
-  "address": "Straßenname 19",
-  "CO2": 0.2036314841,
-  "connection_to_heat_grid": 0,
-  "electricity_supplier": "gray",
-  "spec_heat_consumption": 71921,
-  "spec_power_consumption": 10260,
-  "refurbished": false,
-  "save_energy": 0.5
-}, {
-  "address": "Straßenname 15",
-  "CO2": 0.2488510615,
-  "connection_to_heat_grid": 1,
-  "electricity_supplier": "green",
-  "spec_heat_consumption": 161150,
-  "spec_power_consumption": 46197,
-  "refurbished": false,
-  "save_energy": 0.1
-}, {
-  "address": "Straßenname 8",
-  "CO2": 0.317290762,
-  "connection_to_heat_grid": 0,
-  "electricity_supplier": "mix",
-  "spec_heat_consumption": 251721,
-  "spec_power_consumption": 71428,
-  "refurbished": true,
-  "save_energy": 0.9
-}]
-
 const districtData = [
   {
     "step": 0,
@@ -112,195 +83,120 @@ const sampleDataViewData = {
 }
 
 
-const dataViewIndividualData = {
-    "data_view_individual_data": {
-        "buildings_groups": {
-            "group_0": {
-                "buildings": [
-                    {
-                        "address": "Rüsdorfer Straße 18",
-                        "avg_spec_heat_consumption": 168.2295352941,
-                        "avg_spec_power_consumption": 0.0,
-                        "cluster_size": 34.0,
-                        "emissions_graphs": "data/outputs/output_test/individualDataViewCO2graph.png",
-                        "energy_prices_graphs": "data/outputs/output_test/individualDataViewStormgraph.png",
-                        "CO2": 0.022635805,
-                        "connection_to_heat_grid": true,
-                        "connection_to_heat_grid_prior": true,
-                        "refurbished": true,
-                        "refurbished_prior": true,
-                        "save_energy": true,
-                        "save_energy_prior": true,
-                        "energy_source": "Gas",
-                        "cell": ""
-                    }
-                ],
-                "connections": 0
-            },
-            "group_1": {
-                "buildings": [
-                    {
-                        "address": "Rüsdorfer Straße 18",
-                        "avg_spec_heat_consumption": 168.2295352941,
-                        "avg_spec_power_consumption": 0.0,
-                        "cluster_size": 34.0,
-                        "emissions_graphs": "data/outputs/output_test/individualDataViewCO2graph.png",
-                        "energy_prices_graphs": "data/outputs/output_test/individualDataViewStormgraph.png",
-                        "CO2": 0.022635805,
-                        "connection_to_heat_grid": true,
-                        "connection_to_heat_grid_prior": true,
-                        "refurbished": true,
-                        "refurbished_prior": true,
-                        "save_energy": true,
-                        "save_energy_prior": true,
-                        "energy_source": "Gas",
-                        "cell": ""
-                    }
-                ],
-                "connections": 0
-            },
-            "group_2": {
-                "buildings": [
-                    {
-                        "address": "Rüsdorfer Straße 18",
-                        "avg_spec_heat_consumption": 168.2295352941,
-                        "avg_spec_power_consumption": 0.0,
-                        "cluster_size": 34.0,
-                        "emissions_graphs": "data/outputs/output_test/individualDataViewCO2graph.png",
-                        "energy_prices_graphs": "data/outputs/output_test/individualDataViewStormgraph.png",
-                        "CO2": 0.022635805,
-                        "connection_to_heat_grid": true,
-                        "connection_to_heat_grid_prior": true,
-                        "refurbished": true,
-                        "refurbished_prior": true,
-                        "save_energy": true,
-                        "save_energy_prior": true,
-                        "energy_source": "Gas",
-                        "cell": ""
-                    }
-                ],
-                "connections": 0
-            },
-            "group_3": {
-                "buildings": [
-                    {
-                        "address": "Rüsdorfer Straße 18",
-                        "avg_spec_heat_consumption": 168.2295352941,
-                        "avg_spec_power_consumption": 0.0,
-                        "cluster_size": 34.0,
-                        "emissions_graphs": "data/outputs/output_test/individualDataViewCO2graph.png",
-                        "energy_prices_graphs": "data/outputs/output_test/individualDataViewStormgraph.png",
-                        "CO2": 0.022635805,
-                        "connection_to_heat_grid": true,
-                        "connection_to_heat_grid_prior": true,
-                        "refurbished": true,
-                        "refurbished_prior": true,
-                        "save_energy": true,
-                        "save_energy_prior": true,
-                        "energy_source": "Gas",
-                        "cell": ""
-                    }
-                ],
-                "connections": 0
-            },
-        }
-    }
-}
-
-const buildingInteractionModeData =
-
+const individualDataViewData =
 {
-    "buildings_groups": {
-        "group_0": {
-            "buildings": [
-                {
-                    "address": "R\u00fcsdorfer Stra\u00dfe 28",
-                    "avg_spec_heat_consumption": 224.0,
-                    "avg_spec_power_consumption": 19.678693,
-                    "cluster_size": 10.0,
-                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.50.png",
-                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.50.png",
-                    "CO2": 0.0125813315,
-                    "connection_to_heat_grid": false,
-                    "connection_to_heat_grid_prior": false,
-                    "refurbished": false,
-                    "refurbished_prior": false,
-                    "save_energy": false,
-                    "save_energy_prior": false,
-                    "energy_source": "\u00d6l",
-                    "cell": ""
-                }
-            ],
-            "connections": 0
-        },
-        "group_1": {
-            "buildings": [
-                {
-                    "address": "R\u00fcsdorfer Stra\u00dfe 40",
-                    "avg_spec_heat_consumption": 196.4097951852,
-                    "avg_spec_power_consumption": 36.5880559259,
-                    "cluster_size": 27.0,
-                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.55.png",
-                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.55.png",
-                    "CO2": 0.0120015825,
-                    "connection_to_heat_grid": false,
-                    "connection_to_heat_grid_prior": false,
-                    "refurbished": false,
-                    "refurbished_prior": false,
-                    "save_energy": true,
-                    "save_energy_prior": true,
-                    "energy_source": "Gas",
-                    "cell": ""
-                }
-            ],
-            "connections": 1
-        },
-        "group_2": {
-            "buildings": [
-                {
-                    "address": "R\u00fcsdorfer Stra\u00dfe 40",
-                    "avg_spec_heat_consumption": 196.4097951852,
-                    "avg_spec_power_consumption": 36.5880559259,
-                    "cluster_size": 27.0,
-                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.55.png",
-                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.55.png",
-                    "CO2": 0.0120015825,
-                    "connection_to_heat_grid": false,
-                    "connection_to_heat_grid_prior": false,
-                    "refurbished": false,
-                    "refurbished_prior": false,
-                    "save_energy": true,
-                    "save_energy_prior": true,
-                    "energy_source": "Gas",
-                    "cell": ""
-                }
-            ],
-            "connections": 2
-        },
-
-        "group_3": {
-            "buildings": [
-                {
-                    "address": "R\u00fcsdorfer Stra\u00dfe 40",
-                    "avg_spec_heat_consumption": 196.4097951852,
-                    "avg_spec_power_consumption": 36.5880559259,
-                    "cluster_size": 27.0,
-                    "emissions_graphs": "data/outputs/output_20220915_08-16-27/emissions/CO2_emissions_7.55.png",
-                    "energy_prices_graphs": "data/outputs/output_20220915_08-16-27/energy_prices/energy_prices_7.55.png",
-                    "CO2": 0.0120015825,
-                    "connection_to_heat_grid": false,
-                    "connection_to_heat_grid_prior": false,
-                    "refurbished": false,
-                    "refurbished_prior": false,
-                    "save_energy": true,
-                    "save_energy_prior": true,
-                    "energy_source": "Gas",
-                    "cell": ""
-                }
-            ],
-            "connections": 3
-        },
-
-    }
+  "buildings_groups": {
+      "group_0": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 18",
+                  "avg_spec_heat_consumption": 417.4165075,
+                  "avg_spec_power_consumption": 35.305475,
+                  "cluster_size": 4,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.022635805,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              },
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 40",
+                  "avg_spec_heat_consumption": 197.379868,
+                  "avg_spec_power_consumption": 36.4716976,
+                  "cluster_size": 25,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.0120015825,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": [
+              "connection_to_heat_grid", "refurbished"
+          ]
+      },
+      "group_1": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 61",
+                  "avg_spec_heat_consumption": 119.17281,
+                  "avg_spec_power_consumption": 16.1021586364,
+                  "cluster_size": 22,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.006376463,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": ["connection_to_heat_grid", "refurbished"]
+      },
+      "group_2": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 47",
+                  "avg_spec_heat_consumption": 147.10931,
+                  "avg_spec_power_consumption": 33.40084,
+                  "cluster_size": 2,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.009385106,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Strom",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": ["save_energy"]
+      },
+      "group_3": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 16",
+                  "avg_spec_heat_consumption": 344.119725,
+                  "avg_spec_power_consumption": 50.34868,
+                  "cluster_size": 4,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.0191294115,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": []
+      }
+  }
 }
-const buildingsInteractionModeHighlight = {"sliders": {"id": "slider0", "handle": "environmental_engagement", "group": 0}}
+
