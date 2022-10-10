@@ -414,6 +414,11 @@ tr:nth-child(even) {
     height: 100%;
 }
 
+.dataViewIndividualMode .aboveTable {
+  width: 50%;
+  display: table-cell;
+}
+
 .dataViewIndividualMode .graph img {
   width: 100%;
   background-size: contain;
@@ -456,7 +461,6 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode .quarterSection {
-  outline: 8px solid #bbd431;
   padding: 30px;
   margin: 15px;
   visibility: hidden;
