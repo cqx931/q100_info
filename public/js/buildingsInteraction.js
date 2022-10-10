@@ -64,14 +64,10 @@ const renderHouseInfo = function (groupData, quarterID) {
     const h = groupData[groupData.length - 1];
 
     // update address:
-    let element = individualQuarter.querySelector('.address');
-    let newElement = document.createElement("span");
-    newElement.className += "address";
-    newElement.innerHTML = h.address;
-    element.replaceWith(newElement);
+    $(dataViewIndividualQuarter).find('.address span').text(h.address);
 
     // update consumption data:
-    let target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
+    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
     $(target).text(h.avg_spec_heat_consumption.toFixed(3));
     target = "#" + quarterID + " > .nameAndTable > .consumptionData > .powerConsumption > span";
     $(target).text(h.avg_spec_power_consumption.toFixed(3));

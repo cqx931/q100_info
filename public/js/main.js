@@ -48,7 +48,8 @@ socket.on('message', function (message) {
       const data = processData(json);
       // updateClusterCharts(data);
       // updateTotalCharts(data);
-      updateSelectedConnectionsNumber(json)
+      updateSelectedConnectionsNumber(json);
+      injectDataToIndividualDataView(json);
     }
 
     // scenarios:
@@ -80,10 +81,6 @@ socket.on('message', function (message) {
     }
     if (json.hasOwnProperty("neighborhood_images")) {
       renewResultsImages(json.neighborhood_images)
-    }
-
-    if (json.hasOwnProperty('data_view_individual_data')) {
-      injectDataToIndividualDataView(json.data_view_individual_data);
     }
 
     // update canvas image
