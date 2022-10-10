@@ -156,7 +156,6 @@ const toggleDataViewContent = function () {
   }
 }
 
-let verBoseMode = false
 const toggleVerboseMode = function () {
   verBoseMode = !verBoseMode
   if (verBoseMode)

@@ -106,9 +106,9 @@ const injectDataToIndividualDataView = function (data) {
                 .children(".Bestand")
                 .replaceWith(`<td>${value}</td>`);
 
-            value = targetBuilding["environmental_engagement_prior"] ? "ja" : "nein";
+            value = targetBuilding["save_energy_prior"] ? "ja" : "nein";
             dataViewIndividualQuarter
-                .find(".environmental_engagementRow")
+                .find(".save_energyRow")
                 .children(".Bestand")
                 .replaceWith(`<td>${value}</td>`);
 
@@ -125,9 +125,9 @@ const injectDataToIndividualDataView = function (data) {
                 .children(".round" + currentIterationRound)
                 .replaceWith(`<td>${value}</td>`);
 
-            value = targetBuilding["environmental_engagement"] ? "ja" : "nein";
+            value = targetBuilding["save_energy"] ? "ja" : "nein";
             dataViewIndividualQuarter
-                .find(".environmental_engagementRow")
+                .find(".save_energyRow")
                 .children(".round" + currentIterationRound)
                 .replaceWith(`<td>${value}</td>`);
 
@@ -157,7 +157,7 @@ function tableAddColumn(round) {
             .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
-            .find('.environmental_engagementRow')
+            .find('.save_energyRow')
             .append(`<td class="round${round}"></td>`);
     }
 }

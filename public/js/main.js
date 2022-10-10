@@ -38,11 +38,11 @@ socket.on('message', function (message) {
     // -------------------- BUILDINGS INTERACTION ---------------------
     if (json.hasOwnProperty('buildings_groups')) {
       if ('group_0' in json.buildings_groups) {
-        renderHouseInfo(json.buildings_groups.group_0, "buildings_group_0");
+        renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
       }
-      if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "buildings_group_1");
-      if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "buildings_group_2");
-      if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "buildings_group_3");
+      if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
+      if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "dataViewIndividualQuarter2");
+      if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "dataViewIndividualQuarter3");
 
       // households and cluster data:
       const data = processData(json);
@@ -140,10 +140,14 @@ function initialRender() {
   // console.log("questions", questions);
   // updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
-  renderHouseInfo(sampleHouseInfo, "buildings_group_0");
-  renderHouseInfo(sampleHouseInfo, "buildings_group_1");
-  renderHouseInfo(sampleHouseInfo, "buildings_group_2");
-  renderHouseInfo(sampleHouseInfo, "buildings_group_3");
+  toggleVerboseMode();
+  if ($('.dataViewIndividualMode .quarterSection').css("visibility") == "hidden") {
+    $('.dataViewIndividualMode .quarterSection').css("visibility", "visible");
+  }
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter0");
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter1");
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter2");
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter3");
   // updateSelectedConnectionsNumber(buildingInteractionModeData)
   // processScenarioData(simulationData); // replaces variables in simulation_template
   // renderSimulationScreen(simulation_df, districtData);

@@ -1,8 +1,9 @@
 // ------------------------ Global Variables --------------------------
 
-let currentUserMode = 'buildings_interaction';
+let currentUserMode = 'individual_data_view';
 let simulationFinalStep = 9496;
 let currentIterationRound = 0;
+let verBoseMode = false
 
 // let simulation_df
 let questions

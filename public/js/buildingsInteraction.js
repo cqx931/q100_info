@@ -44,42 +44,88 @@ function updateMapImage() {
 
 // ---------------------- LEFT SIDEBAR FOR BUILDINGS ------------------
 // parse "clusters" from incoming json and replace elements in html
-const renderHouseInfo = function (groupData, identifier) {
+// const renderHouseInfo = function (groupData, identifier) {
 
-  const column = document.getElementById(identifier);
-  column.innerHTML = ""; // clear div before append new
+//   const column = document.getElementById(identifier);
+//   column.innerHTML = ""; // clear div before append new
+
+//   groupData = groupData.buildings;
+
+//   if (groupData == null) return;
+//   for (var i = 0; i < groupData.length; i++) {
+//     const h = groupData[i];
+//     const div = document.createElement("div");
+
+//     div.className = "meta";
+//     div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
+
+//     let template = document.getElementById("meta_template").innerHTML;
+//     template = template.replace("$Adresse", h.address);
+
+//     const v = Math.floor(Math.random() * 500) + 500
+//     //
+//     let save_energy = h.save_energy ? "ja" : "nein";
+//     template = template.replace("$e", save_energy);
+//     let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
+//     template = template.replace("$s", refurbished);
+//     let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "nein" : parseInt(h["connection_to_heat_grid"]);
+//     template = template.replace("$c", connection_to_heat_grid);
+//     let avg_spec_heat_consumption = h["avg_spec_heat_consumption"].toFixed(0);
+//     template = template.replace("$h", avg_spec_heat_consumption);
+//     let avg_spec_power_consumption = h["avg_spec_power_consumption"].toFixed(0);
+//     template = template.replace("$p", avg_spec_power_consumption);
+//     let cluster_size = h["cluster_size"];
+//     template = template.replace("$x", cluster_size);
+//     div.innerHTML = template;
+//     column.append(div);
+//   }
+// }
+
+const renderHouseInfo = function (groupData, quarterID) {
+  const individualQuarter = document.getElementById(quarterID);
 
   groupData = groupData.buildings;
 
   if (groupData == null) return;
-  for (var i = 0; i < groupData.length; i++) {
-    const h = groupData[i];
-    const div = document.createElement("div");
 
-    div.className = "meta";
-    div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
-    div.className += h.connection_to_heat_grid > 0.7 ? " green" : (h.connection_to_heat_grid <= 0.7 && h.connection_to_heat_grid > 0.3 ? " mix" : " gray");
+  // get only first element of building list:
+  const h = groupData[groupData.length - 1];
 
-    let template = document.getElementById("meta_template").innerHTML;
-    template = template.replace("$Adresse", h.address);
+  // update address:
+  let element = individualQuarter.querySelector('.address');
+  let newElement = document.createElement("span");
+  newElement.className += "address";
+  newElement.innerHTML = h.address;
+  element.replaceWith(newElement);
 
-    const v = Math.floor(Math.random() * 500) + 500
-    //
-    let environmental_engagement = h.environmental_engagement ? "ja" : "nein";
-    template = template.replace("$e", environmental_engagement);
-    let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
-    template = template.replace("$s", refurbished);
-    let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "nein" : parseInt(h["connection_to_heat_grid"]);
-    template = template.replace("$c", connection_to_heat_grid);
-    let avg_spec_heat_consumption = h["avg_spec_heat_consumption"].toFixed(0);
-    template = template.replace("$h", avg_spec_heat_consumption);
-    let avg_spec_power_consumption = h["avg_spec_power_consumption"].toFixed(0);
-    template = template.replace("$p", avg_spec_power_consumption);
-    let cluster_size = h["cluster_size"];
-    template = template.replace("$x", cluster_size);
-    div.innerHTML = template;
-    column.append(div);
-  }
+  // update consumption data:
+  let target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
+  $(target).text(h.avg_spec_heat_consumption.toFixed(3));
+  target = "#" + quarterID + " > .nameAndTable > .consumptionData > .powerConsumption > span";
+  $(target).text(h.avg_spec_power_consumption.toFixed(3));
+
+  // div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
+
+  // let template = document.getElementById("meta_template").innerHTML;
+  // template = template.replace("$Adresse", h.address);
+
+  // const v = Math.floor(Math.random() * 500) + 500
+  // //
+  // let save_energy = h.save_energy ? "ja" : "nein";
+  // template = template.replace("$e", save_energy);
+  // let refurbished = h["refurbished"] ? "saniert" : "unsaniert";
+  // template = template.replace("$s", refurbished);
+  // let connection_to_heat_grid = h["connection_to_heat_grid"] == false ? "nein" : parseInt(h["connection_to_heat_grid"]);
+  // template = template.replace("$c", connection_to_heat_grid);
+  // let avg_spec_heat_consumption = h["avg_spec_heat_consumption"].toFixed(0);
+  // template = template.replace("$h", avg_spec_heat_consumption);
+  // let avg_spec_power_consumption = h["avg_spec_power_consumption"].toFixed(0);
+  // template = template.replace("$p", avg_spec_power_consumption);
+  // let cluster_size = h["cluster_size"];
+  // template = template.replace("$x", cluster_size);
+  // div.innerHTML = template;
+  // individualQuarter.append(div);
+
 }
 
 //------------------------------ BAR CHARTS ---------------------------

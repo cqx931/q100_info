@@ -94,8 +94,9 @@ h5 {
 
 #infoscreen .bottom .left {
   width: 79%;
-  height:100%; /* necessary to compute height of barChart */
-  float:left;
+  height: 100%;
+  /* necessary to compute height of barChart */
+  float: left;
 }
 
 #infoscreen .right {
@@ -106,22 +107,22 @@ h5 {
   padding-left: 10px;
 }
 
-#infoscreen .right .scenario{
+#infoscreen .right .scenario {
   display: inline-block;
 }
 
-#infoscreen .right .scenario_energy_prices img{
+#infoscreen .right .scenario_energy_prices img {
   width: 100%;
   border: 1px goldenrod dotted;
   margin-top: 10px;
 }
 
-#infoscreen .right .scenario_q100_capex img{
+#infoscreen .right .scenario_q100_capex img {
   width: 100%;
   border: 1px turquoise dotted;
 }
 
-#infoscreen .right #scenario_num_connections{
+#infoscreen .right #scenario_num_connections {
   border: 1px chartreuse dotted;
 }
 
@@ -344,7 +345,7 @@ g#yAxisG text {
   text-align: center;
 }
 
-.input_scenarios .scenario img{
+.input_scenarios .scenario img {
   width: 95%;
   border: none;
 }
@@ -376,7 +377,8 @@ g#yAxisG text {
 }
 
 .dataViewTotalMode .graph img {
-  width: 90%; /* 100% will make the images too high */
+  width: 90%;
+  /* 100% will make the images too high */
   background-size: contain;
 }
 
@@ -405,13 +407,24 @@ tr:nth-child(even) {
 }
 
 /**************************** INDIVIDUAL DATA VIEW *************************/
-
 .dataViewIndividualMode {
+  height: 100%;
+}
+
+.dataViewIndividualMode .left {
   display: grid;
   grid-gap: 25px;
   grid-template: 'tl tr'
     'bl br';
-    height: 100%;
+  height: 100%;
+  width: 79%;
+  /* necessary to compute height of barChart */
+  float: left;
+}
+
+.dataViewIndividualMode .aboveTable {
+  width: 50%;
+  display: table-cell;
 }
 
 .dataViewIndividualMode .graph img {
@@ -427,8 +440,8 @@ tr:nth-child(even) {
 
 
 .dataViewIndividualMode table th {
-    border-top: 1px solid black;
-    border-bottom: 1px solid #333333;
+  border-top: 1px solid black;
+  border-bottom: 1px solid #333333;
 }
 
 
@@ -439,12 +452,12 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode tr:nth-last-child(1) td {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .dataViewIndividualMode td:nth-child(n+2) {
   text-align: center;
-}t
+}
 
 .dataViewIndividualMode th {
   width: 50%;
@@ -455,40 +468,40 @@ tr:nth-child(even) {
   background-color: #f1f6d6;
 }
 
-.dataViewIndividualMode .quarterSection {
-  outline: 8px solid #bbd431;
-  padding: 30px;
-  margin: 15px;
-  visibility: hidden;
+.dataViewIndividualMode h3 {
+  margin: 0 20px;
 }
 
-.dataViewIndividualMode h3 {
-margin: 0 20px;
-}
 .dataViewIndividualMode .consumptionData {
-/* margin: 0 20px 10px 20px; */
-color: gray;
-font-size: smaller;
-font-weight: normal;
-vertical-align: top;
+  /* margin: 0 20px 10px 20px; */
+  color: gray;
+  font-size: smaller;
+  font-weight: normal;
+  vertical-align: top;
 }
 
 .dataViewIndividualMode .quarterSection .nameAndTable {
   grid-area: dataTable;
 }
-.dataViewIndividualMode .quarterSection .graphR{
+
+.dataViewIndividualMode .quarterSection .graphR {
   grid-area: graphR;
 }
-.dataViewIndividualMode .quarterSection .graphL{
+
+.dataViewIndividualMode .quarterSection .graphL {
   grid-area: graphL;
 }
 
 .dataViewIndividualMode .quarterSection {
+  padding: 30px;
+  margin: 15px;
+  visibility: hidden;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 'dataTable dataTable'
-  'graphR graphL';
+    'graphR graphL';
 }
 
 /****************************
