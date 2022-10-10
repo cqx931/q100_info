@@ -3,6 +3,7 @@
 let currentUserMode = 'buildings_interaction';
 let simulationFinalStep = 9496;
 let currentIterationRound = 0;
+let verBoseMode = false
 
 // let simulation_df
 let questions
