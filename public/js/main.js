@@ -140,14 +140,14 @@ function initialRender() {
   // console.log("questions", questions);
   // updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
-  toggleVerboseMode();
-  if ($('.dataViewIndividualMode .quarterSection').css("visibility") == "hidden") {
-    $('.dataViewIndividualMode .quarterSection').css("visibility", "visible");
-  }
-  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter0");
-  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter1");
-  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter2");
-  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter3");
+  // toggleVerboseMode();
+  // if ($('.dataViewIndividualMode .quarterSection').css("visibility") == "hidden") {
+  //   $('.dataViewIndividualMode .quarterSection').css("visibility", "visible");
+  // }
+  // renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter0");
+  // renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter1");
+  // renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter2");
+  // renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter3");
   // updateSelectedConnectionsNumber(buildingInteractionModeData)
   // processScenarioData(simulationData); // replaces variables in simulation_template
   // renderSimulationScreen(simulation_df, districtData);
@@ -165,7 +165,6 @@ function initialRender() {
   if ('group_2' in buildingsInteractionViewData) renderHouseInfo(buildingsInteractionViewData.group_2, "buildings_group_2");
   if ('group_3' in buildingsInteractionViewData) renderHouseInfo(buildingsInteractionViewData.group_3, "buildings_group_3");
 
-  highlightSelectedDecisionFeature(buildingsInteractionModeHighlight);
 }
 
 initialRender()
