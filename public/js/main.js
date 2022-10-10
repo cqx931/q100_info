@@ -140,10 +140,14 @@ function initialRender() {
   // console.log("questions", questions);
   // updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
-  renderHouseInfo(sampleHouseInfo, "buildings_group_0");
-  renderHouseInfo(sampleHouseInfo, "buildings_group_1");
-  renderHouseInfo(sampleHouseInfo, "buildings_group_2");
-  renderHouseInfo(sampleHouseInfo, "buildings_group_3");
+  toggleVerboseMode();
+  if ($('.dataViewIndividualMode .quarterSection').css("visibility") == "hidden") {
+    $('.dataViewIndividualMode .quarterSection').css("visibility", "visible");
+  }
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter0");
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter1");
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter2");
+  renderHouseInfo(sampleHouseInfo, "dataViewIndividualQuarter3");
   // updateSelectedConnectionsNumber(buildingInteractionModeData)
   // processScenarioData(simulationData); // replaces variables in simulation_template
   // renderSimulationScreen(simulation_df, districtData);

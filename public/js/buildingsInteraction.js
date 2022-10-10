@@ -101,16 +101,9 @@ const renderHouseInfo = function (groupData, quarterID) {
   // update consumption data:
   let target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
   $(target).text(h.avg_spec_heat_consumption.toFixed(3));
+  target = "#" + quarterID + " > .nameAndTable > .consumptionData > .powerConsumption > span";
+  $(target).text(h.avg_spec_power_consumption.toFixed(3));
 
-  // newElement = document.createElement("span");
-  // console.log(newElement, h.avg_spec_heat_consumption);
-  // newElement.innerHTML = h.avg_spec_heat_consumption;
-  // element.replaceWith(newElement);
-
-
-  // let div = document.createElement("div");
-
-  // div.className = "meta";
   // div.className += h.connection_to_heat_grid == 1 ? " connection_to_heat_grid" : "";
 
   // let template = document.getElementById("meta_template").innerHTML;
