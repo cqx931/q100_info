@@ -66,73 +66,50 @@ const injectDataToIndividualDataView = function (data) {
         let targetBuilding;
         let value;
         try {
-            targetBuilding = data.buildings_groups[group_name].buildings[0]
-            let dataViewIndividualQuarter = $("#dataViewIndividualQuarter" + i)
-            // show hidden elements:
-            if (dataViewIndividualQuarter.css("visibility") == "hidden") {
-                dataViewIndividualQuarter.css("visibility", "visible");
-            }
-
-            // address:
-            dataViewIndividualQuarter
-                .find("h3 > span")
-                .text(targetBuilding["address"])
-
-            // consumption:
-            consumption = dataViewIndividualQuarter.find(".consumptionData")
-            // heat:
-            consumption.children(".heatConsumption").children("span").text(targetBuilding["avg_spec_heat_consumption"].toFixed(3));
-            // power:
-            consumption.children(".powerConsumption").children("span").text(targetBuilding["avg_spec_power_consumption"].toFixed(3));
-
-            // cluster_size:
-            dataViewIndividualQuarter
-                .find(".consumptionData")
-                .children(".clusterSize")
-                .children("span")
-                .text(targetBuilding["cluster_size"]);
-
+            // get first building of group:
+            targetBuilding = data.buildings_groups[group_name].buildings[0];
+            let individualQuarter = $("#dataViewIndividualQuarter" + i)
 
             // Bestandsdaten:
             value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
-            dataViewIndividualQuarter
+            individualQuarter
                 .find(".refurbishedRow")
                 .children(".Bestand")
-                .replaceWith(`<td>${value}</td>`);
+                .text(value);
 
             value = targetBuilding["connection_to_heat_grid_prior"] > 0 ? targetBuilding["connection_to_heat_grid_prior"] : "nein";
-            dataViewIndividualQuarter
+            individualQuarter
                 .find(".connectionToHeatGridRow")
                 .children(".Bestand")
-                .replaceWith(`<td>${value}</td>`);
+                .text(value);
 
             value = targetBuilding["save_energy_prior"] ? "ja" : "nein";
-            dataViewIndividualQuarter
+            individualQuarter
                 .find(".save_energyRow")
                 .children(".Bestand")
-                .replaceWith(`<td>${value}</td>`);
+                .text(value);
 
-
+            // update round decisions:
             value = targetBuilding["refurbished"] ? "saniert" : "unsaniert";
-            dataViewIndividualQuarter
+            individualQuarter
                 .find(".refurbishedRow")
                 .children(".round" + currentIterationRound)
-                .replaceWith(`<td>${value}</td>`);
+                .text(value);
 
             value = targetBuilding["connection_to_heat_grid"] > 0 ? targetBuilding["connection_to_heat_grid"] : "nein";
-            dataViewIndividualQuarter
+            individualQuarter
                 .find(".connectionToHeatGridRow")
                 .children(".round" + currentIterationRound)
-                .replaceWith(`<td>${value}</td>`);
+                .text(value);
 
             value = targetBuilding["save_energy"] ? "ja" : "nein";
-            dataViewIndividualQuarter
+            individualQuarter
                 .find(".save_energyRow")
                 .children(".round" + currentIterationRound)
-                .replaceWith(`<td>${value}</td>`);
+                .text(value);
 
-            dataViewIndividualQuarter.find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
-            dataViewIndividualQuarter.find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
+            individualQuarter.find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
+            individualQuarter.find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
         } catch (error) {
             // console.log(error)
             console.log("failed loading data for ", group_name, " - group is probably empty.")
@@ -150,14 +127,14 @@ function tableAddColumn(round) {
         // add data columns:
         $('#dataViewIndividualQuarter' + i)
             .find('.refurbishedRow')
-            .append(`<td class="round${round + 1}"></td>`);
+            .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.connectionToHeatGridRow')
-            .append(`<td class="round${round + 1}"></td>`);
+            .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.save_energyRow')
-            .append(`<td class="round${round + 1}"></td>`);
+            .append(`<td class="round${round}"></td>`);
     }
 }

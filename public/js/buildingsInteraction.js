@@ -46,25 +46,24 @@ function updateMapImage() {
 // parse "clusters" from incoming json and replace elements in html
 
 const renderHouseInfo = function (groupData, quarterID) {
-  const individualQuarter = document.getElementById(quarterID);
-  const dataViewIndividualQuarter = $("#" + quarterID);
+  const individualQuarter = $("#" + quarterID);
 
   groupData = groupData.buildings;
 
   if (groupData == null) {
-    dataViewIndividualQuarter.css("visibility", "hidden");
+    individualQuarter.css("visibility", "hidden");
   }
   else {
     // show hidden elements:
-    if (dataViewIndividualQuarter.css("visibility") == "hidden") {
-      dataViewIndividualQuarter.css("visibility", "visible");
+    if (individualQuarter.css("visibility") == "hidden") {
+      individualQuarter.css("visibility", "visible");
     }
 
     // get only first element of building list:
     const h = groupData[groupData.length - 1];
 
     // update address:
-    $(dataViewIndividualQuarter).find('.address span').text(h.address);
+    individualQuarter.find('.address').text(h.address);
 
     // update consumption data:
     target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
