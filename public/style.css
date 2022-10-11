@@ -460,7 +460,6 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode th {
-  width: 50%;
   text-align: left;
 }
 

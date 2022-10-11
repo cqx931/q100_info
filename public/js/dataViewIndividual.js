@@ -145,19 +145,19 @@ function tableAddColumn(round) {
     for (let i = 0; i < 4; i++) {
         // add header column:
         let element = $('#dataViewIndividualQuarter' + i).find('.headerRow');
-        element.append(`<th class="round${round}">Runde ${round}</th>`);
+        element.append(`<th class="round${round}">Runde ${round + 1}</th>`);
 
         // add data columns:
         $('#dataViewIndividualQuarter' + i)
             .find('.refurbishedRow')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round + 1}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.connectionToHeatGridRow')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round + 1}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.save_energyRow')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round + 1}"></td>`);
     }
 }
