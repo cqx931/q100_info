@@ -65,14 +65,21 @@ const renderHouseInfo = function (groupData, quarterID) {
     // update address:
     individualQuarter.find('.address').text(h.address);
 
+    // update building type
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .buildingType > span";
+    if (h.type == "MFH")
+      $(target).text("Mehrfamilienhaus");
+    if (h.type == "EFH")
+      $(target).text("Einfamilienhaus");
+
     // update consumption data:
-    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
-    $(target).text(h.avg_spec_heat_consumption.toFixed(3));
-    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .powerConsumption > span";
-    $(target).text(h.avg_spec_power_consumption.toFixed(3));
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > span";
+    $(target).text(h.avg_spec_heat_consumption.toFixed(1));
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
+    $(target).text(h.avg_spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:
-    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .clusterSize > span";
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
     $(target).text(h.cluster_size);
   }
 }

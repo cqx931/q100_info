@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<script src="lib/socket.io.min.js"></script>
 	<script src="lib/d3.v6.min.js"></script>
-	<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+	<!-- <script src="https://d3js.org/d3-collection.v1.min.js"></script> -->
 	<script src="lib/jquery-3.6.0.js"></script>
 	<script src="lib/axios.min.js"></script>
 	<link rel="stylesheet" href="style.css">
@@ -57,9 +57,11 @@
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
 						</div>
-						<div class="consumptionData aboveTable">
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span> kWh/Jahr</div>
-							<div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/Jahr</div>
+						<div class="houseInfo aboveTable">
+							<div class="buildingType"><span>None</span></div>
+							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span> kWh/m²</div>
+							<div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/m²
+							</div>
 							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
 								ähnlichen Verbrauchs</div>
 						</div>
@@ -99,9 +101,13 @@
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
 						</div>
-						<div class="consumptionData aboveTable">
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span> kWh/Jahr</div>
-							<div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/Jahr</div>
+						<div class="houseInfo aboveTable">
+							<div class="buildingType">
+								<span>None</span>
+							</div>
+							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span>
+								kWh/m²</div>
+							<div class="powerConsumption">Stromverbrauch / Jahr:&nbsp; <span>0</span> kWh/m²</div>
 							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
 								ähnlichen Verbrauchs</div>
 						</div>
@@ -140,9 +146,11 @@
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
 						</div>
-						<div class="consumptionData aboveTable">
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span> kWh/Jahr</div>
-							<div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/Jahr</div>
+						<div class="houseInfo aboveTable">
+							<div class="buildingType"> <span>None</span></div>
+							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span>
+								kWh/m²</div>
+							<div class="powerConsumption">Stromverbrauch / Jahr:&nbsp; <span>0</span> kWh/m²</div>
 							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
 								ähnlichen Verbrauchs</div>
 						</div>
@@ -181,9 +189,11 @@
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
 						</div>
-						<div class="consumptionData aboveTable">
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span> kWh/Jahr</div>
-							<div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/Jahr</div>
+						<div class="houseInfo aboveTable">
+							<div class="buildingType"> <span>None</span></div>
+							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span>
+								kWh/m²</div>
+							<div class="powerConsumption">Stromverbrauch / Jahr:&nbsp; <span>0</span> kWh/m²</div>
 							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
 								ähnlichen Verbrauchs</div>
 						</div>
@@ -285,10 +295,10 @@
 										$e
 									</li>
 									<li class="avg_spec_power_consumption" style="color:gray;">
-										ø-Stromverbrauch: $p kWh
+										ø-Stromverbrauch: $p kWh/m²
 									</li>
 									<li class="avg_spec_heat_consumption" style="color:gray;">
-										ø-Wärmeverbrauch: $h kWh
+										ø-Wärmeverbrauch: $h kWh/m²
 									</li>
 									<li class="cluster_size" style="color:gray; font-size:x-small;">
 										errechnet aus $x ähnlichen Gebäuden
