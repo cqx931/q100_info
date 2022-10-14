@@ -46,40 +46,50 @@ function updateMapImage() {
 // parse "clusters" from incoming json and replace elements in html
 
 const renderHouseInfo = function (groupData, quarterID) {
-  const individualQuarter = document.getElementById(quarterID);
-  const dataViewIndividualQuarter = $("#" + quarterID);
+  const individualQuarter = $("#" + quarterID);
 
   buildings = groupData.buildings;
 
   if (buildings == null) {
-    dataViewIndividualQuarter.css("visibility", "hidden");
+    individualQuarter.css("visibility", "hidden");
   }
   else {
     // show hidden elements:
-    if (dataViewIndividualQuarter.css("visibility") == "hidden") {
-      dataViewIndividualQuarter.css("visibility", "visible");
+    if (individualQuarter.css("visibility") == "hidden") {
+      individualQuarter.css("visibility", "visible");
     }
 
     // get only first element of building list:
     const h = buildings[buildings.length - 1];
 
     // update address:
-    $(dataViewIndividualQuarter).find('.address span').text(h.address);
+    individualQuarter.find('.address').text(h.address);
+
+    // update building type
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .buildingType > span";
+    if (h.type == "MFH")
+      $(target).text("Mehrfamilienhaus");
+    if (h.type == "EFH")
+      $(target).text("Einfamilienhaus");
 
     // update consumption data:
-    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .heatConsumption > span";
-    $(target).text(h.avg_spec_heat_consumption.toFixed(3));
-    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .powerConsumption > span";
-    $(target).text(h.avg_spec_power_consumption.toFixed(3));
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > span";
+    $(target).text(h.avg_spec_heat_consumption.toFixed(1));
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
+    $(target).text(h.avg_spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:
-    target = "#" + quarterID + " > .nameAndTable > .consumptionData > .clusterSize > span";
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
     $(target).text(h.cluster_size);
 
     if (groupData.slider_handles.length > 0) {
+      individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
       groupData.slider_handles.forEach(element => {
-        dataViewIndividualQuarter.find("." + element + " > td:nth-of-type(1)").css('font-weight', 'bold')
+        individualQuarter.find("." + element + " > td:nth-of-type(1)").css('font-weight', 'bold')
       });
+    }
+    else{
+      individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
     }
   }
 }

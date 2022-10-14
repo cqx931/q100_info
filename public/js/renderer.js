@@ -92,7 +92,8 @@ const switchUserMode = function (mode) {
     displayInputEnvironmentMode()
   }
   else if (mode == 'buildings_interaction') {
-    displayBuildingsInteractionMode()
+    // displayBuildingsInteractionMode()
+    displayDataViewIndividualMode()
   }
   else if (mode == 'questionnaire') {
     const question = questions[getRandomInt(5)] //TODO: get question number from UDP

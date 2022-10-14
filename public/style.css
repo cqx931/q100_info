@@ -460,7 +460,6 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode th {
-  width: 50%;
   text-align: left;
 }
 
@@ -472,7 +471,7 @@ tr:nth-child(even) {
   margin: 0 20px;
 }
 
-.dataViewIndividualMode .consumptionData {
+.dataViewIndividualMode .houseInfo {
   /* margin: 0 20px 10px 20px; */
   color: gray;
   font-size: smaller;

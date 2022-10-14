@@ -16,8 +16,8 @@ socket.on('message', function (message) {
       const nextUserMode = json.mode;
       switchUserMode(nextUserMode);
     }
-    if (json.hasOwnProperty("current_iteration_round")){
-      if (currentIterationRound != json.current_iteration_round){
+    if (json.hasOwnProperty("current_iteration_round")) {
+      if (currentIterationRound != json.current_iteration_round) {
         currentIterationRound = json.current_iteration_round;
         console.log("current_iteration_round = " + currentIterationRound);
         tableAddColumn(json.current_iteration_round);
@@ -37,15 +37,13 @@ socket.on('message', function (message) {
 
     // -------------------- BUILDINGS INTERACTION ---------------------
     if (json.hasOwnProperty('buildings_groups')) {
-      if ('group_0' in json.buildings_groups) {
-        renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
-      }
+      if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
       if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
       if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "dataViewIndividualQuarter2");
       if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "dataViewIndividualQuarter3");
 
       // households and cluster data:
-      const data = processData(json);
+      // const data = processData(json);
       // updateClusterCharts(data);
       // updateTotalCharts(data);
       updateSelectedConnectionsNumber(json);
