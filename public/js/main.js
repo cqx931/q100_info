@@ -135,10 +135,12 @@ function initialRender() {
   // console.log("questions", questions);
   // updateClusterCharts(clusterBefore);
   // updateTotalCharts(totalBefore);
-  toggleVerboseMode();
-  if ($('.dataViewIndividualMode .quarterSection').css("visibility") == "hidden") {
-    $('.dataViewIndividualMode .quarterSection').css("visibility", "visible");
-  }
+
+  // toggleVerboseMode();
+  // if ($('.dataViewIndividualMode .quarterSection').css("visibility") == "hidden") {
+  //   $('.dataViewIndividualMode .quarterSection').css("visibility", "visible");
+  // }
+
   // updateSelectedConnectionsNumber(buildingInteractionModeData)
   // processScenarioData(simulationData); // replaces variables in simulation_template
   // renderSimulationScreen(simulation_df, districtData);
@@ -152,11 +154,11 @@ function initialRender() {
   // injectDataToIndividualDataView(dataViewIndividualData.data_view_individual_data)
 
   // TODO: move sample data injection to devtool
-  let individual_data_view_data_temp = individualDataViewData.buildings_groups
-  if ('group_0' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_0, "dataViewIndividualQuarter0");
-  if ('group_1' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_1, "dataViewIndividualQuarter1");
-  if ('group_2' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_2, "dataViewIndividualQuarter2");
-  if ('group_3' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_3, "dataViewIndividualQuarter3");
+  // let individual_data_view_data_temp = individualDataViewData.buildings_groups
+  // if ('group_0' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_0, "dataViewIndividualQuarter0");
+  // if ('group_1' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_1, "dataViewIndividualQuarter1");
+  // if ('group_2' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_2, "dataViewIndividualQuarter2");
+  // if ('group_3' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_3, "dataViewIndividualQuarter3");
 
 }
 
