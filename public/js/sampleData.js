@@ -200,3 +200,120 @@ const individualDataViewData =
   }
 }
 
+
+const individualDataViewDataNoSliderHandles =
+{
+  "buildings_groups": {
+      "group_0": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 18",
+                  "avg_spec_heat_consumption": 417.4165075,
+                  "avg_spec_power_consumption": 35.305475,
+                  "cluster_size": 4,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.022635805,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              },
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 40",
+                  "avg_spec_heat_consumption": 197.379868,
+                  "avg_spec_power_consumption": 36.4716976,
+                  "cluster_size": 25,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.0120015825,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": []
+      },
+      "group_1": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 61",
+                  "avg_spec_heat_consumption": 119.17281,
+                  "avg_spec_power_consumption": 16.1021586364,
+                  "cluster_size": 22,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.006376463,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": []
+      },
+      "group_2": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 47",
+                  "avg_spec_heat_consumption": 147.10931,
+                  "avg_spec_power_consumption": 33.40084,
+                  "cluster_size": 2,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.009385106,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Strom",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": []
+      },
+      "group_3": {
+          "buildings": [
+              {
+                  "address": "R\u00fcsdorfer Stra\u00dfe 16",
+                  "avg_spec_heat_consumption": 344.119725,
+                  "avg_spec_power_consumption": 50.34868,
+                  "cluster_size": 4,
+                  "emissions_graphs": "",
+                  "energy_prices_graphs": "",
+                  "CO2": 0.0191294115,
+                  "connection_to_heat_grid": false,
+                  "connection_to_heat_grid_prior": false,
+                  "refurbished": false,
+                  "refurbished_prior": false,
+                  "save_energy": false,
+                  "save_energy_prior": false,
+                  "energy_source": "Gas",
+                  "cell": ""
+              }
+          ],
+          "connections": 0,
+          "slider_handles": []
+      }
+  }
+}
+
+
