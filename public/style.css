@@ -455,9 +455,9 @@ tr:nth-child(even) {
   border-bottom: 1px solid black;
 }
 
-.dataViewIndividualMode td:nth-child(n+2) {
+/* .dataViewIndividualMode td:nth-child(n+2) {
   text-align: center;
-}
+} */
 
 .dataViewIndividualMode th {
   text-align: left;
