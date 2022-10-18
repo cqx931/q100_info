@@ -20,7 +20,6 @@ function updateSelectedConnectionsNumber(json) { // could be merged with the fun
   for (let key in json.buildings_groups) {
     if (!isNaN(json.buildings_groups[key].connections)) {
       sum += json.buildings_groups[key].connections
-      console.log(sum)
     }
   }
 

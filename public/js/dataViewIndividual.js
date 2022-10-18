@@ -73,38 +73,39 @@ const injectDataToIndividualDataView = function (data) {
             // Bestandsdaten:
             value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
             individualQuarter
-                .find(".refurbishedRow")
+                .find(".refurbished")
                 .children(".Bestand")
                 .text(value);
 
             value = targetBuilding["connection_to_heat_grid_prior"] > 0 ? targetBuilding["connection_to_heat_grid_prior"] : "nein";
             individualQuarter
-                .find(".connectionToHeatGridRow")
+                .find(".connection_to_heat_grid")
                 .children(".Bestand")
                 .text(value);
 
             value = targetBuilding["save_energy_prior"] ? "ja" : "nein";
+            console.log(value)
             individualQuarter
-                .find(".save_energyRow")
+                .find(".save_energy")
                 .children(".Bestand")
                 .text(value);
 
             // update round decisions:
             value = targetBuilding["refurbished"] ? "saniert" : "unsaniert";
             individualQuarter
-                .find(".refurbishedRow")
+                .find(".refurbished")
                 .children(".round" + currentIterationRound)
                 .text(value);
 
             value = targetBuilding["connection_to_heat_grid"] > 0 ? targetBuilding["connection_to_heat_grid"] : "nein";
             individualQuarter
-                .find(".connectionToHeatGridRow")
+                .find(".connection_to_heat_grid")
                 .children(".round" + currentIterationRound)
                 .text(value);
 
             value = targetBuilding["save_energy"] ? "ja" : "nein";
             individualQuarter
-                .find(".save_energyRow")
+                .find(".save_energy")
                 .children(".round" + currentIterationRound)
                 .text(value);
 
@@ -126,15 +127,15 @@ function tableAddColumn(round) {
 
         // add data columns:
         $('#dataViewIndividualQuarter' + i)
-            .find('.refurbishedRow')
+            .find('.refurbished')
             .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
-            .find('.connectionToHeatGridRow')
+            .find('.connection_to_heat_grid')
             .append(`<td class="round${round}"></td>`);
 
         $('#dataViewIndividualQuarter' + i)
-            .find('.save_energyRow')
+            .find('.save_energy')
             .append(`<td class="round${round}"></td>`);
     }
 }
