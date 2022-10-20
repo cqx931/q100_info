@@ -74,20 +74,20 @@ const injectDataToIndividualDataView = function (data) {
             value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
             individualQuarter
                 .find(".refurbished")
-                .children(".Bestand")
+                .children(".unchanged")
                 .text(value);
 
             value = targetBuilding["connection_to_heat_grid_prior"] > 0 ? targetBuilding["connection_to_heat_grid_prior"] : "nein";
             individualQuarter
                 .find(".connection_to_heat_grid")
-                .children(".Bestand")
+                .children(".unchanged")
                 .text(value);
 
             value = targetBuilding["save_energy_prior"] ? "ja" : "nein";
             console.log(value)
             individualQuarter
                 .find(".save_energy")
-                .children(".Bestand")
+                .children(".unchanged")
                 .text(value);
 
             // update round decisions:
