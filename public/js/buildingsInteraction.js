@@ -59,28 +59,29 @@ const renderHouseInfo = function (groupData, quarterID) {
     }
 
     // get only first element of building list:
-    const h = buildings[buildings.length - 1];
+    const targetBuilding = buildings[buildings.length - 1];
 
     // update address:
-    individualQuarter.find('.address').text(h.address);
+    individualQuarter.find('.address').text(targetBuilding.address);
 
     // update building type
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .buildingType > span";
-    if (h.type == "MFH")
+    if (targetBuilding.type == "MFH")
       $(target).text("Mehrfamilienhaus");
-    if (h.type == "EFH")
+    if (targetBuilding.type == "EFH")
       $(target).text("Einfamilienhaus");
 
     // update consumption data:
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > span";
-    $(target).text(h.avg_spec_heat_consumption.toFixed(1));
+    $(target).text(targetBuilding.avg_spec_heat_consumption.toFixed(1));
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
-    $(target).text(h.avg_spec_power_consumption.toFixed(1));
+    $(target).text(targetBuilding.avg_spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
-    $(target).text(h.cluster_size);
+    $(target).text(targetBuilding.cluster_size);
 
+    // highlight selected decision:
     if (groupData.slider_handles.length > 0) {
       individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
       groupData.slider_handles.forEach(element => {
@@ -90,6 +91,11 @@ const renderHouseInfo = function (groupData, quarterID) {
     else{
       individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
     }
+
+    // update image:
+    individualQuarter.find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
+    individualQuarter.find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
+
   }
 }
 
