@@ -419,7 +419,7 @@ tr:nth-child(even) {
   display: flex;
   flex-wrap: wrap;
   grid-gap: 25px;
-  padding-left: 15px;
+  justify-content: center;
   /* grid-template: 'tl tr' */
     /* 'bl br'; */
   /* height: 100%; */
@@ -486,6 +486,7 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode .quarterSection .nameAndTable {
   grid-area: dataTable;
+  padding: 10px;
 }
 
 .dataViewIndividualMode .quarterSection .graphR {
@@ -497,13 +498,15 @@ tr:nth-child(even) {
 }
 
 .dataViewIndividualMode .quarterSection {
-  padding: 30px;
+  /* padding: 30px; */
   margin: 15px;
   visibility: hidden;
-  width: 45%;
+  width: 47%;
   height: 44vh;
 
   display: grid;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 'dataTable dataTable'
