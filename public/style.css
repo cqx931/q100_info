@@ -109,6 +109,7 @@ h5 {
   float: left;
   border-left: 1px solid gray;
   padding-left: 10px;
+  display: none;
 }
 
 #infoscreen .right .scenario {
@@ -423,8 +424,9 @@ tr:nth-child(even) {
   /* grid-template: 'tl tr' */
     /* 'bl br'; */
   /* height: 100%; */
-  width: 79%;
-  float: left;
+  /* width: 79%; */
+  /* float: left; */
+  height:100vh;
 }
 
 .dataViewIndividualMode .aboveTable {
@@ -484,6 +486,22 @@ tr:nth-child(even) {
   vertical-align: top;
 }
 
+.dataViewIndividualMode .quarterSection {
+  padding: 30px;
+  margin: 55px;
+  visibility: hidden;
+  /* width: 47%; */
+  height: 85%;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'dataTable dataTable'
+    'graphR graphL';
+    position: absolute;
+}
 .dataViewIndividualMode .quarterSection .nameAndTable {
   grid-area: dataTable;
   padding: 10px;
@@ -495,22 +513,6 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode .quarterSection .graphL {
   grid-area: graphL;
-}
-
-.dataViewIndividualMode .quarterSection {
-  /* padding: 30px; */
-  margin: 15px;
-  visibility: hidden;
-  width: 47%;
-  height: 44vh;
-
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: 'dataTable dataTable'
-    'graphR graphL';
 }
 
 /****************************
