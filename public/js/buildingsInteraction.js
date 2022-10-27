@@ -73,13 +73,32 @@ const renderHouseInfo = function (groupData, quarterID) {
 
     // update consumption data:
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > span";
-    $(target).text(targetBuilding.avg_spec_heat_consumption.toFixed(1));
+    let heat_consumption = "";
+    if (targetBuilding.avg_spec_heat_consumption > 250)
+      heat_consumption = "H";
+    if (targetBuilding.avg_spec_heat_consumption < 250)
+      heat_consumption = "G";
+    if (targetBuilding.avg_spec_heat_consumption < 200)
+      heat_consumption = "F";
+      if (targetBuilding.avg_spec_heat_consumption < 160)
+      heat_consumption = "E";
+      if (targetBuilding.avg_spec_heat_consumption < 130)
+      heat_consumption = "D";
+      if (targetBuilding.avg_spec_heat_consumption < 100)
+      heat_consumption = "C";
+      if (targetBuilding.avg_spec_heat_consumption < 75)
+      heat_consumption = "B";
+      if (targetBuilding.avg_spec_heat_consumption < 50)
+      heat_consumption = "A";
+      if (targetBuilding.avg_spec_heat_consumption < 30)
+      heat_consumption = "A+";
+    $(target).text(heat_consumption);
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
-    $(target).text(targetBuilding.avg_spec_power_consumption.toFixed(1));
+    // $(target).text(targetBuilding.avg_spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:
-    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
-    $(target).text(targetBuilding.cluster_size);
+    // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
+    // $(target).text(targetBuilding.cluster_size);
 
     // highlight selected decision:
     if (groupData.slider_handles.length > 0) {
@@ -88,7 +107,7 @@ const renderHouseInfo = function (groupData, quarterID) {
         individualQuarter.find("." + element + " > td:nth-of-type(1)").css('font-weight', 'bold')
       });
     }
-    else{
+    else {
       individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
     }
 
