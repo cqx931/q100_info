@@ -13,7 +13,7 @@ function updateConnectionsScenario(scenario_data) {
 }
 
 function updateSelectedConnectionsNumber(json) { // could be merged with the function above (updateConnectionsSenario)
-  if (json.hasOwnProperty('data_view_individual_data')) {
+  if (json.hasOwnProperty('individual_data_view_data')) {
     return // this data structure is sent right after the simulation therefore irrelevant
   }
   let sum = 0

@@ -164,7 +164,7 @@ function initialRender() {
   // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
 
   // injectDataToDataView(sampleDataViewData.data_view_data)
-  // injectDataToIndividualDataView(dataViewIndividualData.data_view_individual_data)
+  // injectDataToIndividualDataView(dataViewIndividualData.individual_data_view_data)
 
 
 }
