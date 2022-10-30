@@ -295,6 +295,27 @@ g#yAxisG text {
   font-size: 9px;
 }
 
+/*************************** BUILDINGS INTERACTION *******************/
+.buildingsInteraction #dataContainer{
+display: flex;
+flex-wrap: wrap;
+grid-gap: 25px;
+justify-content: center;
+}
+
+.buildingsInteraction.quarterSection{
+  margin: 15px;
+  visibility: hidden;
+  width: 47%;
+  /* height: 44vh; */
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'dataTable dataTable' 'graphR graphL';
+}
+
 /*************************** QUESTIONNAIRE **************************/
 @font-face {
   font-family: "LibertinusSerif-Italic";
@@ -416,7 +437,7 @@ tr:nth-child(even) {
   height: 100%;
 }
 
-.dataViewIndividualMode .left {
+.dataViewIndividualMode #dataContainer {
   display: flex;
   flex-wrap: wrap;
   grid-gap: 25px;
@@ -486,7 +507,7 @@ tr:nth-child(even) {
   vertical-align: top;
 }
 
-.dataViewIndividualMode .quarterSection {
+.dataViewIndividual.quarterSection {
   padding: 30px;
   margin: 55px;
   visibility: hidden;
