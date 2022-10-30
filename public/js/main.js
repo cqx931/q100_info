@@ -13,15 +13,17 @@ socket.on('message', function (message) {
 
     // ------------------------- ENVIRONMENT --------------------------
     if (json.hasOwnProperty('mode')) {
-      const nextUserMode = json.mode;
-      switchUserMode(nextUserMode);
+      if (json.mode != currentUserMode) {
+        switchUserMode(json.mode);
+        currentUserMode = json.mode;
+      }
     }
     if (json.hasOwnProperty("current_iteration_round")) {
       if (currentIterationRound != json.current_iteration_round) {
         currentIterationRound = json.current_iteration_round;
         console.log("current_iteration_round = " + currentIterationRound);
         tableAddColumn(json.current_iteration_round);
-        if (currentIterationRound == 0){
+        if (currentIterationRound == 0) {
           location.reload(); // reload page
         }
       }
@@ -39,18 +41,20 @@ socket.on('message', function (message) {
     }
 
     // -------------------- BUILDINGS INTERACTION ---------------------
-    if (json.hasOwnProperty('buildings_groups')) {
-      if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
-      if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
-      if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "dataViewIndividualQuarter2");
-      if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "dataViewIndividualQuarter3");
+    if (currentUserMode == 'buildings_interaction') {
+      if (json.hasOwnProperty('buildings_groups')) {
+        if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
+        if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
+        if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "dataViewIndividualQuarter2");
+        if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "dataViewIndividualQuarter3");
 
-      // households and cluster data:
-      // const data = processData(json);
-      // updateClusterCharts(data);
-      // updateTotalCharts(data);
-      updateSelectedConnectionsNumber(json);
-      injectDataToIndividualDataView(json);
+        // households and cluster data:
+        // const data = processData(json);
+        // updateClusterCharts(data);
+        // updateTotalCharts(data);
+        updateSelectedConnectionsNumber(json);
+        injectDataToIndividualDataView(json);
+      }
     }
 
     // scenarios:
@@ -82,6 +86,12 @@ socket.on('message', function (message) {
     }
     if (json.hasOwnProperty("neighborhood_images")) {
       renewResultsImages(json.neighborhood_images)
+    }
+
+    if (currentUserMode == 'individual_data_view') {
+      if (json.hasOwnProperty("active_user_focus_data")) {
+        focusActiveUserData(json.active_user_focus_data);
+      }
     }
 
     // update canvas image

@@ -119,6 +119,18 @@ const injectDataToIndividualDataView = function (data) {
 
 }
 
+function focusActiveUserData(userNumber){
+
+    // hide all quarterSections:
+    for (var i = 0; i<4; i++){
+        $("#dataViewIndividualQuarter" + i).css("display", "None");
+    }
+
+    // show only active quarterSection:
+    let individualQuarter = $("#dataViewIndividualQuarter" + userNumber)
+    individualQuarter.css("display", "grid");
+}
+
 function tableAddColumn(round) {
     for (let i = 0; i < 4; i++) {
         // add header column:
