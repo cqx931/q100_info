@@ -51,8 +51,9 @@
 
 		<!---------------------- INDIVIDUAL DATA VIEW --------------------->
 		<div class="dataViewIndividualMode">
-			<div class="buildingsInteraction" id="dataContainer">
-				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter0" style="outline: 8px solid #0075B4;">
+			<div class="buildingsInteraction top" id="dataContainer">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter0"
+					style="outline: 8px solid #0075B4;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
@@ -63,7 +64,7 @@
 							<!-- <div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/m² -->
 							<!-- </div> -->
 							<!-- <div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden -->
-								<!-- ähnlichen Verbrauchs</div> -->
+							<!-- ähnlichen Verbrauchs</div> -->
 						</div>
 						<table>
 							<tr class="headerRow">
@@ -96,7 +97,8 @@
 						<img src="img/blank_16x9inches.png" alt="">
 					</div>
 				</div>
-				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter1" style="outline: 8px solid #FDC113;">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter1"
+					style="outline: 8px solid #FDC113;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
@@ -140,7 +142,8 @@
 						<img src="img/blank_16x9inches.png" alt="">
 					</div>
 				</div>
-				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter2" style="outline: 8px solid #B600B6;">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter2"
+					style="outline: 8px solid #B600B6;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
@@ -182,7 +185,8 @@
 						<img src="img/blank_16x9inches.png" alt="">
 					</div>
 				</div>
-				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter3" style="outline: 8px solid #00A84E;">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter3"
+					style="outline: 8px solid #00A84E;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
 							<h3><span class="address">[Adresse]</span></h3>
@@ -226,31 +230,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="right">
-				<!-- <center>
-					<h2 style="text-decoration: underline;">Szenarien</h2>
-				</center> -->
-				<div class="scenario_energy_prices">
-					<img src="img/Energiepreisprognose_2018.png" class="energy_prices_graph"
-						id="current_energy_prices_scenario">
-				</div>
-				<div id="scenario_num_connections">
-					<center>
-						<h3>Anschlüsse:</h3>
-						<ul>
-							<li style="font-size:medium"><span class="selected">0 ausgewählte</span></li>
-							<li style="font-size: larger;"><span class="global">+ 0 zusätzliche</span></li>
-						</ul>
-					</center>
-				</div>
-				<!-- <div class="scenario_q100_capex">
-					<center><h2 id="scenario_q100_capex_graph" style="color:red; border:1px dotted blue;">[Finanzierungskonzept-Szenario]</h2></center>
-				</div> -->
+			<div class="bottom simulationMode">
+				<center>
+					<h1>Berechne Energiekosten und Emissionen... <span id="simulationProgress">0</span>%</h1>
+				</center>
 			</div>
-			<!-- <div class="sample">
-				<div class="graph"><img src="img/blank_16x9inches.png" id="energy_prices">
-				</div>
-			</div> -->
 		</div>
 
 		<!-------------------- INPUT SCENARIOS MODE ------------------>
@@ -269,99 +253,6 @@
 				<h2>C</h2>
 				<br>
 				<img src="img/Energiepreisprognose_2022.png" id="scenario_img_C">
-			</div>
-		</div>
-
-		<!-------------------- BUILDINGS INTERACTION MODE ----------------->
-		<div class="buildings_interaction">
-			<div class="main">
-				<div class="top">
-					<div class="columns">
-						<div class="template meta" id="meta_template">
-							<div class="icon"><img src="img/home.png"></div>
-							<div class="text">
-								<ul>
-									<li class='address'>$Adresse</li>
-									</li>
-									<li class='refurbished' style="color:burlywood">Sanierungszustand: $s</li>
-									<li class='connection_to_heat_grid' style="color: aquamarine;">
-										Wärmenetzanschluss:
-										$c
-									</li>
-									<li class='save_energy' style="color: cadetblue;">Energie sparen:
-										$e
-									</li>
-									<li class="avg_spec_power_consumption" style="color:gray;">
-										ø-Stromverbrauch: $p kWh/m²
-									</li>
-									<li class="avg_spec_heat_consumption" style="color:gray;">
-										ø-Wärmeverbrauch: $h kWh/m²
-									</li>
-									<li class="cluster_size" style="color:gray; font-size:x-small;">
-										errechnet aus $x ähnlichen Gebäuden
-									</li>
-
-								</ul>
-							</div>
-						</div>
-						<div id="buildings_group_0" class="buildings_group">
-						</div>
-						<div id="buildings_group_1" class="buildings_group">
-						</div>
-						<div id="buildings_group_2" class="buildings_group">
-						</div>
-						<div id="buildings_group_3" class="buildings_group">
-						</div>
-					</div>
-					<div class="right">
-						<!-- <center>
-							<h2 style="text-decoration: underline;">Szenarien</h2>
-						</center> -->
-						<div class="scenario_energy_prices">
-							<img src="img/Energiepreisprognose_2018.png" class="energy_prices_graph"
-								id="current_energy_prices_scenario">
-						</div>
-						<div id="scenario_num_connections">
-							<center>
-								<h3>Anschlüsse:</h3>
-								<ul>
-									<li style="font-size:medium"><span class="selected">0 ausgewählte</span></li>
-									<li style="font-size: larger;"><span class="global">+ 0 zusätzliche</span></li>
-								</ul>
-							</center>
-						</div>
-						<!-- <div class="scenario_q100_capex">
-							<center><h2 id="scenario_q100_capex_graph" style="color:red; border:1px dotted blue;">[Finanzierungskonzept-Szenario]</h2></center>
-						</div> -->
-					</div>
-					<div class="bottom">
-						<div class="left">
-							<div id="graphic">
-								<div id="cluster">
-								</div>
-							</div>
-						</div>
-						<div class="right">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!----------------------- SIMULATION MODE -------------------->
-		<div class="simulationMode">
-			<div class="left">
-				<p></p>
-			</div>
-			<div class="main">
-				<div class="middle" style="padding-top:25%">
-					<!-- <div id="quartierSimulation">
-					</div> -->
-					<!-- four line plots -->
-					<center>
-						<h1>Berechne Energiekosten und Emissionen... <span id="simulationProgress">0</span>%</h1>
-					</center>
-				</div>
 			</div>
 		</div>
 

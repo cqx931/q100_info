@@ -60,12 +60,12 @@ const updateInputEnvironmentMode = function (scenario_handle) {
 }
 
 const displaySimulationMode = function () {
-  $(".questionnaire").hide();
-  $(".input_scenarios").hide();
-  $(".buildings_interaction").hide();
+  // $(".questionnaire").hide();
+  // $(".input_scenarios").hide();
+  // $(".buildings_interaction").hide();
   $(".simulationMode").show();
-  $(".dataViewIndividualMode").hide();
-  $(".dataViewTotalMode").hide();
+  // $(".dataViewIndividualMode").hide();
+  // $(".dataViewTotalMode").hide();
 }
 
 const displayDataViewIndividualMode = function () {
