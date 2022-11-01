@@ -397,6 +397,10 @@ justify-content: center;
   /* background-color: black; */
 }
 
+.heatConsumption img{
+  width: 30%;
+}
+
 /****************************** TOTAL DATA VIEW *************************/
 .dataViewTotalMode {
   display: grid;

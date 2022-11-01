@@ -72,28 +72,29 @@ const renderHouseInfo = function (groupData, quarterID) {
       $(target).text("Einfamilienhaus");
 
     // update consumption data:
-    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > span";
-    let heat_consumption = "";
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > img";
+    let heatConsumptionHandle = "default";
     if (targetBuilding.avg_spec_heat_consumption > 250)
-      heat_consumption = "H";
+      heatConsumptionHandle = "h";
     if (targetBuilding.avg_spec_heat_consumption < 250)
-      heat_consumption = "G";
+      heatConsumptionHandle = "g";
     if (targetBuilding.avg_spec_heat_consumption < 200)
-      heat_consumption = "F";
-      if (targetBuilding.avg_spec_heat_consumption < 160)
-      heat_consumption = "E";
-      if (targetBuilding.avg_spec_heat_consumption < 130)
-      heat_consumption = "D";
-      if (targetBuilding.avg_spec_heat_consumption < 100)
-      heat_consumption = "C";
-      if (targetBuilding.avg_spec_heat_consumption < 75)
-      heat_consumption = "B";
-      if (targetBuilding.avg_spec_heat_consumption < 50)
-      heat_consumption = "A";
-      if (targetBuilding.avg_spec_heat_consumption < 30)
-      heat_consumption = "A+";
-    $(target).text(heat_consumption);
-    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
+      heatConsumptionHandle = "f";
+    if (targetBuilding.avg_spec_heat_consumption < 160)
+      heatConsumptionHandle = "e";
+    if (targetBuilding.avg_spec_heat_consumption < 130)
+      heatConsumptionHandle = "d";
+    if (targetBuilding.avg_spec_heat_consumption < 100)
+      heatConsumptionHandle = "c";
+    if (targetBuilding.avg_spec_heat_consumption < 75)
+      heatConsumptionHandle = "b";
+    if (targetBuilding.avg_spec_heat_consumption < 50)
+      heatConsumptionHandle = "a";
+    if (targetBuilding.avg_spec_heat_consumption < 30)
+      heatConsumptionHandle = "aplus";
+    $(target).attr("src", "img/qscope_energy_graph_" + heatConsumptionHandle + ".png");
+
+    // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
     // $(target).text(targetBuilding.avg_spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:

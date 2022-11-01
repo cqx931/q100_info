@@ -84,7 +84,6 @@ const injectDataToIndividualDataView = function (data) {
                 .text(value);
 
             value = targetBuilding["save_energy_prior"] ? "ja" : "nein";
-            console.log(value)
             individualQuarter
                 .find(".save_energy")
                 .children(".unchanged")
