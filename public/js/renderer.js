@@ -32,7 +32,7 @@ const displayBuildingsInteractionMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
   $(".buildings_interaction").hide();
-  $(".simulationMode").hide();
+  $(".simulationMode").show();
   $(".dataViewIndividualMode").show();
   $(".dataViewTotalMode").hide();
 

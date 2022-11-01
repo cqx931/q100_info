@@ -41,37 +41,37 @@ socket.on('message', function (message) {
     }
 
     // -------------------- BUILDINGS INTERACTION ---------------------
-    if (currentUserMode == 'buildings_interaction') {
-      if (json.hasOwnProperty('buildings_groups')) {
-        if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
-        if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
-        if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "dataViewIndividualQuarter2");
-        if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "dataViewIndividualQuarter3");
+    // if (currentUserMode == 'buildings_interaction') {
+    if (json.hasOwnProperty('buildings_groups')) {
+      if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
+      if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
+      if ('group_2' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_2, "dataViewIndividualQuarter2");
+      if ('group_3' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_3, "dataViewIndividualQuarter3");
 
-        // households and cluster data:
-        // const data = processData(json);
-        // updateClusterCharts(data);
-        // updateTotalCharts(data);
-        updateSelectedConnectionsNumber(json);
-        injectDataToIndividualDataView(json);
-      }
+      // households and cluster data:
+      // const data = processData(json);
+      // updateClusterCharts(data);
+      // updateTotalCharts(data);
+      updateSelectedConnectionsNumber(json);
+      injectDataToIndividualDataView(json);
     }
+    // }
 
     // scenarios:
     // if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
     //   updateInputEnvironmentMode(json.active_scenario_handle);
     // }
     // energy prices:
-    if (json.hasOwnProperty('scenario_energy_prices')) {
-      updateCurrentScenarioGraph(json.scenario_energy_prices);
-    }
-    if (json.hasOwnProperty('scenario_num_connections')) {
-      updateConnectionsScenario(json.scenario_num_connections);
-    }
+    // if (json.hasOwnProperty('scenario_energy_prices')) {
+    //   updateCurrentScenarioGraph(json.scenario_energy_prices);
+    // }
+    // if (json.hasOwnProperty('scenario_num_connections')) {
+    //   updateConnectionsScenario(json.scenario_num_connections);
+    // }
 
-    if (json.hasOwnProperty('scenario_data')) {
-      processScenarioList(json.scenario_data);
-    }
+    // if (json.hasOwnProperty('scenario_data')) {
+    //   processScenarioList(json.scenario_data);
+    // }
 
     // slider:
     if (json.hasOwnProperty('sliders')) {
