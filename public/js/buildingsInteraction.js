@@ -92,7 +92,7 @@ const renderHouseInfo = function (groupData, quarterID) {
       heatConsumptionHandle = "a";
     if (targetBuilding.avg_spec_heat_consumption < 30)
       heatConsumptionHandle = "aplus";
-    $(target).attr("src", "img/qscope_energy_graph_" + heatConsumptionHandle + ".png");
+    $(target).attr("src", "img/qscope_energy_graph_triangle_" + heatConsumptionHandle + "_.png");
 
     // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
     // $(target).text(targetBuilding.avg_spec_power_consumption.toFixed(1));
