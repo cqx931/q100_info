@@ -510,10 +510,9 @@ tr:nth-child(even) {
 .dataViewIndividualMode .houseInfo {
   /* margin: 0 20px 10px 20px; */
   padding-bottom: 0.5%;
-  font-style: bold;
   /* color: gray; */
   font-size: larger;
-  font-weight: bold;
+  /* font-weight: bold; */
   vertical-align: top;
 }
 
