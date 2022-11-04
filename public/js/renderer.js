@@ -181,7 +181,7 @@ const toggleVerboseMode = function () {
 
 const updateSimulationProgress = function (step) {
   const percentage = Math.ceil(step * 100 / simulationFinalStep)
-  $("#simulationProgress").text(percentage)
+  $("#simulationProgress").find('span').text(percentage)
 
 }
 
