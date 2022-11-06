@@ -71,7 +71,7 @@ const injectDataToIndividualDataView = function (data) {
             let individualQuarter = $("#dataViewIndividualQuarter" + i)
 
             // Bestandsdaten:
-            value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
+            value = targetBuilding["refurbished_prior"] > 0 ? targetBuilding["refurbished_prior"] : "unsaniert";
             individualQuarter
                 .find(".refurbished")
                 .children(".unchanged")
@@ -90,7 +90,7 @@ const injectDataToIndividualDataView = function (data) {
                 .text(value);
 
             // update round decisions:
-            value = targetBuilding["refurbished"] ? "saniert" : "unsaniert";
+            value = targetBuilding["refurbished"] > 0 ? targetBuilding["refurbished"] : "unsaniert";
             individualQuarter
                 .find(".refurbished")
                 .children(".round" + currentIterationRound)
@@ -139,14 +139,14 @@ function tableAddColumn(round) {
         // add data columns:
         $('#dataViewIndividualQuarter' + i)
             .find('.refurbished')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round}">---</td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.connection_to_heat_grid')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round}">---</td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.save_energy')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round}">---</td>`);
     }
 }
