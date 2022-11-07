@@ -13,7 +13,7 @@ function updateConnectionsScenario(scenario_data) {
 }
 
 function updateSelectedConnectionsNumber(json) { // could be merged with the function above (updateConnectionsSenario)
-  if (json.hasOwnProperty('data_view_individual_data')) {
+  if (json.hasOwnProperty('individual_data_view_data')) {
     return // this data structure is sent right after the simulation therefore irrelevant
   }
   let sum = 0
@@ -59,37 +59,63 @@ const renderHouseInfo = function (groupData, quarterID) {
     }
 
     // get only first element of building list:
-    const h = buildings[buildings.length - 1];
+    const targetBuilding = buildings[buildings.length - 1];
 
     // update address:
-    individualQuarter.find('.address').text(h.address);
+    individualQuarter.find('.address').text(targetBuilding.address);
 
     // update building type
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .buildingType > span";
-    if (h.type == "MFH")
+    if (targetBuilding.type == "MFH")
       $(target).text("Mehrfamilienhaus");
-    if (h.type == "EFH")
+    if (targetBuilding.type == "EFH")
       $(target).text("Einfamilienhaus");
 
     // update consumption data:
-    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > span";
-    $(target).text(h.avg_spec_heat_consumption.toFixed(1));
-    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
-    $(target).text(h.avg_spec_power_consumption.toFixed(1));
+    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > img";
+    let heatConsumptionHandle = "default";
+    if (targetBuilding.spec_heat_consumption > 250)
+      heatConsumptionHandle = "h";
+    if (targetBuilding.spec_heat_consumption < 250)
+      heatConsumptionHandle = "g";
+    if (targetBuilding.spec_heat_consumption < 200)
+      heatConsumptionHandle = "f";
+    if (targetBuilding.spec_heat_consumption < 160)
+      heatConsumptionHandle = "e";
+    if (targetBuilding.spec_heat_consumption < 130)
+      heatConsumptionHandle = "d";
+    if (targetBuilding.spec_heat_consumption < 100)
+      heatConsumptionHandle = "c";
+    if (targetBuilding.spec_heat_consumption < 75)
+      heatConsumptionHandle = "b";
+    if (targetBuilding.spec_heat_consumption < 50)
+      heatConsumptionHandle = "a";
+    if (targetBuilding.spec_heat_consumption < 30)
+      heatConsumptionHandle = "aplus";
+    $(target).attr("src", "img/qscope_energy_graph_triangle_" + heatConsumptionHandle + "_.png");
+
+    // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
+    // $(target).text(targetBuilding.spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:
-    target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
-    $(target).text(h.cluster_size);
+    // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";
+    // $(target).text(targetBuilding.cluster_size);
 
+    // highlight selected decision:
     if (groupData.slider_handles.length > 0) {
       individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
       groupData.slider_handles.forEach(element => {
         individualQuarter.find("." + element + " > td:nth-of-type(1)").css('font-weight', 'bold')
       });
     }
-    else{
+    else {
       individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
     }
+
+    // update image:
+    individualQuarter.find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
+    individualQuarter.find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
+
   }
 }
 

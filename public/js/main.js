@@ -13,14 +13,20 @@ socket.on('message', function (message) {
 
     // ------------------------- ENVIRONMENT --------------------------
     if (json.hasOwnProperty('mode')) {
-      const nextUserMode = json.mode;
-      switchUserMode(nextUserMode);
+      if (json.mode != currentUserMode) {
+        switchUserMode(json.mode);
+        currentUserMode = json.mode;
+      }
     }
     if (json.hasOwnProperty("current_iteration_round")) {
       if (currentIterationRound != json.current_iteration_round) {
         currentIterationRound = json.current_iteration_round;
         console.log("current_iteration_round = " + currentIterationRound);
         tableAddColumn(json.current_iteration_round);
+        $('#currentRound').find('span').text(currentIterationRound + 1);
+        if (currentIterationRound == 0) {
+          location.reload(); // reload page
+        }
       }
     }
 
@@ -36,6 +42,7 @@ socket.on('message', function (message) {
     }
 
     // -------------------- BUILDINGS INTERACTION ---------------------
+    // if (currentUserMode == 'buildings_interaction') {
     if (json.hasOwnProperty('buildings_groups')) {
       if ('group_0' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_0, "dataViewIndividualQuarter0");
       if ('group_1' in json.buildings_groups) renderHouseInfo(json.buildings_groups.group_1, "dataViewIndividualQuarter1");
@@ -49,22 +56,23 @@ socket.on('message', function (message) {
       updateSelectedConnectionsNumber(json);
       injectDataToIndividualDataView(json);
     }
+    // }
 
     // scenarios:
     // if (json.hasOwnProperty('active_scenario_handle') && json.hasOwnProperty('mode')){
     //   updateInputEnvironmentMode(json.active_scenario_handle);
     // }
     // energy prices:
-    if (json.hasOwnProperty('scenario_energy_prices')) {
-      updateCurrentScenarioGraph(json.scenario_energy_prices);
-    }
-    if (json.hasOwnProperty('scenario_num_connections')) {
-      updateConnectionsScenario(json.scenario_num_connections);
-    }
+    // if (json.hasOwnProperty('scenario_energy_prices')) {
+    //   updateCurrentScenarioGraph(json.scenario_energy_prices);
+    // }
+    // if (json.hasOwnProperty('scenario_num_connections')) {
+    //   updateConnectionsScenario(json.scenario_num_connections);
+    // }
 
-    if (json.hasOwnProperty('scenario_data')) {
-      processScenarioList(json.scenario_data);
-    }
+    // if (json.hasOwnProperty('scenario_data')) {
+    //   processScenarioList(json.scenario_data);
+    // }
 
     // slider:
     if (json.hasOwnProperty('sliders')) {
@@ -79,6 +87,12 @@ socket.on('message', function (message) {
     }
     if (json.hasOwnProperty("neighborhood_images")) {
       renewResultsImages(json.neighborhood_images)
+    }
+
+    if (currentUserMode == 'individual_data_view') {
+      if (json.hasOwnProperty("active_user_focus_data")) {
+        focusActiveUserData(json.active_user_focus_data);
+      }
     }
 
     // update canvas image
@@ -151,7 +165,7 @@ function initialRender() {
   // renewDataViewGAMAImgsPerSection(sampleGAMAImgSrcPaths2.iteration_round)
 
   // injectDataToDataView(sampleDataViewData.data_view_data)
-  // injectDataToIndividualDataView(dataViewIndividualData.data_view_individual_data)
+  // injectDataToIndividualDataView(dataViewIndividualData.individual_data_view_data)
 
 
 }

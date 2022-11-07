@@ -71,27 +71,26 @@ const injectDataToIndividualDataView = function (data) {
             let individualQuarter = $("#dataViewIndividualQuarter" + i)
 
             // Bestandsdaten:
-            value = targetBuilding["refurbished_prior"] ? "saniert" : "unsaniert";
+            value = targetBuilding["refurbished_prior"] > 0 ? targetBuilding["refurbished_prior"] : "unsaniert";
             individualQuarter
                 .find(".refurbished")
-                .children(".Bestand")
+                .children(".unchanged")
                 .text(value);
 
             value = targetBuilding["connection_to_heat_grid_prior"] > 0 ? targetBuilding["connection_to_heat_grid_prior"] : "nein";
             individualQuarter
                 .find(".connection_to_heat_grid")
-                .children(".Bestand")
+                .children(".unchanged")
                 .text(value);
 
             value = targetBuilding["save_energy_prior"] ? "ja" : "nein";
-            console.log(value)
             individualQuarter
                 .find(".save_energy")
-                .children(".Bestand")
+                .children(".unchanged")
                 .text(value);
 
             // update round decisions:
-            value = targetBuilding["refurbished"] ? "saniert" : "unsaniert";
+            value = targetBuilding["refurbished"] > 0 ? targetBuilding["refurbished"] : "unsaniert";
             individualQuarter
                 .find(".refurbished")
                 .children(".round" + currentIterationRound)
@@ -119,6 +118,18 @@ const injectDataToIndividualDataView = function (data) {
 
 }
 
+function focusActiveUserData(userNumber){
+
+    // hide all quarterSections:
+    for (var i = 0; i<4; i++){
+        $("#dataViewIndividualQuarter" + i).css("display", "None");
+    }
+
+    // show only active quarterSection:
+    let individualQuarter = $("#dataViewIndividualQuarter" + userNumber)
+    individualQuarter.css("display", "grid");
+}
+
 function tableAddColumn(round) {
     for (let i = 0; i < 4; i++) {
         // add header column:
@@ -128,14 +139,14 @@ function tableAddColumn(round) {
         // add data columns:
         $('#dataViewIndividualQuarter' + i)
             .find('.refurbished')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round}">---</td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.connection_to_heat_grid')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round}">---</td>`);
 
         $('#dataViewIndividualQuarter' + i)
             .find('.save_energy')
-            .append(`<td class="round${round}"></td>`);
+            .append(`<td class="round${round}">---</td>`);
     }
 }

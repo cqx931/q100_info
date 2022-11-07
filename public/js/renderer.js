@@ -31,10 +31,18 @@ const grayoutAnswerNo = function () {
 const displayBuildingsInteractionMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
-  $(".buildings_interaction").show();
-  $(".simulationMode").hide();
-  $(".dataViewIndividualMode").hide();
+  $(".buildings_interaction").hide();
+  $(".simulationMode").show();
+  $(".dataViewIndividualMode").show();
   $(".dataViewTotalMode").hide();
+
+  $(".dataViewIndividual.quarterSection").addClass("buildingsInteraction")
+  $(".dataViewIndividual.quarterSection").removeClass("dataViewIndividual")
+
+  for (var i = 0; i<4; i++){
+    $("#dataViewIndividualQuarter" + i).css("display", "grid");
+}
+
 }
 const displayInputEnvironmentMode = function () {
   $(".questionnaire").hide();
@@ -52,12 +60,12 @@ const updateInputEnvironmentMode = function (scenario_handle) {
 }
 
 const displaySimulationMode = function () {
-  $(".questionnaire").hide();
-  $(".input_scenarios").hide();
-  $(".buildings_interaction").hide();
+  // $(".questionnaire").hide();
+  // $(".input_scenarios").hide();
+  // $(".buildings_interaction").hide();
   $(".simulationMode").show();
-  $(".dataViewIndividualMode").hide();
-  $(".dataViewTotalMode").hide();
+  // $(".dataViewIndividualMode").hide();
+  // $(".dataViewTotalMode").hide();
 }
 
 const displayDataViewIndividualMode = function () {
@@ -69,6 +77,12 @@ const displayDataViewIndividualMode = function () {
   $(".dataViewTotalMode").hide();
   initDataViewIndividualContent();
   // updateSimulationOutputs();
+
+  $(".buildingsInteraction.quarterSection").addClass("dataViewIndividual")
+  $(".buildingsInteraction.quarterSection").removeClass("buildingsInteraction")
+  $(".buildingsInteraction #container").addClass("dataViewIndividual")
+  $(".buildingsInteraction #container").removeClass("buildingsInteraction")
+
 }
 
 const displayDataViewTotalMode = function () {
@@ -92,8 +106,8 @@ const switchUserMode = function (mode) {
     displayInputEnvironmentMode()
   }
   else if (mode == 'buildings_interaction') {
-    // displayBuildingsInteractionMode()
-    displayDataViewIndividualMode()
+    displayBuildingsInteractionMode()
+    // displayDataViewIndividualMode()
   }
   else if (mode == 'questionnaire') {
     const question = questions[getRandomInt(5)] //TODO: get question number from UDP
@@ -167,7 +181,7 @@ const toggleVerboseMode = function () {
 
 const updateSimulationProgress = function (step) {
   const percentage = Math.ceil(step * 100 / simulationFinalStep)
-  $("#simulationProgress").text(percentage)
+  $("#simulationProgress").find('span').text(percentage)
 
 }
 

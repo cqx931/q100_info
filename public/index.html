@@ -28,232 +28,217 @@
 
 		<div class="dataViewTotalMode">
 			<div class="quarterSection headerImage">
-				<div style="height:calc(50vw / 1920 * 150)"></div>
-				<div class="graph"><img src="data/outputs/output_test/energy_prices/energy_prices_groups.png"
-						id="energy_prices_groups">
+				<!-- <div style="height:calc(50vw / 1920 * 150)"></div> -->
+				<div class="graph">
+					<center><img src="data/outputs/output_test/energy_prices/energy_prices_groups.png"
+						id="energy_prices_groups"></center>
 				</div>
 			</div>
 			<div class="quarterSection">
-				<div style="height:calc(50vw / 1920 * 150)"></div>
-				<div class="graph"><img src="data/outputs/output/Energiekosten.png" id="energy_prices">
+				<!-- <div style="height:calc(50vw / 1920 * 150)"></div> -->
+				<div class="graph">
+					<center><img src="data/outputs/output_test/energy_prices/energy_prices_total.png" id="energy_prices"></center>
 				</div>
 			</div>
 			<div class="quarterSection">
-				<div class="graph"><img src="data/outputs/output_test/emissions/CO2_emissions_groups.png"
-						id="emissions_groups">
+				<div class="graph">
+					<center><img src="data/outputs/output_test/emissions/CO2_emissions_groups.png"
+						id="emissions_groups"></center>
 				</div>
 			</div>
 			<div class="quarterSection">
-				<div class="graph"><img src="data/outputs/output/akkumulierte Gesamtemissionen des Quartiers.png"
-						id="emissions_neighborhood_accu"></div>
+				<div class="graph">
+					<center><img src="data/outputs/output_test/emissions/CO2_emissions_neighborhood.png"
+						id="emissions_neighborhood_accu"></div></center>
 			</div>
 		</div>
 
 		<!---------------------- INDIVIDUAL DATA VIEW --------------------->
 		<div class="dataViewIndividualMode">
-			<div class="left">
-				<div class="quarterSection" id="dataViewIndividualQuarter0" style="outline: 8px solid #0075B4;">
+			<div class="buildingsInteraction top" id="dataContainer">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter0"
+					style="outline: 8px solid #0075B4;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
-							<h3><span class="address">[Adresse]</span></h3>
+							<h1><span class="address">[Adresse]</span></h1>
 						</div>
 						<div class="houseInfo aboveTable">
-							<div class="buildingType"><span>None</span></div>
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span> kWh/m²</div>
-							<div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/m²
-							</div>
-							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
-								ähnlichen Verbrauchs</div>
+							<div class="buildingType" style="font-weight: bold">(<span>[Gebäudetyp]</span>)</div>
+							<br><div class="heatConsumption"><b>Wärmeverbrauch</b> (kWh/m²):<br><img src="img/qscope_energy_graph_default.png"></img></div>
+							<!-- <div class="powerConsumption">Stromverbrauch:&nbsp; <span>0</span> kWh/m² -->
+							<!-- </div> -->
+							<!-- <div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden -->
+							<!-- ähnlichen Verbrauchs</div> -->
 						</div>
 						<table>
 							<tr class="headerRow">
 								<th></th>
-								<th>Bestand</th>
+								<th>unverändert</th>
 								<th class="round">Runde 1</th>
 							</tr>
 							<tr class="refurbished">
 								<td>Sanierungszustand</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="connection_to_heat_grid">
 								<td>Anschluss Wärmenetz</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="save_energy">
 								<td>Energie sparen</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 						</table>
 
 					</div>
 					<div class="graph graphR emissions_graphs">
-						<img src="img/blank_16x9inches.png">
+						<center><img src="img/blank_16x9inches.png"></center>
 					</div>
 					<div class="graph graphL energy_prices_graphs">
-						<img src="img/blank_16x9inches.png" alt="">
+						<center><img src="img/blank_16x9inches.png" alt=""></center>
 					</div>
 				</div>
-				<div class="quarterSection" id="dataViewIndividualQuarter1" style="outline: 8px solid #FDC113;">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter1"
+					style="outline: 8px solid #FDC113;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
-							<h3><span class="address">[Adresse]</span></h3>
+							<h1><span class="address">[Adresse]</span></h1>
 						</div>
 						<div class="houseInfo aboveTable">
-							<div class="buildingType">
-								<span>None</span>
-							</div>
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span>
-								kWh/m²</div>
-							<div class="powerConsumption">Stromverbrauch :&nbsp; <span>0</span> kWh/m²</div>
-							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
-								ähnlichen Verbrauchs</div>
+							<div class="buildingType" style="font-weight: bold">(<span>[Gebäudetyp]</span>)</div>
+							<br><div class="heatConsumption"><b>Wärmeverbrauch</b> (kWh/m²):<br><img src="img/qscope_energy_graph_default.png"></img></div>
+							<!-- <div class="powerConsumption">Stromverbrauch :&nbsp; <span>0</span> kWh/m²</div> -->
+							<!-- <div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
+								ähnlichen Verbrauchs</div> -->
 						</div>
 						<table>
 							<tr class="headerRow">
 								<th></th>
-								<th>Bestand</th>
+								<th>unverändert</th>
 								<th class="round">Runde 1</th>
 							</tr>
 							<tr class="refurbished">
 								<td>Sanierungszustand</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="connection_to_heat_grid">
 								<td>Anschluss Wärmenetz</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="save_energy">
 								<td>Energie sparen</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 						</table>
 					</div>
 					<div class="graph graphR emissions_graphs">
-						<img src="img/blank_16x9inches.png">
+						<center><img src="img/blank_16x9inches.png"></center>
 					</div>
 					<div class="graph graphL energy_prices_graphs">
-						<img src="img/blank_16x9inches.png" alt="">
+						<center><img src="img/blank_16x9inches.png" alt=""></center>
 					</div>
 				</div>
-				<div class="quarterSection" id="dataViewIndividualQuarter2" style="outline: 8px solid #B600B6;">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter2"
+					style="outline: 8px solid #B600B6;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
-							<h3><span class="address">[Adresse]</span></h3>
+							<h1><span class="address">[Adresse]</span></h1>
 						</div>
 						<div class="houseInfo aboveTable">
-							<div class="buildingType"> <span>None</span></div>
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span>
-								kWh/m²</div>
-							<div class="powerConsumption">Stromverbrauch :&nbsp; <span>0</span> kWh/m²</div>
-							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
-								ähnlichen Verbrauchs</div>
+							<div class="buildingType" style="font-weight: bold">(<span>[Gebäudetyp]</span>)</div>
+							<br><div class="heatConsumption"><b>Wärmeverbrauch</b> (kWh/m²):<br><img src="img/qscope_energy_graph_default.png"></img></div>
+							<!-- <div class="powerConsumption">Stromverbrauch :&nbsp; <span>0</span> kWh/m²</div> -->
+							<!-- <div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
+								ähnlichen Verbrauchs</div> -->
 						</div>
 						<table>
 							<tr class="headerRow">
 								<th></th>
-								<th>Bestand</th>
+								<th>unverändert</th>
 								<th class="round">Runde 1</th>
 							</tr>
 							<tr class="refurbished">
 								<td>Sanierungszustand</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="connection_to_heat_grid">
 								<td>Anschluss Wärmenetz</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="save_energy">
 								<td>Energie sparen</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 						</table>
 					</div>
 					<div class="graph graphR emissions_graphs">
-						<img src="img/blank_16x9inches.png">
+						<center><img src="img/blank_16x9inches.png"></center>
 					</div>
 					<div class="graph graphL energy_prices_graphs">
-						<img src="img/blank_16x9inches.png" alt="">
+						<center><img src="img/blank_16x9inches.png" alt=""></center>
 					</div>
 				</div>
-				<div class="quarterSection" id="dataViewIndividualQuarter3" style="outline: 8px solid #00A84E;">
+				<div class="quarterSection buildingsInteraction" id="dataViewIndividualQuarter3"
+					style="outline: 8px solid #00A84E;">
 					<div class="nameAndTable">
 						<div class="aboveTable">
-							<h3><span class="address">[Adresse]</span></h3>
+							<h1><span class="address">[Adresse]</span></h1>
 						</div>
 						<div class="houseInfo aboveTable">
-							<div class="buildingType"> <span>None</span></div>
-							<div class="heatConsumption">Wärmeverbrauch:&nbsp;<span>0</span>
-								kWh/m²</div>
-							<div class="powerConsumption">Stromverbrauch :&nbsp; <span>0</span> kWh/m²</div>
-							<div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
-								ähnlichen Verbrauchs</div>
+							<div class="buildingType" style="font-weight: bold">(<span>[Gebäudetyp]</span>)</div>
+							<br><div class="heatConsumption"><b>Wärmeverbrauch</b> (kWh/m²):<br><img src="img/qscope_energy_graph_default.png"></img></div>
+							<!-- <div class="powerConsumption">Stromverbrauch :&nbsp; <span>0</span> kWh/m²</div> -->
+							<!-- <div class="clusterSize" style="font-size: smaller;">errechnet aus <span>x</span> Gebäuden
+								ähnlichen Verbrauchs</div> -->
 						</div>
 						<table>
 							<tr class="headerRow">
 								<th></th>
-								<th>Bestand</th>
+								<th>unverändert</th>
 								<th class="round">Runde 1</th>
 							</tr>
 							<tr class="refurbished">
 								<td>Sanierungszustand</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="connection_to_heat_grid">
 								<td>Anschluss Wärmenetz</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 							<tr class="save_energy">
 								<td>Energie sparen</td>
-								<td class="Bestand">0</td>
-								<td class="round0">0</td>
+								<td class="unchanged">---</td>
+								<td class="round0">---</td>
 							</tr>
 						</table>
 
 					</div>
 					<div class="graph graphR emissions_graphs">
-						<img src="img/blank_16x9inches.png">
+						<center><img src="img/blank_16x9inches.png"></center>
 					</div>
 					<div class="graph graphL energy_prices_graphs">
-						<img src="img/blank_16x9inches.png" alt="">
+						<center><img src="img/blank_16x9inches.png" alt=""></center>
 					</div>
 				</div>
 			</div>
-			<div class="right">
-				<center>
-					<h2 style="text-decoration: underline;">Szenarien</h2>
-				</center>
-				<div class="scenario_energy_prices">
-					<img src="img/Energiepreisprognose_2018.png" class="energy_prices_graph"
-						id="current_energy_prices_scenario">
+			<div class="bottom simulationMode">
+				<div id="simulationProgress"><h3>Simulation: <span>0</span>%</h3>
 				</div>
-				<div id="scenario_num_connections">
-					<center>
-						<h3>Anschlüsse:</h3>
-						<ul>
-							<li style="font-size:medium"><span class="selected">0 ausgewählte</span></li>
-							<li style="font-size: larger;"><span class="global">+ 0 zusätzliche</span></li>
-						</ul>
-					</center>
+				<div id="currentRound">
+					<h3>Runde <span>1</span></h3>
 				</div>
-				<!-- <div class="scenario_q100_capex">
-					<center><h2 id="scenario_q100_capex_graph" style="color:red; border:1px dotted blue;">[Finanzierungskonzept-Szenario]</h2></center>
-				</div> -->
 			</div>
-			<!-- <div class="sample">
-				<div class="graph"><img src="img/blank_16x9inches.png" id="energy_prices">
-				</div>
-			</div> -->
 		</div>
 
 		<!-------------------- INPUT SCENARIOS MODE ------------------>
@@ -272,99 +257,6 @@
 				<h2>C</h2>
 				<br>
 				<img src="img/Energiepreisprognose_2022.png" id="scenario_img_C">
-			</div>
-		</div>
-
-		<!-------------------- BUILDINGS INTERACTION MODE ----------------->
-		<div class="buildings_interaction">
-			<div class="main">
-				<div class="top">
-					<div class="columns">
-						<div class="template meta" id="meta_template">
-							<div class="icon"><img src="img/home.png"></div>
-							<div class="text">
-								<ul>
-									<li class='address'>$Adresse</li>
-									</li>
-									<li class='refurbished' style="color:burlywood">Sanierungszustand: $s</li>
-									<li class='connection_to_heat_grid' style="color: aquamarine;">
-										Wärmenetzanschluss:
-										$c
-									</li>
-									<li class='save_energy' style="color: cadetblue;">Energie sparen:
-										$e
-									</li>
-									<li class="avg_spec_power_consumption" style="color:gray;">
-										ø-Stromverbrauch: $p kWh/m²
-									</li>
-									<li class="avg_spec_heat_consumption" style="color:gray;">
-										ø-Wärmeverbrauch: $h kWh/m²
-									</li>
-									<li class="cluster_size" style="color:gray; font-size:x-small;">
-										errechnet aus $x ähnlichen Gebäuden
-									</li>
-
-								</ul>
-							</div>
-						</div>
-						<div id="buildings_group_0" class="buildings_group">
-						</div>
-						<div id="buildings_group_1" class="buildings_group">
-						</div>
-						<div id="buildings_group_2" class="buildings_group">
-						</div>
-						<div id="buildings_group_3" class="buildings_group">
-						</div>
-					</div>
-					<div class="right">
-						<center>
-							<h2 style="text-decoration: underline;">Szenarien</h2>
-						</center>
-						<div class="scenario_energy_prices">
-							<img src="img/Energiepreisprognose_2018.png" class="energy_prices_graph"
-								id="current_energy_prices_scenario">
-						</div>
-						<div id="scenario_num_connections">
-							<center>
-								<h3>Anschlüsse:</h3>
-								<ul>
-									<li style="font-size:medium"><span class="selected">0 ausgewählte</span></li>
-									<li style="font-size: larger;"><span class="global">+ 0 zusätzliche</span></li>
-								</ul>
-							</center>
-						</div>
-						<!-- <div class="scenario_q100_capex">
-							<center><h2 id="scenario_q100_capex_graph" style="color:red; border:1px dotted blue;">[Finanzierungskonzept-Szenario]</h2></center>
-						</div> -->
-					</div>
-					<div class="bottom">
-						<div class="left">
-							<div id="graphic">
-								<div id="cluster">
-								</div>
-							</div>
-						</div>
-						<div class="right">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!----------------------- SIMULATION MODE -------------------->
-		<div class="simulationMode">
-			<div class="left">
-				<p></p>
-			</div>
-			<div class="main">
-				<div class="middle" style="padding-top:25%">
-					<!-- <div id="quartierSimulation">
-					</div> -->
-					<!-- four line plots -->
-					<center>
-						<h1>Berechne Energiekosten und Emissionen... <span id="simulationProgress">0</span>%</h1>
-					</center>
-				</div>
 			</div>
 		</div>
 

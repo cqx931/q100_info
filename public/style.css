@@ -20,6 +20,10 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', 'Franklin Gothic Medium', sans-serif;
+  /* background-image: url("img/header.png");
+  background-repeat: no-repeat;
+  background-size: 50vw, calc(50vw / 1920 * 406);
+  background-position-x: right; */
   /* @font-face {
     font-family: "Roboto-Regular";
     src: url("/home/dunland/.fonts/truetype/Roboto-Regular.ttf");
@@ -51,13 +55,15 @@ h5 {
 }
 
 /**************************** INFOSCREEN *****************************/
-#infoscreen,
-.buildings_interaction,
-.simulationMode {
-  width: 100%;
-  height: 100%;
-  font-size: 18px;
-}
+/* #infoscreen,
+.buildings_interaction, */
+/* .simulationMode { */
+  /* width: 100%;
+  height: 100%; */
+  /* font-size: 18px; */
+  /* float:right; */
+  /* position:absolute; */
+/* } */
 
 #infoscreen .main {
   width: 100%;
@@ -67,7 +73,7 @@ h5 {
 
 #infoscreen .top {
   width: 100%;
-  height: 82%;
+  /* height: 94vh; */
 }
 
 #infoscreen .columns {
@@ -88,8 +94,20 @@ h5 {
 
 #infoscreen .bottom {
   width: 100%;
-  height: 20%;
-  display: inline-block;
+  height: 10%;
+  display: flex;
+}
+#infoscreen .bottom #simulationProgress {
+  width:55%;
+  display: flex;
+  justify-content: right;
+}
+
+#infoscreen .bottom #currentRound {
+  width: 40%;
+  justify-content: right;
+  display:flex;
+  padding-right: 2%;
 }
 
 #infoscreen .bottom .left {
@@ -105,6 +123,7 @@ h5 {
   float: left;
   border-left: 1px solid gray;
   padding-left: 10px;
+  display: none;
 }
 
 #infoscreen .right .scenario {
@@ -231,7 +250,7 @@ ul {
 }
 
 .simulation .slider {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   font-size: 16px;
   display: block;
 }
@@ -288,6 +307,27 @@ g#yAxisG text {
   stroke: none;
   fill: silver;
   font-size: 9px;
+}
+
+/*************************** BUILDINGS INTERACTION *******************/
+.buildingsInteraction #dataContainer{
+display: flex;
+flex-wrap: wrap;
+grid-gap: 25px;
+justify-content: center;
+}
+
+.buildingsInteraction.quarterSection{
+  margin: 15px;
+  visibility: hidden;
+  width: 40%;
+  height: 44vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'dataTable dataTable' 'graphR graphL';
 }
 
 /*************************** QUESTIONNAIRE **************************/
@@ -351,11 +391,11 @@ g#yAxisG text {
 }
 
 /********************************* DATA VIEW ****************************/
-.headerImage {
+/* .headerImage {
   background-image: url("img/header.png");
   background-repeat: no-repeat;
   background-size: 50vw, calc(50vw / 1920 * 406);
-}
+} */
 
 .dataview_wrapper {
   /* display: inline-block; */
@@ -367,6 +407,10 @@ g#yAxisG text {
   height: 45vh;
   display: inline-block;
   /* background-color: black; */
+}
+
+.heatConsumption img{
+  width: 30%;
 }
 
 /****************************** TOTAL DATA VIEW *************************/
@@ -407,28 +451,32 @@ tr:nth-child(even) {
 }
 
 /**************************** INDIVIDUAL DATA VIEW *************************/
-.dataViewIndividualMode {
+/* .dataViewIndividualMode {
   height: 100%;
-}
+} */
 
-.dataViewIndividualMode .left {
-  display: grid;
+.dataViewIndividualMode #dataContainer {
+  padding-top: 1vh;
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 25px;
-  grid-template: 'tl tr'
-    'bl br';
-  height: 100%;
-  width: 79%;
-  /* necessary to compute height of barChart */
-  float: left;
+  height: 94vh;
+  justify-content: center;
+  /* grid-template: 'tl tr' */
+    /* 'bl br'; */
+  /* height: 100%; */
+  /* width: 79%; */
+  /* float: left; */
+  /* height:100vh; */
 }
 
 .dataViewIndividualMode .aboveTable {
-  width: 50%;
-  display: table-cell;
+  /* width: 50%; */
+  text-align: center;
 }
 
 .dataViewIndividualMode .graph img {
-  width: 100%;
+  width: 90%;
   background-size: contain;
 }
 
@@ -455,9 +503,9 @@ tr:nth-child(even) {
   border-bottom: 1px solid black;
 }
 
-.dataViewIndividualMode td:nth-child(n+2) {
+/* .dataViewIndividualMode td:nth-child(n+2) {
   text-align: center;
-}
+} */
 
 .dataViewIndividualMode th {
   text-align: left;
@@ -467,20 +515,39 @@ tr:nth-child(even) {
   background-color: #f1f6d6;
 }
 
-.dataViewIndividualMode h3 {
+/* .dataViewIndividualMode h3 {
   margin: 0 20px;
-}
+} */
 
 .dataViewIndividualMode .houseInfo {
   /* margin: 0 20px 10px 20px; */
-  color: gray;
-  font-size: smaller;
-  font-weight: normal;
+  padding-bottom: 0.5%;
+  /* color: gray; */
+  font-size: larger;
+  /* font-weight: bold; */
   vertical-align: top;
 }
 
+.dataViewIndividual.quarterSection {
+  padding: 30px;
+  margin: 55px;
+  visibility: hidden;
+  padding: 4% 3% 4% 3%;
+  /* width: 47%; */
+  height: 76%;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'dataTable dataTable'
+    'graphR graphL';
+    position: absolute;
+}
 .dataViewIndividualMode .quarterSection .nameAndTable {
   grid-area: dataTable;
+  padding: 10px;
 }
 
 .dataViewIndividualMode .quarterSection .graphR {
@@ -489,18 +556,6 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode .quarterSection .graphL {
   grid-area: graphL;
-}
-
-.dataViewIndividualMode .quarterSection {
-  padding: 30px;
-  margin: 15px;
-  visibility: hidden;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: 'dataTable dataTable'
-    'graphR graphL';
 }
 
 /****************************
