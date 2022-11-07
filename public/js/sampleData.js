@@ -172,7 +172,7 @@ const individualDataViewData =
               }
           ],
           "connections": 0,
-          "slider_handles": ["save_energy"]
+          "slider_handles": ["save_energy", "connection_to_heat_grid", "refurbished"]
       },
       "group_3": {
           "buildings": [

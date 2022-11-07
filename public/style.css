@@ -446,9 +446,10 @@ justify-content: center;
   text-align: left;
 }
 
-tr:nth-child(even) {
+/* deprecated? gray color on table */
+/* tr:nth-child(even) {
   background-color: #f2f2f2;
-}
+} */
 
 /**************************** INDIVIDUAL DATA VIEW *************************/
 /* .dataViewIndividualMode {
@@ -556,6 +557,10 @@ tr:nth-child(even) {
 
 .dataViewIndividualMode .quarterSection .graphL {
   grid-area: graphL;
+}
+
+.highlightedRow {
+  background-color: #ffc7a4 !important
 }
 
 /****************************

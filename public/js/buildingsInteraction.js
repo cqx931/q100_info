@@ -103,13 +103,13 @@ const renderHouseInfo = function (groupData, quarterID) {
 
     // highlight selected decision:
     if (groupData.slider_handles.length > 0) {
-      individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
       groupData.slider_handles.forEach(element => {
-        individualQuarter.find("." + element + " > td:nth-of-type(1)").css('font-weight', 'bold')
+        individualQuarter.find("." + element).removeClass('highlightedRow')
+        individualQuarter.find("." + element).addClass('highlightedRow')
       });
     }
     else {
-      individualQuarter.find("td:nth-of-type(1)").css('font-weight', 'normal')
+      individualQuarter.find(".highlightedRow").removeClass('highlightedRow')
     }
 
     // update image:
