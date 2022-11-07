@@ -563,6 +563,10 @@ tr:nth-child(even) {
   background-color: #ffc7a4 !important
 }
 
+.aboveTable img {
+  height: 50px;
+}
+
 /****************************
 .dataViewIndividualMode .graph {
   width: 30%;
