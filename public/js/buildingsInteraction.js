@@ -74,28 +74,28 @@ const renderHouseInfo = function (groupData, quarterID) {
     // update consumption data:
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > img";
     let heatConsumptionHandle = "default";
-    if (targetBuilding.avg_spec_heat_consumption > 250)
+    if (targetBuilding.spec_heat_consumption > 250)
       heatConsumptionHandle = "h";
-    if (targetBuilding.avg_spec_heat_consumption < 250)
+    if (targetBuilding.spec_heat_consumption < 250)
       heatConsumptionHandle = "g";
-    if (targetBuilding.avg_spec_heat_consumption < 200)
+    if (targetBuilding.spec_heat_consumption < 200)
       heatConsumptionHandle = "f";
-    if (targetBuilding.avg_spec_heat_consumption < 160)
+    if (targetBuilding.spec_heat_consumption < 160)
       heatConsumptionHandle = "e";
-    if (targetBuilding.avg_spec_heat_consumption < 130)
+    if (targetBuilding.spec_heat_consumption < 130)
       heatConsumptionHandle = "d";
-    if (targetBuilding.avg_spec_heat_consumption < 100)
+    if (targetBuilding.spec_heat_consumption < 100)
       heatConsumptionHandle = "c";
-    if (targetBuilding.avg_spec_heat_consumption < 75)
+    if (targetBuilding.spec_heat_consumption < 75)
       heatConsumptionHandle = "b";
-    if (targetBuilding.avg_spec_heat_consumption < 50)
+    if (targetBuilding.spec_heat_consumption < 50)
       heatConsumptionHandle = "a";
-    if (targetBuilding.avg_spec_heat_consumption < 30)
+    if (targetBuilding.spec_heat_consumption < 30)
       heatConsumptionHandle = "aplus";
     $(target).attr("src", "img/qscope_energy_graph_triangle_" + heatConsumptionHandle + "_.png");
 
     // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .powerConsumption > span";
-    // $(target).text(targetBuilding.avg_spec_power_consumption.toFixed(1));
+    // $(target).text(targetBuilding.spec_power_consumption.toFixed(1));
 
     // update consumption cluster size:
     // target = "#" + quarterID + " > .nameAndTable > .houseInfo > .clusterSize > span";

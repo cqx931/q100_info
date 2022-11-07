@@ -90,8 +90,8 @@ const individualDataViewData =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 18",
-                  "avg_spec_heat_consumption": 417.4165075,
-                  "avg_spec_power_consumption": 35.305475,
+                  "spec_heat_consumption": 417.4165075,
+                  "spec_power_consumption": 35.305475,
                   "cluster_size": 4,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -107,8 +107,8 @@ const individualDataViewData =
               },
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 40",
-                  "avg_spec_heat_consumption": 197.379868,
-                  "avg_spec_power_consumption": 36.4716976,
+                  "spec_heat_consumption": 197.379868,
+                  "spec_power_consumption": 36.4716976,
                   "cluster_size": 25,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -132,8 +132,8 @@ const individualDataViewData =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 61",
-                  "avg_spec_heat_consumption": 119.17281,
-                  "avg_spec_power_consumption": 16.1021586364,
+                  "spec_heat_consumption": 119.17281,
+                  "spec_power_consumption": 16.1021586364,
                   "cluster_size": 22,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -155,8 +155,8 @@ const individualDataViewData =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 47",
-                  "avg_spec_heat_consumption": 147.10931,
-                  "avg_spec_power_consumption": 33.40084,
+                  "spec_heat_consumption": 147.10931,
+                  "spec_power_consumption": 33.40084,
                   "cluster_size": 2,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -178,8 +178,8 @@ const individualDataViewData =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 16",
-                  "avg_spec_heat_consumption": 344.119725,
-                  "avg_spec_power_consumption": 50.34868,
+                  "spec_heat_consumption": 344.119725,
+                  "spec_power_consumption": 50.34868,
                   "cluster_size": 4,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -208,8 +208,8 @@ const individualDataViewDataNoSliderHandles =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 18",
-                  "avg_spec_heat_consumption": 417.4165075,
-                  "avg_spec_power_consumption": 35.305475,
+                  "spec_heat_consumption": 417.4165075,
+                  "spec_power_consumption": 35.305475,
                   "cluster_size": 4,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -225,8 +225,8 @@ const individualDataViewDataNoSliderHandles =
               },
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 40",
-                  "avg_spec_heat_consumption": 197.379868,
-                  "avg_spec_power_consumption": 36.4716976,
+                  "spec_heat_consumption": 197.379868,
+                  "spec_power_consumption": 36.4716976,
                   "cluster_size": 25,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -248,8 +248,8 @@ const individualDataViewDataNoSliderHandles =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 61",
-                  "avg_spec_heat_consumption": 119.17281,
-                  "avg_spec_power_consumption": 16.1021586364,
+                  "spec_heat_consumption": 119.17281,
+                  "spec_power_consumption": 16.1021586364,
                   "cluster_size": 22,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -271,8 +271,8 @@ const individualDataViewDataNoSliderHandles =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 47",
-                  "avg_spec_heat_consumption": 147.10931,
-                  "avg_spec_power_consumption": 33.40084,
+                  "spec_heat_consumption": 147.10931,
+                  "spec_power_consumption": 33.40084,
                   "cluster_size": 2,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
@@ -294,8 +294,8 @@ const individualDataViewDataNoSliderHandles =
           "buildings": [
               {
                   "address": "R\u00fcsdorfer Stra\u00dfe 16",
-                  "avg_spec_heat_consumption": 344.119725,
-                  "avg_spec_power_consumption": 50.34868,
+                  "spec_heat_consumption": 344.119725,
+                  "spec_power_consumption": 50.34868,
                   "cluster_size": 4,
                   "emissions_graphs": "",
                   "energy_prices_graphs": "",
