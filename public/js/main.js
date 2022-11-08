@@ -54,7 +54,7 @@ socket.on('message', function (message) {
       // updateClusterCharts(data);
       // updateTotalCharts(data);
       updateSelectedConnectionsNumber(json);
-      injectDataToIndividualDataView(json);
+      updateIndividualData(json);
     }
     // }
 

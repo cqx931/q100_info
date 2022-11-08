@@ -32,7 +32,7 @@ const displayBuildingsInteractionMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
   $(".buildings_interaction").hide();
-  $(".simulationMode").show();
+  $(".simulationProgress").show();
   $(".dataViewIndividualMode").show();
   $(".dataViewTotalMode").hide();
 
@@ -63,7 +63,7 @@ const displaySimulationMode = function () {
   // $(".questionnaire").hide();
   // $(".input_scenarios").hide();
   // $(".buildings_interaction").hide();
-  $(".simulationMode").show();
+  $(".simulationProgress").show();
   // $(".dataViewIndividualMode").hide();
   // $(".dataViewTotalMode").hide();
 }
@@ -72,7 +72,7 @@ const displayDataViewIndividualMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
   $(".buildings_interaction").hide();
-  $(".simulationMode").hide();
+  $(".simulationProgress").hide();
   $(".dataViewIndividualMode").show();
   $(".dataViewTotalMode").hide();
   initDataViewIndividualContent();
@@ -89,7 +89,7 @@ const displayDataViewTotalMode = function () {
   $(".questionnaire").hide();
   $(".input_scenarios").hide();
   $(".buildings_interaction").hide();
-  $(".simulationMode").hide();
+  $(".simulationProgress").hide();
   $(".dataViewIndividualMode").hide();
   $(".dataViewTotalMode").show();
   // updateSimulationOutputs();

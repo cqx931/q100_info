@@ -25,7 +25,7 @@ document.addEventListener('keydown', function (event) {
     const data =
       { "buildings_groups": { "group_0": { "buildings": [{ "address": "Rüsdorfer Straße 18", "spec_heat_consumption": 419.435035, "spec_power_consumption": 38.00364, "cluster_size": 2.0, "emissions_graphs": "data/outputs/output_test/emissions/CO2_emissions_7.55.png", "energy_prices_graphs": "data/outputs/output_test/energy_prices/energy_prices_7.55.png", "CO2": 0.022635805, "connection_to_heat_grid": 2026, "connection_to_heat_grid_prior": false, "refurbished": false, "refurbished_prior": false, "save_energy": false, "save_energy_prior": false, "energy_source": "Gas", "cell": "" }], "connections": 1 }, "group_1": [""], "group_2": [""], "group_3": [""] } };
       
-    injectDataToIndividualDataView(data);
+    updateIndividualData(data);
     if (currentIterationRound == 0){
       location.reload(); // reload page
     }

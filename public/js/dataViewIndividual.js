@@ -60,7 +60,7 @@ const injectDataToDataView = function (data) {
     createEmissionComparisonChart(data[0].emissions_data_paths)
 }
 
-const injectDataToIndividualDataView = function (data) {
+const updateIndividualData = function (data) {
     for (let i = 0; i < 4; i++) {
         const group_name = "group_" + i;
         let targetBuilding;
@@ -110,6 +110,15 @@ const injectDataToIndividualDataView = function (data) {
 
             individualQuarter.find(".emissions_graphs img").attr("src", targetBuilding["emissions_graphs"]);
             individualQuarter.find(".energy_prices_graphs img").attr("src", targetBuilding["energy_prices_graphs"]);
+
+            ["refurbished", "connection_to_heat_grid", "save_energy"].forEach(function (item){
+                if (targetBuilding[item] != 0)
+                    individualQuarter.find("img."+item).show();
+                else
+                    individualQuarter.find("img."+item).hide();
+            });
+
+
         } catch (error) {
             // console.log(error)
             console.log("failed loading data for ", group_name, " - group is probably empty.")

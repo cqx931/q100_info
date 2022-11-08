@@ -94,17 +94,19 @@ h5 {
 
 #infoscreen .bottom {
   width: 100%;
-  height: 10%;
+  /* height: 10%; */
   display: flex;
+  position:fixed;
+  bottom: 0;
 }
 #infoscreen .bottom #simulationProgress {
-  width:55%;
+  width:100%;
   display: flex;
-  justify-content: right;
+  justify-content: center;
 }
 
 #infoscreen .bottom #currentRound {
-  width: 40%;
+  width: 20%;
   justify-content: right;
   display:flex;
   padding-right: 2%;
@@ -560,11 +562,15 @@ tr:nth-child(even) {
 }
 
 .highlightedRow {
-  background-color: #ffc7a4 !important
+  /* background-color: #ffc7a4 !important */
+  font-weight: bold;
 }
 
-.aboveTable img {
-  height: 50px;
+.aboveTable img.refurbished,
+.aboveTable img.connection_to_heat_grid,
+.aboveTable img.save_energy
+{
+  height: 33px;
 }
 
 /****************************
