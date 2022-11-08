@@ -113,9 +113,9 @@ const updateIndividualData = function (data) {
 
             ["refurbished", "connection_to_heat_grid", "save_energy"].forEach(function (item){
                 if (targetBuilding[item] != 0)
-                    individualQuarter.find("img."+item).show();
+                    individualQuarter.find("img."+item).css("visibility", "visible");
                 else
-                    individualQuarter.find("img."+item).hide();
+                    individualQuarter.find("img."+item).css("visibility", "hidden");
             });
 
 
@@ -124,7 +124,6 @@ const updateIndividualData = function (data) {
             console.log("failed loading data for ", group_name, " - group is probably empty.")
         }
     }
-
 }
 
 function focusActiveUserData(userNumber){
