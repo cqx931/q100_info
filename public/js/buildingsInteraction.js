@@ -49,7 +49,7 @@ const renderHouseInfo = function (groupData, quarterID) {
 
   buildings = groupData.buildings;
 
-  if (buildings == null) {
+  if (buildings == [""]) {
     individualQuarter.css("visibility", "hidden");
   }
   else {
