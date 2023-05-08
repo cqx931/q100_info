@@ -316,4 +316,5 @@ const individualDataViewDataNoSliderHandles =
   }
 }
 
-
+const debugData01 = {"buildings_groups": {"group_0": {"buildings": [{"address": "R\u00fcsdorfer Stra\u00dfe 32", "spec_heat_consumption": 230.0, "spec_power_consumption": 19.34118, "type": "EFH", "cluster_size": 0, "emissions_graphs": "img/blank_16x12inches.png", "energy_prices_graphs": "img/blank_16x12inches.png", "connection_to_heat_grid": false, "connection_to_heat_grid_prior": false, "refurbished": 2022, "refurbished_prior": false, "save_energy": false, "save_energy_prior": false, "energy_source": "\u00d6l", "cell": ""}], "connections": 0, "slider_handles": ["refurbished"]}, "group_1": [""], "group_2": [""], "group_3": [""]}}
+const debugData02 = {"buildings_groups": {"group_0": [""], "group_1": [""], "group_2": [""], "group_3": [""]}}

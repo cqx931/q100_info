@@ -49,6 +49,28 @@ document.addEventListener('keydown', function (event) {
     if ('group_2' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_2, "dataViewIndividualQuarter2");
     if ('group_3' in individual_data_view_data_temp) renderHouseInfo(individual_data_view_data_temp.group_3, "dataViewIndividualQuarter3");
   }
+  else if (event.key == "n") {
+    console.log(debugData01)
+    let debugData01_temp
+    debugData01_temp = debugData01.buildings_groups
+
+    // sample data injection to individual data view
+    if ('group_0' in debugData01_temp) renderHouseInfo(debugData01_temp.group_0, "dataViewIndividualQuarter0");
+    if ('group_1' in debugData01_temp) renderHouseInfo(debugData01_temp.group_1, "dataViewIndividualQuarter1");
+    if ('group_2' in debugData01_temp) renderHouseInfo(debugData01_temp.group_2, "dataViewIndividualQuarter2");
+    if ('group_3' in debugData01_temp) renderHouseInfo(debugData01_temp.group_3, "dataViewIndividualQuarter3");
+  }
+  else if (event.key == "m") {
+    console.log(debugData02)
+    let debugData02_temp
+    debugData02_temp = debugData02.buildings_groups
+
+    // sample data injection to individual data view
+    if ('group_0' in debugData02_temp) renderHouseInfo(debugData02_temp.group_0, "dataViewIndividualQuarter0");
+    if ('group_1' in debugData02_temp) renderHouseInfo(debugData02_temp.group_1, "dataViewIndividualQuarter1");
+    if ('group_2' in debugData02_temp) renderHouseInfo(debugData02_temp.group_2, "dataViewIndividualQuarter2");
+    if ('group_3' in debugData02_temp) renderHouseInfo(debugData02_temp.group_3, "dataViewIndividualQuarter3");
+  }
 });
 
 function calculateNextUserMode(currentUserMode) {
