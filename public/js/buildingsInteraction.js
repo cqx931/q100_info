@@ -46,10 +46,9 @@ function updateMapImage() {
 
 const renderHouseInfo = function (groupData, quarterID) {
   const individualQuarter = $("#" + quarterID);
-
   buildings = groupData.buildings;
 
-  if (buildings == [""]) {
+  if (groupData[0] == '') {
     individualQuarter.css("visibility", "hidden");
   }
   else {
