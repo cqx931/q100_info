@@ -50,11 +50,13 @@ const renderHouseInfo = function (groupData, quarterID) {
 
   if (groupData[0] == '') {
     individualQuarter.css("visibility", "hidden");
+    individualQuarter.find('img').css("visibility", "hidden");
   }
   else {
     // show hidden elements:
     if (individualQuarter.css("visibility") == "hidden") {
       individualQuarter.css("visibility", "visible");
+      individualQuarter.find('img').css("visibility", "visible");
     }
 
     // get only first element of building list:
