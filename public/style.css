@@ -105,14 +105,20 @@ h5 {
   height: 5vh;
 }
 
+#infoscreen .bottom .logos{
+
+}
+
 #infoscreen .bottom #simulationProgress {
-  width:43%;
+  width:100%;
+  position: absolute;
   display: flex;
   justify-content: center;
 }
 
 #infoscreen .bottom #currentRound {
-  width: 25%;
+  position: absolute;
+  right: 0px;
   justify-content: right;
   display:flex;
   padding-right: 2%;
@@ -429,7 +435,7 @@ justify-content: center;
 }
 
 .dataViewTotalMode .graph img {
-  width: 90%;
+  width: 85%;
   /* 100% will make the images too high */
   background-size: contain;
 }
@@ -544,7 +550,7 @@ tr:nth-child(even) {
 
 .dataViewIndividual.quarterSection {
   padding: 30px;
-  margin: 55px;
+  margin: 35px;
   visibility: hidden;
   padding: 4% 3% 4% 3%;
   /* width: 47%; */
