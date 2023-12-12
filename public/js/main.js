@@ -23,9 +23,10 @@ socket.on('message', function (message) {
         currentIterationRound = json.current_iteration_round;
         console.log("current_iteration_round = " + currentIterationRound);
         tableAddColumn(json.current_iteration_round);
-        $('#currentRound').find('span').text(currentIterationRound + 1);
+        $('#currentRound').find('span').text(currentIterationRound);
         if (currentIterationRound == 0) {
           location.reload(); // reload page
+          console.log("max. iterationRounds reached. page reload!")
         }
       }
     }
