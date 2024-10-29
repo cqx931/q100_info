@@ -69,8 +69,10 @@ const renderHouseInfo = function (groupData, quarterID) {
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .buildingType > span";
     if (targetBuilding.type == "MFH")
       $(target).text("Mehrfamilienhaus");
-    if (targetBuilding.type == "EFH")
+    else if (targetBuilding.type == "EFH")
       $(target).text("Einfamilienhaus");
+    else
+      $(target).text("");
 
     // update consumption data:
     target = "#" + quarterID + " > .nameAndTable > .houseInfo > .heatConsumption > img";

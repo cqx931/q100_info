@@ -4,13 +4,13 @@ const path = require('path'),
       fs = require('fs');
       csv = require('csv-parse/sync');
 
-const http_port = 8000,
+const http_port = 8082,
       websocket_port = 8081;
 
 // set up socket.io
 const io = require("socket.io")(websocket_port, {
   cors: {
-    origin: "http://localhost:8000",
+    origin: "http://localhost:8082",
     methods: ["GET", "POST"]
   }
 });
@@ -42,10 +42,10 @@ function initServer() {
 
   // set endpoint for question.csv
   // see https://csv.js.org/parse/
-  const questions = loadQuestionsCSV()
-  app.get('/api/questions', (req, res) => {
-    res.json(questions);
-  });
+  // const questions = loadQuestionsCSV()
+  // app.get('/api/questions', (req, res) => {
+  //   res.json(questions);
+  // });
 
   // set endpoint for .csv
   // see https://csv.js.org/parse/
@@ -65,13 +65,13 @@ function initServer() {
 // }
 
 function loadQuestionsCSV() {
-  const input = fs.readFileSync("public/data/questions.csv", 'utf8');
-  const questionsFromCSV = csv.parse(input, {
-    delimiter: '/n',
-    skip_empty_lines: true,
-  });
-  const questions = formatQuestions(questionsFromCSV)
-  return questions
+  // const input = fs.readFileSync("public/data/questions.csv", 'utf8');
+  // const questionsFromCSV = csv.parse(input, {
+  //   delimiter: '/n',
+  //   skip_empty_lines: true,
+  // });
+  // const questions = formatQuestions(questionsFromCSV)
+  // return questions
 }
 
 function formatQuestions(rawQuestions) {
